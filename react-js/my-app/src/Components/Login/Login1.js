@@ -65,20 +65,6 @@ const Login1 = () => {
 
   return (
     <>
-      {/* <Navbar5 /> */}{" "}
-      {/* <div class="area">
-        <ul class="circles">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul> */}
 
         <div style={{ backgroundColor: "lightblue", height: "100%" }}>
         <div className="container">
@@ -104,20 +90,6 @@ const Login1 = () => {
                 Please enter your essential details for registration
               </p>
 
-              {/* <div className="row d-flex justify-content-center align-items-center">
-              <div className="col-12 col-md-8 col-lg-6 col-xl-5 my-5">
-                <div
-                  className="card text-black"
-                  style={{ width: "100%", height: "100%" }}
-                >
-                  <div className="card-body p-5 text-center">
-                    <div className="mb-md mt-md pb-4">
-                      <h2 className="fw-bold mb-2 text-uppercase">Welcome</h2>
-                      <p className="text-black-50 mb-5">
-                        Please enter your Username and password!
-                      </p> */}
-
-              {/* <div className="form-black mb-4 w-full"> */}
               <input
                 type="email"
                 autoComplete="off"

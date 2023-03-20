@@ -1,18 +1,32 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const checkValid = () => {
+    if (email !== "akash@gmail.com" || password !== "12345") {
+      window.alert("Mail or password invalid");
+    } else {
+      navigate("/dashmain");
+    }
+  };
+
   return (
     <>
-     <div style={{ backgroundColor: "lightblue", height: "100%" }}>
+      <div style={{ backgroundColor: "lightblue", height: "100%" }}>
         <div className="container">
-          <form method="post" action="" className="login-form">
+          <form action="" className="login-form">
             <div
               style={{
                 backgroundColor: "white",
                 padding: "40px 20px",
                 borderRadius: "20px",
                 display: "",
-              }}>
+              }}
+            >
               <h1
                 style={{
                   paddingBottom: "50px",
@@ -31,6 +45,8 @@ const AdminLogin = () => {
                 type="email"
                 autoComplete="off"
                 name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 style={{ height: "50px" }}
                 id=""
                 // className="form-control form-control"
@@ -41,6 +57,8 @@ const AdminLogin = () => {
               <input
                 type="password"
                 name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 style={{ height: "50px" }}
                 id=""
                 autoComplete="off"
@@ -55,14 +73,17 @@ const AdminLogin = () => {
               </p>
 
               <div style={{ textAlign: "center" }}>
+                {/* <Link to="/dashmain"> */}
                 <button
                   // variant="outline-dark"
                   className="btn btn-outline-dark btn-lg px-5"
                   style={{ marginTop: "-20px" }}
                   type="submit"
+                  onClick={checkValid}
                 >
                   Login
                 </button>
+                {/* </Link> */}
               </div>
 
               {/* <div style={{ textAlign: "center", marginTop: "2rem" }}>
@@ -88,9 +109,9 @@ const AdminLogin = () => {
             </div>
           </form>
         </div>
-      </div> 
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default AdminLogin
+export default AdminLogin;

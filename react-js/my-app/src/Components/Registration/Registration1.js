@@ -174,20 +174,6 @@ const Registration1 = () => {
     <>
       {/* <Navbar3 /> */}
       <div>
-        {/* <div className="area1" style={{ height: "100%" }}>
-          <ul className="circles1">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul> */}
-
         {/* <section className="h-full"> */}
         <div style={{ backgroundColor: "lightblue", height: "100%" }}>
           <div className="container">
@@ -216,18 +202,6 @@ const Registration1 = () => {
                 >
                   Please enter your essential details for registration
                 </p>
-                {/* <div className="row d-flex justify-content-center align-items-center">
-            <div className="col-12 col-xl-6 col-X-Small-3 my-5">
-              <div
-                className="card text-black"
-                style={{ width: "auto", height: "100%" }}
-              >
-                <div className="card-body p-5" style={{ textAlign: "center" }}>
-                  <div className="pb-4">
-                    <h2 className="fw-bold mb-2 text-uppercase">Welcome</h2>
-                    <p className="text-black-50 mb-5">
-                      Please enter your essential details for registration
-                    </p> */}
 
                 <div style={{ height: "45px", marginBottom: "2rem" }}>
                   <RadioGroup
