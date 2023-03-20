@@ -1,0 +1,172 @@
+body {
+  background-color: #fff;
+  /* font-family:'Courier New', Courier, monospace; */
+  font-family: "Poppins";
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 400;
+  color: #767676;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.container-work {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 3rem;
+  width: 95%;
+}
+.aon-howit-area2-section {
+  background-color: #022279;
+  border-radius: 30px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.aon-howit-area2-bg {
+  position: relative;
+  padding: 60px 30px 0px 30px;
+  z-index: 1;
+}
+
+.aon-howit-area2-bg:before {
+  /* background-image: url(../images/how-it-work/bg-corner-left.png); */
+  left: 0px;
+  bottom: 0px;
+  background-position: left bottom;
+}
+.aon-howit-area2-bg:after,
+.aon-howit-area2-bg:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+.aon-title-center {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 640px;
+  text-align: center !important;
+}
+.aon-sub-title {
+  color: #ffb600;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 30px;
+  display: block;
+  font-weight: 700;
+}
+.aon-howit-area2-section .section-head .sf-title {
+  color: #fff !important;
+  margin-top: -1.3rem;
+}
+.section-head .sf-title {
+  line-height: 1.5;
+}
+.section-content {
+  margin-top: 50px;
+}
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.aon-howit-area2-iconbox {
+  text-align: center;
+  padding: 0px 30px 30px 30px;
+  margin-bottom: 30px;
+}
+.aone-howit-number {
+  opacity: 0.1;
+  color: #fff;
+  font-weight: 700;
+  font-size: 90px;
+  line-height: 80px;
+  position: relative;
+  bottom: -20px;
+  margin-top: -20px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #fff;
+}
+
+.aon-howit-area2-iconbox {
+  text-align: center;
+  padding: 0px 30px 30px 30px;
+  margin-bottom: 30px;
+}
+.aon-howit-area2-iconbox .aon-howit-area2-icon {
+  text-align: center;
+}
+.aon-howit-area2-iconbox .aon-howit-area2-icon span {
+  text-align: center;
+  width: 95px;
+  height: 95px;
+  line-height: 95px;
+  background-color: #ffb600;
+  display: inline-block;
+  border-radius: 50%;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+img {
+  border-style: none;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+.aon-howit-area2-iconbox {
+  text-align: center;
+  padding: 0px 30px 30px 30px;
+  margin-bottom: 30px;
+}
+h4 {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #022279;
+}
+.aon-howit-area2-section .aon-howit-area2-content .aon-title {
+  color: #fff !important;
+}
+.aon-howit-area2-iconbox .aon-title {
+  margin: 0px 0px 20px;
+}
+.aon-howit-area2-iconbox .aon-howit-area2-content p {
+  color: #fff;
+  margin-bottom: 0px;
+}
+.aon-howit-arrow {
+  position: relative;
+}
+.aon-howit-area2-iconbox {
+  text-align: center;
+  padding: 0px 30px 30px 30px;
+  margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 991px) {
+  .aon-howit-area2 {
+    padding-bottom: 40px;
+  }
+  .aon-howit-area2-bg {
+    padding: 40px 30px 40px 30px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .col-md-6 {
+    width: 50%;
+  }
+}

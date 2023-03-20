@@ -1,0 +1,13 @@
+.bg-images {
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)),url("../../images/uc1.jpeg");
+  /* background-image: url(../../images/service1.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 60vh;
+  font-family: Poppins;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  align-items: center;
+}

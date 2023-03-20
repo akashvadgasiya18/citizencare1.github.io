@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  box-sizing: border-box;
+}
+
+.regi-container {
+  background: linear-gradient(to right, rgb(4, 4, 165), rgb(210, 211, 253));
+  /* background-image: url('../images/background.png'); */
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  height: auto;
+  width: 100%;
+  /* margin-top: 5rem; */
+  transition: height 0.2s ease;
+  /* margin-bottom: 4rem; */
+}
+
+.regi-container .form {
+  /* width: 35rem; */
+  padding: 40px 60px;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  background: ghostwhite;
+  border-radius: 10px;
+  height: 100%;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.regi-container.active .login {
+  /* margin-left: 0%; */
+  opacity: 0;
+  transition: margin-left 0.18s ease, opacity 0.15s ease;
+}
+
+.regi-container .forms .title {
+  position: relative;
+  font-size: 35px;
+  font-weight: 600;
+  font-family: Poppins;
+}
+
+.forms .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 35px;
+  background-color: #02030f;
+  border-radius: 25px;
+}
+
+.forms .input-field {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.input-field input {
+  /* position: relative; */
+  height: 100%;
+  width: 100%;
+  /* justify-content: center; */
+  padding: 20px 50px;
+  border: 2px solid #999;
+  border-radius: 50px;
+  outline: none;
+  background-color: ghostwhite;
+  font-size: 16px;
+  /* border-bottom: 2px solid #999; */
+  /* border-top: 2px solid transparent; */
+  transition: all 0.2s ease;
+}
+
+.input-field input:focus {
+  border-color: #02030f;
+}
+
+.input-field i {
+  position: absolute;
+  top: 32%;
+  /* left: 100%; */
+  /* left: 23px; */
+  /* transform: translateY(-50%); */
+  color: #999;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+.input-field i.icon {
+  left: 23px;
+}
+.input-field input:focus ~ i {
+  color: #02030f;
+}
+
+.input-field i.showhidepw {
+  right: 20px;
+  cursor: pointer;
+  /* position: relative; */
+}
+
+.input-field-radio-btn {
+  /* font-size: 30px; */
+  margin-top: 30px;
+  /* font-weight: 500; */
+  color: #181a2c;
+}
+
+.input-field-radio-btn .radio1 {
+  /* margin-left: 5px; */
+  margin-top: 0px;
+  /* margin-right: 10px; */
+}
+
+.input-field-radio-btn .radio2 {
+  /* margin-left: 40px; */
+  /* margin-right: 10px; */
+  margin-bottom: 2rem;
+}
+/* .input-field i.icon {
+  left: 0px;
+} */
+
+.input-field-select {
+  width: 100%;
+  position: relative;
+  padding: 8px 50px;
+  color: #181a2c;
+  background-color: ghostwhite;
+  border: 2px solid #999;
+  /* outline: none; */
+  border-radius: 50px;
+  font-size: 18px;
+  /* border-bottom: 2px solid #999; */
+  /* border-top: 2px solid transparent; */
+  transition: all 0.2s ease;
+}
+.forms a.text {
+  color: #02030f;
+  text-decoration: underline;
+}
+
+.forms a:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+.forms .button {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.forms .button input {
+  border: 2px solid black;
+  border-radius: 50px;
+  color: ghostwhite;
+  line-height: 0px;
+  font-size: 23px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  /* border-radius: 6px; */
+  background-color: #02030f;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button input:hover {
+  background-color: #818286;
+  color: #02030f;
+  font-weight: 600;
+}
+
+.login-signin {
+  font-size: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.login-signin .text {
+  margin-left: 0px;
+  font-family: Poppins;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .forms {
+    margin: 0rem 0rem;
+    width: 100%;
+  }
+  .regi-container .forms {
+    padding: 40px 31px;
+  }
+  .regi-container .form {
+    padding: 40px 24px;
+  }
+  .checkbox-text .checkbox-content {
+    display: flex;
+    /* align-content: center; */
+    margin-right: 50px;
+  }
+}
+
+/* @media only screen and (max-width: 500px) {
+  .regi-container .form {
+    margin-left: -9%;
+  }
+  .input-field input
+  {
+    width: 16rem;
+  }
+  .checkbox-text .checkbox-content {
+    display: flex;
+    align-content: center;
+    margin-right: 70px;
+  }
+  .form
+  {
+    margin-left: -32px;
+  } */
+/* .input-field i.showhidepw
+  {
+    right: -15px;
+  } */
+/* } */

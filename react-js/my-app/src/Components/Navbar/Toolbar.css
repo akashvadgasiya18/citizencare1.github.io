@@ -1,0 +1,84 @@
+.toolbar {
+  /* position: fixed; */
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: white;
+  /* overflow: hidden; */
+  height: 70px;
+}
+
+.toolbar_logo {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 1.7rem;
+  font-weight: 600;
+  font-family: Poppins;
+}
+
+.toolbar_navigation {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
+}
+
+.nav-item-links {
+  color: rgb(0, 0, 0);
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-family: Poppins;
+  text-decoration: none;
+}
+
+.toolbar_navigation_items a:hover,
+.toolbar_navigation_items a:active {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.toolbar_navigation_items {
+  float: left;
+  flex: 1;
+  overflow: hidden;
+}
+.toolbar_navigation_items ul {
+  list-style: none;
+  margin: auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolbar_navigation_items li {
+  padding: 0 0.5rem;
+}
+.burger_menu {
+  display: flex;
+  position: absolute;
+  right: 0;
+  float: right;
+  margin-right: 1rem;
+}
+.cart-icns
+{
+  display: inline-flex;
+}
+
+@media (max-width: 808px) {
+  .toolbar_navigation_items {
+    display: none;
+  }
+  .two-btn-appbar {
+    display: none;
+  }
+}
+
+@media (min-width: 800px) {
+  .burger_menu {
+    display: none;
+  }
+}
+
+/* -------------------------- */

@@ -1,0 +1,150 @@
+/* 
+@media only screen and (max-width:800px) {
+    #no-more-tables tbody,
+    #no-more-tables tr,
+    #no-more-tables td {
+        display:grid;
+        
+    }
+    #no-more-tables thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        overflow-x: auto;
+    }
+    #no-more-tables td {
+        position: relative;
+        width:50%;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+    #no-more-tables td:before {
+        content: attr(data-title);
+        position: absolute;
+        left: 6px;
+        font-weight: bold;
+    }
+    #no-more-tables tr {
+        border-bottom: 1px solid #ccc;
+         width:50%;
+    }
+}
+
+
+@media only screen and (max-width:1000px)
+{
+    #no-more-tables 
+    {
+        width:100vh;
+    }
+} */
+
+.card {
+  margin: 1rem 2rem;
+  width: auto;
+}
+.header_fixed {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid #dddddd;
+}
+
+.header_fixed table {
+  width: 100%;
+}
+.header_fixed thead th {
+  position: sticky;
+  top: 0;
+  background-color: black;
+  color: #e6e7e8;
+  font-size: 15px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #dddddd;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+td img {
+  height: 60px;
+  width: 80px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+tr:nth-child(odd) {
+  background-color: #edeef1;
+}
+
+tr:hover td {
+  color: #44b478;
+  background-color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/* ----------------------------button----------------------------- */
+
+.addservice-btn {
+  display: flex;
+  padding: 20px 30px;
+}
+
+/* ---------------------------------------- add service----------------------------------- */
+
+.login-form label {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.login-form input {
+  width: 30rem;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  font-size: 1rem;
+}
+
+.login-form button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0077ff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .login-form {
+    padding: 10px;
+  }
+
+  .login-form input,
+  .login-form button {
+    font-size: 0.9rem;
+    width: 20rem;
+  }
+  .edit-icons {
+    display: inline-table;
+  }
+  .icons-1 {
+    margin-right: 18px;
+  }
+}

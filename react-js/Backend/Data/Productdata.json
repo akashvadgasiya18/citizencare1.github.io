@@ -1,0 +1,50 @@
+[
+  {
+    "s_name": "Plumbers & services",
+    "price": 200,
+    "rating": 4.5,
+    "likes": "2,190",
+    "desc": "The air conditioning technicians install, inspect, maintain, and repair air conditioner. They ventilate equipment and controls making sure they operate efficiently and continuously.",
+    "image": "D:/react-js/Backend/assets/img1.jpg"
+  },
+  {
+    "s_name": "AC Repair",
+    "price": 300,
+    "rating": 3.5,
+    "likes": "20,000",
+    "desc": "The air conditioning technicians install, inspect, maintain, and repair air conditioner. They ventilate equipment and controls making sure they operate efficiently and continuously.",
+    "image": "D:/react-js/Backend/assets/img2.jpeg"
+  },
+  {
+    "s_name": "House Cleaning",
+    "price": 500,
+    "rating": 4.0,
+    "likes": "10,200",
+    "desc": "The air conditioning technicians install, inspect, maintain, and repair air conditioner. They ventilate equipment and controls making sure they operate efficiently and continuously.",
+    "image": "D:/react-js/Backend/assets/img2.jpeg"
+  },
+  {
+    "s_name": "Electrician",
+    "price": 350,
+    "rating": 3.0,
+    "likes": "5,000",
+    "desc": "The air conditioning technicians install, inspect, maintain, and repair air conditioner. They ventilate equipment and controls making sure they operate efficiently and continuously.",
+    "image": "D:/react-js/Backend/assets/img5.jpg"
+  },
+  {
+    "s_name": "Carpenter",
+    "price": 400,
+    "rating": 4.0,
+    "likes": "8,560",
+    "desc": "The air conditioning technicians install, inspect, maintain, and repair air conditioner. They ventilate equipment and controls making sure they operate efficiently and continuously.",
+    "image": "D:/react-js/Backend/assets/img3.jpg"
+  },
+  {
+    "s_name": "Doctors",
+    "price": 300,
+    "rating": 4.5,
+    "likes": "20,000",
+    "desc": "The air conditioning technicians install, inspect, maintain, and repair air conditioner. They ventilate equipment and controls making sure they operate efficiently and continuously.",
+    "image": "../assets/img4.jpg"
+  }
+]

@@ -1,0 +1,20 @@
+.heading {
+    text-align: center;
+    width: 60%;
+    margin: auto;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    margin-top: 0rem;
+  }
+  .heading h1 {
+    color: #2d3954;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: 'Poppins';
+    font-size: 35px;
+  }
+  .heading p {
+    color: #72809d;
+    font-size: 20px;
+  }

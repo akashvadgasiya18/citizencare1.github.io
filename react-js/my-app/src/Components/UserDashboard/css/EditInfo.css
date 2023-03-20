@@ -1,0 +1,100 @@
+.mainDiv2 {
+  justify-items: center;
+  margin: auto;
+}
+.cardStyle2 {
+  width: 100%;
+  padding: 20px 60px;
+  border-radius: 4px;
+  /* margin: 0px -100px; */
+  /* box-shadow: 0px 0 2px 0 rgba(0, 0, 0, 0.25); */
+}
+.label {
+  font-size: 17px;
+  margin-bottom: 10px;
+  font-family: Poppins;
+  font-weight: 400;
+  display: flex;
+}
+.cardStyle2 .value {
+  width: 100%;
+  border-color: rgba(0, 0, 0, 0.3);
+}
+.cardStyle2 .read {
+  /* margin-left: 5rem; */
+  margin-top: 3rem;
+}
+.edit-icon {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.edit-icon .edit {
+  width: 10%;
+  margin: 0 15%;
+  font-size: 20px;
+}
+.edit-icon .edit i:hover {
+  color: black;
+}
+.submitButton2 {
+  width: 30%;
+  height: 40px;
+  margin: 60px 0px;
+  display: flex;
+  color: #fff;
+  background-color: #082338;
+  text-decoration: 2px solid #082338 underline;
+  /* text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12); */
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.035);
+  border-radius: 4px;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 55px;
+}
+.submitButton2:hover {
+  background-color: white;
+  text-decoration: 2px solid white underline;
+  color: #082338;
+  font-size: 18px;
+  font-weight: 500;
+}
+@media only screen and (max-width: 500px) {
+  .personal-info {
+    width: 100%;
+    height: auto;
+    margin-left: 0%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+  }
+  .n {
+    margin-top: 5%;
+    font-size: 18px;
+  }
+  .edit-icon .edit i {
+    width: 10%;
+    margin: 30% 0 0 150%;
+    font-size: 15px;
+    text-align: right;
+  }
+  .edit-icon p {
+    float: left;
+    border: 2px black solid;
+  }
+  .info {
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
+.edit-profile {
+  width: 80%;
+  height: 100%;
+  margin-left: 18%;
+}
+.edit {
+  width: 60%;
+  margin: 30px auto 0 auto;
+  /* border: 1px solid black; */
+}

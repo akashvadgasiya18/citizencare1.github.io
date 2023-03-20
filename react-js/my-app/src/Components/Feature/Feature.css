@@ -1,0 +1,22 @@
+.featured
+{
+  padding-top: 60px;
+}
+.featured .box {
+  box-shadow: 0 0 20px 0 rgba(106, 115, 131, 0.18);
+  text-align: center;
+  padding: 25px;
+  cursor: pointer;
+}
+
+.featured img {
+  width: 40px;
+  height: 40px;
+  margin: auto;
+}
+
+.box:hover
+{
+    transform: scale(1.1);
+    transition: 0.6s;
+}

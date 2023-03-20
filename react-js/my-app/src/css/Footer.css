@@ -1,0 +1,106 @@
+footer {
+  /* padding: 0px 6px; */
+  font-family: Poppins;
+}
+
+.container h2 {
+  /* margin-left: 39%; */
+  margin-top: 0px;
+  font-size: 40px;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  padding-bottom: 2rem;
+  border-radius: 10px;
+}
+
+.footer-basic {
+  padding: 50px 0px;
+  background-color: lavender;
+  color: black;
+}
+
+.footer-basic ul {
+  list-style: none;
+  text-align: center;
+  font-size: 19px;
+  /* font-weight: 400; */
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.footer-basic li {
+  padding: 0 15px;
+}
+
+.footer-basic ul a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.footer-basic ul a:hover {
+  opacity: 1;
+  color: rgb(68, 238, 16);
+  text-decoration: none;
+}
+
+.footer-basic .social {
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  padding-bottom: 40px;
+  margin-top: 0px;
+}
+
+.footer-basic .social > a {
+  font-size: 25px;
+  width: 50px;
+  height: 50px;
+  line-height: 48px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid rgb(0, 0, 0);
+  margin: 0 10px;
+  color: inherit;
+  /* opacity:0.75; */
+}
+
+.footer-basic .social > a:hover {
+  opacity: 1;
+  color: rgb(7, 7, 7);
+  background: rgb(255, 255, 255);
+  border: 2px solid rgb(16, 167, 36);
+}
+
+.footer-basic .copyright {
+  margin-top: 35px;
+  text-align: center;
+  font-size: 17px;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+.cpright {
+  background-color: rgb(0, 0, 0);
+  height: 50px;
+  margin-bottom: -3rem;
+  color: #ffffff;
+}
+.cpright .copyright {
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  padding-top: 0.9rem;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+}
+
+@media screen and (max-width: 650) {
+  .conatiner h2 {
+    margin-left: 0%;
+    font-size: 40px;
+  }
+}

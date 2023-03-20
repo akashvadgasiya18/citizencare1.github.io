@@ -1,0 +1,470 @@
+import React, { useState } from "react";
+import Footer from "../Footer/Footer";
+import axios from "axios";
+import "./Reg2.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+const Registration1 = () => {
+  const [show, setShow] = useState(false);
+  const [hide, setHide] = useState(false);
+  const [choice, setChoice] = useState();
+
+  // ------------------------------ for provider----------------------------------
+  const [provider, setProvider] = useState({
+    p_name: "",
+    p_role: "",
+    p_email: "",
+    p_password: "",
+    p_cpassword: "",
+    p_add: "",
+    p_file: "",
+  });
+
+  const input_handle = (e) => {
+    console.log(e);
+    name = e.target.name;
+    value = e.target.value;
+
+    setProvider({ ...provider, [name]: value });
+  };
+
+  const img_upload = (e) => {
+    setProvider({ ...provider, p_file: e.target.files[0] });
+  };
+
+  const send_p_data = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("p_name", provider.p_name);
+    formData.append("p_role", choice);
+    formData.append("p_email", provider.p_email);
+    formData.append("p_password", provider.p_password);
+    formData.append("p_cpassword", provider.p_cpassword);
+    formData.append("p_add", provider.p_add);
+    formData.append("p_file", provider.p_file);
+    try {
+      await axios.post("/p_registration", formData);
+      navigate("/login");
+      toast.success("Successfully registerd.", {
+        position: "top-left",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } catch (err) {
+      if (err.response.status === 429) {
+        toast.error("All fields are required.", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
+      } else if (err.response.status === 413) {
+        toast.error("User Already Exist", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
+      } else if (err.response.status === 411) {
+        toast.error("password can't be less than 5.", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
+      } else if (err.response.status === 422) {
+        toast.error("Confirm password and password should be same.", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
+      } else if (err.response.status === 402) {
+        toast.error("Upload document.", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
+      }
+    }
+  };
+
+  // --------------------------- for user -----------------------------------
+  const navigate = useNavigate();
+  const [values, setValues] = useState({
+    fname: "",
+    age: "",
+    email: "",
+    password: "",
+    cpassword: "",
+  });
+
+  var name, value;
+  const handleChange = (e) => {
+    name = e.target.name;
+    value = e.target.value;
+    setValues({ ...values, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { fname, age, email, password, cpassword } = values;
+    const res = await fetch("/registration", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fname,
+        age,
+        email,
+        password,
+        cpassword,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+    if (!data) {
+      toast.error("All fields are required.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 429) {
+      toast.error("All fields are required.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 402) {
+      toast.error("Age can't be less than 45 and greter than 100.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 413) {
+      toast.error("User Already Exist", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 411) {
+      toast.error("password can't be less than 5.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 422) {
+      toast.error("Confirm password and password should be same.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 201) {
+      navigate("/login");
+      toast.success("Successfully registerd.", {
+        position: "top-left",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    }
+  };
+
+  return (
+    <>
+      {/* <Navbar3 /> */}
+      <div>
+        {/* <div className="area1" style={{ height: "100%" }}>
+          <ul className="circles1">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul> */}
+
+        {/* <section className="h-full"> */}
+        <div style={{ backgroundColor: "lightblue", height: "100%" }}>
+          <div className="container">
+            <form method="post" action="" className="login-form">
+              <div
+                style={{
+                  backgroundColor: "white",
+                  padding: "40px 20px",
+                  borderRadius: "20px",
+                  display: "",
+                }}
+              >
+                <h1
+                  style={{
+                    paddingBottom: "50px",
+                    textAlign: "center",
+                    fontFamily: "poppins",
+                    fontWeight: "700",
+                  }}
+                >
+                  REGISTER
+                </h1>
+                <p
+                  className="text-black-50 mb-5"
+                  style={{ textAlign: "center", marginTop: "-20px" }}
+                >
+                  Please enter your essential details for registration
+                </p>
+                {/* <div className="row d-flex justify-content-center align-items-center">
+            <div className="col-12 col-xl-6 col-X-Small-3 my-5">
+              <div
+                className="card text-black"
+                style={{ width: "auto", height: "100%" }}
+              >
+                <div className="card-body p-5" style={{ textAlign: "center" }}>
+                  <div className="pb-4">
+                    <h2 className="fw-bold mb-2 text-uppercase">Welcome</h2>
+                    <p className="text-black-50 mb-5">
+                      Please enter your essential details for registration
+                    </p> */}
+
+                <div style={{ height: "45px", marginBottom: "2rem" }}>
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                    className="radi-btns-choice"
+                  >
+                    <FormControlLabel
+                      value="user"
+                      name="user"
+                      control={<Radio />}
+                      label="User"
+                      onClick={() => setHide(true) || setShow(false)}
+                    />
+                    <FormControlLabel
+                      value="professional"
+                      control={<Radio />}
+                      name="provider"
+                      label="Professional"
+                      onClick={() => setShow(true) || setHide(false)}
+                    />
+                  </RadioGroup>
+                </div>
+
+                {hide ? (
+                  <>
+                    {/* <div className="text-blank mb-3 w-full my-5"> */}
+                    <input
+                      type="text"
+                      id=""
+                      name="fname"
+                      value={values.fname}
+                      onChange={handleChange}
+                      // className="form-control form-control mb-3"
+                      placeholder="Enter your Name"
+                    />
+                    <input
+                      type="number"
+                      name="age"
+                      placeholder="Select Age"
+                      max={100}
+                      min={40}
+                      autoComplete="off"
+                      value={values.age}
+                      onChange={handleChange}
+                      // className="form-control form-control mb-3"
+                    />
+
+                    <input
+                      type="email"
+                      name="email"
+                      value={values.email}
+                      onChange={handleChange}
+                      id=""
+                      // className="form-control form-control mb-3"
+                      placeholder="Enter your email"
+                    />
+
+                    <input
+                      type="password"
+                      name="password"
+                      value={values.password}
+                      onChange={handleChange}
+                      id=""
+                      // className="form-control "
+                      placeholder="Password"
+                    />
+
+                    <input
+                      type="password"
+                      name="cpassword"
+                      value={values.cpassword}
+                      onChange={handleChange}
+                      id=""
+                      placeholder="Confirm Password"
+                      // className="form-control form-control mb-3"
+                    />
+                    {/* </div> */}
+                    {/* <button
+                    className="btn btn-outline-dark btn-lg px-5"
+                    type="submit"
+                    onClick={handleSubmit}
+                    style={{ marginTop: "3rem" }}
+                  >
+                    Register
+                  </button> */}
+                    <div className="regis-btns">
+                      <button
+                        type="submit"
+                        className="btn btn-outline-dark btn-lg px-5"
+                        style={{ marginTop: "3rem" }}
+                        onClick={handleSubmit}
+                      >
+                        Register
+                      </button>
+                    </div>
+                  </>
+                ) : null}
+
+                {show ? (
+                  <>
+                    {/* <div className="form-outline form-black mb-3 my-5"> */}
+                    <input
+                      type="text"
+                      id=""
+                      name="p_name"
+                      value={provider.p_name}
+                      onChange={input_handle}
+                      // className="form-control form-control mb-3"
+                      placeholder="Enter your Name"
+                    />
+                    <select
+                      // className="form-select"
+                      value={choice}
+                      onChange={(e) => setChoice(e.target.value)}
+                      aria-label="select profession"
+                    >
+                      <option value="Electrician">Electrician</option>
+                      <option value="Carpenter">Carpenter</option>
+                      <option value="care-taker">care-taker</option>
+                      <option value="Home-cleaner">Home-cleaner</option>
+                      <option value="Massage">Massage</option>
+                      <option value="Salon">Salon</option>
+                      <option value="Painter">Painter</option>
+                      <option value="Doctor">Doctor</option>
+                    </select>
+
+                    <input
+                      type="email"
+                      name="p_email"
+                      placeholder="Enter your email"
+                      autocomplete="off"
+                      value={provider.p_email}
+                      onChange={input_handle}
+                      // className="form-control form-control mb-3"
+                    />
+
+                    <input
+                      type="password"
+                      name="p_password"
+                      value={provider.p_password}
+                      onChange={input_handle}
+                      id=""
+                      // className="form-control form-control mb-3"
+                      placeholder="Password"
+                    />
+
+                    <input
+                      type="password"
+                      name="p_cpassword"
+                      value={provider.p_cpassword}
+                      onChange={input_handle}
+                      id=""
+                      placeholder="Confirm Password"
+                      // className="form-control form-control mb-3"
+                    />
+
+                    <textarea
+                      col="30"
+                      row="10"
+                      type="digit"
+                      name="p_add"
+                      id=""
+                      value={provider.p_add}
+                      onChange={input_handle}
+                      placeholder="Address"
+                      // className="form-control form-control mb-3"
+                    />
+                    <input
+                      type="file"
+                      id=""
+                      name="p_file"
+                      onChange={img_upload}
+                      placeholder="Upload Documents"
+                      style={{ height: "50px" }}
+                      // className="form-control form-control mb-3"
+                    />
+                    {/* </div> */}
+                    {/* <button
+                    className="btn btn-outline-dark btn-lg px-5"
+                    type="submit"
+                    onClick={send_p_data}
+                    style={{ marginTop: "3rem" }}
+                  >
+                    Register
+                  </button> */}
+                    <div>
+                      <button
+                        type="submit"
+                        className="btn btn-outline-dark btn-lg px-5"
+                        style={{ marginTop: "3rem" }}
+                        onClick={send_p_data}
+                      >
+                        Register
+                      </button>
+                    </div>
+                  </>
+                ) : null}
+                {/* </div> */}
+
+                <div style={{ textAlign: "center", marginTop: "2rem" }}>
+                  <p className="mb">
+                    Already have an Account.?
+                    <Link to="/login">
+                      <a href="." className="text-black-50 fw-bold">
+                        Sign In
+                      </a>
+                    </Link>
+                  </p>
+                </div>
+
+                <p
+                  className="small mb-5"
+                  style={{
+                    fontSize: "18px",
+                    textAlign: "center",
+                  }}
+                >
+                  <Link to="/">
+                    <a className="text-black-50" href=".">
+                      <i className="fa-solid fa-left-long mr-2"></i>
+                      Back Home
+                    </a>
+                  </Link>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+};
+export default Registration1;
