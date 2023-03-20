@@ -8,10 +8,14 @@ dotenv.config({ path: "./config.env" });
 require("./db");
 const PORT = process.env.PORT;
 app.use(express.json());
-// const User = require("./UserSchema");
-const Details = require("./DetailSchema");
-app.use(require("./authRoute"));
-app.use(require("./Details_route"));
+app.use(express.urlencoded({
+  extended: true
+}))
+// const User = require("./models/UserSchema");
+const Details = require("./models/DetailSchema");
+app.use(require("./routers/authRoute"));
+app.use(require("./routers/Details_route"));
+// app.use(require("./routers/password_reset"));
 
 app.get("/", (req, res) => {
   res.send("get data.....");

@@ -1,13 +1,13 @@
 const express = require("express");
-const User = require("./UserSchema");
-const Provider = require("./ProviderSchema");
-const Details = require("./DetailSchema");
+const User = require("../models/UserSchema");
+const Provider = require("../models/ProviderSchema");
+const Details = require("../models/DetailSchema");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 const multer = require("multer");
 const asyncHandler = require("express-async-handler");
 
-require("./db");
+require("../db");
 
 router.post("/registration", async (req, res) => {
   const { fname, age, email, password, cpassword } = req.body;
@@ -177,5 +177,12 @@ router.get(
 //     }
 //   })
 // );
+
+//------------------- logout ------------------------------------
+router.get('/logout', (req,res) =>
+{
+    res.clearCookie('jwtoken',{path:'/'});
+    res.status(200).send('User logout');
+});
 
 module.exports = router;
