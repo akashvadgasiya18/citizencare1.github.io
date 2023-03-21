@@ -1,8 +1,46 @@
 import "../css/ChangePassword.css";
-// import { Link } from "react-router-dom";
-// import { Form } from "react-bootstrap";
+import React, { useState } from 'react'
+import {toast} from 'react-toastify';
+import {useNavigate} from 'react-router-dom'
 
 function Changepass() {
+  const [email, setEmail] = useState('');
+  const navigate = useNavigate();
+  const handel_login = async (e)=>
+  {
+    e.preventDefault();
+    const reset =await fetch('/forgotpassword',{
+    method: "POST",
+    headers: { "Content-Type" : "application/json" },
+    body: JSON.stringify({
+        email })
+    });
+    if(reset.status === 429)
+    {
+      toast.error("All fields are required.",{
+          position:'top-center',
+          theme: "colored",
+          hideProgressBar:"false"
+      });
+    }
+    else if(reset.status === 413)
+    {
+      toast.error("User not exists.",{
+          position:'top-center',
+          theme: "colored",
+          hideProgressBar:"false"
+      });
+    }
+    else if(reset.status === 201)
+    {
+      navigate('/login');
+      toast.success("Successfully email sent.",{
+          position:'top-left',
+          theme: "colored",
+          hideProgressBar:"false"
+      });
+    }
+  }
   return (
     <>
       <div className="home-container">
@@ -21,28 +59,15 @@ function Changepass() {
                 Change Password
               </h2>
               <input
-                type="text"
+                type="email"
                 id=""
-                Name="old"
-                placeholder="OLD Password"
-                required
+                Name="email"
+                placeholder="Enter email "
+                autoComplete= "off"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <input
-                type="password"
-                id=""
-                Name="newpass"
-                placeholder="New Password"
-                required
-              />
-              <input
-                type="password"
-                id=""
-                Name="cnewpass"
-                placeholder="Confirm Password"
-                required
-              />
-
-              <button type="submit">Change</button>
+              <button type="submit" className="submitButton" value="Submit" onClick={handel_login}>Change</button>
             </div>
           </form>
         </div>

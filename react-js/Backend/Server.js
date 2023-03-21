@@ -15,8 +15,8 @@ app.use(express.urlencoded({
 const Details = require("./models/DetailSchema");
 app.use(require("./routers/authRoute"));
 app.use(require("./routers/Details_route"));
-// app.use(require("./routers/password_reset"));
-
+app.use(require("./routers/password_reset"));
+app.set("view engine","ejs");
 app.get("/", (req, res) => {
   res.send("get data.....");
 });

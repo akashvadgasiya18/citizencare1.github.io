@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/Userschema');
+const User = require('../models/UserSchema');
 const bcrypt = require ('bcryptjs');
 const jwt = require('jsonwebtoken');
 var nodemailer = require('nodemailer');
-require('../Connect');
+require('../db');
 router.post('/forgotpassword', async (req,res) =>
 {  
     const {email} =req.body;
@@ -36,7 +36,7 @@ router.post('/forgotpassword', async (req,res) =>
               
               var mailOptions = {
                 from: 'shreyabundheliya2109@gmail.com',
-                to: 'shreyabundheliya2109@gmail.com',
+                to: email,
                 subject: 'Password reset',
                 text: link
               };
@@ -69,12 +69,13 @@ router.get('/forgot_password/:id/:token', async (req,res) =>
     const secret = process.env.SECRET_KEY + userExist.password;
     try
     {
+        const verify= jwt.verify(token,secret);
         res.render("index",{ email: verify.email , status : "Not verified"});
     }
     catch(err)
     {
         console.log(err);
-        res.send('not verifed.');
+        res.status(411).send('not verifed.');
     }
 });
 
@@ -82,10 +83,16 @@ router.post('/forgot_password/:id/:token', async (req,res) =>
 {
     const { id,token } = req.params;
     const {password , cpassword} = req.body;
+    if(!password || !cpassword)
+    {
+        return res.render("index",{ status : 402 });
+        // res.status(402).json({'error':'not empty'});
+    }
     const userExist = await User.findOne({_id: id});
     if(!userExist)
     {
-        return res.status(413).json({'message': 'Not exists.'});
+        return res.render("index",{ status : 413 });
+        // res.status(413).json({'error':'not exist.'});
     }
     const secret = process.env.SECRET_KEY + userExist.password;
     try
@@ -93,7 +100,8 @@ router.post('/forgot_password/:id/:token', async (req,res) =>
         const verify= jwt.verify(token,secret);
         if(password != cpassword)
         {
-            return res.json({"status": "not matched"});
+            return res.render("index",{ status : 412 });
+            // res.status(412).json({'error':'not same'});
         }
         const salt = await bcrypt.genSalt(10);
         const n_password=  await bcrypt.hash(password,salt);

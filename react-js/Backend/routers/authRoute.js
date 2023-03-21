@@ -26,7 +26,7 @@ router.post("/registration", async (req, res) => {
       return res.status(413).json({});
     } else if (password.length <= 5) {
       return res.status(411).json({});
-    } else if (age <= "45" && age >= "100") {
+    } else if (age <= "40" && age >= "100") {
       return res.status(402).json({});
     } else if (password != cpassword) {
       return res.status(422).json({});
@@ -126,7 +126,7 @@ router.post("/login", async (req, res) => {
         res.cookie("jwtoken", token, {
           httpOnly: true,
         });
-        res.status(201).json(token);
+        res.status(201).json(tokens);
       }
     } else {
       res.status(413).json({ error: "Invalid credentional" });

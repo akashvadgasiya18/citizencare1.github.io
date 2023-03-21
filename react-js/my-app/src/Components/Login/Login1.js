@@ -59,7 +59,6 @@ const Login1 = () => {
       });
       navigate("/");
       console.log(res.data);
-      
     }
   };
 

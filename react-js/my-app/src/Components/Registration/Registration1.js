@@ -137,7 +137,7 @@ const Registration1 = () => {
         hideProgressBar: "false",
       });
     } else if (res.status === 402) {
-      toast.error("Age can't be less than 45 and greter than 100.", {
+      toast.error("Age can't be less than 40 and greater than 100.", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",
