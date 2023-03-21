@@ -22,8 +22,11 @@ const Order = () => {
           </div> */}
 
           {/* --------------------------- tabel ------------------------------------- */}
-          <div style={{ width: "100%" }}>
-            <div className="card">
+          <div>
+            <div
+              className="card"
+              style={{ display: "flex", width: "95%", marginTop: "5rem" }}
+            >
               <div class="header_fixed">
                 <table>
                   <thead className="text-dark">

@@ -9,6 +9,7 @@ const AdminLogin = () => {
   const checkValid = () => {
     if (email !== "akash@gmail.com" || password !== "12345") {
       window.alert("Mail or password invalid");
+      navigate("/dashboard");
     } else {
       navigate("/dashmain");
     }

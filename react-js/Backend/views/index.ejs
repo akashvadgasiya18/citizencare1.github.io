@@ -1,120 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <!-- <link rel="stylesheet" href="../../my-app/src/Components/UserDashboard/css/ChangePassword.css"> -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Change password</title>
     <script>
-        var status = '<%- JSON.stringify(status)%>';
-        if(status == 201)
-        {
-            alert("Password Changed");
-                // $('#submitButton1').toast({
-                //     text: 'Password changed..',
-                //     icon: 'success',
-                //     position:'top-center',
-                // });
-                window.location.href= "http://localhost:3000/login";
-        }
-        else if(status == 402)
-        {
-            alert("Kindly fill the data");
-            // $.toast({
-            //     text: 'Kindly fill the data.',
-            //     icon: 'warning',
-            //     position:'top-center',
-            // });
-        }
-        else if(status == 412)
-        {
-            alert("Password and confirm password should be same");
-            // $.toast({
-            //     text: 'Password and confirm password should be same.',
-            //     icon: 'warning',
-            //     position:'top-center',
-            // });   
-        }
-        else if(status == 411)
-        {
-            alert("Something wrong");
-            // $.toast({
-            //     text: 'Something wrong',
-            //     icon: 'warning',
-            //     position:'top-center',
-            // });
-        }
+      var status = "<%- JSON.stringify(status)%>";
+      if (status == 201) {
+        alert("Password Changed");
+        // $('#submitButton1').toast({
+        //     text: 'Password changed..',
+        //     icon: 'success',
+        //     position:'top-center',
+        // });
+        window.location.href = "http://localhost:3000/login";
+      } else if (status == 402) {
+        alert("Kindly fill the data");
+        // $.toast({
+        //     text: 'Kindly fill the data.',
+        //     icon: 'warning',
+        //     position:'top-center',
+        // });
+      } else if (status == 412) {
+        alert("Password and confirm password should be same");
+        // $.toast({
+        //     text: 'Password and confirm password should be same.',
+        //     icon: 'warning',
+        //     position:'top-center',
+        // });
+      } else if (status == 411) {
+        alert("Something wrong");
+        // $.toast({
+        //     text: 'Something wrong',
+        //     icon: 'warning',
+        //     position:'top-center',
+        // });
+      }
     </script>
     <style>
-        .newdiv
+        .login-form
         {
-            margin-top: 5rem;
-            padding: "40px 30px";
-            background-color: white;
-            display: "grid";
-            border-radius: 20px;
-        }
-        h2
-        {
-            padding-bottom: 30px;
-            text-align: center; 
-        }
-        input 
-        {
-            height: 40px;
-            font-size: 15px;
-            border-radius: 4px;
-            border: none;
-            border: solid 1px #ccc;
-            padding: 0 11px;
-        }
-        input:disabled 
-        {
-            cursor: not-allowed;
-            border: solid 1px #eee;
-        }
-        .home-container {
-            justify-items: center;
-        }
-        #submitButton1 {
-            width: 70%;
-            height: 40px;
-            margin: auto;
-            display: block;
-            color: #fff;
-            background-color: #065492;
-            border-color: #065492;
-            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
-            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.035);
-            border-radius: 4px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        .cardStyle {
-            width: 500px;
-            border-color: white;
-            background: #fff;
-            padding: 44px 0px;
-            border-radius: 4px;
+            text-align: center;
+            align-items: center;
+            width: 100%;
             margin-top: 20px;
-            margin-left: 20rem;
-            box-shadow: 0px 0 2px 0 rgba(0, 0, 0, 0.25);
         }
+      .container .login-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        /* max-width: 570px; */
+        margin: 0 auto;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        box-sizing: border-box;
+      }
+      h2 {
+        padding-bottom: 30px;
+        text-align: center;
+      }
+      
+      input:disabled {
+        cursor: not-allowed;
+        border: solid 1px #eee;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+      }
+      #submitButton1{
+        width: 100%;
+        height: 40px;
+        margin: auto;
+        display: block;
+        color: #fff;
+        background-color: #065492;
+        border-color: #065492;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.035);
+        border-radius: 4px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .cardStyle {
+        width: 100%;
+        border-color: white;
+        background: #fff;
+        padding: 44px 0px;
+        border-radius: 4px;
+        margin-top: 20px;
+        margin-left: 20rem;
+        box-shadow: 0px 0 2px 0 rgba(0, 0, 0, 0.25);
+      }
+      .login-form input
+      {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #f4f4f4;
+        font-size: 1rem;
+      }
     </style>
-</head>
-<body>
-    <div Name="home-container">
-        <div>
-            <form method="post" action="" className="login-form">
-                <div name="newdiv">
-                    <h2>Change Password</h2>
-                    <input type="password" placeholder="Enter password" autocomplete="off" name="password"/> 
-                    <input type="password" placeholder="Enter confirm password" autocomplete="off" name="cpassword"/>
-                    <input type="submit" value="submit" id="submitButton1"/>
-                </div>
-            </form>
-        </div>
+  </head>
+  <body>
+    <div style="background-color:lightblue; height: 100%;width:100%">
+        <div class="container">
+          <form method="post" action="" class="login-form">
+            <div
+              style="
+                background-color: white;
+                padding: 50px 50px;
+                border-radius: 20px">
+              <h1
+                style="
+                  padding-bottom: 20px;
+                  text-align: center;
+                  font-Family:poppins;
+                  font-weight:700"
+              >
+                CHANGE PASSWORD
+              </h1>
+              <p class="text-black-50" style="text-align:center">
+                Please enter your essential details for registration
+              </p>
+
+              <input
+              type="password"
+              placeholder="Enter password"
+              autocomplete="off"
+              name="password"
+              style="margin-top: 20px;"
+            />
+            <input
+              type="password"
+              placeholder="Enter confirm password"
+              autocomplete="off"
+              name="cpassword"
+            />
+              <input type="submit" value="submit" id="submitButton1" />
+            </div>
+        </form>
     </div>
-</body>
+
+        
+        
+    <!-- <div name="container">
+      <div>
+        <form method="post" action="" className="login-form">
+          <div name="newdiv">
+            <h2>Change Password</h2>
+            <input
+              type="password"
+              placeholder="Enter password"
+              autocomplete="off"
+              name="password"
+            />
+            <input
+              type="password"
+              placeholder="Enter confirm password"
+              autocomplete="off"
+              name="cpassword"
+            />
+            <input type="submit" value="submit" id="submitButton1" />
+          </div>
+        </form>
+      </div>
+    </div> -->
+  </body>
 </html>

@@ -67,7 +67,7 @@ const AddservicePage = () => {
                 fontSize: "25px",
               }}
             >
-              <Link to="/dashboards/services">
+              <Link to="/dashmain/services">
                 <FaArrowLeft
                   style={{
                     marginRight: "10px",

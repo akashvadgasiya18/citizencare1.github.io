@@ -25,7 +25,7 @@ const Servicepages = () => {
             Service Page
           </Typography.Title>
           <div className="addservice-btn">
-            <Link to="/dashboards/services/Addservicepage">
+            <Link to="/dashmain/services/Addservicepage">
               <Button variant="primary">Add Service</Button>
             </Link>
           </div>
@@ -34,8 +34,11 @@ const Servicepages = () => {
           {error ? (
             <h2>{error}</h2>
           ) : (
-            <div style={{ width: "100%" }}>
-              <div className="card">
+            <div>
+              <div
+                className="card"
+                style={{ display: "flex", width: "95%", marginTop: "5rem" }}
+              >
                 <div class="header_fixed">
                   <table>
                     <thead className="text-dark">
@@ -62,7 +65,7 @@ const Servicepages = () => {
                             <td>₹ {item.price}</td>
                             <td> {item.rating}</td>
                             <td>
-                              <Link to="/dashboards/services/editservicepage">
+                              <Link to="/dashmain/services/editservicepage">
                                 <i
                                   class="fa-solid fa-pen edit-icons icons-1"
                                   style={{

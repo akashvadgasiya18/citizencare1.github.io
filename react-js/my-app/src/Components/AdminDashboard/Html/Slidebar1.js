@@ -17,31 +17,31 @@ const Slidebar1 = ({ Children }) => {
     {
       label: "Dashbaord",
       icon: <AppstoreOutlined style={{ fontSize: 20 }} />,
-      path: "/dashboards/dash",
+      path: "/dashmain/dash",
     },
     {
       label: "Orders",
-      path: "/dashboards/orders",
+      path: "/dashmain/orders",
       icon: <ShoppingCartOutlined style={{ fontSize: 20 }} />,
     },
     {
       label: "Customers",
-      path: "/dashboards/customers",
+      path: "/dashmain/customers",
       icon: <UserOutlined style={{ fontSize: 20 }} />,
     },
     {
       label: "Provider",
-      path: "/dashboards/providerpage",
+      path: "/dashmain/providerpage",
       icon: <UserOutlined style={{ fontSize: 20 }} />,
     },
     {
       label: "Services",
-      path: "/dashboards/services",
+      path: "/dashmain/services",
       icon: <FaRegImage style={{ fontSize: 20 }} />,
     },
     {
       label: "Transactions",
-      path: "/dashboards/transaction",
+      path: "/dashmain/transaction",
       icon: <WalletOutlined style={{ fontSize: 20 }} />,
     },
     {

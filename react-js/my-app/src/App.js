@@ -54,7 +54,7 @@ const App = () => {
             <Route component={Pagenotfound} />
             <Route exact path="/registration" element={<Registration1 />} />
 
-            <Route exact path="/providerDash/*" element={<ProviderMain />}/>
+            <Route exact path="/providerDash/*" element={<ProviderMain />} />
 
             <Route exact path="/dashboard" element={<AdminLogin />} />
             <Route exact path="/profile/*" element={<Mainpage />} />

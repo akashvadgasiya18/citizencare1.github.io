@@ -15,12 +15,15 @@ const ServiceItems = ({ item }) => {
     console.log(item);
     dispatch(ADD(item));
   };
+  console.log("image :", item.doc_img);
+
+  const imagepath = `http:/localhost:3001/Backend/public/details/${item.doc_img}`;
 
   return (
     <Col lg="4" md="4" sm="6" className="mb-3">
       <div className="car__item">
         <div className="car__img">
-          <img src={item.doc_img} alt="" className="w-100" />
+          <img src={imagepath} alt="" className="w-100" />
         </div>
 
         <div className="car__item-content mt-4">

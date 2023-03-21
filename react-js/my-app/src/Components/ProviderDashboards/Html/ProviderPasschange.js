@@ -1,5 +1,5 @@
 import React from "react";
-import "../../UserDashboard/css/ChangePassword.css"
+import "../../UserDashboard/css/ChangePassword.css";
 
 const ProviderPasschange = () => {
   return (

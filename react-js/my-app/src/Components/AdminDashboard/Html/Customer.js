@@ -29,11 +29,11 @@ const Customer = () => {
 
           {/* --------------------------- tabel ------------------------------------- */}
 
-          <div style={{ width: "100%" }}>
+          <div>
             {error ? (
               <h2>{error}</h2>
             ) : (
-              <div className="card">
+              <div className="card" style={{display:"flex",width:'95%'}}>
                 <div class="header_fixed">
                   <table>
                     <thead className="text-dark">

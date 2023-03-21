@@ -17,7 +17,7 @@ const EditServices = () => {
               fontSize: "25px",
             }}
           >
-            <Link to="/dashboards/services">
+            <Link to="/dashmain/services">
               <FaArrowLeft
                 style={{
                   marginRight: "10px",
@@ -32,72 +32,72 @@ const EditServices = () => {
         </div>
 
         <div>
-            <form
-              method="post"
-              action=""
-              className="login-form"
-              // onSubmit={handleSubmit}
+          <form
+            method="post"
+            action=""
+            className="login-form"
+            // onSubmit={handleSubmit}
+          >
+            <div
+              style={{
+                backgroundColor: "white",
+                padding: "40px 30px",
+                borderRadius: "20px",
+                display: "grid",
+              }}
             >
-              <div
-                style={{
-                  backgroundColor: "white",
-                  padding: "40px 30px",
-                  borderRadius: "20px",
-                  display: "grid",
-                }}
-              >
-                <h2 style={{ paddingBottom: "30px", textAlign: "center" }}>
-                  Edit Services
-                </h2>
-                <input
-                  type="text"
-                  id=""
-                  Name="s_name"
-                  // value={values.s_name}
-                  // onChange={handleChange}
-                  placeholder="Enter service Name"
-                  required
-                />
-                <input
-                  type="text"
-                  id=""
-                  Name="price"
-                  // value={values.price}
-                  // onChange={handleChange}
-                  placeholder="Enter service Price"
-                  required
-                />
-                <input
-                  type="text"
-                  id=""
-                  Name="rating"
-                  // value={values.rating}
-                  // onChange={handleChange}
-                  placeholder="Enter service Rating"
-                  required
-                />
-                <input
-                  type="text"
-                  id=""
-                  Name="likes"
-                  // value={values.likes}
-                  // onChange={handleChange}
-                  placeholder="Enter service Likes"
-                  required
-                />
-                <input
-                  type="text"
-                  id=""
-                  Name="desc"
-                  // value={values.desc}
-                  // onChange={handleChange}
-                  placeholder="Enter Description"
-                  required
-                />
-                <button type="submit">Edit</button>
-              </div>
-            </form>
-          </div>
+              <h2 style={{ paddingBottom: "30px", textAlign: "center" }}>
+                Edit Services
+              </h2>
+              <input
+                type="text"
+                id=""
+                Name="s_name"
+                // value={values.s_name}
+                // onChange={handleChange}
+                placeholder="Enter service Name"
+                required
+              />
+              <input
+                type="text"
+                id=""
+                Name="price"
+                // value={values.price}
+                // onChange={handleChange}
+                placeholder="Enter service Price"
+                required
+              />
+              <input
+                type="text"
+                id=""
+                Name="rating"
+                // value={values.rating}
+                // onChange={handleChange}
+                placeholder="Enter service Rating"
+                required
+              />
+              <input
+                type="text"
+                id=""
+                Name="likes"
+                // value={values.likes}
+                // onChange={handleChange}
+                placeholder="Enter service Likes"
+                required
+              />
+              <input
+                type="text"
+                id=""
+                Name="desc"
+                // value={values.desc}
+                // onChange={handleChange}
+                placeholder="Enter Description"
+                required
+              />
+              <button type="submit">Edit</button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );

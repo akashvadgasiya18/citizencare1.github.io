@@ -29,11 +29,12 @@ const ProviderPage = () => {
           </div> */}
 
           {/* --------------------------- tabel ------------------------------------- */}
-          <div style={{ width: "100%" }}>
-            {error ? (
-              <h2>{error}</h2>
-            ) : (
-              <div className="card">
+
+          {error ? (
+            <h2>{error}</h2>
+          ) : (
+            <div>
+              <div className="card" style={{ display: "flex", width: "95%" }}>
                 <div class="header_fixed">
                   <table>
                     <thead className="text-dark">
@@ -81,8 +82,8 @@ const ProviderPage = () => {
                   </table>
                 </div>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </>
