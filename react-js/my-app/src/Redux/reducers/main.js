@@ -4,13 +4,11 @@ import {
   servicereducer,
   usersreducer,
   providersreducer,
-  productdetailsreducer
 } from "./ServiceReducer"; //,productdetailsreducer
 
 const rootred = combineReducers({
   cartreducer,
   serviceList: servicereducer,
-  serviceDetails : productdetailsreducer,
   userList: usersreducer,
   providersList: providersreducer,
 });

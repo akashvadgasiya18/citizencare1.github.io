@@ -68,7 +68,7 @@ const CartMain = () => {
                       <tr key={index}>
                         <td>
                           <img
-                            src={item.img}
+                            src={item.doc_img}
                             alt=""
                             style={{ height: "6rem" }}
                           />

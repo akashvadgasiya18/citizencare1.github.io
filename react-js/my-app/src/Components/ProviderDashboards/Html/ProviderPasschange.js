@@ -20,28 +20,22 @@ const ProviderPasschange = () => {
                 Change Password
               </h2>
               <input
-                type="text"
+                type="email"
                 id=""
-                Name="old"
-                placeholder="OLD Password"
-                required
+                Name="email"
+                placeholder="Enter email "
+                autoComplete="off"
+                // value={email}
+                // onChange={(e) => setEmail(e.target.value)}
               />
-              <input
-                type="password"
-                id=""
-                Name="newpass"
-                placeholder="New Password"
-                required
-              />
-              <input
-                type="password"
-                id=""
-                Name="cnewpass"
-                placeholder="Confirm Password"
-                required
-              />
-
-              <button type="submit">Change</button>
+              <button
+                type="submit"
+                className="submitButton"
+                value="Submit"
+                // onClick={handel_login}
+              >
+                Change
+              </button>
             </div>
           </form>
         </div>

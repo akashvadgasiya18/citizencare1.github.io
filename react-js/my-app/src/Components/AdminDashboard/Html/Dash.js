@@ -20,8 +20,8 @@ const Dash = () => {
 
   // const dispatch1 = useDispatch();
 
-  const dlt = (id) => {
-    dispatch(DEL(id));
+  const dlt = (_id) => {
+    dispatch(DEL(_id));
   };
 
   return (
@@ -104,7 +104,7 @@ const Dash = () => {
                           <i
                             class="fa-solid fa-trash"
                             style={{ color: "#ce3d3d", cursor: "pointer" }}
-                            onClick={() => dlt(item.id)}
+                            onClick={() => dlt(item._id)}
                           ></i>
                         </td>
                       </tr>

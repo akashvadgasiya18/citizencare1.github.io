@@ -1,9 +1,34 @@
+import React, { useEffect, useState } from "react";
 import { Typography } from "antd";
-import React from "react";
+import axios from "axios";
 import { FaArrowLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const EditServices = () => {
+const EditServices = ({ item }) => {
+  const { id } = useParams();
+
+  const [s_name, setS_name] = useState("");
+  const [price, setPrice] = useState("");
+  const [rating, setRating] = useState("");
+  const [likes, setLikes] = useState("");
+  const [desc, setDesc] = useState("");
+  // const [doc_img, setdoc_img] = useState(" ");
+
+  useEffect(() => {
+    // dispatch(listServiceDetails(item.params._id))
+    const fetchData = async () => {
+      const { data } = await axios.get(`/dashmain/services/${id}`);
+      console.log("products...", data);
+
+      setS_name(data.s_name);
+      setPrice(data.price);
+      setRating(data.rating);
+      setLikes(data.likes);
+      setDesc(data.desc);
+      // setdoc_img(data.doc_img);
+    };
+    fetchData();
+  }, [id]);
   return (
     <>
       <div className="home-container">
@@ -53,7 +78,7 @@ const EditServices = () => {
                 type="text"
                 id=""
                 Name="s_name"
-                // value={values.s_name}
+                value={s_name}
                 // onChange={handleChange}
                 placeholder="Enter service Name"
                 required
@@ -62,7 +87,7 @@ const EditServices = () => {
                 type="text"
                 id=""
                 Name="price"
-                // value={values.price}
+                value={price}
                 // onChange={handleChange}
                 placeholder="Enter service Price"
                 required
@@ -71,7 +96,7 @@ const EditServices = () => {
                 type="text"
                 id=""
                 Name="rating"
-                // value={values.rating}
+                value={rating}
                 // onChange={handleChange}
                 placeholder="Enter service Rating"
                 required
@@ -80,7 +105,7 @@ const EditServices = () => {
                 type="text"
                 id=""
                 Name="likes"
-                // value={values.likes}
+                value={likes}
                 // onChange={handleChange}
                 placeholder="Enter service Likes"
                 required
@@ -89,11 +114,12 @@ const EditServices = () => {
                 type="text"
                 id=""
                 Name="desc"
-                // value={values.desc}
+                value={desc}
                 // onChange={handleChange}
                 placeholder="Enter Description"
                 required
               />
+              {/* <input type="file" name="doc_img" value={doc_img}/> */}
               <button type="submit">Edit</button>
             </div>
           </form>

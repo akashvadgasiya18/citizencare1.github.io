@@ -13,7 +13,7 @@ const ProviderSlidbar = ({ Children }) => {
     {
       label: "Provider",
       icon: <AppstoreOutlined style={{ fontSize: 20 }} />,
-      path: "/providerDash/provideredit",
+      path: "/providerDash/provideDetails",
     },
     {
       label: "Orders",

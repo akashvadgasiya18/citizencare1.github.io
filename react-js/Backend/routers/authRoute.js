@@ -9,6 +9,9 @@ const asyncHandler = require("express-async-handler");
 
 require("../db");
 
+
+// ---------------------------- registration for user (data store in mongo)---------------------
+
 router.post("/registration", async (req, res) => {
   const { fname, age, email, password, cpassword } = req.body;
   if (
@@ -165,18 +168,7 @@ router.get(
   })
 );
 
-// -------------------------------------------------------------
-// router.get(
-//   "/details/:id",
-//   asyncHandler(async (req, res) => {
-//     const products = await Details.findById(req.params.id);
-//     if (products) {
-//       res.json(products);
-//     } else {
-//       res.status(404).json({ message: "Product not founded" });
-//     }
-//   })
-// );
+
 
 //------------------- logout ------------------------------------
 router.get('/logout', (req,res) =>

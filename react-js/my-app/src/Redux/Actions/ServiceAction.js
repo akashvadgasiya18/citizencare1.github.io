@@ -9,10 +9,9 @@ import {
   PROVIDERS_REQUEST,
   PROVIDERS_SUCCESS,
   PROVIDERS_FAIL,
-  SERVICE_DETAILS_REQUEST,
-  SERVICE_DETAILS_SUCCESS,
-  SERVICE_DETAILS_FAIL,
 } from "./action";
+
+// ----------------------- all details fetch in cards frontend ------------------
 
 export const listService = () => async (dispatch) => {
   try {
@@ -33,21 +32,7 @@ export const listService = () => async (dispatch) => {
   }
 };
 
-export const listServiceDetails = (id) => async (dispatch) => {
-  try {
-    dispatch({ type: SERVICE_DETAILS_REQUEST });
-    const { data } = await axios.get(`/details/${id}`);
-    dispatch({ type: SERVICE_DETAILS_SUCCESS, payload: data });
-  } catch (error) {
-    dispatch({
-      type: SERVICE_DETAILS_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+// --------------- user details fetch in admin dashboards ---------
 
 export const userDetails = () => async (dispatch) => {
   try {
@@ -67,6 +52,28 @@ export const userDetails = () => async (dispatch) => {
     });
   }
 };
+
+// -------------------------- user find by id for userdashboards --------------------
+
+export const singleUserDetails = () => async (dispatch) => {
+  try {
+    dispatch({ type: USERS_REQUEST });
+    const { data } = await axios.get("/userdatas:_id");
+    dispatch({
+      type: USERS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: USERS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+// ---------------------- provider details fetch in admin dashboards ----------------
 
 export const providersDetails = () => async (dispatch) => {
   try {

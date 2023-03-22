@@ -56,10 +56,14 @@ const Contact = () => {
 
             <div className="column">
               <div className="contact-form">
-                <form action="" className="form1">
-                  <input type="text" placeholder="Name" className="input1" />
-                  <input type="email" placeholder="Email" className="input1" />
-                  <textarea placeholder="Message.." className="msg1"></textarea>
+                <form
+                  action="https://formspree.io/f/myyadpyg"
+                  className="form1"
+                  method="POST"
+                >
+                  <input type="text" placeholder="Name" className="input1" name="Username" />
+                  <input type="email" placeholder="Email" className="input1" name="Email"/>
+                  <textarea placeholder="Message.." className="msg1" name="message"></textarea>
                   <button type="submit" className="site-btn">
                     Send Message
                   </button>

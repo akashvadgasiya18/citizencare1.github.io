@@ -6,6 +6,7 @@ import "../css/servicepage.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listService } from "../../../Redux/Actions/ServiceAction";
+import { DEL } from "../../../Redux/Actions/action";
 
 const Servicepages = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,14 @@ const Servicepages = () => {
   useEffect(() => {
     dispatch(listService());
   }, [dispatch]);
+
+  const getdata = useSelector((state) => state.cartreducer.carts);
+  console.log(getdata);
+
+  const dlt = (_id) => {
+    dispatch(DEL(_id));
+  };
+
   return (
     <>
       <div className="home-container">
@@ -46,26 +55,30 @@ const Servicepages = () => {
                         <th>Image</th>
                         <th>Service Name</th>
                         <th>Price(per)</th>
-                        <th>rating</th>
+                        <th>Rating</th>
+                        <th>Likes</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {service.map((item, index) => {
+                      {service.map((item) => {
                         return (
-                          <tr key={index}>
+                          <tr item={item}>
                             <td>
                               <img
-                                src={item.img}
+                                src={item.doc_img}
                                 alt=""
                                 style={{ height: "3rem" }}
                               />
                             </td>
                             <td>{item.s_name}</td>
                             <td>₹ {item.price}</td>
-                            <td> {item.rating}</td>
+                            <td>⭐{item.rating}</td>
+                            <td>{item.likes}</td>
                             <td>
-                              <Link to="/dashmain/services/editservicepage">
+                              <Link
+                                to={`/dashmain/services/${item._id}`}
+                              >
                                 <i
                                   class="fa-solid fa-pen edit-icons icons-1"
                                   style={{
@@ -75,13 +88,15 @@ const Servicepages = () => {
                                   }}
                                 ></i>
                               </Link>
-                              <i
-                                class="fa-solid fa-trash edit-icons icons-2"
+                              <button
                                 style={{
                                   color: "#ce3d3d",
                                   cursor: "pointer",
                                 }}
-                              ></i>
+                                onClick={() => dlt(item._id)}
+                              >
+                                <i class="fa-solid fa-trash edit-icons icons-2"></i>
+                              </button>
                             </td>
                           </tr>
                         );

@@ -51,11 +51,10 @@ const App = () => {
             <Route exact path="/contact" element={<Contact></Contact>} />
             <Route exact path="/login" element={<Login1></Login1>} />
             <Route path="/logout" element={<Logout />} />
-            <Route component={Pagenotfound} />
+            <Route path="*" element={<Pagenotfound />} />
             <Route exact path="/registration" element={<Registration1 />} />
 
             <Route exact path="/providerDash/*" element={<ProviderMain />} />
-
             <Route exact path="/dashboard" element={<AdminLogin />} />
             <Route exact path="/profile/*" element={<Mainpage />} />
             <Route exact path="/dashmain/*" element={<Main />} />

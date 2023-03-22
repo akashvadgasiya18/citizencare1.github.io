@@ -2,11 +2,14 @@ const express = require("express");
 const multer = require("multer");
 const Details = require("../models/DetailSchema");
 const router = express.Router();
+const asyncHandler = require("express-async-handler");
 require("../db");
+
+// -------------------- add service through admin--------------------------
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/details/");
+    cb(null, "public/images/");
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + "_" + file.originalname);
@@ -22,7 +25,7 @@ router.post("/add_services", upload.single("doc_img"), async (req, res) => {
     return res.status(412).json({});
   }
   try {
-    const de_Exist = await Details.findOne({ s_name: s_name });
+    const de_Exist = await Details.findOne({ s_name });
     if (de_Exist) {
       return res.status(413).json({});
     } else if (rating >= "5") {
@@ -38,17 +41,42 @@ router.post("/add_services", upload.single("doc_img"), async (req, res) => {
   }
 });
 
-// router.put("/details/:_id", async (req, res) => {
-//   const details = await Details.find(
-//     (details) => details._id === req.params._id
-//   );
+// ------------------------ fetch product details through id (details page per service)-----------
 
-//   details.s_name = req.body.s_name;
-//   details.price = req.body.price;
-//   details.rating = req.body.rating;
-//   details.likes = req.body.likes;
-//   details.desc = req.body.desc;
+router.get(
+  "/details/:id",
+  asyncHandler(async (req, res) => {
+    const products = await Details.findById(req.params.id);
+    if (products) {
+      res.json(products);
+    } else {
+      res.status(404).json({ message: "Product not founded" });
+    }
+  })
+);
 
-//   res.send("update success.....");
-// });
+router.get(
+  "/dashmain/services",
+  asyncHandler(async (req, res) => {
+    const products = await Details.find({});
+    if (products) {
+      res.json(products);
+    } else {
+      res.status(404).json({ message: "Product not founded" });
+    }
+  })
+);
+
+router.get(
+  "/dashmain/services:id",
+  asyncHandler(async (req, res) => {
+    const products = await Details.findById(req.params.id);
+    if (products) {
+      res.json(products);
+    } else {
+      res.status(404).json({ message: "Product not founded" });
+    }
+  })
+);
+
 module.exports = router;

@@ -55,7 +55,7 @@
   font-size: 1.2rem;
   font-weight: 600;
 }
-.car__img img
+/* .car__img img
 {
     cursor: pointer;
     transform: scale(1);
@@ -65,7 +65,7 @@
 .car__img img:hover
 {
     transform: scale(1.05);
-}
+} */
 
 @media only screen and (max-width: 992px) {
   .car__item h4 {

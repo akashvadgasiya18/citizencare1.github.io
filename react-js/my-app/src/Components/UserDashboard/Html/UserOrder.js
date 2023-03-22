@@ -18,7 +18,7 @@ const UserOrder = () => {
 
           {/* --------------------------- tabel ------------------------------------- */}
           <div>
-            <div className="card">
+            <div className="card" style={{display:'flex',width:'95%'}}>
               <div class="header_fixed">
                 <table>
                   <thead className="text-dark">

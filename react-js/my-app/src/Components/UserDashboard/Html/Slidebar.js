@@ -11,9 +11,9 @@ import {
 const Slidebar = ({ Children }) => {
   const menuItems = [
     {
-      label: "Users",
+      label: "UsersInfo",
       icon: <AppstoreOutlined style={{ fontSize: 20 }} />,
-      path: "/profile/users",
+      path: "/profile/usersdetail",
     },
     {
       label: "Orders",

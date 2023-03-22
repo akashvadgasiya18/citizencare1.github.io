@@ -8,9 +8,6 @@ import {
   PROVIDERS_REQUEST,
   PROVIDERS_SUCCESS,
   PROVIDERS_FAIL,
-  SERVICE_DETAILS_REQUEST,
-  SERVICE_DETAILS_SUCCESS,
-  SERVICE_DETAILS_FAIL,
 } from "../Actions/action";
 
 export const servicereducer = (state = { service: [] }, action) => {
@@ -29,7 +26,7 @@ export const servicereducer = (state = { service: [] }, action) => {
   }
 };
 
-export const usersreducer = (state = { users: [] }, action) => {
+export const  usersreducer = (state = { users: [] }, action) => {
   switch (action.type) {
     case USERS_REQUEST:
       return { users: [] };
@@ -54,22 +51,6 @@ export const providersreducer = (state = { providers: [] }, action) => {
       return { providers: action.payload };
 
     case PROVIDERS_FAIL:
-      return { error: action.payload };
-
-    default:
-      return state;
-  }
-};
-
-export const productdetailsreducer = (state = { deatil: [] }, action) => {
-  switch (action.type) {
-    case SERVICE_DETAILS_REQUEST:
-      return { ...state };
-
-    case SERVICE_DETAILS_SUCCESS:
-      return { detail: action.payload };
-
-    case SERVICE_DETAILS_FAIL:
       return { error: action.payload };
 
     default:

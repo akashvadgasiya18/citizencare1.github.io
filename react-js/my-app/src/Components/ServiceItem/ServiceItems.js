@@ -7,8 +7,9 @@ import { Link } from "react-router-dom";
 import Rating from "./Rating";
 import { useDispatch } from "react-redux";
 import { ADD } from "../../Redux/Actions/action";
+// import i1 from "../../images/doctor1.jpg";
 
-const ServiceItems = ({ item }) => {
+const ServiceItems = ({ item, imgpath }) => {
   const dispatch = useDispatch();
 
   const send = (item) => {
@@ -17,13 +18,17 @@ const ServiceItems = ({ item }) => {
   };
   console.log("image :", item.doc_img);
 
-  const imagepath = `http:/localhost:3001/Backend/public/details/${item.doc_img}`;
-
   return (
     <Col lg="4" md="4" sm="6" className="mb-3">
       <div className="car__item">
         <div className="car__img">
-          <img src={imagepath} alt="" className="w-100" />
+          {/* <img src={i1} alt="" /> */}
+          <img
+            src={imgpath}
+            // src={`http://localhost:3001/Backend/public/images/${item.doc_img}`}
+            alt=""
+            // className="w-100"
+          />
         </div>
 
         <div className="car__item-content mt-4">

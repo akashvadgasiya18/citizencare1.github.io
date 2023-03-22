@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/Pagenotfound.css";
 // import Navbar5 from "../Components/Navbar/Navbar5";
-import { NavLink } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Pagenotfound = () => {
   return (
@@ -15,7 +15,7 @@ const Pagenotfound = () => {
           <p className="mb-5">
             The page which you want to show is not temporary available.
           </p>
-          <NavLink to="/">Back to Home</NavLink>
+          <Link to="/">Back to Home</Link>
         </div>
       </div>
     </>
