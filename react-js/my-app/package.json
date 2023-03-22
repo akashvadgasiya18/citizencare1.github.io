@@ -25,6 +25,7 @@
     "material-ui-popup-state": "^5.0.5",
     "mdb-react-ui-kit": "^5.1.0",
     "next": "^13.1.6",
+    "node-localstorage": "^2.2.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
     "react-dom": "^18.2.0",
