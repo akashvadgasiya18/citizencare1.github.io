@@ -2,13 +2,13 @@ const express = require("express");
 const User = require("../models/UserSchema");
 const Provider = require("../models/ProviderSchema");
 const Details = require("../models/DetailSchema");
+const Admin = require("../models/AdminSchema");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 const multer = require("multer");
 const asyncHandler = require("express-async-handler");
 
 require("../db");
-
 router.post("/registration", async (req, res) => {
   const { fname, age, email, password, cpassword } = req.body;
   if (
@@ -104,7 +104,8 @@ router.post("/login", async (req, res) => {
 
     const detail = await User.findOne({ email: email });
     const p_detail = await Provider.findOne({ p_email: email });
-    
+    const a_detail = await Admin.findOne({ email: email});
+
     if (detail) {
       const match = await bcrypt.compare(password, detail.password);
       if (!match) {
@@ -114,7 +115,6 @@ router.post("/login", async (req, res) => {
         res.cookie("jwtoken", token, {
           httpOnly: true,
         });
-
         res.status(201).json(token);
       }
     } else if (p_detail) {
@@ -126,9 +126,22 @@ router.post("/login", async (req, res) => {
         res.cookie("jwtoken", token, {
           httpOnly: true,
         });
-        res.status(201).json(tokens);
+        res.status(202).json(token);
       }
-    } else {
+    }
+    else if (a_detail) {
+      const match = await bcrypt.compare(password, a_detail.password);
+      if (!match) {
+        res.status(400).json({ error: "Invalid credentional" });
+      } else {
+        token = await a_detail.generateAuthToken();
+        res.cookie("jwtoken", token, {
+          httpOnly: true,
+        });
+        res.status(203).json(token);
+      }
+    } 
+    else {
       res.status(413).json({ error: "Invalid credentional" });
     }
   } catch (err) {
