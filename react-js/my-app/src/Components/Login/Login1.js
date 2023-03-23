@@ -1,17 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Footer from "../Footer/Footer";
-// import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "../Registration/Reg2.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { UserContext } from "../../App";
-import { LOGIN_SUCCESS } from '../../Redux/Actions/action';
 // import Navbar5 from "../Navbar/Navbar5";
 
 const Login1 = () => {
-  const { dispatch } = useContext(UserContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,56 +30,51 @@ const Login1 = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
-      // dispatch({ type: LOGIN_FAIL });
     } else if (res.status === 429) {
       toast.error("All fields are required.", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",
       });
-      // dispatch({ type: LOGIN_FAIL });
     } else if (res.status === 413) {
       toast.error("email not matched...", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",
       });
-      // dispatch({ type: LOGIN_FAIL });
     } else if (res.status === 400) {
       toast.error("Password not matched...", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",
       });
-      // dispatch({ type: LOGIN_FAIL });
     } else if (res.status === 201) {
       toast.success("Successfully login User.", {
         position: "top-left",
         theme: "colored",
         hideProgressBar: "false",
       });
-      localStorage.setItem("user",JSON.stringify({email,password}));
-      dispatch({ type: LOGIN_SUCCESS, payload: true });
+      window.localStorage.setItem("user",JSON.stringify({email,password}));
+      window.localStorage.setItem("isLoggedIn", true);
       navigate("/");
     }
     else if (res.status === 202) {
-      dispatch({ type: "PROVIDER", payload: true });
       toast.success("Successfully login Provider.", {
         position: "top-left",
         theme: "colored",
         hideProgressBar: "false",
       });
-      localStorage.setItem("provider",JSON.stringify({email,password}));
+      window.localStorage.setItem("provider",JSON.stringify({email,password}));
       navigate("/providerDash");
     }
     else if (res.status === 203) {
-      dispatch({ type: "ADMIN", payload: true });
+      // dispatch({ type: "ADMIN", payload: true });
       toast.success("Successfully login Admin.", {
         position: "top-left",
         theme: "colored",
         hideProgressBar: "false",
       });
-      localStorage.setItem("admin",JSON.stringify({email,password}));
+      window.localStorage.setItem("admin",JSON.stringify({email,password}));
       navigate("/dashmain");
     }
   };
