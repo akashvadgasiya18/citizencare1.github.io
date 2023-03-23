@@ -45,8 +45,8 @@ const Slidebar1 = ({ Children }) => {
       icon: <WalletOutlined style={{ fontSize: 20 }} />,
     },
     {
-      label: "Back",
-      path: "/",
+      label: "Logout",
+      path: "/logout",
       icon: <LeftCircleOutlined style={{ fontSize: 25 }} />,
     },
   ];
