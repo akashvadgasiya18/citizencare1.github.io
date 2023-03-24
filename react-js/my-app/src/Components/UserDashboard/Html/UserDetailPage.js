@@ -9,7 +9,7 @@ const UserDetailPage = () => {
   {
     try
     {
-      const res = fetch('/profile/usersdetail')
+      // const res = fetch('/profile/usersdetail')
     }
     catch(error)
     {
