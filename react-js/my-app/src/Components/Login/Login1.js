@@ -54,28 +54,29 @@ const Login1 = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
-      window.localStorage.setItem("user",JSON.stringify({email,password}));
+      window.localStorage.setItem("user", JSON.stringify({ email, password }));
       window.localStorage.setItem("isLoggedIn", true);
       navigate("/");
-    }
-    else if (res.status === 202) {
+    } else if (res.status === 202) {
       toast.success("Successfully login Provider.", {
         position: "top-left",
         theme: "colored",
         hideProgressBar: "false",
       });
-      window.localStorage.setItem("provider",JSON.stringify({email,password}));
+      window.localStorage.setItem(
+        "provider",
+        JSON.stringify({ email, password })
+      );
       window.localStorage.setItem("isProvider", true);
       navigate("/providerDash");
-    }
-    else if (res.status === 203) {
+    } else if (res.status === 203) {
       // dispatch({ type: "ADMIN", payload: true });
       toast.success("Successfully login Admin.", {
         position: "top-left",
         theme: "colored",
         hideProgressBar: "false",
       });
-      window.localStorage.setItem("admin",JSON.stringify({email,password}));
+      window.localStorage.setItem("admin", JSON.stringify({ email, password }));
       window.localStorage.setItem("isAdmin", true);
       navigate("/dashmain");
     }
@@ -83,8 +84,7 @@ const Login1 = () => {
 
   return (
     <>
-
-        <div style={{ backgroundColor: "lightblue", height: "100%" }}>
+      <div style={{ backgroundColor: "lightblue", height: "100%" }}>
         <div className="container">
           <form method="post" action="" className="login-form">
             <div
@@ -93,7 +93,8 @@ const Login1 = () => {
                 padding: "40px 20px",
                 borderRadius: "20px",
                 display: "",
-              }}>
+              }}
+            >
               <h1
                 style={{
                   paddingBottom: "50px",
@@ -132,14 +133,16 @@ const Login1 = () => {
                 placeholder="Enter Password"
                 // className="form-control form-control"
               />
-              {/* </div> */}
               <p className="small mb-5" style={{ marginTop: "20px" }}>
-                <a className="text-black-50" href="#!">
-                  Forgot password?
-                </a>
+                <Link to="/changepassword">
+                  <a className="text-black-50" href=".">
+                    Forgot password?
+                  </a>
+                </Link>
               </p>
 
               <div style={{ textAlign: "center" }}>
+                
                 <button
                   // variant="outline-dark"
                   className="btn btn-outline-dark btn-lg px-5"

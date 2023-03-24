@@ -4,6 +4,8 @@ import "../css/servicepage.css";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
+// import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddservicePage = () => {
   const [ser, setser] = useState({
@@ -39,16 +41,36 @@ const AddservicePage = () => {
     formData.append("doc_img", ser.doc_img);
     try {
       await axios.post("/add_services", formData);
-      alert("Successfully Added.");
+      toast.success("Successfully Added.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
     } catch (err) {
       if (err.response.status === 412) {
-        alert("All fields are required.");
+        toast.error("All fields are required.", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
       } else if (err.response.status === 413) {
-        alert("Already exists.");
+        toast.error("Already exists.", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
       } else if (err.response.status === 411) {
-        alert("Rating less than 5");
+        toast.error("Rating less than 5", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
       } else if (err.response.status === 402) {
-        alert("upload document.");
+        toast.error("upload document.", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
       }
     }
   };
@@ -144,7 +166,16 @@ const AddservicePage = () => {
                   style={{ paddingTop: "10px" }}
                   onChange={img_upload}
                 />
-                <input type="submit" value="Add" onClick={send_data} />
+                <input
+                  type="submit"
+                  value="Add"
+                  onClick={send_data}
+                  style={{
+                    color: "white",
+                    backgroundColor: "blue",
+                    cursor: "pointer",
+                  }}
+                />
               </div>
             </form>
           </div>

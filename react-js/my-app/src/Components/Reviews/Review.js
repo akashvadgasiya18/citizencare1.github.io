@@ -38,7 +38,7 @@ export default function App() {
       if (err.response.status === 417) {
         alert("All fields are required.");
       } else if (err.response.status === 419) {
-        alert("user not exist exists.");
+        alert("user not exists.");
       }
     }
   };

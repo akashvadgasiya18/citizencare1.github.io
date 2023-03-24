@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../../AdminDashboard/css/sidemenu.css"
+import "../../AdminDashboard/css/sidemenu.css";
 import {
   AppstoreOutlined,
   ShoppingCartOutlined,
@@ -34,7 +34,7 @@ const Slidebar = ({ Children }) => {
   return (
     <>
       <div className="slid-container">
-        <div className="sliders" style={{ width:'100%'}}>
+        <div className="sliders" style={{ width: "100%" }}>
           {/* style={{ width: isOpen ? "18rem" :"4rem"}} */}
           <div className="slid-top-section">
             {/* <h1 className="logoss">logo</h1> */}
