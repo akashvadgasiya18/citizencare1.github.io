@@ -84,7 +84,11 @@ const Login1 = () => {
 
   return (
     <>
+<<<<<<< HEAD
       <div style={{ backgroundColor: "lightblue", height: "100%" }}>
+=======
+        <div style={{ backgroundColor: "lightblue", height: "100%" }}>
+>>>>>>> cce6b4c62a345d9a1aed8e2b0866c5bba20567ff
         <div className="container">
           <form method="post" action="" className="login-form">
             <div

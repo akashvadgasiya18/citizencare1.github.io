@@ -1,5 +1,5 @@
 import { Typography } from "antd";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // import Data1 from "../../ServiceItem/Data1";
@@ -7,7 +7,14 @@ import { Link } from "react-router-dom";
 const UserDetailPage = () => {
   const callUserdetails = async () => {
     try {
-      const res = fetch("/profile/usersdetail");
+      const res = fetch("/user_detail" , {
+        method: "GET",
+        headers : {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        credentials: "include"
+      });
 
       console.log(res);
     } catch (error) {
@@ -15,9 +22,9 @@ const UserDetailPage = () => {
     }
   };
 
-  useEffect(() => {
-    callUserdetails();
-  }, []);
+  // useEffect(() => {
+  //   callUserdetails();
+  // }, []);
   return (
     <div>
       <Typography.Title
@@ -34,6 +41,7 @@ const UserDetailPage = () => {
       {/* --------------------------- tabel ------------------------------------- */}
       <div>
         <div className="card" style={{ display: "flex", width: "95%" }}>
+          <input type="button" value="refresh" onClick={callUserdetails}/>
           <div class="header_fixed">
             <table>
               <thead className="text-dark">
