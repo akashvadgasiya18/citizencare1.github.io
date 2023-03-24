@@ -6,18 +6,22 @@ import { Link } from "react-router-dom";
 // import { DEL } from "../../Redux/Actions/action";
 import Navbar5 from "../Navbar/Navbar5";
 import { useParams } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+// import Button from "react-bootstrap/Button";
+// import Form from "react-bootstrap/Form";
+// import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { ADD } from "../../Redux/Actions/action";
 // import {listServiceDetails} from "../../Redux/Actions/ServiceAction"
+import Review from "../Reviews/Review";
+import i1 from "../../images/Bathrrom_clean.jpeg";
 
 const ServicePage = ({ item }) => {
   // const dispatch = useDispatch();
   // const serviceDetail = useSelector(state=>state.serviceDetails);
   // const {error,detail} = serviceDetail;
   // console.log(detail);
+
+  const loggedIn = window.localStorage.getItem("isLoggedIn");
 
   const dispatch = useDispatch();
 
@@ -33,7 +37,7 @@ const ServicePage = ({ item }) => {
   const [price, setPrice] = useState("");
   const [rating, setRating] = useState("");
   const [desc, setDesc] = useState("");
-  const [doc_img, setdoc_img] = useState(" ");
+  // const [doc_img, setdoc_img] = useState(" ");
 
   useEffect(() => {
     // dispatch(listServiceDetails(item.params._id))
@@ -45,14 +49,14 @@ const ServicePage = ({ item }) => {
       setPrice(data.price);
       setRating(data.rating);
       setDesc(data.desc);
-      setdoc_img(data.doc_img);
+      // setdoc_img(data.doc_img);
     };
     fetchData();
   }, [id]);
   // [dispatch,item]
 
-  const [number, setNumber] = useState(0);
-  const [hoverStar, setHoverStar] = useState(undefined);
+  // const [number, setNumber] = useState(0);
+  // const [hoverStar, setHoverStar] = useState(undefined);
 
   // console.log("data is :",Products);
   return (
@@ -64,9 +68,9 @@ const ServicePage = ({ item }) => {
           <div className="product-div-left">
             <Link to="/service">
               <p
-                className="mb-4"
                 style={{
                   color: "black",
+                  float: "left",
                   textDecoration: "2px solid white underline",
                 }}
               >
@@ -74,7 +78,8 @@ const ServicePage = ({ item }) => {
                 Back
               </p>
             </Link>
-            <img src={doc_img} alt="" />
+            {/* <img src={doc_img} alt="" /> */}
+            <img src={i1} alt="" style={{ height: "80%", width: "70%" }} />
           </div>
           <div className="product-div-right">
             <span className="product-name">{s_name}</span>
@@ -102,9 +107,19 @@ const ServicePage = ({ item }) => {
               >
                 <i className="fas fa-shopping-cart"></i>add to cart
               </button>
-              <button type="button" className="buy-now-btn">
-                <i className="fas fa-wallet"></i>Book now
-              </button>
+              {loggedIn ? (
+                <Link to="/checkoutpage">
+                  <button type="button" className="buy-now-btn">
+                    <i className="fas fa-wallet"></i>Book now
+                  </button>
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <button type="button" className="buy-now-btn">
+                    <i className="fas fa-wallet"></i>Book now
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -125,81 +140,7 @@ const ServicePage = ({ item }) => {
 
         {/* ----------------------- review section --------------------------------- */}
 
-        <div className="product-div">
-          <div className="product-div-left">
-            <div
-              style={{
-                justifyContent: "center",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <h1>Your Opinion ..??</h1>
-            </div>
-
-            <div
-              style={{
-                justifyContent: "center",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              {Array(5)
-                .fill()
-                .map((_, index) =>
-                  number >= index + 1 || hoverStar >= index + 1 ? (
-                    <AiFillStar
-                      onMouseOver={() => !number && setHoverStar(index + 1)}
-                      onMouseLeave={() => setHoverStar(undefined)}
-                      style={{
-                        color: "orange",
-                        fontSize: "40px",
-                      }}
-                      onClick={() => setNumber(index + 1)}
-                    />
-                  ) : (
-                    <AiOutlineStar
-                      onMouseOver={() => !number && setHoverStar(index + 1)}
-                      onMouseLeave={() => setHoverStar(undefined)}
-                      style={{ color: "orange", fontSize: "40px" }}
-                      onClick={() => setNumber(index + 1)}
-                    />
-                  )
-                )}
-            </div>
-            <div
-              style={{
-                marginTop: "2rem",
-                width: "70%",
-                // display:'flex',
-                justifyContent: "center",
-                margin: "auto",
-              }}
-            >
-              <Form.Control
-                type="email"
-                name="email"
-                placeholder="Enter email or username"
-              />
-
-              <Form.Control
-                as="textarea"
-                name="textarea"
-                placeholder="Leave a comment here"
-                style={{ height: "100px", marginTop: "20px" }}
-              />
-              <Button
-                variant="success"
-                className="review-buttons"
-                style={{ marginTop: "20px", width: "100%" }}
-                type="submit"
-                // onClick={reviewSubmit}
-              >
-                Submit
-              </Button>
-            </div>
-          </div>
-        </div>
+        <Review />
       </div>
       {/* </div> */}
     </>

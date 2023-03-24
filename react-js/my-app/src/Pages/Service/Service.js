@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../../Pages/Service/service.css";
 import {
   ServiceData,
@@ -10,7 +11,6 @@ import {
 // import { Link } from 'react-router-dom'
 // import preview from '../../ServicePages/Preview'
 
-
 const Service = () => {
   const [detail] = useState(ServiceData);
   const [detail2] = useState(ServiceData2);
@@ -18,8 +18,6 @@ const Service = () => {
   const [detail4] = useState(ServiceData4);
   return (
     <>
-     
-
       {/* ------------------------------ section -1 ---------------------------------- */}
 
       <section className="services">
@@ -34,9 +32,10 @@ const Service = () => {
               <div className="service-column">
                 <div className="service-cards">
                   <div className="service-thumb">
-                    <img src={detail4.image} alt="i1" />
+                    <Link to="/service">
+                      <img src={detail4.image} alt="i1" />
+                    </Link>
                   </div>
-
                   <div className="service-info">
                     <h3>{detail4.name}</h3>
                     <p>{detail4.info}</p>
@@ -61,7 +60,9 @@ const Service = () => {
               <div className="service-column">
                 <div className="service-cards">
                   <div className="service-thumb">
-                    <img src={detail.image} alt="i1" />
+                    <Link to="/service">
+                      <img src={detail.image} alt="i1" />
+                    </Link>
                   </div>
 
                   <div className="service-info">
@@ -90,9 +91,10 @@ const Service = () => {
               <div className="service-column">
                 <div className="service-cards">
                   <div className="service-thumb">
-                    <img src={detail2.image} alt="i1" />
+                    <Link to="/service">
+                      <img src={detail2.image} alt="i1" />
+                    </Link>
                   </div>
-
                   <div className="service-info">
                     <h3>{detail2.name}</h3>
                     <p>{detail2.info}</p>
@@ -119,9 +121,10 @@ const Service = () => {
               <div className="service-column">
                 <div className="service-cards">
                   <div className="service-thumb">
-                    <img src={detail3.image} alt="i1" />
+                    <Link to="/service">
+                      <img src={detail3.image} alt="i1" />
+                    </Link>
                   </div>
-
                   <div className="service-info">
                     <h3>{detail3.name}</h3>
                     <p>{detail3.info}</p>
