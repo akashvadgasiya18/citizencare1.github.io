@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
-import Navbar from '../Components/Navbar/Navbar';
 
 const ChangePassword = () => {
     const formSchema = Yup.object().shape({
@@ -53,7 +52,6 @@ const ChangePassword = () => {
 
     return (
         <>
-            <Navbar />
             <div className="regi-container">
                 <div className="forms">
                     <div className="form">

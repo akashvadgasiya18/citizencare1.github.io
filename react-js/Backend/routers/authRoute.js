@@ -9,13 +9,9 @@ const multer = require("multer");
 const asyncHandler = require("express-async-handler");
 
 require("../db");
-<<<<<<< HEAD
-
 
 // ---------------------------- registration for user (data store in mongo)---------------------
 
-=======
->>>>>>> 29aa87b1a89aac719298e47368b70e57600a8235
 router.post("/registration", async (req, res) => {
   const { fname, age, email, password, cpassword } = req.body;
   if (
