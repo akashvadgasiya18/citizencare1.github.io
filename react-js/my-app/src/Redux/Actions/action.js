@@ -12,10 +12,6 @@ export const DEL = (_id) => {
   };
 };
 
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_FAIL = "LOGIN_FAIL";
-export const LOGOUT = "LOGOUT";
-
 export const SERVICE_REQUEST = "SERVICE_REQUEST";
 export const SERVICE_SUCCESS = "SERVICE_SUCCESS";
 export const SERVICE_FAIL = "SERVICE_FAIL";

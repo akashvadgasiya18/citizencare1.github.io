@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import "./Drawer.css";
 import "./Toolbar.css";
 import { Menu1 } from "../Navbar/Menu1";
@@ -9,21 +9,24 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge from "@mui/material/Badge";
 import { useSelector } from "react-redux";
 import "animate.css";
-import { UserContext } from "../../App";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import { Avatar } from "@mui/material";
 
 const Navbar5 = (props) => {
-  const { state } = useContext(UserContext);
+  const loggedIn = window.localStorage.getItem("isLoggedIn");
+  // console.log(loggedIn, "Login");
   const [open, setOpen] = useState(false);
 
+<<<<<<< HEAD
   const [hide, setHide] = useState(false);
+=======
+  const [hide , setHide] = useState(false);
+>>>>>>> d0424685449447cfd0765d26b75219467c807664
   console.log(hide);
 
   const getdata = useSelector((state) => state.cartreducer.carts);
-  console.log(getdata);
 
   //   const drawerToggle = () => {
   //     setOpen((prev) => {
@@ -37,7 +40,8 @@ const Navbar5 = (props) => {
   }
 
   const RnderMenu = () => {
-    if (state) {
+    console.log(loggedIn);
+    if (loggedIn) {
       return (
         <>
           <div className="two-btn-appbar">
@@ -201,7 +205,7 @@ const Navbar5 = (props) => {
                   );
                 })}
 
-                {state ? (
+                {loggedIn ? (
                   <>
                     <Link to="/cart">
                       <Badge

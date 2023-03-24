@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React  from "react";
 import "../src/App.css";
 // import Navbar from "./Components/Navbar/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -27,18 +27,16 @@ import { ToastContainer } from "react-toastify";
 import ChackOut from "./Components/PaymentPage/ChackOut";
 import Items from "./Components/ServiceItem/Items";
 import AboutMain from "./Pages/About/AboutMain";
-import { initialState, reducer } from "./Redux/reducers/UseReducer";
 import ServiceMains from "./Pages/Service/ServiceMains";
 import AdminLogin from "./Components/AdminDashboard/Html/AdminLogin";
 import Main from "./Components/AdminDashboard/Html/Main";
 import ProviderMain from "./Components/ProviderDashboards/Html/ProviderMain";
 
-export const UserContext = createContext();
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const Admin = window.localStorage.getItem("isAdmin");
+  const Provider = window.localStorage.getItem("isProvider");
   return (
     <>
-      <UserContext.Provider value={{ state, dispatch }}>
         <Router>
           {/* <Navbar /> */}
           {/* <SlideBar /> */}
@@ -54,10 +52,10 @@ const App = () => {
             <Route path="*" element={<Pagenotfound />} />
             <Route exact path="/registration" element={<Registration1 />} />
 
-            <Route exact path="/providerDash/*" element={<ProviderMain />} />
+            <Route exact path="/providerDash/*" element={Provider ? <ProviderMain /> : <Login1/>} />
             <Route exact path="/dashboard" element={<AdminLogin />} />
             <Route exact path="/profile/*" element={<Mainpage />} />
-            <Route exact path="/dashmain/*" element={<Main />} />
+            <Route exact path="/dashmain/*" element={Admin ? <Main />: <Login1/>} />
 
             <Route exact path="/cart" element={<Cart />} />
             <Route exact path="/changepassword" element={<ChangePassword />} />
@@ -68,7 +66,6 @@ const App = () => {
           </Routes>
         </Router>
         <ToastContainer />
-      </UserContext.Provider>
     </>
   );
 };

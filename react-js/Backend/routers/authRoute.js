@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 const multer = require("multer");
 const asyncHandler = require("express-async-handler");
+const Authenticate = require('../Authenticate');
 
 require("../db");
 
@@ -189,5 +190,12 @@ router.get('/logout', (req,res) =>
     res.clearCookie('jwtoken',{path:'/'});
     res.status(200).send('User logout');
 });
+
+
+//---------------Getdata for user-profile-----------------------------
+router.get('/profile/usersdetail'), Authenticate ,(req, res) =>
+{
+  res.send(req.root);
+}
 
 module.exports = router;

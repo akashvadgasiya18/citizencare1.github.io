@@ -57,8 +57,8 @@ function Sidemenu() {
             // icon: <WalletOutlined style={{ fontSize: 20 }}/>,
           },
           {
-            label: "Back",
-            key: "/",
+            label: "Log-out",
+            key: "/logout",
             // icon: <LeftCircleOutlined style={{ fontSize: 25 }}/>,
           },
         ]}

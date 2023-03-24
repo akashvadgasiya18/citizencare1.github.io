@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // export const initialState = null;
 // export const reducer = (state, action) => {
 //   if (action.type === "USER") {
@@ -37,3 +38,42 @@ export const reducer = (state = initialState, action) => {
   }
   // return state;
 };
+=======
+export const initialState = null;
+export const reducer = (state, action) => {
+  if (action.type === "USER") {
+    return action.payload;
+  }
+  return state;
+};
+
+// const user = JSON.parse(localStorage.getItem("user"));
+// export const initialState = user
+//   ? { isLoggedIn: true }
+//   : { isLoggedOut: false }
+
+// export const reducer = (state = initialState , action) =>
+// {
+//   switch(action.type)
+//   {
+//     case LOGIN_SUCCESS:
+//     {
+//       return {
+//         ...state,
+//         isLoggedIn: true,
+//       }
+//     }
+//     case LOGOUT:
+//     {
+//       return {
+//         ...state,
+//         isLoggedOut: true,
+//       }
+//     }
+//     default:
+//     {
+//       return state;
+//     }
+//   }
+// };
+>>>>>>> d0424685449447cfd0765d26b75219467c807664

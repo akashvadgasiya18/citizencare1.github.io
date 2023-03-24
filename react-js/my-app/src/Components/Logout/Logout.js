@@ -1,9 +1,7 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../App";
 
 function Logout() {
-  const { dispatch } = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
     fetch("/logout", {
@@ -15,9 +13,9 @@ function Logout() {
       credentials: "include",
     })
       .then((res) => {
-        dispatch({ type: "LOGOUT", payload: false });
+        window.localStorage.removeItem("isLoggedIn");
+        window.localStorage.clear();
         navigate("/login", { replace: true });
-        localStorage.clear();
         if (!res.status === 200) {
           const error = new Error(res.error);
           throw error;
