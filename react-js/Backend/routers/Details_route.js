@@ -4,6 +4,7 @@ const Details = require("../models/DetailSchema");
 const router = express.Router();
 const asyncHandler = require("express-async-handler");
 const Review = require("../models/ReviewSchema");
+const User = require("../models/UserSchema");
 require("../db");
 
 // -------------------- add service through admin--------------------------
@@ -88,8 +89,8 @@ router.post("/add_review", async (req, res) => {
     return res.status(417).json({});
   }
   try {
-    const de_Exist = await Review.findOne({ uname });
-    if (de_Exist) {
+    const de_Exist = await User.findOne({ fname: uname });
+    if (!de_Exist) {
       return res.status(419).json({});
     } else {
       const data = new Review({ uname, rate, description });

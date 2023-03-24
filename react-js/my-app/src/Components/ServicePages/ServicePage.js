@@ -12,13 +12,16 @@ import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ADD } from "../../Redux/Actions/action";
 // import {listServiceDetails} from "../../Redux/Actions/ServiceAction"
-import Review from "../Reviews/Review"
+import Review from "../Reviews/Review";
+import i1 from "../../images/Bathrrom_clean.jpeg";
 
 const ServicePage = ({ item }) => {
   // const dispatch = useDispatch();
   // const serviceDetail = useSelector(state=>state.serviceDetails);
   // const {error,detail} = serviceDetail;
   // console.log(detail);
+
+  const loggedIn = window.localStorage.getItem("isLoggedIn");
 
   const dispatch = useDispatch();
 
@@ -34,7 +37,7 @@ const ServicePage = ({ item }) => {
   const [price, setPrice] = useState("");
   const [rating, setRating] = useState("");
   const [desc, setDesc] = useState("");
-  const [doc_img, setdoc_img] = useState(" ");
+  // const [doc_img, setdoc_img] = useState(" ");
 
   useEffect(() => {
     // dispatch(listServiceDetails(item.params._id))
@@ -46,7 +49,7 @@ const ServicePage = ({ item }) => {
       setPrice(data.price);
       setRating(data.rating);
       setDesc(data.desc);
-      setdoc_img(data.doc_img);
+      // setdoc_img(data.doc_img);
     };
     fetchData();
   }, [id]);
@@ -65,9 +68,9 @@ const ServicePage = ({ item }) => {
           <div className="product-div-left">
             <Link to="/service">
               <p
-                className="mb-4"
                 style={{
                   color: "black",
+                  float: "left",
                   textDecoration: "2px solid white underline",
                 }}
               >
@@ -75,7 +78,8 @@ const ServicePage = ({ item }) => {
                 Back
               </p>
             </Link>
-            <img src={doc_img} alt="" />
+            {/* <img src={doc_img} alt="" /> */}
+            <img src={i1} alt="" style={{ height: "80%", width: "70%" }} />
           </div>
           <div className="product-div-right">
             <span className="product-name">{s_name}</span>
@@ -103,9 +107,19 @@ const ServicePage = ({ item }) => {
               >
                 <i className="fas fa-shopping-cart"></i>add to cart
               </button>
-              <button type="button" className="buy-now-btn">
-                <i className="fas fa-wallet"></i>Book now
-              </button>
+              {loggedIn ? (
+                <Link to="/checkoutpage">
+                  <button type="button" className="buy-now-btn">
+                    <i className="fas fa-wallet"></i>Book now
+                  </button>
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <button type="button" className="buy-now-btn">
+                    <i className="fas fa-wallet"></i>Book now
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -125,7 +139,6 @@ const ServicePage = ({ item }) => {
         </section>
 
         {/* ----------------------- review section --------------------------------- */}
-
 
         <Review />
       </div>

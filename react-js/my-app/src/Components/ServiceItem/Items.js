@@ -117,7 +117,7 @@ const Items = () => {
                               className="fa-solid fa-shopping-cart"
                               style={{ marginRight: "10px" }}
                             ></i>
-                            Add to cart
+                            Add to Service
                           </button>
 
                           <Link to={`/details/${item._id}`}>

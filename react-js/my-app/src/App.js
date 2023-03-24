@@ -35,6 +35,7 @@ import ProviderMain from "./Components/ProviderDashboards/Html/ProviderMain";
 const App = () => {
   const Admin = window.localStorage.getItem("isAdmin");
   const Provider = window.localStorage.getItem("isProvider");
+
   return (
     <>
         <Router>

@@ -46,6 +46,9 @@ body {
 }
 .product-div-left {
   padding: 50px;
+  justify-content: center;
+  text-align: center;
+  justify-items: center;
   margin-top: 1rem;
 }
 .product-div-right {
@@ -127,12 +130,12 @@ body {
   display: flex;
 }
 .btn-groups button {
-  width: 50%;
+  /* width: 50%; */
   /* display: flex; */
   font-size: 16px;
   font-family: inherit;
   text-transform: uppercase;
-  padding: 10px 0px;
+  padding: 10px 40px;
   justify-items: center;
   color: #fff;
   cursor: pointer;
