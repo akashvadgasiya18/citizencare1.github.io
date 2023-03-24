@@ -38,7 +38,7 @@ const App = () => {
   // const Provider = window.localStorage.getItem("isProvider");
 
   const Admin = window.localStorage.getItem("isAdmin");
-  const Provider = window.localStorage.getItem("isProvider");
+  // const Provider = window.localStorage.getItem("isProvider");
 
   return (
     <>

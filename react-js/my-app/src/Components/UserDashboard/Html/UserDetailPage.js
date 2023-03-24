@@ -1,34 +1,30 @@
 import { Typography } from "antd";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // import Data1 from "../../ServiceItem/Data1";
 
 const UserDetailPage = () => {
-<<<<<<< HEAD
-  const callUserdetails = async () =>
-  {
-    try
-    {
-      // const res = fetch('/profile/usersdetail')
-    }
-    catch(error)
-    {
-=======
   const callUserdetails = async () => {
     try {
-      const res = fetch("/profile/usersdetail");
+      const res = fetch("/user_detail" , {
+        method: "GET",
+        headers : {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        credentials: "include"
+      });
 
       console.log(res);
     } catch (error) {
->>>>>>> 52c7a346cf4ea4b9000917ea6b3b5fff29b3b9fa
       console.log(error);
     }
   };
 
-  useEffect(() => {
-    callUserdetails();
-  }, []);
+  // useEffect(() => {
+  //   callUserdetails();
+  // }, []);
   return (
     <div>
       <Typography.Title
@@ -45,6 +41,7 @@ const UserDetailPage = () => {
       {/* --------------------------- tabel ------------------------------------- */}
       <div>
         <div className="card" style={{ display: "flex", width: "95%" }}>
+          <input type="button" value="refresh" onClick={callUserdetails}/>
           <div class="header_fixed">
             <table>
               <thead className="text-dark">
