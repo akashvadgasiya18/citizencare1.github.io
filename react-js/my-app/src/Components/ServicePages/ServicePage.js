@@ -6,12 +6,13 @@ import { Link } from "react-router-dom";
 // import { DEL } from "../../Redux/Actions/action";
 import Navbar5 from "../Navbar/Navbar5";
 import { useParams } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+// import Button from "react-bootstrap/Button";
+// import Form from "react-bootstrap/Form";
+// import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { ADD } from "../../Redux/Actions/action";
 // import {listServiceDetails} from "../../Redux/Actions/ServiceAction"
+import Review from "../Reviews/Review"
 
 const ServicePage = ({ item }) => {
   // const dispatch = useDispatch();
@@ -51,8 +52,8 @@ const ServicePage = ({ item }) => {
   }, [id]);
   // [dispatch,item]
 
-  const [number, setNumber] = useState(0);
-  const [hoverStar, setHoverStar] = useState(undefined);
+  // const [number, setNumber] = useState(0);
+  // const [hoverStar, setHoverStar] = useState(undefined);
 
   // console.log("data is :",Products);
   return (
@@ -125,81 +126,8 @@ const ServicePage = ({ item }) => {
 
         {/* ----------------------- review section --------------------------------- */}
 
-        <div className="product-div">
-          <div className="product-div-left">
-            <div
-              style={{
-                justifyContent: "center",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <h1>Your Opinion ..??</h1>
-            </div>
 
-            <div
-              style={{
-                justifyContent: "center",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              {Array(5)
-                .fill()
-                .map((_, index) =>
-                  number >= index + 1 || hoverStar >= index + 1 ? (
-                    <AiFillStar
-                      onMouseOver={() => !number && setHoverStar(index + 1)}
-                      onMouseLeave={() => setHoverStar(undefined)}
-                      style={{
-                        color: "orange",
-                        fontSize: "40px",
-                      }}
-                      onClick={() => setNumber(index + 1)}
-                    />
-                  ) : (
-                    <AiOutlineStar
-                      onMouseOver={() => !number && setHoverStar(index + 1)}
-                      onMouseLeave={() => setHoverStar(undefined)}
-                      style={{ color: "orange", fontSize: "40px" }}
-                      onClick={() => setNumber(index + 1)}
-                    />
-                  )
-                )}
-            </div>
-            <div
-              style={{
-                marginTop: "2rem",
-                width: "70%",
-                // display:'flex',
-                justifyContent: "center",
-                margin: "auto",
-              }}
-            >
-              <Form.Control
-                type="email"
-                name="email"
-                placeholder="Enter email or username"
-              />
-
-              <Form.Control
-                as="textarea"
-                name="textarea"
-                placeholder="Leave a comment here"
-                style={{ height: "100px", marginTop: "20px" }}
-              />
-              <Button
-                variant="success"
-                className="review-buttons"
-                style={{ marginTop: "20px", width: "100%" }}
-                type="submit"
-                // onClick={reviewSubmit}
-              >
-                Submit
-              </Button>
-            </div>
-          </div>
-        </div>
+        <Review />
       </div>
       {/* </div> */}
     </>

@@ -55,7 +55,8 @@ const App = () => {
             <Route exact path="/providerDash/*" element={Provider ? <ProviderMain /> : <Login1/>} />
             <Route exact path="/dashboard" element={<AdminLogin />} />
             <Route exact path="/profile/*" element={<Mainpage />} />
-            <Route exact path="/dashmain/*" element={Admin ? <Main />: <Login1/>} />
+            <Route exact path="/dashmain/*" 
+            element={Admin ? <Main />: <Login1/>} />
 
             <Route exact path="/cart" element={<Cart />} />
             <Route exact path="/changepassword" element={<ChangePassword />} />

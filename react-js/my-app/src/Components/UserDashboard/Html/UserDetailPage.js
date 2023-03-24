@@ -5,20 +5,19 @@ import { Link } from "react-router-dom";
 // import Data1 from "../../ServiceItem/Data1";
 
 const UserDetailPage = () => {
-  const callUserdetails = async () =>
-  {
-    try
-    {
-      const res = fetch('/profile/usersdetail')
-    }
-    catch(error)
-    {
+  const callUserdetails = async () => {
+    try {
+      const res = fetch("/profile/usersdetail");
+
+      console.log(res);
+    } catch (error) {
       console.log(error);
     }
-  } 
-  useEffect(()=>{
+  };
+
+  useEffect(() => {
     callUserdetails();
-  },[]);
+  }, []);
   return (
     <div>
       <Typography.Title

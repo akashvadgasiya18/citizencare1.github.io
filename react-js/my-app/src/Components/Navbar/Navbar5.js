@@ -19,11 +19,7 @@ const Navbar5 = (props) => {
   // console.log(loggedIn, "Login");
   const [open, setOpen] = useState(false);
 
-<<<<<<< HEAD
   const [hide, setHide] = useState(false);
-=======
-  const [hide , setHide] = useState(false);
->>>>>>> d0424685449447cfd0765d26b75219467c807664
   console.log(hide);
 
   const getdata = useSelector((state) => state.cartreducer.carts);
