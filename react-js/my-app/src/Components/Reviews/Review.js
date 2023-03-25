@@ -3,11 +3,11 @@ import "../ServicePages/Services.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
+import i1 from "../../images/Advice.png";
 // import { useState } from "react";
 // import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 export default function App() {
-
   // --------------------- post data ------------------------------------
   const [choice, setChoice] = useState();
   const [ser, setser] = useState({
@@ -45,12 +45,7 @@ export default function App() {
         theme: "colored",
         hideProgressBar: "false",
       });
-<<<<<<< HEAD
     } else if (res.status === 417) {
-=======
-    }
-    else if (res.status === 417) {
->>>>>>> 9eabc4b19469e15c0420642606c649e11c37ff11
       toast.error("All fields are required.", {
         position: "top-center",
         theme: "colored",
@@ -74,7 +69,7 @@ export default function App() {
 
   return (
     <>
-      <div className="product-div">
+      <div className="product-div" style={{ backgroundColor:"ghostwhite" }}>
         <div className="product-div-left">
           <div
             style={{
@@ -110,7 +105,7 @@ export default function App() {
                   value={choice}
                   onChange={(e) => setChoice(e.target.value)}
                 >
-                  {/* <option>select Rating</option> */}
+                  <option>select Rating</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -127,9 +122,8 @@ export default function App() {
                   style={{ height: "100px", marginTop: "20px" }}
                 />
                 <Button
-                  variant="success"
                   className="review-buttons"
-                  style={{ marginTop: "20px", width: "100%" }}
+                  style={{ marginTop: "20px", width: "100%",backgroundColor:'black',color:'white' }}
                   type="submit"
                   onClick={send_review_data}
                 >
@@ -137,6 +131,11 @@ export default function App() {
                 </Button>
               </div>
             </form>
+          </div>
+        </div>
+        <div className="product-div-right">
+          <div className="img-container">
+            <img src={i1} alt="" srcset="" />
           </div>
         </div>
       </div>

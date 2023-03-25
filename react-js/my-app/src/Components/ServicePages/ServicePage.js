@@ -15,8 +15,8 @@ import { ADD } from "../../Redux/Actions/action";
 import Review from "../Reviews/Review";
 import i1 from "../../images/Bathrrom_clean.jpeg";
 // import FinalRev from "../Reviews/FinalRev";
-import Reviews2 from "../Reviews/Reviews2"
-
+import Reviews2 from "../Reviews/Reviews2";
+import Footer from "../Footer/Footer";
 
 const ServicePage = ({ item }) => {
   // const dispatch = useDispatch();
@@ -66,7 +66,7 @@ const ServicePage = ({ item }) => {
     <>
       <Navbar5 />
       <div className="main-wrapper">
-        <div className="product-div">
+        <div className="product-div" style={{backgroundColor:'honeydew'}}>
           <div className="product-div-left">
             <div>
               <Link to="/service">
@@ -107,7 +107,7 @@ const ServicePage = ({ item }) => {
                 className="add-cart-btn"
                 onClick={() => send(item)}
               >
-                <i className="fas fa-shopping-cart"></i>add to cart
+                <i className="fas fa-shopping-cart"></i>Add to Service
               </button>
               {loggedIn ? (
                 <Link to="/checkoutpage">
@@ -125,12 +125,22 @@ const ServicePage = ({ item }) => {
             </div>
           </div>
         </div>
+        <section
+          className="services"
+          style={{
+            height: "35px",
+          }}
+        >
+          <div className="service-heading">
+            <span style={{ fontSize: "20px" }}>Customer Reviews</span>
+          </div>
+        </section>
 
         <Reviews2 />
 
         {/* ----------------------- heading line--------------------------------- */}
         <section
-          className="services"
+          className="services my-5"
           style={{
             justifyContent: "center",
             alignItems: "center",
@@ -146,7 +156,7 @@ const ServicePage = ({ item }) => {
 
         <Review />
       </div>
-      {/* </div> */}
+      <Footer />
     </>
   );
 };

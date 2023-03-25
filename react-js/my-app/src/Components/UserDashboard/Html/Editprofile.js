@@ -53,46 +53,37 @@ const Editprofile = () => {
             <input
               type="text"
               id=""
-              Name="s_name"
+              Name="fname"
               // value={values.s_name}
               // onChange={handleChange}
-              placeholder="Enter service Name"
+              placeholder="name"
               required
             />
             <input
-              type="text"
+              type="email"
               id=""
-              Name="price"
+              Name=""
               // value={values.price}
               // onChange={handleChange}
-              placeholder="Enter service Price"
+              placeholder="Email id"
               required
             />
             <input
-              type="text"
+              type="number"
               id=""
-              Name="rating"
+              Name="Age"
               // value={values.rating}
               // onChange={handleChange}
-              placeholder="Enter service Rating"
+              placeholder="Age"
               required
             />
             <input
-              type="text"
+              type="number"
               id=""
-              Name="likes"
+              Name="mobile no"
               // value={values.likes}
               // onChange={handleChange}
               placeholder="Enter service Likes"
-              required
-            />
-            <input
-              type="text"
-              id=""
-              Name="desc"
-              // value={values.desc}
-              // onChange={handleChange}
-              placeholder="Enter Description"
               required
             />
             <button type="submit">Edit</button>

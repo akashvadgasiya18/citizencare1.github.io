@@ -81,7 +81,7 @@ const Servicepages = () => {
                             </td>
                             <td>{item.s_name}</td>
                             <td>₹ {item.price}</td>
-                            <td>⭐{item.rating}</td>
+                            <td>★{item.rating}</td>
                             <td>{item.likes}</td>
                             <td>
                               <Link to={`/dashmain/services/${item._id}`}>

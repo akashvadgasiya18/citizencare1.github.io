@@ -1,6 +1,5 @@
 import React from "react";
 import "../../Components/How_Work/Section2.css";
-import imag1 from "../../Feature_icon/sec4.png";
 import imag2 from "../../Feature_icon/sec5.png";
 import imag3 from "../../Feature_icon/sec6.png";
 
@@ -42,7 +41,7 @@ const Section2 = () => {
                       <div class="aon-w-choose-left aon-icon-effect">
                         <div class="aon-w-choose-icon right">
                           <i class="aon-icon">
-                            <img src={imag1} alt="imag2" />
+                            <img src={imag3} alt="" />
                           </i>
                         </div>
                       </div>

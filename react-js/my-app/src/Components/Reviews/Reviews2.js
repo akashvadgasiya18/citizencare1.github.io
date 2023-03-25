@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import { Typography } from "@mui/material";
+import { Avatar, Typography } from "@mui/material";
 import Rating from "../ServiceItem/Rating";
 import "./Review.css";
-
 import { useDispatch, useSelector } from "react-redux";
 import { reviewService } from "../../Redux/Actions/ReviewAction";
 
@@ -14,7 +13,7 @@ const Reviews2 = () => {
   useEffect(() => {
     dispatch(reviewService());
   }, [dispatch]);
-  
+
   return (
     <>
       <div className="review-div">
@@ -25,12 +24,23 @@ const Reviews2 = () => {
             {reviwer.map((item, index) => {
               return (
                 <div className="rev-crd">
-                  <h3>{item.uname}</h3>
+                  <h5 style={{ display: "inline-flex" }}>
+                    <Avatar
+                      src="/broken-image.jpg"
+                      style={{
+                        cursor: "pointer",
+                        marginRight: "10px",
+                        height: "30px",
+                        width: "30px",
+                      }}
+                    />
+                    {item.uname}
+                  </h5>
                   <span className=" d-flex gap-1">
                     <Rating value={item.rate} />
                   </span>
                   <Typography variant="body2" className="my-2">
-                    {item.description}
+                    ❝ {item.description} ❞
                     <br />
                   </Typography>
                 </div>
