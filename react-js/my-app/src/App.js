@@ -33,24 +33,12 @@ import Main from "./Components/AdminDashboard/Html/Main";
 import ProviderMain from "./Components/ProviderDashboards/Html/ProviderMain";
 
 const App = () => {
-<<<<<<< HEAD
   // const Admin = window.localStorage.getItem("isAdmin");
   // const Provider = window.localStorage.getItem("isProvider");
-=======
-
-  // const Admin = window.localStorage.getItem("isAdmin");
-  // const Provider = window.localStorage.getItem("isProvider");
-
-  const Admin = window.localStorage.getItem("isAdmin");
-  // const Provider = window.localStorage.getItem("isProvider");
->>>>>>> cce6b4c62a345d9a1aed8e2b0866c5bba20567ff
 
   return (
     <>
       <Router>
-        {/* <Navbar /> */}
-        {/* <SlideBar /> */}
-        {/* <Footer /> */}
 
         <Routes>
           <Route exact path="/" element={<Home></Home>} />
@@ -62,21 +50,14 @@ const App = () => {
           <Route path="*" element={<Pagenotfound />} />
           <Route exact path="/registration" element={<Registration1 />} />
 
-<<<<<<< HEAD
           <Route exact path="/providerDash/*" element={<ProviderMain />} />
           <Route exact path="/dashboard" element={<AdminLogin />} />
           <Route exact path="/profile/*" element={<Mainpage />} />
+
           <Route exact path="/dashmain/*" element={<Main />} />
-=======
-            <Route exact path="/providerDash/*" element={ <ProviderMain /> }/>
-            <Route exact path="/dashboard" element={<AdminLogin />} />
-            <Route exact path="/profile/*" element={<Mainpage />} />
-
-            <Route exact path="/dashmain/*" element={ <Main /> } />
-
+          {/* 
             <Route exact path="/dashmain/*" 
-            element={Admin ? <Main />: <Login1/>} />
->>>>>>> cce6b4c62a345d9a1aed8e2b0866c5bba20567ff
+            element={Admin ? <Main />: <Login1/>} /> */}
 
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/changepassword" element={<ChangePassword />} />
