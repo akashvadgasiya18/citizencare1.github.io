@@ -22,16 +22,15 @@ const Welcomepage = () => {
       {
         const error = new Error(res.error);
         throw error;
-        // window.alert("err");
       }
     } catch (err) {
       console.log(err);
       navigate("/login");
     }
   };
-  // useEffect(() => { 
-  //   verification();
-  // });
+  useEffect(() => { 
+    verification();
+  });
   return (
     <div
       style={{

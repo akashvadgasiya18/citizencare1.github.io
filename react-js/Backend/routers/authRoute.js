@@ -69,11 +69,12 @@ const upload = multer({ storage: storage });
 router.post("/p_registration", upload.single("p_file"), async (req, res) => {
   let p_file = req.file ? req.file.filename : null;
 
-  const { p_name, p_role, p_email, p_password, p_cpassword, p_add } = req.body;
+  const { p_name, p_role, p_email, p_mno , p_password, p_cpassword, p_add } = req.body;
   if (
     p_name == "" ||
     p_role == "" ||
     p_email == "" ||
+    p_mno == "" ||
     p_password == "" ||
     p_cpassword == "" ||
     p_add == ""
@@ -84,6 +85,8 @@ router.post("/p_registration", upload.single("p_file"), async (req, res) => {
     const proExist = await Provider.findOne({ p_email: p_email });
     if (proExist) {
       return res.status(413).json({});
+    }else if(p_mno.length !=10 ) {
+      return res.status(427).json({});
     } else if (p_password.length <= 5) {
       return res.status(411).json({});
     } else if (p_password != p_cpassword) {
@@ -93,6 +96,7 @@ router.post("/p_registration", upload.single("p_file"), async (req, res) => {
         p_name,
         p_role,
         p_email,
+        p_mno,
         p_password,
         p_cpassword,
         p_add,

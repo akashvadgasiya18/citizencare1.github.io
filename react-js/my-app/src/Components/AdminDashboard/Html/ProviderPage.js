@@ -57,7 +57,8 @@ const ProviderPage = () => {
                       <tr>
                         <th>Name</th>
                         <th>Role</th>
-                        <th>Email Id</th>
+                        <th>Email_Id</th>
+                        <th>Phone_no</th>
                         <th>Address</th>
                         <th>Documents</th>
                         <th>Action</th>
@@ -70,6 +71,7 @@ const ProviderPage = () => {
                             <td>{item.p_name}</td>
                             <td>{item.p_role}</td>
                             <td>{item.p_email}</td>
+                            <td>{item.p_mno}</td>
                             <td>{item.p_add}</td>
                             <td>{item.p_file}</td>
                             <td>

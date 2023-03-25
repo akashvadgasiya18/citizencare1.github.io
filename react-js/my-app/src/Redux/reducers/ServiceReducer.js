@@ -81,6 +81,22 @@ export const providersreducer = (state = { providers: [] }, action) => {
   }
 };
 
+export const singleproviderreducer = (state = { provider: [] }, action) => {
+  switch (action.type) {
+    case PROVIDERS_REQUEST:
+      return { provider: [] };
+
+    case PROVIDERS_SUCCESS:
+      return { provider: action.payload };
+
+    case PROVIDERS_FAIL:
+      return { error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
 export const reviewreducer = (state = { reviwer: [] }, action) => {
   switch (action.type) {
     case REVIEW_REQUEST:

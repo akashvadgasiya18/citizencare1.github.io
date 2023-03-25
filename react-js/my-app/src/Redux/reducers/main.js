@@ -6,6 +6,7 @@ import {
   providersreducer,
   reviewreducer,
   singleusersreducer,
+  singleproviderreducer
 } from "./ServiceReducer"; //,productdetailsreducer
 
 const rootred = combineReducers({
@@ -15,6 +16,7 @@ const rootred = combineReducers({
   providersList: providersreducer,
   reviewList: reviewreducer,
   singleData: singleusersreducer,
+  singleProvider: singleproviderreducer
 });
 
 export default rootred;

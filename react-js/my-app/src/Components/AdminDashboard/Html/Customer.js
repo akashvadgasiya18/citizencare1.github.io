@@ -53,10 +53,10 @@ const Customer = () => {
                   <table>
                     <thead className="text-dark">
                       <tr>
-                        <th>NAME</th>
-                        <th>AGE</th>
-                        <th>Email ID</th>
-                        <th>Password</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Email_Id</th>
+                        <th>Phone_no</th>
                         {/* <th>Action</th> */}
                       </tr>
                     </thead>
@@ -67,7 +67,7 @@ const Customer = () => {
                             <td>{item.fname}</td>
                             <td>{item.age}</td>
                             <td>{item.email}</td>
-                            <td>{item.password}</td>
+                            <td>{item.phone_no}</td>
                             {/* <td>
                               <Link to="/dashboards/services/editservicepage">
                                 <i
