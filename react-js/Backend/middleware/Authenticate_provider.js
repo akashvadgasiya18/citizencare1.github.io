@@ -6,9 +6,7 @@ const Authenticate_provider = async (req,res,next) =>
     try
     {
         const token=req.cookies.jwtoken;
-        console.log(token);
         const verifying=jwt.verify(token , process.env.SECRET_KEY);
-        // const root = await Provider.findOne({_id: verifying._id, "tokens.token": token});
         const root= await Provider.findOne({_id: verifying._id,"tokens.token":token});
         if(!root) { throw new Error("no found.")}
         req.token = token;

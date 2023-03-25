@@ -13,6 +13,9 @@ router.get("/user_detail", Authenticate ,(req, res) =>
 
 //-------------Getdata for provider----------------------------------
 router.get("/providerDash", Authenticate_provider ,(req, res) => {});
-// router.get("/dashmain", Authenticate ,(req, res) => {});
+router.get("/provider_detail", Authenticate_provider ,(req, res) =>
+{
+  res.send(req.root);
+});
 
 module.exports = router;

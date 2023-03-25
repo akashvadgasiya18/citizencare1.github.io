@@ -1,39 +1,8 @@
 import { Typography } from "antd";
-import { useEffect ,useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 // import Data1 from "../../ServiceItem/Data1";
 
 const UserDetailPage = () => {
-  const [info, setInfo] = useState();
-  const navigate = useNavigate();
-  const callUserdetails = async () => {
-    try {
-      const res = await fetch("/user_detail" , {
-        method: "GET",
-        headers : {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        credentials: "include"
-      });
-      const data = await res.json();
-      setInfo(data);
-      if(!res.status === 200)
-      {
-        const error = new Error(res.error);
-        throw error;
-      }
-    } catch (err) {
-      console.log(err);
-      navigate("/login");
-    }
-  };
-
-  useEffect(() => {
-    callUserdetails();
-  });
   return (
     <div>
       <Typography.Title
@@ -53,7 +22,11 @@ const UserDetailPage = () => {
           <form method="get">
           {/* <input type="button" value="refresh" onClick={callUserdetails}/> */}
             <div class="header_fixed">
-              <table>
+              <p>{ info.fname }</p>
+              <p>{ info.email }</p>
+              <p>{ info.age }</p>
+              <p>{ info.phone_no }</p>
+              {/* <table>
                 <thead className="text-dark">
                   <tr>
                     <th>Name</th>
@@ -90,7 +63,7 @@ const UserDetailPage = () => {
                     </td>
                   </tr>
                 </tbody>
-              </table>
+              </table> */}
             </div>
           </form>
         </div>

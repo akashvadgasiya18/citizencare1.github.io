@@ -29,9 +29,9 @@ const Welcomepage = () => {
       navigate("/login");
     }
   };
-//   useEffect(() => {
-//     verification();
-//   });
+  useEffect(() => {
+    verification();
+  });
   return (
     <div
       style={{
