@@ -20,6 +20,7 @@ const Registration1 = () => {
     p_name: "",
     p_role: "",
     p_email: "",
+    p_mno: "",
     p_password: "",
     p_cpassword: "",
     p_add: "",
@@ -44,6 +45,7 @@ const Registration1 = () => {
     formData.append("p_name", provider.p_name);
     formData.append("p_role", choice);
     formData.append("p_email", provider.p_email);
+    formData.append("p_mno", provider.p_mno);
     formData.append("p_password", provider.p_password);
     formData.append("p_cpassword", provider.p_cpassword);
     formData.append("p_add", provider.p_add);
@@ -59,6 +61,12 @@ const Registration1 = () => {
     } catch (err) {
       if (err.response.status === 429) {
         toast.error("All fields are required.", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
+      } else if (err.response.status === 427) {
+        toast.error("Phone number contains only 10 digit.", {
           position: "top-center",
           theme: "colored",
           hideProgressBar: "false",
@@ -358,6 +366,16 @@ const Registration1 = () => {
                       placeholder="Enter your email"
                       autocomplete="off"
                       value={provider.p_email}
+                      onChange={input_handle}
+                      // className="form-control form-control mb-3"
+                    />
+
+                    <input
+                      type="text"
+                      name="p_mno"
+                      placeholder="Enter phone_no"
+                      autoComplete="off"
+                      value={provider.p_mno}
                       onChange={input_handle}
                       // className="form-control form-control mb-3"
                     />

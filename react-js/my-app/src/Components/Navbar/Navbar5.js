@@ -20,7 +20,7 @@ const Navbar5 = (props) => {
   const [open, setOpen] = useState(false);
 
   const [hide, setHide] = useState(false);
-  console.log(hide);
+  // console.log(hide);
 
   const getdata = useSelector((state) => state.cartreducer.carts);
 
@@ -36,7 +36,7 @@ const Navbar5 = (props) => {
   }
 
   const RnderMenu = () => {
-    console.log(loggedIn);
+    // console.log(loggedIn);
     if (loggedIn) {
       return (
         <>
@@ -102,6 +102,15 @@ const Navbar5 = (props) => {
       return (
         <>
           <div className="two-btn-appbar">
+            <Link to="/cart">
+              <Badge
+                badgeContent={getdata.length}
+                color="secondary"
+                style={{ marginRight: "20px", marginTop: "10px" }}
+              >
+                <ShoppingCartIcon color="action" />
+              </Badge>
+            </Link>
             <Link to="/registration">
               <Button variant="outline-dark mr-2">Register</Button>
             </Link>
@@ -257,6 +266,15 @@ const Navbar5 = (props) => {
                 ) : (
                   <>
                     <div style={{ display: "grid" }}>
+                      <Link to="/cart">
+                        <Badge
+                          badgeContent={getdata.length}
+                          color="secondary"
+                          style={{ marginRight: "20px", marginTop: "10px" }}
+                        >
+                          <ShoppingCartIcon color="action" />
+                        </Badge>
+                      </Link>
                       <Link to="/registration">
                         <Button variant="outline-dark">Register</Button>
                       </Link>

@@ -1,8 +1,18 @@
 import { Typography } from "antd";
 import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { providerSingleDetails } from '../../../Redux/Actions/ServiceAction';
 
 const ProviderDetailPage = () => {
+  const dispatch = useDispatch();
+  const singleProvider = useSelector((state) => state.singleProvider);
+  const { provider } = singleProvider;
+
+  useEffect(() => {
+    dispatch(providerSingleDetails());
+  }, [dispatch]);
   return (
     <div>
       <Typography.Title
@@ -13,49 +23,59 @@ const ProviderDetailPage = () => {
           fontFamily: "Poppins",
         }}
       >
-        User Details
+        Provider Details
       </Typography.Title>
 
       {/* --------------------------- tabel ------------------------------------- */}
       <div>
-        <div className="card" style={{ display: "flex", width: "95%" }}>
-          <div class="header_fixed">
+        <div
+          style={{
+            display: "flex",
+            width: "95%",
+            justifyContent: "center",
+            justifyItems: "center",
+            alignItems: "center",
+          }}
+        >
+          <div
+            class="header_fixed ml-3"
+            style={{
+              justifyContent: "center",
+              justifyItems: "center",
+              alignItems: "center",
+            }}
+          >
             <table>
               <thead className="text-dark">
                 <tr>
                   <th>Name</th>
+                  <th>Profession</th>
                   <th>Email ID</th>
-                  <th>AGE</th>
-                  <th>Password</th>
+                  <th>Phone_no</th>
+                  <th>Address</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>
-                        <Link to="/providerDash/provideDetails/editProviderdetail">
-                          <i
-                            class="fa-solid fa-pen edit-icons icons-1"
-                            style={{
-                              cursor: "pointer",
-                              // marginRight: "30px",
-                              paddingRight: "30px",
-                            }}
-                          ></i>
-                        </Link>
-                        <i
-                          class="fa-solid fa-trash edit-icons icons-2"
-                          style={{
-                            color: "#ce3d3d",
-                            cursor: "pointer",
-                          }}
-                        ></i>
-                      </td>
-                    </tr>
+                <tr>
+                  <td>{provider.p_name}</td>
+                  <td>{provider.p_role}</td>
+                  <td>{provider.p_email}</td>
+                  <td>{provider.p_mno}</td>
+                  <td>{provider.p_add}</td>
+                  <td>
+                    <Link to="/profile/usersdetail/edituserdetail">
+                      <i
+                        class="fa-solid fa-pen edit-icons icons-1"
+                        style={{
+                          cursor: "pointer",
+                          // marginRight: "30px",
+                          paddingRight: "30px",
+                        }}
+                      ></i>
+                    </Link>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

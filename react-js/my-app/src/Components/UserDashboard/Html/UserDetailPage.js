@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { userSingleDetails } from "../../../Redux/Actions/ServiceAction";
+<<<<<<< HEAD
 
 // import Data1 from "../../ServiceItem/Data1";
 
@@ -30,6 +31,10 @@ const UserDetailPage = () => {
   //     navigate("/login");
   //   }
   // };
+=======
+
+const UserDetailPage = () => {
+>>>>>>> 353983f260a9bf8a68d80e6f5296b7964871d00b
   const dispatch = useDispatch();
   const singleData = useSelector((state) => state.singleData);
   const { user } = singleData;
@@ -97,13 +102,6 @@ const UserDetailPage = () => {
                         }}
                       ></i>
                     </Link>
-                    <i
-                      class="fa-solid fa-trash edit-icons icons-2"
-                      style={{
-                        color: "#ce3d3d",
-                        cursor: "pointer",
-                      }}
-                    ></i>
                   </td>
                 </tr>
               </tbody>

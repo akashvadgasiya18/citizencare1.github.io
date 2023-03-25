@@ -51,6 +51,10 @@ const App = () => {
           <Route exact path="/profile/*" element={<Mainpage />} />
 
           <Route exact path="/dashmain/*" element={<Main />} />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 353983f260a9bf8a68d80e6f5296b7964871d00b
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/changepassword" element={<ChangePassword />} />
           <Route exact path="/checkoutpage" element={<ChackOut />} />

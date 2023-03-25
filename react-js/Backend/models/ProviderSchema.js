@@ -15,6 +15,10 @@ const ProviderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  p_mno:{
+    type: String,
+    required: true,
+  },
   p_password: {
     type: String,
     required: true,
