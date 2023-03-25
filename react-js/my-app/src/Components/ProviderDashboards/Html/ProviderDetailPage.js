@@ -1,7 +1,6 @@
 import { Typography } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
-import Data1 from "../../ServiceItem/Data1";
 
 const ProviderDetailPage = () => {
   return (
@@ -32,15 +31,11 @@ const ProviderDetailPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {Data1.serviceData.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>
-                        <img src={item.img} alt="" style={{ height: "3rem" }} />
-                      </td>
-                      <td>{item.s_name}</td>
-                      <td>₹ {item.price}</td>
-                      <td> {item.rating}</td>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                       <td>
                         <Link to="/providerDash/provideDetails/editProviderdetail">
                           <i
@@ -61,8 +56,6 @@ const ProviderDetailPage = () => {
                         ></i>
                       </td>
                     </tr>
-                  );
-                })}
               </tbody>
             </table>
           </div>

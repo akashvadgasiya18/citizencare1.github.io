@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Welcomepage from "../../UserDashboard/Html/Welcomepage";
+import Welcomepage from "./Welcomepage";
 import EditRoute from "./EditRoute";
 import ProviderOrder from "./ProviderOrder";
 import ProviderPasschange from "./ProviderPasschange";

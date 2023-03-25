@@ -45,7 +45,12 @@ export default function App() {
         theme: "colored",
         hideProgressBar: "false",
       });
+<<<<<<< HEAD
     } else if (res.status === 417) {
+=======
+    }
+    else if (res.status === 417) {
+>>>>>>> 9eabc4b19469e15c0420642606c649e11c37ff11
       toast.error("All fields are required.", {
         position: "top-center",
         theme: "colored",
