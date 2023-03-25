@@ -67,7 +67,6 @@ const Login1 = () => {
         "provider",
         JSON.stringify({ email, password })
       );
-      window.localStorage.setItem("isProvider", true);
       navigate("/providerDash");
     } else if (res.status === 203) {
       // dispatch({ type: "ADMIN", payload: true });

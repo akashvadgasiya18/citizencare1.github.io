@@ -64,7 +64,7 @@ const Registration1 = () => {
           hideProgressBar: "false",
         });
       } else if (err.response.status === 413) {
-        toast.error("User Already Exist", {
+        toast.error("Provider Already Exist", {
           position: "top-center",
           theme: "colored",
           hideProgressBar: "false",
@@ -97,6 +97,7 @@ const Registration1 = () => {
     fname: "",
     age: "",
     email: "",
+    phone_no: "",
     password: "",
     cpassword: "",
   });
@@ -110,7 +111,7 @@ const Registration1 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { fname, age, email, password, cpassword } = values;
+    const { fname, age, email, phone_no , password, cpassword } = values;
     const res = await fetch("/registration", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -118,6 +119,7 @@ const Registration1 = () => {
         fname,
         age,
         email,
+        phone_no,
         password,
         cpassword,
       }),
@@ -132,6 +134,12 @@ const Registration1 = () => {
       });
     } else if (res.status === 429) {
       toast.error("All fields are required.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 427) {
+      toast.error("Phone-no contains only 10 digit.", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",
@@ -263,6 +271,16 @@ const Registration1 = () => {
                       id=""
                       // className="form-control form-control mb-3"
                       placeholder="Enter your email"
+                    />
+
+                    <input
+                      type="text"
+                      name="phone_no"
+                      placeholder="Enter phone_no"
+                      autoComplete="off"
+                      value={values.phone_no}
+                      onChange={handleChange}
+                      // className="form-control form-control mb-3"
                     />
 
                     <input

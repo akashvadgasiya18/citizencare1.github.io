@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-// const Authenticate = require('./Authenticate');
+const cookieParser = require('cookie-parser');
 
 dotenv.config({ path: "./config.env" });
 
@@ -17,10 +17,9 @@ app.use(
     extended: true,
   })
 );
+app.use(cookieParser());
 app.use("./public", express.static("public"));
 
-// // const User = require("./models/UserSchema");
-// const Details = require("./models/DetailSchema");
 app.use(require("./routers/authRoute"));
 app.use(require("./routers/user_details"));
 app.use(require("./routers/Details_route"));
@@ -29,11 +28,6 @@ app.set("view engine", "ejs");
 app.get("/", (req, res) => {
   res.send("get data.....");
 });
-// app.get("/about" ,(req, res) =>
-// {
-//   console.log("Hello");
-//   res.json("Hello");
-// });
 app.listen(PORT, () => {
   console.log("running");
 });

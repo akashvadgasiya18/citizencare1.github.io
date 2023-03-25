@@ -8,7 +8,7 @@ const Welcomepage = () => {
   const navigate = useNavigate();
   const verification = async () => {
     try {
-      const res = await fetch("/profile" , {
+      const res = await fetch("/providerDash" , {
         method: "GET",
         headers : {
           Accept: "application/json",
@@ -29,9 +29,9 @@ const Welcomepage = () => {
       navigate("/login");
     }
   };
-  useEffect(() => {
-    verification();
-  });
+//   useEffect(() => {
+//     verification();
+//   });
   return (
     <div
       style={{

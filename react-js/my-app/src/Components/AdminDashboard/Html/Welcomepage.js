@@ -8,7 +8,7 @@ const Welcomepage = () => {
   const navigate = useNavigate();
   const verification = async () => {
     try {
-      const res = await fetch("/profile" , {
+      const res = await fetch("/dashmain" , {
         method: "GET",
         headers : {
           Accept: "application/json",
@@ -29,9 +29,9 @@ const Welcomepage = () => {
       navigate("/login");
     }
   };
-  useEffect(() => {
-    verification();
-  });
+  // useEffect(() => { 
+  //   verification();
+  // });
   return (
     <div
       style={{
@@ -45,7 +45,7 @@ const Welcomepage = () => {
         className="animate__animated animate__fadeInDown"
         style={{ fontFamily: "Poppins", fontWeight: "700" }}
       >
-        Hi, Welcome to My Profile
+        Hi, Welcome, Admin
       </h2>
     </div>
   );

@@ -33,9 +33,12 @@ import Main from "./Components/AdminDashboard/Html/Main";
 import ProviderMain from "./Components/ProviderDashboards/Html/ProviderMain";
 
 const App = () => {
+<<<<<<< HEAD
   // const Admin = window.localStorage.getItem("isAdmin");
   // const Provider = window.localStorage.getItem("isProvider");
 
+=======
+>>>>>>> ea517b34d4f97c6f9732a658d118b68082d33c7d
   return (
     <>
       <Router>
@@ -55,9 +58,12 @@ const App = () => {
           <Route exact path="/profile/*" element={<Mainpage />} />
 
           <Route exact path="/dashmain/*" element={<Main />} />
+<<<<<<< HEAD
           {/* 
             <Route exact path="/dashmain/*" 
             element={Admin ? <Main />: <Login1/>} /> */}
+=======
+>>>>>>> ea517b34d4f97c6f9732a658d118b68082d33c7d
 
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/changepassword" element={<ChangePassword />} />
