@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Typography } from "antd";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userDetails } from "../../../Redux/Actions/ServiceAction";
 
@@ -33,8 +33,23 @@ const Customer = () => {
             {error ? (
               <h2>{error}</h2>
             ) : (
-              <div className="card" style={{display:"flex",width:'95%'}}>
-                <div class="header_fixed">
+              <div
+                style={{
+                  display: "flex",
+                  width: "95%",
+                  justifyContent: "center",
+                  justifyItems: "center",
+                  alignItems: "center",
+                }}
+              >
+                <div
+                  class="header_fixed ml-3"
+                  style={{
+                    justifyContent: "center",
+                    justifyItems: "center",
+                    alignItems: "center",
+                  }}
+                >
                   <table>
                     <thead className="text-dark">
                       <tr>
@@ -42,7 +57,7 @@ const Customer = () => {
                         <th>AGE</th>
                         <th>Email ID</th>
                         <th>Password</th>
-                        <th>Action</th>
+                        {/* <th>Action</th> */}
                       </tr>
                     </thead>
                     <tbody>
@@ -53,7 +68,7 @@ const Customer = () => {
                             <td>{item.age}</td>
                             <td>{item.email}</td>
                             <td>{item.password}</td>
-                            <td>
+                            {/* <td>
                               <Link to="/dashboards/services/editservicepage">
                                 <i
                                   class="fa-solid fa-pen edit-icons icons-1"
@@ -71,7 +86,7 @@ const Customer = () => {
                                   cursor: "pointer",
                                 }}
                               ></i>
-                            </td>
+                            </td> */}
                           </tr>
                         );
                       })}

@@ -6,7 +6,7 @@ import "../css/servicepage.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listService } from "../../../Redux/Actions/ServiceAction";
-import { DEL } from "../../../Redux/Actions/action";
+// import { DEL } from "../../../Redux/Actions/action";
 
 const Servicepages = () => {
   const dispatch = useDispatch();
@@ -19,10 +19,6 @@ const Servicepages = () => {
 
   const getdata = useSelector((state) => state.cartreducer.carts);
   console.log(getdata);
-
-  const dlt = (_id) => {
-    dispatch(DEL(_id));
-  };
 
   return (
     <>
@@ -45,10 +41,22 @@ const Servicepages = () => {
           ) : (
             <div>
               <div
-                className="card"
-                style={{ display: "flex", width: "95%", marginTop: "5rem" }}
+                style={{
+                  display: "flex",
+                  width: "95%",
+                  justifyContent: "center",
+                  justifyItems: "center",
+                  alignItems: "center",
+                }}
               >
-                <div class="header_fixed">
+                <div
+                  class="header_fixed ml-3"
+                  style={{
+                    justifyContent: "center",
+                    justifyItems: "center",
+                    alignItems: "center",
+                  }}
+                >
                   <table>
                     <thead className="text-dark">
                       <tr>
@@ -76,27 +84,13 @@ const Servicepages = () => {
                             <td>⭐{item.rating}</td>
                             <td>{item.likes}</td>
                             <td>
-                              <Link
-                                to={`/dashmain/services/${item._id}`}
-                              >
-                                <i
-                                  class="fa-solid fa-pen edit-icons icons-1"
-                                  style={{
-                                    cursor: "pointer",
-                                    // marginRight: "30px",
-                                    paddingRight: "30px",
-                                  }}
-                                ></i>
+                              <Link to={`/dashmain/services/${item._id}`}>
+                                <Button variant="primary"> <i
+                                  class="fa-solid fa-pen edit-icons mr-2" style={{fontSize:'12px'}}></i>Edit</Button>
                               </Link>
-                              <button
-                                style={{
-                                  color: "#ce3d3d",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => dlt(item._id)}
-                              >
-                                <i class="fa-solid fa-trash edit-icons icons-2"></i>
-                              </button>
+                              <Button variant="danger" className="ml-3">
+                                Delete
+                              </Button>
                             </td>
                           </tr>
                         );

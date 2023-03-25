@@ -11,7 +11,7 @@ require("../db");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/details/");
+    cb(null, "/public/details/");
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + "_" + file.originalname);
@@ -23,7 +23,7 @@ const upload = multer({ storage: storage });
 router.post("/add_services", upload.single("doc_img"), async (req, res) => {
   let doc_img = req.file ? req.file.filename : null;
   const { s_name, price, rating, likes, desc } = req.body;
-  if (!s_name || !price || !rating || !likes || !desc) {
+  if (!s_name || !price || !rating || !likes || !desc || !doc_img) {
     return res.status(412).json({});
   }
   try {

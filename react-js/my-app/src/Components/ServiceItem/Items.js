@@ -71,7 +71,7 @@ const Items = () => {
                           {/* <img src={i1} alt="" /> */}
                           <img
                             // src={"http://localhost:3001/images/" + item.doc_img}
-                            src={`http://localhost:3001/public/images/${item.doc_img}`}
+                            src={`http://localhost:3001/details/${item.doc_img}`}
                             alt="img1"
                             // className="w-100"
                           />

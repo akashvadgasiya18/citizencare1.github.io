@@ -20,7 +20,7 @@ const Slidebar1 = ({ Children }) => {
       path: "/dashmain/dash",
     },
     {
-      label: "Orders",
+      label: "Booking",
       path: "/dashmain/orders",
       icon: <ShoppingCartOutlined style={{ fontSize: 20 }} />,
     },

@@ -1,5 +1,6 @@
 import { Typography } from "antd";
 import React, { useEffect } from "react";
+import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // import Data1 from "../../ServiceItem/Data1";
@@ -34,8 +35,23 @@ const ProviderPage = () => {
             <h2>{error}</h2>
           ) : (
             <div>
-              <div className="card" style={{ display: "flex", width: "95%" }}>
-                <div class="header_fixed">
+              <div
+                style={{
+                  display: "flex",
+                  width: "95%",
+                  justifyContent: "center",
+                  justifyItems: "center",
+                  alignItems: "center",
+                }}
+              >
+                <div
+                  class="header_fixed ml-3"
+                  style={{
+                    justifyContent: "center",
+                    justifyItems: "center",
+                    alignItems: "center",
+                  }}
+                >
                   <table>
                     <thead className="text-dark">
                       <tr>
@@ -57,23 +73,27 @@ const ProviderPage = () => {
                             <td>{item.p_add}</td>
                             <td>{item.p_file}</td>
                             <td>
-                              <Link to="/dashboards/services/editservicepage">
-                                <i
+                              <Link to="/dashmain/providerorder">
+                                {/* <i  
                                   class="fa-solid fa-pen edit-icons icons-1"
                                   style={{
                                     cursor: "pointer",
                                     // marginRight: "30px",
                                     paddingRight: "30px",
                                   }}
-                                ></i>
+                                ></i> */}
+                                <Button variant="primary" className="mr-3">
+                                  send
+                                </Button>
                               </Link>
-                              <i
+                              {/* <i
                                 class="fa-solid fa-trash edit-icons icons-2"
                                 style={{
                                   color: "#ce3d3d",
                                   cursor: "pointer",
                                 }}
-                              ></i>
+                              ></i> */}
+                              <Button variant="danger">Delete</Button>
                             </td>
                           </tr>
                         );

@@ -1,4 +1,38 @@
+/* --------------------------- review --------------------- */
 
+.rev-crd {
+  flex: 0 0 calc(30% - 20px);
+  max-width: calc(33.33% - 20px);
+  /* width:90%; */
+  background: lavender;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .rev-crd {
+    flex: 0 0 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+@media screen and (max-width: 40px) {
+  .rev-crd {
+    flex: 0 0 calc(100% - 20px);
+    max-width: calc(100% - 20px);
+  }
+}
+
+/* --------------------------------------------------------- */
 .product {
   display: flex;
   align-items: center;
@@ -36,8 +70,7 @@ textarea {
   font-weight: bolder;
   cursor: pointer;
 }
-.review-container
-{
+.review-container {
   content: "";
   width: 100%;
   display: block;

@@ -1,39 +1,43 @@
 import { Typography } from "antd";
-import { useEffect ,useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { userSingleDetails } from "../../../Redux/Actions/ServiceAction";
 
 // import Data1 from "../../ServiceItem/Data1";
 
 const UserDetailPage = () => {
-  const [info, setInfo] = useState();
-  const navigate = useNavigate();
-  const callUserdetails = async () => {
-    try {
-      const res = await fetch("/user_detail" , {
-        method: "GET",
-        headers : {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        credentials: "include"
-      });
-      const data = await res.json();
-      setInfo(data);
-      if(!res.status === 200)
-      {
-        const error = new Error(res.error);
-        throw error;
-      }
-    } catch (err) {
-      console.log(err);
-      navigate("/login");
-    }
-  };
+  // const [info, setInfo] = useState();
+  // const navigate = useNavigate();
+  // const callUserdetails = async () => {
+  //   try {
+  //     const res = await fetch("/user_detail", {
+  //       method: "GET",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //       },
+  //       credentials: "include",
+  //     });
+  //     const data = await res.json();
+  //     setInfo(data);
+  //     if (!res.status === 200) {
+  //       const error = new Error(res.error);
+  //       throw error;
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //     navigate("/login");
+  //   }
+  // };
+  const dispatch = useDispatch();
+  const singleData = useSelector((state) => state.singleData);
+  const { user } = singleData;
 
   useEffect(() => {
-    callUserdetails();
-  });
+    dispatch(userSingleDetails());
+  }, [dispatch]);
+
   return (
     <div>
       <Typography.Title
@@ -49,50 +53,62 @@ const UserDetailPage = () => {
 
       {/* --------------------------- tabel ------------------------------------- */}
       <div>
-        <div className="card" style={{ display: "flex", width: "95%" }}>
-          <form method="get">
-          {/* <input type="button" value="refresh" onClick={callUserdetails}/> */}
-            <div class="header_fixed">
-              <table>
-                <thead className="text-dark">
-                  <tr>
-                    <th>Name</th>
-                    <th>Email ID</th>
-                    <th>Age</th>
-                    <th>Phone no</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>{ info.fname }</td>
-                    <td>{ info.email }</td>
-                    <td>{ info.age }</td>
-                    <td>{ info.phone_no }</td>
-                    <td>
-                      <Link to="/profile/usersdetail/edituserdetail">
-                        <i
-                          class="fa-solid fa-pen edit-icons icons-1"
-                          style={{
-                            cursor: "pointer",
-                            // marginRight: "30px",
-                            paddingRight: "30px",
-                          }}
-                        ></i>
-                      </Link>
+        <div
+          style={{
+            display: "flex",
+            width: "95%",
+            justifyContent: "center",
+            justifyItems: "center",
+            alignItems: "center",
+          }}
+        >
+          <div
+            class="header_fixed ml-3"
+            style={{
+              justifyContent: "center",
+              justifyItems: "center",
+              alignItems: "center",
+            }}
+          >
+            <table>
+              <thead className="text-dark">
+                <tr>
+                  <th>Name</th>
+                  <th>Email ID</th>
+                  <th>Age</th>
+                  <th>Phone no</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{user.fname}</td>
+                  <td>{user.email}</td>
+                  <td>{user.age}</td>
+                  <td>{user.phone_no}</td>
+                  <td>
+                    <Link to="/profile/usersdetail/edituserdetail">
                       <i
-                        class="fa-solid fa-trash edit-icons icons-2"
+                        class="fa-solid fa-pen edit-icons icons-1"
                         style={{
-                          color: "#ce3d3d",
                           cursor: "pointer",
+                          // marginRight: "30px",
+                          paddingRight: "30px",
                         }}
                       ></i>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </form>
+                    </Link>
+                    <i
+                      class="fa-solid fa-trash edit-icons icons-2"
+                      style={{
+                        color: "#ce3d3d",
+                        cursor: "pointer",
+                      }}
+                    ></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ const User = require("../models/UserSchema");
 const Provider = require("../models/ProviderSchema");
 const Details = require("../models/DetailSchema");
 const Admin = require("../models/AdminSchema");
+const Review = require("../models/ReviewSchema");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 const multer = require("multer");
@@ -28,7 +29,7 @@ router.post("/registration", async (req, res) => {
     const userExist = await User.findOne({ email: email });
     if (userExist) {
       return res.status(413).json({});
-    }else if(phone_no.length != 10 ) {
+    } else if (phone_no.length != 10) {
       return res.status(427).json({});
     } else if (password.length <= 5) {
       return res.status(411).json({});
@@ -37,7 +38,14 @@ router.post("/registration", async (req, res) => {
     } else if (password != cpassword) {
       return res.status(422).json({});
     } else {
-      const user = new User({ fname, age, email, phone_no, password, cpassword });
+      const user = new User({
+        fname,
+        age,
+        email,
+        phone_no,
+        password,
+        cpassword,
+      });
       await user.save();
       res.status(201).json({});
     }
@@ -110,7 +118,7 @@ router.post("/login", async (req, res) => {
 
     const detail = await User.findOne({ email: email });
     const p_detail = await Provider.findOne({ p_email: email });
-    const a_detail = await Admin.findOne({ email: email});
+    const a_detail = await Admin.findOne({ email: email });
 
     if (detail) {
       const match = await bcrypt.compare(password, detail.password);
@@ -134,8 +142,7 @@ router.post("/login", async (req, res) => {
         });
         res.status(202).json(token);
       }
-    }
-    else if (a_detail) {
+    } else if (a_detail) {
       const match = await bcrypt.compare(password, a_detail.password);
       if (!match) {
         res.status(400).json({ error: "Invalid credentional" });
@@ -146,8 +153,7 @@ router.post("/login", async (req, res) => {
         });
         res.status(203).json(token);
       }
-    } 
-    else {
+    } else {
       res.status(413).json({ error: "Invalid credentional" });
     }
   } catch (err) {
@@ -184,13 +190,21 @@ router.get(
   })
 );
 
+// --------------------------- review data get -----------------------------------
+
+router.get(
+  "/reviewdata",
+  asyncHandler(async (req, res) => {
+    const review = await Review.find({});
+    res.json(review);
+  })
+);
 
 
 //------------------- logout ------------------------------------
-router.get('/logout', (req,res) =>
-{
-    res.clearCookie('jwtoken',{path:'/'});
-    res.status(200).send('User logout');
+router.get("/logout", (req, res) => {
+  res.clearCookie("jwtoken", { path: "/" });
+  res.status(200).send("User logout");
 });
 
 module.exports = router;

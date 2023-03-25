@@ -8,6 +8,9 @@ import {
   PROVIDERS_REQUEST,
   PROVIDERS_SUCCESS,
   PROVIDERS_FAIL,
+  REVIEW_REQUEST,
+  REVIEW_SUCCESS,
+  REVIEW_FAIL,
 } from "../Actions/action";
 
 export const servicereducer = (state = { service: [] }, action) => {
@@ -26,7 +29,7 @@ export const servicereducer = (state = { service: [] }, action) => {
   }
 };
 
-export const  usersreducer = (state = { users: [] }, action) => {
+export const usersreducer = (state = { users: [] }, action) => {
   switch (action.type) {
     case USERS_REQUEST:
       return { users: [] };
@@ -42,6 +45,26 @@ export const  usersreducer = (state = { users: [] }, action) => {
   }
 };
 
+
+export const singleusersreducer = (state = { user: [] }, action) => {
+  switch (action.type) {
+    case USERS_REQUEST:
+      return { user: [] };
+
+    case USERS_SUCCESS:
+      return { user: action.payload };
+
+    case USERS_FAIL:
+      return { error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
+
+
+
 export const providersreducer = (state = { providers: [] }, action) => {
   switch (action.type) {
     case PROVIDERS_REQUEST:
@@ -51,6 +74,22 @@ export const providersreducer = (state = { providers: [] }, action) => {
       return { providers: action.payload };
 
     case PROVIDERS_FAIL:
+      return { error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
+export const reviewreducer = (state = { reviwer: [] }, action) => {
+  switch (action.type) {
+    case REVIEW_REQUEST:
+      return { reviwer: [] };
+
+    case REVIEW_SUCCESS:
+      return { reviwer: action.payload };
+
+    case REVIEW_FAIL:
       return { error: action.payload };
 
     default:

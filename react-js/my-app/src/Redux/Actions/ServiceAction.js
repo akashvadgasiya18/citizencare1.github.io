@@ -53,12 +53,12 @@ export const userDetails = () => async (dispatch) => {
   }
 };
 
-// -------------------------- user find by id for userdashboards --------------------
+// ------------------------------- user single details -----------------------
 
-export const singleUserDetails = () => async (dispatch) => {
+export const userSingleDetails = () => async (dispatch) => {
   try {
     dispatch({ type: USERS_REQUEST });
-    const { data } = await axios.get("/userdatas:_id");
+    const { data } = await axios.get("/user_detail");
     dispatch({
       type: USERS_SUCCESS,
       payload: data,
@@ -73,6 +73,27 @@ export const singleUserDetails = () => async (dispatch) => {
     });
   }
 };
+
+// // -------------------------- user find by id for userdashboards --------------------
+
+// export const singleUserDetails = () => async (dispatch) => {
+//   try {
+//     dispatch({ type: USERS_REQUEST });
+//     const { data } = await axios.get("/userdatas:_id");
+//     dispatch({
+//       type: USERS_SUCCESS,
+//       payload: data,
+//     });
+//   } catch (error) {
+//     dispatch({
+//       type: USERS_FAIL,
+//       payload:
+//         error.response && error.response.data.message
+//           ? error.response.data.message
+//           : error.message,
+//     });
+//   }
+// };
 // ---------------------- provider details fetch in admin dashboards ----------------
 
 export const providersDetails = () => async (dispatch) => {

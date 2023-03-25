@@ -7,7 +7,6 @@ import { HiUsers } from "react-icons/hi";
 import "../css/Dash.css";
 import { useDispatch, useSelector } from "react-redux";
 import { listService } from "../../../Redux/Actions/ServiceAction";
-import { DEL } from "../../../Redux/Actions/action";
 
 const Dash = () => {
   const dispatch = useDispatch();
@@ -19,10 +18,6 @@ const Dash = () => {
   }, [dispatch]);
 
   // const dispatch1 = useDispatch();
-
-  const dlt = (_id) => {
-    dispatch(DEL(_id));
-  };
 
   return (
     <div>
@@ -68,10 +63,23 @@ const Dash = () => {
           <h2>{error}</h2>
         ) : (
           <div
-            className="card"
-            style={{ display: "flex", width: "100%", marginTop: "5rem" }}
-          >
-            <div class="header_fixed">
+                style={{
+                  display: "flex",
+                  width: "95%",
+                  justifyContent: "center",
+                  justifyItems: "center",
+                  alignItems: "center",
+                  marginTop:'6rem',
+                }}
+              >
+                <div
+                  class="header_fixed ml-3"
+                  style={{
+                    justifyContent: "center",
+                    justifyItems: "center",
+                    alignItems: "center",
+                  }}
+                >
               <table>
                 <thead className="text-dark">
                   <tr>
@@ -79,7 +87,7 @@ const Dash = () => {
                     <th>Service Name</th>
                     <th>Price(per)</th>
                     <th>rating</th>
-                    <th>Action</th>
+                    {/* <th>Action</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -96,7 +104,7 @@ const Dash = () => {
                         <td>{item.s_name}</td>
                         <td>₹ {item.price}</td>
                         <td> {item.rating}</td>
-                        <td>
+                        {/* <td>
                           <i
                             class="fa-solid fa-pen "
                             style={{ cursor: "pointer", marginRight: "30px" }}
@@ -106,7 +114,7 @@ const Dash = () => {
                             style={{ color: "#ce3d3d", cursor: "pointer" }}
                             onClick={() => dlt(item._id)}
                           ></i>
-                        </td>
+                        </td> */}
                       </tr>
                     );
                   })}

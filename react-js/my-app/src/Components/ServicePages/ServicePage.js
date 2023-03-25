@@ -14,6 +14,9 @@ import { ADD } from "../../Redux/Actions/action";
 // import {listServiceDetails} from "../../Redux/Actions/ServiceAction"
 import Review from "../Reviews/Review";
 import i1 from "../../images/Bathrrom_clean.jpeg";
+// import FinalRev from "../Reviews/FinalRev";
+import Reviews2 from "../Reviews/Reviews2"
+
 
 const ServicePage = ({ item }) => {
   // const dispatch = useDispatch();
@@ -63,22 +66,21 @@ const ServicePage = ({ item }) => {
     <>
       <Navbar5 />
       <div className="main-wrapper">
-        {/* <div className="container"> */}
         <div className="product-div">
           <div className="product-div-left">
-            <Link to="/service">
-              <p
-                style={{
-                  color: "black",
-                  float: "left",
-                  textDecoration: "2px solid white underline",
-                }}
-              >
-                <i class="fa-solid fa-arrow-left mr-2"></i>
-                Back
-              </p>
-            </Link>
-            {/* <img src={doc_img} alt="" /> */}
+            <div>
+              <Link to="/service">
+                <p
+                  style={{
+                    color: "black",
+                    textDecoration: "2px solid white underline",
+                  }}
+                >
+                  <i class="fa-solid fa-arrow-left mr-2"></i>
+                  Back
+                </p>
+              </Link>
+            </div>
             <img src={i1} alt="" style={{ height: "80%", width: "70%" }} />
           </div>
           <div className="product-div-right">
@@ -124,17 +126,19 @@ const ServicePage = ({ item }) => {
           </div>
         </div>
 
+        <Reviews2 />
+
         {/* ----------------------- heading line--------------------------------- */}
         <section
           className="services"
           style={{
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "#f1f1f1",
+            height: "35px",
           }}
         >
           <div className="service-heading">
-            <span>Service Reviews</span>
+            <span style={{ fontSize: "30px" }}>Service Reviews</span>
           </div>
         </section>
 

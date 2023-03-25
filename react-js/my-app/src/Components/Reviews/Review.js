@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "../ServicePages/Services.css";
-// import { styled } from "@mui/material/styles";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-// import axios from "axios";
 import { toast } from "react-toastify";
 // import { useState } from "react";
 // import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 export default function App() {
+
+  // --------------------- post data ------------------------------------
   const [choice, setChoice] = useState();
   const [ser, setser] = useState({
     uname: "",
@@ -45,12 +45,7 @@ export default function App() {
         theme: "colored",
         hideProgressBar: "false",
       });
-<<<<<<< HEAD
     } else if (res.status === 417) {
-=======
-    }
-    else if (res.status === 417) {
->>>>>>> ea517b34d4f97c6f9732a658d118b68082d33c7d
       toast.error("All fields are required.", {
         position: "top-center",
         theme: "colored",
@@ -70,20 +65,6 @@ export default function App() {
         hideProgressBar: "false",
       });
     }
-    // const formData = new FormData();
-    // formData.append("uname", ser.uname);
-    // formData.append("rate", choice);
-    // formData.append("description", ser.description);
-    // try {
-    //   await axios.post("/add_review", formData);
-    //   alert("Successfully Added.");
-    // } catch (err) {
-    //   if (err.response.status === 417) {
-    //     alert("All fields are required.");
-    //   } else if (err.response.status === 419) {
-    //     alert("user not exist exists.");
-    //   }
-    // }
   };
 
   return (
@@ -153,7 +134,6 @@ export default function App() {
             </form>
           </div>
         </div>
-        <div>Akash vadgasiya</div>
       </div>
     </>
   );

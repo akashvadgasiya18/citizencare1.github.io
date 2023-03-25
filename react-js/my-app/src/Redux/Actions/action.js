@@ -24,3 +24,11 @@ export const PROVIDERS_REQUEST = "PROVIDERS_REQUEST";
 export const PROVIDERS_SUCCESS = "PROVIDERS_SUCCESS";
 export const PROVIDERS_FAIL = "PROVIDERS_FAIL";
 
+export const REVIEW_REQUEST = "REVIEW_REQUEST";
+export const REVIEW_SUCCESS = "REVIEW_SUCCESS";
+export const REVIEW_FAIL = "REVIEW_FAIL";
+
+// export const U_REQUEST = "REVIEW_REQUEST";
+// export const U_SUCCESS = "REVIEW_SUCCESS";
+// export const U_FAIL = "REVIEW_FAIL";
+
