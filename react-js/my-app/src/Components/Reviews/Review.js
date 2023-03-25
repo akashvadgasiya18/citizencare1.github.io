@@ -27,22 +27,6 @@ export default function App() {
 
   const send_review_data = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
-    const formData = new FormData();
-    formData.append("uname", ser.uname);
-    formData.append("rate", choice);
-    formData.append("description", ser.description);
-
-    try {
-      await axios.post("/add_review", formData);
-      alert("Successfully Added.");
-    } catch (err) {
-      if (err.response.status === 417) {
-        alert("All fields are required.");
-      } else if (err.response.status === 419) {
-        alert("user not exists.");
-      }
-=======
     const { uname, description } = ser;
     const res = await fetch("/add_review", {
       method: "POST",
@@ -61,7 +45,6 @@ export default function App() {
         theme: "colored",
         hideProgressBar: "false",
       });
->>>>>>> cce6b4c62a345d9a1aed8e2b0866c5bba20567ff
     }
     else if (res.status === 417) {
       toast.error("All fields are required.", {

@@ -13,11 +13,12 @@ require("../db");
 // ---------------------------- registration for user (data store in mongo)---------------------
 
 router.post("/registration", async (req, res) => {
-  const { fname, age, email, password, cpassword } = req.body;
+  const { fname, age, email, phone_no, password, cpassword } = req.body;
   if (
     fname == "" ||
     age == "" ||
     email == "" ||
+    phone_no == "" ||
     password == "" ||
     cpassword == ""
   ) {
@@ -27,6 +28,8 @@ router.post("/registration", async (req, res) => {
     const userExist = await User.findOne({ email: email });
     if (userExist) {
       return res.status(413).json({});
+    }else if(phone_no.length != 10 ) {
+      return res.status(427).json({});
     } else if (password.length <= 5) {
       return res.status(411).json({});
     } else if (age <= "40" && age >= "100") {
@@ -34,7 +37,7 @@ router.post("/registration", async (req, res) => {
     } else if (password != cpassword) {
       return res.status(422).json({});
     } else {
-      const user = new User({ fname, age, email, password, cpassword });
+      const user = new User({ fname, age, email, phone_no, password, cpassword });
       await user.save();
       res.status(201).json({});
     }

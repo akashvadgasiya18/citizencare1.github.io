@@ -4,7 +4,7 @@ import PassChange from "../Html/PassChange";
 import UserMain from "./UserMain";
 // import UserDetailPage from "./UserDetailPage";
 import UserOrder from "./UserOrder";
-import Welcomepage from "./Welcomepage";
+import Welcomepage from "../Html/Welcomepage";
 // import PasswordMain from "./PasswordMain"
 
 const Approute2 = () => {
