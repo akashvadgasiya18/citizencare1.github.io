@@ -33,7 +33,7 @@ router.post("/registration", async (req, res) => {
       return res.status(427).json({});
     } else if (password.length <= 5) {
       return res.status(411).json({});
-    } else if (age <= "40" && age >= "100") {
+    } else if (age < "40" && age > "100") {
       return res.status(402).json({});
     } else if (password != cpassword) {
       return res.status(422).json({});
@@ -69,7 +69,8 @@ const upload = multer({ storage: storage });
 router.post("/p_registration", upload.single("p_file"), async (req, res) => {
   let p_file = req.file ? req.file.filename : null;
 
-  const { p_name, p_role, p_email, p_mno , p_password, p_cpassword, p_add } = req.body;
+  const { p_name, p_role, p_email, p_mno, p_password, p_cpassword, p_add } =
+    req.body;
   if (
     p_name == "" ||
     p_role == "" ||
@@ -85,7 +86,7 @@ router.post("/p_registration", upload.single("p_file"), async (req, res) => {
     const proExist = await Provider.findOne({ p_email: p_email });
     if (proExist) {
       return res.status(413).json({});
-    }else if(p_mno.length !=10 ) {
+    } else if (p_mno.length != 10) {
       return res.status(427).json({});
     } else if (p_password.length <= 5) {
       return res.status(411).json({});
@@ -204,6 +205,43 @@ router.get(
   })
 );
 
+//----------edit user_profile-----------------------
+
+router.post("/edit_detail", async (req, res) => {
+  const { id, fname, age, phone_no } = req.body;
+  if (fname == "" || age == "" || phone_no == "") {
+    return res.status(429).json({});
+  }
+  try {
+    const userExist = await User.findOne({ _id: id });
+    if (!userExist) {
+      return res.status(413).json({});
+    } else {
+      if (phone_no.length != 10) {
+        return res.status(427).json({});
+      } else {
+        const n_fname = await fname;
+        const n_age = await age;
+        const n_phone_no = await phone_no;
+        await User.updateOne(
+          {
+            _id: id,
+          },
+          {
+            $set: {
+              fname: n_fname,
+              age: n_age,
+              phone_no: n_phone_no,
+            },
+          }
+        );
+        return res.status(201).json({});
+      }
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 //------------------- logout ------------------------------------
 router.get("/logout", (req, res) => {
