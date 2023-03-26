@@ -2,16 +2,88 @@ import React, { useEffect, useState } from "react";
 import { Typography } from "antd";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
+<<<<<<< HEAD
+=======
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+>>>>>>> 5a19078c8f83cf80daa85c9df0073275772ab8b1
 import axios from "axios";
 
 const EditServices = ({ item }) => {
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const [s_name, setS_name] = useState("");
   const [price, setPrice] = useState("");
   const [rating, setRating] = useState("");
   const [likes, setLikes] = useState("");
   const [desc, setDesc] = useState("");
+  const [serID, setserID] = useState("");
+
+  const [ser, setser] = useState({
+    id: "",
+    price: "",
+    rating: "",
+    likes: "",
+    desc: ""
+  });
+
+  var name, value;
+  const input_hand = (e) => {
+    name = e.target.name;
+    value = e.target.value;
+
+    setser({ ...ser, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    ser.id = serID;
+    const { id ,price, rating , likes, desc } = ser;
+    const res = await fetch("/edit_service", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id,
+        price,
+        rating,
+        likes,
+        desc
+      }),
+    });
+    const data = await res.json();
+    if (!data) {
+      toast.error("All fields are required.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 429) {
+      toast.error("All fields are required.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 413) {
+      toast.error("service Not Exist", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 427) {
+      toast.error("Rating must be less than equal to 5.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 201) {
+      navigate("/dashmain");
+      toast.success("Successfully updated.", {
+        position: "top-left",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    }
+  };
   // const [doc_img, setdoc_img] = useState(" ");
 
   useEffect(() => {
@@ -27,6 +99,7 @@ const EditServices = ({ item }) => {
       setRating(data.rating);
       setLikes(data.likes);
       setDesc(data.desc);
+      setserID(data._id);
       // setdoc_img(data.doc_img);
     };
     fetchData();
@@ -81,38 +154,43 @@ const EditServices = ({ item }) => {
                 type="text"
                 id=""
                 Name="s_name"
+<<<<<<< HEAD
                 // value={s_name}
                 placeholder={s_name}
+=======
+                value={s_name}
+>>>>>>> 5a19078c8f83cf80daa85c9df0073275772ab8b1
                 required
-              />
+              /><p><bold>(can't modified.)</bold></p>
+
               Service Price
               <input
-                type="text"
+                type="number"
                 id=""
                 Name="price"
-                // value={price}
-                // onChange={handleChange}
                 placeholder={price}
+                value={ser.price}
+                onChange={input_hand}
                 required
               />
               Rating
               <input
-                type="text"
+                type="number"
                 id=""
                 Name="rating"
-                // value={rating}
-                // onChange={handleChange}
                 placeholder={rating}
+                value={ser.rating}
+                onChange={input_hand}
                 required
               />
               Likes
               <input
                 type="text"
                 id=""
-                Name="likes"
-                // value={likes}
-                // onChange={handleChange}
                 placeholder={likes}
+                Name="likes"
+                value={ser.likes}
+                onChange={input_hand}
                 required
               />
               Descriptions
@@ -120,12 +198,12 @@ const EditServices = ({ item }) => {
                 type="text"
                 id=""
                 Name="desc"
-                // value={desc}
-                // onChange={handleChange}
                 placeholder={desc}
+                value={ser.desc}
+                onChange={input_hand}
                 required
               />
-              <button type="submit">Edit</button>
+              <button type="submit" onClick={handleSubmit}>Edit</button> 
             </div>
           </form>
         </div>

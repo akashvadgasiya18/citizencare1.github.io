@@ -243,7 +243,7 @@ router.post("/edit_detail", async (req, res) => {
   }
 });
 
-//----------edit user_profile-----------------------
+//----------edit provider_profile-----------------------
 
 router.post("/edit_provider", async (req, res) => {
   const { id, p_name, p_role, p_mno, p_add } = req.body;
