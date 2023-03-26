@@ -26,7 +26,7 @@ const Header = () => {
   const handleShow = () => setShow(true);
   return (
     <>
-      <AppBar>
+      <AppBar style={{backgroundColor:'darkslateblue'}}>
         <Toolbar
           style={{
             display: "flex",
@@ -34,7 +34,7 @@ const Header = () => {
             justifyContent: "space-between",
           }}
         >
-          <Typography variant="h6">Citizencare</Typography>
+          <Typography variant="h5">Citizencare</Typography>
 
           <Hidden mdDown>
             <Button

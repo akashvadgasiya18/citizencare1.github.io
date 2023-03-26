@@ -30,6 +30,7 @@ main {
 .sliders {
   background-color: white;
   color: black;
+  height: 100%;
 }
 .slid-top-section {
   display: flex;
@@ -52,11 +53,11 @@ main {
   /* transition: all 0.5s; */
 }
 .links:hover {
-  background-color: #ffdfd7;
+  background-color: #e3d8f7;
   color: rgb(0, 0, 0);
   /* margin: 10px 0px; */
   align-items: center;
-  text-decoration: 2px solid #ffdfd7 underline;
+  text-decoration: none;
   border-radius: 10px;
   /* transition: all 0.2s; */
 }
