@@ -129,7 +129,7 @@ const Editprofile = () => {
               value={ user.email }
               required
             />
-            <p><b>(can't be modified..)</b></p>
+            <p style={{textAlign:'left',color:'red'}}><b>[ Email can't be modified..]</b></p>
             <input
               type="text"
               id=""

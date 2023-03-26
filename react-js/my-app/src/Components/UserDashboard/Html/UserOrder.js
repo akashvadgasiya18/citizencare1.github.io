@@ -11,14 +11,19 @@ const UserOrder = () => {
       <div>
         <div>
           <Typography.Title
-            style={{ textAlign: "left", margin: "30px 35px", fontSize: "30px",fontFamily:'Poppins' }}
+            style={{
+              textAlign: "left",
+              margin: "30px 35px",
+              fontSize: "30px",
+              fontFamily: "Poppins",
+            }}
           >
-            Order Details
+            Booking Details
           </Typography.Title>
 
           {/* --------------------------- tabel ------------------------------------- */}
           <div>
-            <div className="card" style={{display:'flex',width:'95%'}}>
+            <div className="card" style={{ display: "flex", width: "95%" }}>
               <div class="header_fixed">
                 <table>
                   <thead className="text-dark">

@@ -70,7 +70,7 @@ router.get(
 );
 
 router.get(
-  "/dashmain/services:id",
+  "/dashmain/services/editservicepage/:id",
   asyncHandler(async (req, res) => {
     const products = await Details.findById(req.params.id);
     if (products) {

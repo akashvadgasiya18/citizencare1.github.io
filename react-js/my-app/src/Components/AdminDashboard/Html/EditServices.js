@@ -17,8 +17,10 @@ const EditServices = ({ item }) => {
   useEffect(() => {
     // dispatch(listServiceDetails(item.params._id))
     const fetchData = async () => {
-      const { data } = await axios.get(`/dashmain/services/${id}`);
-      console.log("products...", data);
+      const { data } = await axios.get(
+        `/dashmain/services/editservicepage/${id}`
+      );
+      console.log("single service", data);
 
       setS_name(data.s_name);
       setPrice(data.price);
@@ -69,53 +71,59 @@ const EditServices = ({ item }) => {
                 padding: "40px 30px",
                 borderRadius: "20px",
                 display: "grid",
+                textAlign: "left",
               }}
             >
               <h2 style={{ paddingBottom: "30px", textAlign: "center" }}>
                 Edit Services
               </h2>
+              Service Name
               <input
                 type="text"
                 id=""
                 Name="s_name"
-                value={s_name}
-                placeholder="Enter service Name"
+                // value={s_name}
+                placeholder={s_name}
                 required
               />
+              Service Price
               <input
                 type="text"
                 id=""
                 Name="price"
-                value={price}
+                // value={price}
                 // onChange={handleChange}
-                placeholder="Enter service Price"
+                placeholder={price}
                 required
               />
+              Rating
               <input
                 type="text"
                 id=""
                 Name="rating"
-                value={rating}
+                // value={rating}
                 // onChange={handleChange}
-                placeholder="Enter service Rating"
+                placeholder={rating}
                 required
               />
+              Likes
               <input
                 type="text"
                 id=""
                 Name="likes"
-                value={likes}
+                // value={likes}
                 // onChange={handleChange}
-                placeholder="Enter service Likes"
+                placeholder={likes}
                 required
               />
+              Descriptions
               <input
                 type="text"
                 id=""
                 Name="desc"
-                value={desc}
+                // value={desc}
                 // onChange={handleChange}
-                placeholder="Enter Description"
+                placeholder={desc}
                 required
               />
               {/* <input type="file" name="doc_img" value={doc_img}/> */}

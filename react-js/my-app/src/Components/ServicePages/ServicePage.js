@@ -66,7 +66,7 @@ const ServicePage = ({ item }) => {
     <>
       <Navbar5 />
       <div className="main-wrapper">
-        <div className="product-div" style={{backgroundColor:'honeydew'}}>
+        <div className="product-div" style={{ backgroundColor: "honeydew" }}>
           <div className="product-div-left">
             <div>
               <Link to="/service">

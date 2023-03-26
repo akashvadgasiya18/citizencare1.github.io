@@ -10,7 +10,7 @@ const ServiceRoute = () => {
       <Routes>
         <Route exact path="/" element={<Servicepages />} />
         <Route exact path="/Addservicepage" element={<AddservicePage />} />
-        <Route exact path="/editservicepage" element={<EditServices />} />
+        <Route exact path="/editservicepage/:id" element={<EditServices />} />
       </Routes>
     </div>
   );
