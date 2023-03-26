@@ -84,9 +84,16 @@ const Servicepages = () => {
                             <td>★{item.rating}</td>
                             <td>{item.likes}</td>
                             <td>
-                              <Link to={`/dashmain/services/${item._id}`}>
-                                <Button variant="primary"> <i
-                                  class="fa-solid fa-pen edit-icons mr-2" style={{fontSize:'12px'}}></i>Edit</Button>
+                              <Link
+                                to={`/dashmain/services/editservicepage/${item._id}`}
+                              >
+                                <Button variant="primary">
+                                  <i
+                                    class="fa-solid fa-pen edit-icons mr-2"
+                                    style={{ fontSize: "12px" }}
+                                  ></i>
+                                  Edit
+                                </Button>
                               </Link>
                               <Button variant="danger" className="ml-3">
                                 Delete

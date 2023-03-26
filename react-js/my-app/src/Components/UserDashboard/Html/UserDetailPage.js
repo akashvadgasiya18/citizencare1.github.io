@@ -1,5 +1,6 @@
 import { Typography } from "antd";
 import { useEffect } from "react";
+import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { userSingleDetails } from "../../../Redux/Actions/ServiceAction";
@@ -63,14 +64,13 @@ const UserDetailPage = () => {
                   <td>{user.phone_no}</td>
                   <td>
                     <Link to="/profile/usersdetail/edituserdetail">
-                      <i
-                        class="fa-solid fa-pen edit-icons icons-1"
-                        style={{
-                          cursor: "pointer",
-                          // marginRight: "30px",
-                          paddingRight: "30px",
-                        }}
-                      ></i>
+                      <Button variant="primary">
+                        <i
+                          class="fa-solid fa-pen edit-icons mr-2"
+                          style={{ fontSize: "12px" }}
+                        ></i>
+                        Edit
+                      </Button>
                     </Link>
                   </td>
                 </tr>

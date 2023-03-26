@@ -69,17 +69,17 @@ router.get(
   })
 );
 
-// router.get(
-//   "/dashmain/services:id",
-//   asyncHandler(async (req, res) => {
-//     const products = await Details.findById(req.params.id);
-//     if (products) {
-//       res.json(products);
-//     } else {
-//       res.status(404).json({ message: "Product not founded" });
-//     }
-//   })
-// );
+router.get(
+  "/dashmain/services/editservicepage/:id",
+  asyncHandler(async (req, res) => {
+    const products = await Details.findById(req.params.id);
+    if (products) {
+      res.json(products);
+    } else {
+      res.status(404).json({ message: "Product not founded" });
+    }
+  })
+);
 
 // ------------------------------ reviews --------------------------
 

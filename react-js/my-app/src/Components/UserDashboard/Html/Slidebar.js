@@ -16,7 +16,7 @@ const Slidebar = ({ Children }) => {
       path: "/profile/usersdetail",
     },
     {
-      label: "Orders",
+      label: "Booking Details",
       path: "/profile/userorders",
       icon: <ShoppingCartOutlined style={{ fontSize: 20 }} />,
     },

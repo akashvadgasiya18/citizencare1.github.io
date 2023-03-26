@@ -3,7 +3,33 @@ import { Typography } from "antd";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const EditServices = () => {
+const EditServices = ({ item }) => {
+  const { id } = useParams();
+
+  const [s_name, setS_name] = useState("");
+  const [price, setPrice] = useState("");
+  const [rating, setRating] = useState("");
+  const [likes, setLikes] = useState("");
+  const [desc, setDesc] = useState("");
+  // const [doc_img, setdoc_img] = useState(" ");
+
+  useEffect(() => {
+    // dispatch(listServiceDetails(item.params._id))
+    const fetchData = async () => {
+      const { data } = await axios.get(
+        `/dashmain/services/editservicepage/${id}`
+      );
+      console.log("single service", data);
+
+      setS_name(data.s_name);
+      setPrice(data.price);
+      setRating(data.rating);
+      setLikes(data.likes);
+      setDesc(data.desc);
+      // setdoc_img(data.doc_img);
+    };
+    fetchData();
+  }, [id]);
   return (
     <>
       <div className="home-container">
@@ -43,53 +69,63 @@ const EditServices = () => {
                 padding: "40px 30px",
                 borderRadius: "20px",
                 display: "grid",
+                textAlign: "left",
               }}
             >
               <h2 style={{ paddingBottom: "30px", textAlign: "center" }}>
                 Edit Services
               </h2>
+              Service Name
               <input
                 type="text"
                 id=""
                 Name="s_name"
                 // value={s_name}
+<<<<<<< HEAD
                 placeholder="Enter service Name"
+=======
+                placeholder={s_name}
+>>>>>>> ac16e7940bdc4f1a7170521422cd3b0d65d55ac2
                 required
               />
+              Service Price
               <input
                 type="text"
                 id=""
                 Name="price"
                 // value={price}
                 // onChange={handleChange}
-                placeholder="Enter service Price"
+                placeholder={price}
                 required
               />
+              Rating
               <input
                 type="text"
                 id=""
                 Name="rating"
                 // value={rating}
                 // onChange={handleChange}
-                placeholder="Enter service Rating"
+                placeholder={rating}
                 required
               />
+              Likes
               <input
                 type="text"
                 id=""
                 Name="likes"
                 // value={likes}
                 // onChange={handleChange}
-                placeholder="Enter service Likes"
+                placeholder={likes}
                 required
               />
+              Descriptions
               <input
                 type="text"
                 id=""
                 Name="desc"
                 // value={desc}
                 // onChange={handleChange}
-                placeholder="Enter Description"
+                placeholder={desc}
                 required
               />
               <button type="submit">Edit</button>
