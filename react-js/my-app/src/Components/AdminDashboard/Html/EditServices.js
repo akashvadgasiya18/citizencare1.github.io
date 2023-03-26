@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Typography } from "antd";
 import { FaArrowLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
 const EditServices = ({ item }) => {
   const { id } = useParams();
@@ -81,11 +82,7 @@ const EditServices = ({ item }) => {
                 id=""
                 Name="s_name"
                 // value={s_name}
-<<<<<<< HEAD
-                placeholder="Enter service Name"
-=======
                 placeholder={s_name}
->>>>>>> ac16e7940bdc4f1a7170521422cd3b0d65d55ac2
                 required
               />
               Service Price

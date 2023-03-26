@@ -4,8 +4,8 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Avatar from "@mui/material/Avatar";
-import img1 from "../../AdminDashboard/Html/demo.webp"
-import "../../AdminDashboard/css/sidemenu.css"
+import img1 from "../../AdminDashboard/Html/demo.webp";
+import "../../AdminDashboard/css/sidemenu.css";
 
 import { Hidden } from "@mui/material";
 import { FaBars } from "react-icons/fa";
@@ -27,7 +27,7 @@ const ProviderHeader = () => {
   const handleShow = () => setShow(true);
   return (
     <>
-      <AppBar>
+      <AppBar style={{ backgroundColor: "darkslateblue" }}>
         <Toolbar
           style={{
             display: "flex",

@@ -3,32 +3,31 @@ import "animate.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-
 const Welcomepage = () => {
   const navigate = useNavigate();
   const verification = async () => {
     try {
-      const res = await fetch("/dashmain" , {
+      const res = await fetch("/dashmain", {
         method: "GET",
-        headers : {
+        headers: {
           Accept: "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        credentials: "include"
+        credentials: "include",
       });
       const data = await res.json();
       console.log(data);
-      if(!res.status === 200)
-      {
+      if (!res.status === 200) {
         const error = new Error(res.error);
         throw error;
       }
     } catch (err) {
       console.log(err);
       navigate("/login");
+      window.location.reload();
     }
   };
-  useEffect(() => { 
+  useEffect(() => {
     verification();
   });
   return (

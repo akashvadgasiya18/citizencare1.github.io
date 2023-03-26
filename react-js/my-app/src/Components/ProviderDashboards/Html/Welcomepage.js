@@ -35,6 +35,7 @@ const Welcomepage = () => {
     } catch (err) {
       console.log(err);
       navigate("/login");
+      window.location.reload();
     }
   };
   useEffect(() => {

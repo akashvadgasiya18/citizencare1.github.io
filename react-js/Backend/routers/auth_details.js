@@ -18,12 +18,6 @@ router.get("/provider_detail", Authenticate_provider, (req, res) => {
 });
 
 //-------------Authenticate for admin----------------------------------
-<<<<<<< HEAD
-router.get("/dashmain", Authenticate_admin, (req, res) => {
-  console.log("Hello");
-});
-=======
-router.get("/dashmain", Authenticate_admin ,(req, res) => {});
->>>>>>> 5bf26495d23ba713c03ad67173e4376a83586d29
+router.get("/dashmain", Authenticate_admin, (req, res) => {});
 
 module.exports = router;

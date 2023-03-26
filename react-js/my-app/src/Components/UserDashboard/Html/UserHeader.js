@@ -26,7 +26,7 @@ const UserHeader = () => {
   const handleShow = () => setShow(true);
   return (
     <>
-      <AppBar>
+      <AppBar style={{ backgroundColor: "darkslateblue" }}>
         <Toolbar
           style={{
             display: "flex",
@@ -70,7 +70,7 @@ const UserHeader = () => {
       <Offcanvas
         show={show}
         onHide={handlesClose}
-        style={{ marginTop: "50px", maxWidth: "19rem"}}
+        style={{ marginTop: "50px", maxWidth: "19rem" }}
       >
         <Offcanvas.Header closeButton>
           <Offcanvas.Title

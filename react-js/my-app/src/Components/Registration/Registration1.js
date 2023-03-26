@@ -190,7 +190,7 @@ const Registration1 = () => {
       {/* <Navbar3 /> */}
       <div>
         {/* <section className="h-full"> */}
-        <div style={{ backgroundColor: "lightblue", height: "100%" }}>
+        <div className="bg-img1">
           <div className="container">
             <form method="post" action="" className="login-form">
               <div

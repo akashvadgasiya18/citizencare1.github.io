@@ -12,3 +12,12 @@
   font-size: 40px;
   align-items: center;
 }
+
+.bg-img1 {
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)),
+    url("../../images/log-back.jpg");
+  /* background-image: url(../../images/service1.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+}
