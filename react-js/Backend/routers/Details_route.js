@@ -30,7 +30,7 @@ router.post("/add_services", upload.single("doc_img"), async (req, res) => {
     const de_Exist = await Details.findOne({ s_name });
     if (de_Exist) {
       return res.status(413).json({});
-    } else if (rating >= "5") {
+    } else if (rating > "5") {
       return res.status(411).json({});
     } else {
       const data = new Details({ s_name, price, rating, likes, desc, doc_img });
@@ -39,7 +39,44 @@ router.post("/add_services", upload.single("doc_img"), async (req, res) => {
     }
   } catch (err) {
     return res.status(402).json({});
-    res.send("done...");
+  }
+});
+
+// ------------------------service-edit----------------------
+router.post("/edit_service", async (req, res) => {
+  const { id, price , rating , likes , desc} = req.body;
+  if(!id || ! price || ! rating || !likes || !desc)
+  {
+    return res.status(429).json({});
+  }
+  const de_exist = await Details.findOne({ _id : id});
+  if(!de_exist)
+  {
+    return res.status(413).json({});
+  } else if( rating > '5')
+  {
+    return res.status(427).json({});
+  }
+  else
+  {
+    const n_price = await price;
+    const n_rating = await rating;
+    const n_likes = await likes;
+    const n_desc= await desc;
+    await Details.updateOne(
+      {
+        _id : id,
+      },
+      {
+        $set: {
+          price: n_price,
+          rating: n_rating,
+          likes: n_likes,
+          desc: n_desc
+        },
+      }
+    );
+    return res.status(201).json({});
   }
 });
 
