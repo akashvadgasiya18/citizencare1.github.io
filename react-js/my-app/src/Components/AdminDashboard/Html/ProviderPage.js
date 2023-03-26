@@ -76,14 +76,6 @@ const ProviderPage = () => {
                             <td>{item.p_file}</td>
                             <td>
                               <Link to="/dashmain/providerorder">
-                                {/* <i  
-                                  class="fa-solid fa-pen edit-icons icons-1"
-                                  style={{
-                                    cursor: "pointer",
-                                    // marginRight: "30px",
-                                    paddingRight: "30px",
-                                  }}
-                                ></i> */}
                                 <Button variant="primary" className="mr-3">
                                   send
                                 </Button>

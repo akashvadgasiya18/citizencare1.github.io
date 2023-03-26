@@ -79,7 +79,6 @@ const EditServices = ({ item }) => {
                 id=""
                 Name="s_name"
                 value={s_name}
-                // onChange={handleChange}
                 placeholder="Enter service Name"
                 required
               />

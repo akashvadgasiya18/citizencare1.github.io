@@ -270,13 +270,13 @@ const Navbar5 = (props) => {
                         <Badge
                           badgeContent={getdata.length}
                           color="secondary"
-                          style={{ marginRight: "20px", marginTop: "10px" }}
+                          style={{ marginLeft: "20px", marginTop: "10px" }}
                         >
                           <ShoppingCartIcon color="action" />
                         </Badge>
                       </Link>
                       <Link to="/registration">
-                        <Button variant="outline-dark">Register</Button>
+                        <Button variant="outline-dark" style={{marginTop:'14px'}}>Register</Button>
                       </Link>
                       <Link to="/login">
                         <Button variant="outline-dark my-3">Login</Button>

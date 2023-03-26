@@ -3,7 +3,6 @@ import Customer from "./Customer";
 import Dash from "./Dash";
 import Order from "./Order";
 import { Route, Routes } from "react-router-dom";
-import Transactions from "./Transactions";
 // import Servicepages from "./Servicepages";
 import ServiceMain from "./ServiceMain";
 import ProviderPage from "./ProviderPage";
@@ -23,7 +22,6 @@ const AppRoute = () => {
         <Route exact path="/customers" element={<Customer />}></Route>
         <Route exact path="/providerpage" element={<ProviderPage />}></Route>
         <Route exact path="/services/*" element={<ServiceMain />} />
-        <Route exact path="/transaction" element={<Transactions />} />
         <Route exact path="/providerorder" element={<ProviderOrder />} />
       </Routes>
 

@@ -51,7 +51,7 @@ const ProviderOrder = () => {
                   placeholder="Customer name"
                   autoComplete="off"
                 />
-               
+
                 <textarea
                   type="text"
                   id=""
@@ -59,8 +59,8 @@ const ProviderOrder = () => {
                   placeholder="Address"
                   autoComplete="off"
                 />
-                 <input
-                  type="number"
+                <input
+                  type="text"
                   id=""
                   Name="mobileno"
                   placeholder="Mobile no"
@@ -68,7 +68,7 @@ const ProviderOrder = () => {
                 />
                 <input
                   type="submit"
-                  value="Add"
+                  value="SEND"
                   style={{
                     color: "white",
                     backgroundColor: "blue",

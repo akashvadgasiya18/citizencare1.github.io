@@ -5,10 +5,9 @@ import {
   AppstoreOutlined,
   ShoppingCartOutlined,
   UserOutlined,
-  WalletOutlined,
-  LeftCircleOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
-import { FaRegImage } from "react-icons/fa";
+import { FaListUl, FaUserTie } from "react-icons/fa";
 
 const Slidebar1 = ({ Children }) => {
   // const [isOpen,setIsOpen]=useState();
@@ -32,22 +31,17 @@ const Slidebar1 = ({ Children }) => {
     {
       label: "Provider",
       path: "/dashmain/providerpage",
-      icon: <UserOutlined style={{ fontSize: 20 }} />,
+      icon: <FaUserTie style={{ fontSize: 20 }} />,
     },
     {
       label: "Services",
       path: "/dashmain/services",
-      icon: <FaRegImage style={{ fontSize: 20 }} />,
-    },
-    {
-      label: "Transactions",
-      path: "/dashmain/transaction",
-      icon: <WalletOutlined style={{ fontSize: 20 }} />,
+      icon: <FaListUl style={{ fontSize: 20 }} />,
     },
     {
       label: "Logout",
       path: "/logout",
-      icon: <LeftCircleOutlined style={{ fontSize: 25 }} />,
+      icon: <LogoutOutlined style={{ fontSize: 25 }} />,
     },
   ];
   return (

@@ -36,8 +36,7 @@
 }
 .side-drawer a:hover,
 .side-drawer a:active {
-  text-decoration: 4px solid green underline;
-  transition: transform 0.6s ease;
+  color: darkgreen;
 }
 
 @media (min-width: 769px) {

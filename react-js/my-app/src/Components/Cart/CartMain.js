@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 const CartMain = () => {
   // const [price, setPrice] = useState();
   // console.log(price);
+  const loggedIn = window.localStorage.getItem("isLoggedIn");
 
   const getdata = useSelector((state) => state.cartreducer.carts);
   console.log(getdata);
@@ -112,9 +113,19 @@ const CartMain = () => {
               <Link to="/service">
                 <button className="btn btn-success my-3 mr-3">continue</button>
               </Link>
-              <Link to="/checkoutpage">
-              <button className="btn btn-primary my-3 mr-3">Checkout</button>
-              </Link>
+              {loggedIn ? (
+                <Link to="/checkoutpage">
+                  <button className="btn btn-primary my-3 mr-3">
+                    Checkout
+                  </button>
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <button className="btn btn-primary my-3 mr-3">
+                    Checkout
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
         </section>
