@@ -19,8 +19,6 @@ router.get("/provider_detail", Authenticate_provider ,(req, res) =>
 });
 
 //-------------Authenticate for admin----------------------------------
-router.get("/dashmain", Authenticate_admin ,(req, res) => {
-  console.log("Hello");
-});
+router.get("/dashmain", Authenticate_admin ,(req, res) => {});
 
 module.exports = router;

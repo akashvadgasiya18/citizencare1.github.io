@@ -33,7 +33,7 @@ const Editprofile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     values.id = user._id;
-    const { fname, id, age, phone_no } = values;
+    const { fname, age, id, phone_no } = values;
     const res = await fetch("/edit_detail", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -120,7 +120,7 @@ const Editprofile = () => {
             }}
           >
             <h2 style={{ paddingBottom: "30px", textAlign: "center" }}>
-              Edit Services
+              Edit Profile
             </h2>
             <input
               type="text"
