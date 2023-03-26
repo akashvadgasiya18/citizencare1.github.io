@@ -1,7 +1,7 @@
 const Admin = require("../models/AdminSchema");
 const jwt = require("jsonwebtoken");
 
-const Authenticate_admin = async (req, res, next) => {
+const Authenticate_admin = async (req, res, next, e) => {
   try {
     const token = req.cookies.jwtoken;
     const verifying = jwt.verify(token, process.env.SECRET_KEY);

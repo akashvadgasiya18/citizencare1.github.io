@@ -119,7 +119,7 @@ const Registration1 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { fname, age, email, phone_no , password, cpassword } = values;
+    const { fname, age, email, phone_no, password, cpassword } = values;
     const res = await fetch("/registration", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

@@ -53,7 +53,7 @@ const Welcomepage = () => {
         style={{ fontFamily: "Poppins", fontWeight: "700" }}
       >
         Hi, Welcome
-        <span style={{ color: "green", fontWeight: "700" }}> { user.fname }</span>
+        <span style={{ color: "green", fontWeight: "700" }}> {user.fname}</span>
       </h2>
     </div>
   );

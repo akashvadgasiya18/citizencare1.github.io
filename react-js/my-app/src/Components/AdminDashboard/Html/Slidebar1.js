@@ -40,7 +40,7 @@ const Slidebar1 = ({ Children }) => {
     },
     {
       label: "Logout",
-      path: "/logout",
+      path: "/",
       icon: <LogoutOutlined style={{ fontSize: 25 }} />,
     },
   ];

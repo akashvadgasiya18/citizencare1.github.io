@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Authenticate = require("../middleware/Authenticate");
 const Authenticate_provider = require("../middleware/Authenticate_provider");
-const Authenticate_admin = require("../middleware/Authenticate_admin")
+const Authenticate_admin = require("../middleware/Authenticate_admin");
 require("../db");
 
 //---------------Getdata for user-profile-----------------------------
@@ -12,14 +12,13 @@ router.get("/user_detail", Authenticate, (req, res) => {
 });
 
 //-------------Getdata for provider----------------------------------
-router.get("/providerDash", Authenticate_provider ,(req, res) => {});
-router.get("/provider_detail", Authenticate_provider ,(req, res) =>
-{
+router.get("/providerDash", Authenticate_provider, (req, res) => {});
+router.get("/provider_detail", Authenticate_provider, (req, res) => {
   res.send(req.root);
 });
 
 //-------------Authenticate for admin----------------------------------
-router.get("/dashmain", Authenticate_admin ,(req, res) => {
+router.get("/dashmain", Authenticate_admin, (req, res) => {
   console.log("Hello");
 });
 

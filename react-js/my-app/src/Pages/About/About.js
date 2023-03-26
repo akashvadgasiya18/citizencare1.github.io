@@ -2,7 +2,7 @@ import React from "react";
 import Navbar5 from "../../Components/Navbar/Navbar5";
 import ImageBanner from "../../Components/Common/ImageBanner";
 // import 'animate.css-react'
-import i1 from "../../images/about1.jpg";
+import i1 from "../../images/worker.jpg";
 // import "../../css/About.css";
 
 const About = () => {
