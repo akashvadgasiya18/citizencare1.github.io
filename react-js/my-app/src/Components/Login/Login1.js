@@ -115,7 +115,6 @@ const Login1 = () => {
                 style={{ height: "50px" }}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                id=""
                 // className="form-control form-control"
                 placeholder="Enter your email"
               />
@@ -125,7 +124,6 @@ const Login1 = () => {
                 type="password"
                 name="password"
                 style={{ height: "50px" }}
-                id=""
                 autoComplete="off"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

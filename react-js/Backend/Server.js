@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use("./public", express.static("public"));
 
 app.use(require("./routers/authRoute"));
-app.use(require("./routers/user_details"));
+app.use(require("./routers/auth_details"));
 app.use(require("./routers/Details_route"));
 app.use(require("./routers/password_reset"));
 app.set("view engine", "ejs");

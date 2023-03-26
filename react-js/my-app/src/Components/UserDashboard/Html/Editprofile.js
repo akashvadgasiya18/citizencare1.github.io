@@ -1,11 +1,88 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography } from "antd";
 import "../css/EditInfo.css";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
 import "../css/ChangePassword.css";
 import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { userSingleDetails } from "../../../Redux/Actions/ServiceAction";
 
 const Editprofile = () => {
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const singleData = useSelector((state) => state.singleData);
+  const { user } = singleData;
+
+  const [values, setValues] = useState({
+    fname: "",
+    age: "",
+    id: "",
+    phone_no: "",
+  });
+
+  var name, value;
+  const handleChange = (e) => {
+    name = e.target.name;
+    value = e.target.value;
+    setValues({ ...values, [name]: value });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    values.id = user._id;
+    const { fname, id, age, phone_no } = values;
+    const res = await fetch("/edit_detail", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fname,
+        age,
+        id,
+        phone_no,
+      }),
+    });
+    const data = await res.json();
+    if (!data) {
+      toast.error("All fields are required.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 429) {
+      toast.error("All fields are required.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 413) {
+      toast.error("User Not Exist", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 427) {
+      toast.error("Phone number contains only 10 digit.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 201) {
+      navigate("/profile");
+      toast.success("Successfully updated.", {
+        position: "top-left",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    }
+  };
+
+  useEffect(() => {
+    dispatch(userSingleDetails());
+  }, [dispatch]);
+
   return (
     <div className="home-container">
       <div style={{ width: "100%" }}>
@@ -33,12 +110,7 @@ const Editprofile = () => {
       </div>
 
       <div>
-        <form
-          method="post"
-          action=""
-          className="login-form"
-          // onSubmit={handleSubmit}
-        >
+        <form method="post" action="" className="login-form">
           <div
             style={{
               backgroundColor: "white",
@@ -53,40 +125,43 @@ const Editprofile = () => {
             <input
               type="text"
               id=""
+              Name="email"
+              value={ user.email }
+              required
+            />
+            <p><b>(can't be modified..)</b></p>
+            <input
+              type="text"
+              id=""
               Name="fname"
-              // value={values.s_name}
-              // onChange={handleChange}
-              placeholder="name"
-              required
-            />
-            <input
-              type="email"
-              id=""
-              Name=""
-              // value={values.price}
-              // onChange={handleChange}
-              placeholder="Email id"
+              placeholder={user.fname}
+              value={values.fname}
+              onChange={handleChange}
               required
             />
             <input
               type="number"
               id=""
-              Name="Age"
-              // value={values.rating}
-              // onChange={handleChange}
-              placeholder="Age"
+              Name="age"
+              max={100}
+              min={user.age}
+              placeholder={user.age}
+              value={values.age}
+              onChange={handleChange}
               required
             />
             <input
-              type="number"
+              type="text"
               id=""
-              Name="mobile no"
-              // value={values.likes}
-              // onChange={handleChange}
-              placeholder="Enter service Likes"
+              Name="phone_no"
+              placeholder={user.phone_no}
+              value={values.phone_no}
+              onChange={handleChange}
               required
             />
-            <button type="submit">Edit</button>
+            <button type="submit" onClick={handleSubmit}>
+              Edit
+            </button>
           </div>
         </form>
       </div>

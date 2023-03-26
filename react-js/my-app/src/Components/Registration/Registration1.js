@@ -133,7 +133,6 @@ const Registration1 = () => {
       }),
     });
     const data = await res.json();
-    console.log(data);
     if (!data) {
       toast.error("All fields are required.", {
         position: "top-center",

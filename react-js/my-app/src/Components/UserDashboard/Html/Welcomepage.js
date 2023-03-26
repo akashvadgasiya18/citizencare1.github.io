@@ -3,7 +3,6 @@ import "animate.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-
 const Welcomepage = () => {
   const navigate = useNavigate();
   const verification = async () => {
@@ -22,7 +21,6 @@ const Welcomepage = () => {
       {
         const error = new Error(res.error);
         throw error;
-        // window.alert("err");
       }
     } catch (err) {
       console.log(err);
