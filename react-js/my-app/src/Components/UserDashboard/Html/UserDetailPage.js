@@ -3,38 +3,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { userSingleDetails } from "../../../Redux/Actions/ServiceAction";
-<<<<<<< HEAD
-
-// import Data1 from "../../ServiceItem/Data1";
 
 const UserDetailPage = () => {
-  // const [info, setInfo] = useState();
-  // const navigate = useNavigate();
-  // const callUserdetails = async () => {
-  //   try {
-  //     const res = await fetch("/user_detail", {
-  //       method: "GET",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //       credentials: "include",
-  //     });
-  //     const data = await res.json();
-  //     setInfo(data);
-  //     if (!res.status === 200) {
-  //       const error = new Error(res.error);
-  //       throw error;
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //     navigate("/login");
-  //   }
-  // };
-=======
-
-const UserDetailPage = () => {
->>>>>>> 353983f260a9bf8a68d80e6f5296b7964871d00b
   const dispatch = useDispatch();
   const singleData = useSelector((state) => state.singleData);
   const { user } = singleData;
