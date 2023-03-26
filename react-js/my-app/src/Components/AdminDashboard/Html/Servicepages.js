@@ -6,13 +6,13 @@ import "../css/servicepage.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listService } from "../../../Redux/Actions/ServiceAction";
+import axios from "axios";
 // import { DEL } from "../../../Redux/Actions/action";
 
 const Servicepages = () => {
   const dispatch = useDispatch();
   const serviceList = useSelector((state) => state.serviceList);
   const { error, service } = serviceList;
-
   useEffect(() => {
     dispatch(listService());
   }, [dispatch]);

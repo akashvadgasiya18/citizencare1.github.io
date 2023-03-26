@@ -208,7 +208,7 @@ router.get(
 //----------edit user_profile-----------------------
 
 router.post("/edit_detail", async (req, res) => {
-  const { id, fname, age, phone_no } = req.body;
+  const { fname, age, id, phone_no } = req.body;
   if (fname == "" || age == "" || phone_no == "") {
     return res.status(429).json({});
   }
@@ -232,6 +232,46 @@ router.post("/edit_detail", async (req, res) => {
               fname: n_fname,
               age: n_age,
               phone_no: n_phone_no,
+            },
+          }
+        );
+        return res.status(201).json({});
+      }
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//----------edit user_profile-----------------------
+
+router.post("/edit_provider", async (req, res) => {
+  const { id, p_name, p_role, p_mno, p_add } = req.body;
+  if (p_name == "" || p_role == "" || p_mno == "" || p_add == "") {
+    return res.status(429).json({});
+  }
+  try {
+    const providerExist = await Provider.findOne({ _id: id });
+    if (!providerExist) {
+      return res.status(413).json({});
+    } else {
+      if (p_mno.length != 10) {
+        return res.status(427).json({});
+      } else {
+        const n_name = await p_name;
+        const n_role = await p_role;
+        const n_mno = await p_mno;
+        const n_add = await p_add;
+        await Provider.updateOne(
+          {
+            _id : id,
+          },
+          {
+            $set: {
+              p_name: n_name,
+              p_role: n_role,
+              p_mno: n_mno,
+              p_add: n_add
             },
           }
         );

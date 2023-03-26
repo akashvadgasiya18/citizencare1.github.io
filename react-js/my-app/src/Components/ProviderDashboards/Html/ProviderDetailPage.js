@@ -64,7 +64,7 @@ const ProviderDetailPage = () => {
                   <td>{provider.p_mno}</td>
                   <td>{provider.p_add}</td>
                   <td>
-                    <Link to="/profile/usersdetail/edituserdetail">
+                    <Link to="/providerDash/provideDetails/editProviderdetail">
                       <i
                         class="fa-solid fa-pen edit-icons icons-1"
                         style={{

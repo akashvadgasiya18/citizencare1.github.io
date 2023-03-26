@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Typography } from "antd";
-import axios from "axios";
 import { FaArrowLeft } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const EditServices = ({ item }) => {
   const { id } = useParams();
@@ -63,7 +62,6 @@ const EditServices = ({ item }) => {
             method="post"
             action=""
             className="login-form"
-            // onSubmit={handleSubmit}
           >
             <div
               style={{
@@ -83,7 +81,11 @@ const EditServices = ({ item }) => {
                 id=""
                 Name="s_name"
                 // value={s_name}
+<<<<<<< HEAD
+                placeholder="Enter service Name"
+=======
                 placeholder={s_name}
+>>>>>>> ac16e7940bdc4f1a7170521422cd3b0d65d55ac2
                 required
               />
               Service Price
@@ -126,7 +128,6 @@ const EditServices = ({ item }) => {
                 placeholder={desc}
                 required
               />
-              {/* <input type="file" name="doc_img" value={doc_img}/> */}
               <button type="submit">Edit</button>
             </div>
           </form>

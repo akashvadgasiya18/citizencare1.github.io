@@ -10,8 +10,6 @@ import {
 import { FaListUl, FaUserTie } from "react-icons/fa";
 
 const Slidebar1 = ({ Children }) => {
-  // const [isOpen,setIsOpen]=useState();
-  // const toggle = () => setIsOpen(!isOpen);
   const menuItems = [
     {
       label: "Dashbaord",
