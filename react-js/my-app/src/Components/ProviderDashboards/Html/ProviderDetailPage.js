@@ -1,9 +1,10 @@
 import { Typography } from "antd";
 import React from "react";
 import { useEffect } from "react";
+import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { providerSingleDetails } from '../../../Redux/Actions/ServiceAction';
+import { providerSingleDetails } from "../../../Redux/Actions/ServiceAction";
 
 const ProviderDetailPage = () => {
   const dispatch = useDispatch();
@@ -65,14 +66,13 @@ const ProviderDetailPage = () => {
                   <td>{provider.p_add}</td>
                   <td>
                     <Link to="/providerDash/provideDetails/editProviderdetail">
-                      <i
-                        class="fa-solid fa-pen edit-icons icons-1"
-                        style={{
-                          cursor: "pointer",
-                          // marginRight: "30px",
-                          paddingRight: "30px",
-                        }}
-                      ></i>
+                      <Button variant="primary">
+                        <i
+                          class="fa-solid fa-pen edit-icons mr-2"
+                          style={{ fontSize: "12px" }}
+                        ></i>
+                        Edit
+                      </Button>
                     </Link>
                   </td>
                 </tr>

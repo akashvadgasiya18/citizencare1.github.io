@@ -134,7 +134,7 @@ const ProviderEdit = () => {
               required
             />
             <p>
-              <b>(can't be modified..)</b>
+              <b>(Email can't be modified..)</b>
             </p>
             <input
               type="text"

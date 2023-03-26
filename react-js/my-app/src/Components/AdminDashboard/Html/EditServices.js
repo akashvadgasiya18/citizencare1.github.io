@@ -2,11 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Typography } from "antd";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
-<<<<<<< HEAD
-=======
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
->>>>>>> 5a19078c8f83cf80daa85c9df0073275772ab8b1
 import axios from "axios";
 
 const EditServices = ({ item }) => {
@@ -24,7 +21,7 @@ const EditServices = ({ item }) => {
     price: "",
     rating: "",
     likes: "",
-    desc: ""
+    desc: "",
   });
 
   var name, value;
@@ -38,7 +35,7 @@ const EditServices = ({ item }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     ser.id = serID;
-    const { id ,price, rating , likes, desc } = ser;
+    const { id, price, rating, likes, desc } = ser;
     const res = await fetch("/edit_service", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -47,7 +44,7 @@ const EditServices = ({ item }) => {
         price,
         rating,
         likes,
-        desc
+        desc,
       }),
     });
     const data = await res.json();
@@ -132,11 +129,7 @@ const EditServices = ({ item }) => {
         </div>
 
         <div>
-          <form
-            method="post"
-            action=""
-            className="login-form"
-          >
+          <form method="post" action="" className="login-form">
             <div
               style={{
                 backgroundColor: "white",
@@ -150,19 +143,10 @@ const EditServices = ({ item }) => {
                 Edit Services
               </h2>
               Service Name
-              <input
-                type="text"
-                id=""
-                Name="s_name"
-<<<<<<< HEAD
-                // value={s_name}
-                placeholder={s_name}
-=======
-                value={s_name}
->>>>>>> 5a19078c8f83cf80daa85c9df0073275772ab8b1
-                required
-              /><p><bold>(can't modified.)</bold></p>
-
+              <input type="text" id="" Name="s_name" value={s_name} required />
+              <p>
+                <b>(Name can't modified.)</b>
+              </p>
               Service Price
               <input
                 type="number"
@@ -203,7 +187,9 @@ const EditServices = ({ item }) => {
                 onChange={input_hand}
                 required
               />
-              <button type="submit" onClick={handleSubmit}>Edit</button> 
+              <button type="submit" onClick={handleSubmit}>
+                Edit
+              </button>
             </div>
           </form>
         </div>
