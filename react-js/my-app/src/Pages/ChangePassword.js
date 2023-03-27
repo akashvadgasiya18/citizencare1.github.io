@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../css/Registration.css";
 import "../css/Login1.css";
 // import Footer from '../Components/Footer/Footer'
-
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../Components/Footer/Footer";

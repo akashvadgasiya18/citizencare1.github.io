@@ -3,17 +3,45 @@ import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import Data1 from "../../ServiceItem/Data1";
+import { toast } from "react-toastify";
 import { providersDetails } from "../../../Redux/Actions/ServiceAction";
 
 const ProviderPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const providersList = useSelector((state) => state.providersList);
   const { error, providers } = providersList;
 
   useEffect(() => {
     dispatch(providersDetails());
   }, [dispatch]);
+
+  const handel  = async (id) => {
+    const res = await fetch("/delete_provider", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id
+        }),
+    });
+    if (res.status === 429) {
+        toast.error("Something went wrong.", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
+    }
+    else if (res.status === 201) {
+      navigate("/dashmain/providerpage");
+      toast.success("Successfully deleted.", {          
+        position: "top-left",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    }
+  }
   return (
     <>
       <div className="home-container">
@@ -80,14 +108,7 @@ const ProviderPage = () => {
                                   send
                                 </Button>
                               </Link>
-                              {/* <i
-                                class="fa-solid fa-trash edit-icons icons-2"
-                                style={{
-                                  color: "#ce3d3d",
-                                  cursor: "pointer",
-                                }}
-                              ></i> */}
-                              <Button variant="danger">Delete</Button>
+                              <Button variant="danger" onClick={ () => handel(item._id) }>Delete</Button>
                             </td>
                           </tr>
                         );

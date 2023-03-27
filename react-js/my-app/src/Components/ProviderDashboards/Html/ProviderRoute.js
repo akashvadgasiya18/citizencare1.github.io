@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Welcomepage from "./Welcomepage";
 import EditRoute from "./EditRoute";
 import ProviderOrder from "./ProviderOrder";
-import ProviderPasschange from "./ProviderPasschange";
+import ProviderPasschange from "../../UserDashboard/Html/PassChange";
 
 const ProviderRoute = () => {
   return (

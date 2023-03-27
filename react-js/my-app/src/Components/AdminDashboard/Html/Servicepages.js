@@ -1,22 +1,45 @@
 import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
-// import Data1 from "../../ServiceItem/Data1";
 import { Typography } from "antd";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import "../css/servicepage.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listService } from "../../../Redux/Actions/ServiceAction";
-// import axios from "axios";
-// import { DEL } from "../../../Redux/Actions/action";
 
 const Servicepages = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const serviceList = useSelector((state) => state.serviceList);
   const { error, service } = serviceList;
   useEffect(() => {
     dispatch(listService());
   }, [dispatch]);
-
+  const handel  = async (id) => {
+    const res = await fetch("/delete_service", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id
+        }),
+    });
+    if (res.status === 429) {
+        toast.error("Something went wrong.", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
+    }
+    else if (res.status === 201) {
+      navigate("/dashmain/services");
+      toast.success("Successfully deleted.", {          
+        position: "top-left",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    }
+  }
   const getdata = useSelector((state) => state.cartreducer.carts);
   console.log(getdata);
 
@@ -95,7 +118,7 @@ const Servicepages = () => {
                                   Edit
                                 </Button>
                               </Link>
-                              <Button variant="danger" className="ml-3">
+                              <Button variant="danger" className="ml-3" onClick={ () => handel(item._id) }>
                                 Delete
                               </Button>
                             </td>

@@ -283,6 +283,21 @@ router.post("/edit_provider", async (req, res) => {
   }
 });
 
+//------------------------------delete-provider-----------------------
+router.post("/delete_provider", async (req, res) => {
+  const { id } = req.body;
+  try
+  {
+    await Provider.deleteOne({ _id: id});
+    res.status(201).json({});
+  }
+  catch(err)
+  {
+    res.status(429).json({});
+    console.log(err);
+  }
+});
+
 //------------------- logout ------------------------------------
 router.get("/logout", (req, res) => {
   res.clearCookie("jwtoken", { path: "/" });

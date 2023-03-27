@@ -119,7 +119,7 @@ const AddservicePage = () => {
                   type="text"
                   id=""
                   Name="s_name"
-                  value={ser.s_name}
+                  value={ser.s_name} 
                   onChange={input_hand}
                   placeholder="Enter service Name"
                   autoComplete="off"

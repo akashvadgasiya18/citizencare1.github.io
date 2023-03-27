@@ -11,7 +11,7 @@ require("../db");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "/public/details/");
+    cb(null, "public/details/");
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + "_" + file.originalname);
@@ -43,6 +43,7 @@ router.post("/add_services", upload.single("doc_img"), async (req, res) => {
 });
 
 // ------------------------service-edit----------------------
+
 router.post("/edit_service", async (req, res) => {
   const { id, price , rating , likes , desc} = req.body;
   if(!id || ! price || ! rating || !likes || !desc)
@@ -77,6 +78,21 @@ router.post("/edit_service", async (req, res) => {
       }
     );
     return res.status(201).json({});
+  }
+});
+
+//-------------------------------delete-service---------------------------------
+router.post("/delete_service", async (req, res) => {
+  const { id } = req.body;
+  try
+  {
+    await Details.deleteOne({_id : id});
+    res.status(201).json({});
+  }
+  catch(err)
+  {
+    res.status(429).json({});
+    console.log(err);
   }
 });
 

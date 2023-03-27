@@ -16,7 +16,6 @@ import { Avatar } from "@mui/material";
 
 const Navbar5 = (props) => {
   const loggedIn = window.localStorage.getItem("isLoggedIn");
-  // console.log(loggedIn, "Login");
   const [open, setOpen] = useState(false);
 
   const [hide, setHide] = useState(false);
