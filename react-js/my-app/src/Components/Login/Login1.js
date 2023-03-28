@@ -67,7 +67,7 @@ const Login1 = () => {
         "provider",
         JSON.stringify({ email, password })
       );
-      // window.localStorage.setItem("isProvider", true);
+      window.localStorage.setItem("isProvider", true);
       navigate("/providerDash");
     } else if (res.status === 203) {
       // dispatch({ type: "ADMIN", payload: true });
@@ -77,7 +77,7 @@ const Login1 = () => {
         hideProgressBar: "false",
       });
       window.localStorage.setItem("admin", JSON.stringify({ email, password }));
-      // window.localStorage.setItem("isAdmin", true);
+      window.localStorage.setItem("isAdmin", true);
       navigate("/dashmain");
     }
   };
