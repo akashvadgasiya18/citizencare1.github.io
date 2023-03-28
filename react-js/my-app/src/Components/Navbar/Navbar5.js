@@ -22,13 +22,6 @@ const Navbar5 = (props) => {
   console.log(hide);
 
   const getdata = useSelector((state) => state.cartreducer.carts);
-
-  //   const drawerToggle = () => {
-  //     setOpen((prev) => {
-  //       return { open: !prev.open };
-  //     });
-  //   };
-
   let drawerClasses = "side-drawer";
   if (open) {
     drawerClasses = "side-drawer opens";
@@ -275,7 +268,12 @@ const Navbar5 = (props) => {
                         </Badge>
                       </Link>
                       <Link to="/registration">
-                        <Button variant="outline-dark" style={{marginTop:'14px'}}>Register</Button>
+                        <Button
+                          variant="outline-dark"
+                          style={{ marginTop: "14px" }}
+                        >
+                          Register
+                        </Button>
                       </Link>
                       <Link to="/login">
                         <Button variant="outline-dark my-3">Login</Button>
