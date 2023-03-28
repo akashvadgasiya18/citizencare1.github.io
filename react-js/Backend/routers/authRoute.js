@@ -7,6 +7,7 @@ const Review = require("../models/ReviewSchema");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 const multer = require("multer");
+var nodemailer = require("nodemailer");
 const asyncHandler = require("express-async-handler");
 
 require("../db");
@@ -294,6 +295,46 @@ router.post("/delete_provider", async (req, res) => {
   catch(err)
   {
     res.status(429).json({});
+    console.log(err);
+  }
+});
+
+//--------------------provider-info-send--------------------------
+router.post("/send_order", async (req,res) => {
+  const { p_email } = req.body;
+  try
+  {
+    const providerExist = await Provider.findOne({p_email: p_email});
+    if (providerExist) {
+      var transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: "shreyabundheliya2109@gmail.com",
+          pass: "fbqrhmvatldjfhxi",
+        },
+      });
+
+      var mailOptions = {
+        from: "shreyabundheliya2109@gmail.com",
+        to: p_email,
+        subject: "Order details",
+        text: "Hello",
+      };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      });
+      return res.status(201).json({});
+    } else
+    {
+      return res.status(413).json({ message: "Not exists." });
+    }
+  }
+  catch (err) {
     console.log(err);
   }
 });

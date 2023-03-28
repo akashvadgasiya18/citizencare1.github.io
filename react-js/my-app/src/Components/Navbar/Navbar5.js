@@ -16,6 +16,8 @@ import { Avatar } from "@mui/material";
 
 const Navbar5 = (props) => {
   const loggedIn = window.localStorage.getItem("isLoggedIn");
+  const providerIn = window.localStorage.getItem("isProvider");
+  const adminIn = window.localStorage.getItem("isAdmin");
   const [open, setOpen] = useState(false);
 
   const [hide, setHide] = useState(false);
@@ -84,6 +86,104 @@ const Navbar5 = (props) => {
                     )}
                   </PopupState>
                 </div>
+              </>
+            )}
+          </div>
+
+          <div className="burger_menu">
+            <i
+              class="fa-solid fa-bars"
+              style={{ color: "black", fontSize: "25px", cursor: "pointer" }}
+              onClick={() => setOpen(true) || setHide(false)}
+            ></i>
+          </div>
+        </>
+      );
+    } else if (providerIn) {
+      return (
+        <>
+          <div className="two-btn-appbar">
+            {open ? null : (
+              <>
+                <PopupState variant="popover" popupId="demo-popup-menu">
+                  {(popupState) => (
+                    <React.Fragment>
+                      <Avatar
+                        src="/broken-image.jpg"
+                        {...bindTrigger(popupState)}
+                        style={{ cursor: "pointer" }}
+                      />
+                      <Menu {...bindMenu(popupState)}>
+                        <MenuItem onClick={popupState.close}>
+                          <Link
+                            to="/providerDash"
+                            style={{ textDecoration: "none", color: "black" }}
+                          >
+                            <i class="fa-solid fa-user mr-2"></i>ProviderDash
+                          </Link>
+                        </MenuItem>
+                        <MenuItem onClick={popupState.close}>
+                          <Link
+                            to="/logout"
+                            style={{ textDecoration: "none", color: "black" }}
+                          >
+                            <i class="fa-solid fa-right-from-bracket mr-2"></i>
+                            Logout
+                          </Link>
+                        </MenuItem>
+                      </Menu>
+                    </React.Fragment>
+                  )}
+                </PopupState>
+              </>
+            )}
+          </div>
+
+          <div className="burger_menu">
+            <i
+              class="fa-solid fa-bars"
+              style={{ color: "black", fontSize: "25px", cursor: "pointer" }}
+              onClick={() => setOpen(true) || setHide(false)}
+            ></i>
+          </div>
+        </>
+      );
+    } else if (adminIn) {
+      return (
+        <>
+          <div className="two-btn-appbar">
+            {open ? null : (
+              <>
+                <PopupState variant="popover" popupId="demo-popup-menu">
+                  {(popupState) => (
+                    <React.Fragment>
+                      <Avatar
+                        src="/broken-image.jpg"
+                        {...bindTrigger(popupState)}
+                        style={{ cursor: "pointer" }}
+                      />
+                      <Menu {...bindMenu(popupState)}>
+                        <MenuItem onClick={popupState.close}>
+                          <Link
+                            to="/dashmain"
+                            style={{ textDecoration: "none", color: "black" }}
+                          >
+                            <i class="fa-solid fa-user mr-2"></i>Dashboard
+                          </Link>
+                        </MenuItem>
+                        <MenuItem onClick={popupState.close}>
+                          <Link
+                            to="/logout"
+                            style={{ textDecoration: "none", color: "black" }}
+                          >
+                            <i class="fa-solid fa-right-from-bracket mr-2"></i>
+                            Logout
+                          </Link>
+                        </MenuItem>
+                      </Menu>
+                    </React.Fragment>
+                  )}
+                </PopupState>
               </>
             )}
           </div>
@@ -208,7 +308,6 @@ const Navbar5 = (props) => {
                     </>
                   );
                 })}
-
                 {loggedIn ? (
                   <>
                     <Link to="/cart">
@@ -262,6 +361,93 @@ const Navbar5 = (props) => {
                       )}
                     </PopupState>
                   </>
+                ) : providerIn ? (
+                  <>
+                    <PopupState variant="popover" popupId="demo-popup-menu">
+                      {(popupState) => (
+                        <React.Fragment>
+                          <Avatar
+                            src="/broken-image.jpg"
+                            {...bindTrigger(popupState)}
+                            style={{
+                              cursor: "pointer",
+                              marginTop: "20px",
+                              marginRight: "20px",
+                            }}
+                          />
+                          <Menu {...bindMenu(popupState)}>
+                            <MenuItem onClick={popupState.close}>
+                              <Link
+                                to="/providerDash"
+                                style={{
+                                  textDecoration: "none",
+                                  color: "black",
+                                }}
+                              >
+                                <i class="fa-solid fa-user mr-2"></i>
+                                ProviderDash
+                              </Link>
+                            </MenuItem>
+                            <MenuItem onClick={popupState.close}>
+                              <Link
+                                to="/logout"
+                                style={{
+                                  textDecoration: "none",
+                                  color: "black",
+                                }}
+                              >
+                                <i class="fa-solid fa-right-from-bracket mr-2"></i>
+                                Logout
+                              </Link>
+                            </MenuItem>
+                          </Menu>
+                        </React.Fragment>
+                      )}
+                    </PopupState>
+                  </>
+                ) : adminIn ? (
+                  <>
+                    <PopupState variant="popover" popupId="demo-popup-menu">
+                      {(popupState) => (
+                        <React.Fragment>
+                          <Avatar
+                            src="/broken-image.jpg"
+                            {...bindTrigger(popupState)}
+                            style={{
+                              cursor: "pointer",
+                              marginTop: "20px",
+                              marginRight: "20px",
+                            }}
+                          />
+                          <Menu {...bindMenu(popupState)}>
+                            <MenuItem onClick={popupState.close}>
+                              <Link
+                                to="/dashmain"
+                                style={{
+                                  textDecoration: "none",
+                                  color: "black",
+                                }}
+                              >
+                                <i class="fa-solid fa-user mr-2"></i>Dashboard
+                              </Link>
+                            </MenuItem>
+                            <MenuItem onClick={popupState.close}>
+                              <Link
+                                to="/logout"
+                                style={{
+                                  textDecoration: "none",
+                                  color: "black",
+                                }}
+                              >
+                                <i class="fa-solid fa-right-from-bracket mr-2"></i>
+                                Logout
+                              </Link>
+                            </MenuItem>
+                          </Menu>
+                        </React.Fragment>
+                      )}
+                    </PopupState>
+                  </>
                 ) : (
                   <>
                     <div style={{ display: "grid" }}>
@@ -275,7 +461,12 @@ const Navbar5 = (props) => {
                         </Badge>
                       </Link>
                       <Link to="/registration">
-                        <Button variant="outline-dark" style={{marginTop:'14px'}}>Register</Button>
+                        <Button
+                          variant="outline-dark"
+                          style={{ marginTop: "14px" }}
+                        >
+                          Register
+                        </Button>
                       </Link>
                       <Link to="/login">
                         <Button variant="outline-dark my-3">Login</Button>

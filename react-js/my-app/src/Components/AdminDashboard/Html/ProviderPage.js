@@ -18,30 +18,52 @@ const ProviderPage = () => {
     dispatch(providersDetails());
   }, [dispatch]);
 
-  const handel  = async (id) => {
+  const handel = async (id) => {
     const res = await fetch("/delete_provider", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id
-        }),
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id,
+      }),
     });
     if (res.status === 429) {
-        toast.error("Something went wrong.", {
-          position: "top-center",
-          theme: "colored",
-          hideProgressBar: "false",
-        });
-    }
-    else if (res.status === 201) {
+      toast.error("Something went wrong.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 201) {
       navigate("/dashmain/providerpage");
-      toast.success("Successfully deleted.", {          
+      toast.success("Successfully deleted.", {
         position: "top-left",
         theme: "colored",
         hideProgressBar: "false",
       });
     }
-  }
+  };
+  const send = async (p_email) => {
+    const res = await fetch("/send_order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        p_email,
+      }),
+    });
+    if (res.status === 413) {
+      toast.error("Something went wrong.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 201) {
+      navigate("/dashmain/providerpage");
+      toast.success("Order sent to provider.", {
+        position: "top-left",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    }
+  };
   return (
     <>
       <div className="home-container">
@@ -104,11 +126,20 @@ const ProviderPage = () => {
                             <td>{item.p_file}</td>
                             <td>
                               <Link to="/dashmain/providerorder">
-                                <Button variant="primary" className="mr-3">
+                                <Button
+                                  variant="primary"
+                                  className="mr-3"
+                                  onClick={() => send(item.p_email)}
+                                >
                                   send
                                 </Button>
                               </Link>
-                              <Button variant="danger" onClick={ () => handel(item._id) }>Delete</Button>
+                              <Button
+                                variant="danger"
+                                onClick={() => handel(item._id)}
+                              >
+                                Delete
+                              </Button>
                             </td>
                           </tr>
                         );
