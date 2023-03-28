@@ -8,6 +8,7 @@ import ServiceMain from "./ServiceMain";
 import ProviderPage from "./ProviderPage";
 import ProviderOrder from "./ProviderOrder";
 import Welcomepage from './Welcomepage';
+import ReviewsPage from "./ReviewsPage";
 // import AdminLogin from "./AdminLogin";
 // import AddservicePage from "./AddservicePage";
 // import AddServices from './AddServices';
@@ -23,6 +24,7 @@ const AppRoute = () => {
         <Route exact path="/providerpage" element={<ProviderPage />}></Route>
         <Route exact path="/services/*" element={<ServiceMain />} />
         <Route exact path="/providerorder" element={<ProviderOrder />} />
+        <Route ecact path="/reviewPage" element={<ReviewsPage />} />
       </Routes>
 
       {/* <Routes>

@@ -7,7 +7,7 @@ import {
   UserOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import { FaListUl, FaUserTie } from "react-icons/fa";
+import { FaListUl, FaThumbsUp, FaUserTie } from "react-icons/fa";
 
 const Slidebar1 = ({ Children }) => {
   const menuItems = [
@@ -35,6 +35,11 @@ const Slidebar1 = ({ Children }) => {
       label: "Services",
       path: "/dashmain/services",
       icon: <FaListUl style={{ fontSize: 20 }} />,
+    },
+    {
+      label: "Reviews",
+      path: "/dashmain/reviewPage",
+      icon: <FaThumbsUp style={{ fontSize: 20 }} />,
     },
     {
       label: "Logout",

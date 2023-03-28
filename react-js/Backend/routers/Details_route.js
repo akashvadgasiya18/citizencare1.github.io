@@ -45,35 +45,30 @@ router.post("/add_services", upload.single("doc_img"), async (req, res) => {
 // ------------------------service-edit----------------------
 
 router.post("/edit_service", async (req, res) => {
-  const { id, price , rating , likes , desc} = req.body;
-  if(!id || ! price || ! rating || !likes || !desc)
-  {
+  const { id, price, rating, likes, desc } = req.body;
+  if (!id || !price || !rating || !likes || !desc) {
     return res.status(429).json({});
   }
-  const de_exist = await Details.findOne({ _id : id});
-  if(!de_exist)
-  {
+  const de_exist = await Details.findOne({ _id: id });
+  if (!de_exist) {
     return res.status(413).json({});
-  } else if( rating > '5')
-  {
+  } else if (rating > "5") {
     return res.status(427).json({});
-  }
-  else
-  {
+  } else {
     const n_price = await price;
     const n_rating = await rating;
     const n_likes = await likes;
-    const n_desc= await desc;
+    const n_desc = await desc;
     await Details.updateOne(
       {
-        _id : id,
+        _id: id,
       },
       {
         $set: {
           price: n_price,
           rating: n_rating,
           likes: n_likes,
-          desc: n_desc
+          desc: n_desc,
         },
       }
     );
@@ -84,13 +79,10 @@ router.post("/edit_service", async (req, res) => {
 //-------------------------------delete-service---------------------------------
 router.post("/delete_service", async (req, res) => {
   const { id } = req.body;
-  try
-  {
-    await Details.deleteOne({_id : id});
+  try {
+    await Details.deleteOne({ _id: id });
     res.status(201).json({});
-  }
-  catch(err)
-  {
+  } catch (err) {
     res.status(429).json({});
     console.log(err);
   }
@@ -152,6 +144,19 @@ router.post("/add_review", async (req, res) => {
     }
   } catch (err) {
     return res.status(402).json({});
+  }
+});
+
+//  ------------------------- delete reviews ------------
+
+router.post("/delete_review", async (req, res) => {
+  const { id } = req.body;
+  try {
+    await Review.deleteOne({ _id: id });
+    res.status(201).json({});
+  } catch (err) {
+    res.status(429).json({});
+    console.log(err);
   }
 });
 

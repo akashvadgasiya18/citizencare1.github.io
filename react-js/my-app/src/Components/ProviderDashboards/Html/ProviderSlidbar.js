@@ -26,8 +26,8 @@ const ProviderSlidbar = ({ Children }) => {
       icon: <UserOutlined style={{ fontSize: 20 }} />,
     },
     {
-      label: "Logout",
-      path: "/logout",
+      label: "Back",
+      path: "/",
       icon: <LeftCircleOutlined style={{ fontSize: 25 }} />,
     },
   ];

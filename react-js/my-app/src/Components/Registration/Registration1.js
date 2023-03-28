@@ -283,7 +283,7 @@ const Registration1 = () => {
                     <input
                       type="text"
                       name="phone_no"
-                      placeholder="Enter phone_no"
+                      placeholder="Enter Contact no"
                       autoComplete="off"
                       value={values.phone_no}
                       onChange={handleChange}
@@ -372,7 +372,7 @@ const Registration1 = () => {
                     <input
                       type="text"
                       name="p_mno"
-                      placeholder="Enter phone_no"
+                      placeholder="contact no"
                       autoComplete="off"
                       value={provider.p_mno}
                       onChange={input_handle}
