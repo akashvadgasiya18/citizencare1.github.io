@@ -9,34 +9,16 @@ import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 
 const CartMain = () => {
-  // const [price, setPrice] = useState();
-  // console.log(price);
   const loggedIn = window.localStorage.getItem("isLoggedIn");
-
   const getdata = useSelector((state) => state.cartreducer.carts);
-  console.log(getdata);
-
-  // const { emptyCart } = useCart();
+  console.log("getdata item :", getdata);
 
   const dispatch = useDispatch();
 
   const dlt = (_id) => {
     dispatch(DEL(_id));
   };
-
   const totalPrice = getdata.reduce((price, item) => price + item.price, 0);
-
-  // useEffect(() => {
-  //   const total = () => {
-  //     let price1 = 0;
-  //     setPrice(
-  //       getdata.map((ele, k) => {
-  //         price1 = ele.price + price1;
-  //       })
-  //     );
-  //     total(price);
-  //   };
-  // }, []);
 
   return (
     <>
@@ -115,11 +97,16 @@ const CartMain = () => {
               </Link>
               {loggedIn ? (
                 <Link to="/checkoutpage">
-                  <button className="btn btn-primary my-3 mr-3">
+                  <button className="btn btn-primary my-3 mr-3" items={getdata}>
                     Checkout
                   </button>
                 </Link>
               ) : (
+                // <Link to="/checkoutpage">
+                //   <button className="btn btn-primary my-3 mr-3">
+                //     Checkout
+                //   </button>
+                // </Link>
                 <Link to="/login">
                   <button className="btn btn-primary my-3 mr-3">
                     Checkout

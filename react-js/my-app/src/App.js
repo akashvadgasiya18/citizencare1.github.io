@@ -16,13 +16,14 @@ import ServicePage from "./Components/ServicePages/ServicePage";
 import Pagenotfound from "./Pages/Pagenotfound";
 import Logout from "./Components/Logout/Logout";
 import { ToastContainer } from "react-toastify";
-import ChackOut from "./Components/PaymentPage/ChackOut";
+// import ChackOut from "./Components/PaymentPage/ChackOut";
 import Items from "./Components/ServiceItem/Items";
 import AboutMain from "./Pages/About/AboutMain";
 import ServiceMains from "./Pages/Service/ServiceMains";
 import AdminLogin from "./Components/AdminDashboard/Html/AdminLogin";
 import Main from "./Components/AdminDashboard/Html/Main";
 import ProviderMain from "./Components/ProviderDashboards/Html/ProviderMain";
+import PaymentPage from "./Components/PaymentPage/PaymentPage";
 
 const App = () => {
   return (
@@ -44,8 +45,10 @@ const App = () => {
 
           <Route exact path="/dashmain/*" element={<Main />} />
           <Route exact path="/cart" element={<Cart />} />
+
           <Route exact path="/changepassword" element={<ChangePassword />} />
-          <Route exact path="/checkoutpage" element={<ChackOut />} />
+          {/* <Route exact path="/checkoutpage" element={<ChackOut />} /> */}
+          <Route exact path="/checkoutpage" element={<PaymentPage />} />
           <Route exact path="/details" element={<Items />} />
 
           <Route exact path="/details/:id" element={<ServicePage />}></Route>
