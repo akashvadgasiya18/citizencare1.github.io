@@ -1,7 +1,6 @@
 import React from "react";
 // import { useCart } from "react-use-cart";
 import "react-bootstrap";
-// import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { DEL } from "../../Redux/Actions/action";
 import impt from "../../images/empty-cart.gif";
@@ -96,11 +95,19 @@ const CartMain = () => {
                 <button className="btn btn-success my-3 mr-3">continue</button>
               </Link>
               {loggedIn ? (
+<<<<<<< HEAD
                 <Link to="/checkoutpage">
                   <button className="btn btn-primary my-3 mr-3" items={getdata}>
                     Checkout
                   </button>
                 </Link>
+=======
+                  <Link to="/checkoutpage">
+                    <button className="btn btn-primary my-3 mr-3">
+                      Checkout
+                    </button>
+                  </Link>
+>>>>>>> cebe57bee869491319e52f19dc7fb0076c49660c
               ) : (
                 // <Link to="/checkoutpage">
                 //   <button className="btn btn-primary my-3 mr-3">
