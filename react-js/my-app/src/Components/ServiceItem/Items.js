@@ -6,9 +6,16 @@ import { Container, Row } from "reactstrap";
 // import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { listService } from "../../Redux/Actions/ServiceAction";
+<<<<<<< HEAD
+import { Link } from "react-router-dom";
+// import img from '../../assets/details/'
+import { ADD } from "../../Redux/Actions/action";
+import Rating from "./Rating";
+=======
 // import { Link } from "react-router-dom";
 // import { ADD } from "../../Redux/Actions/action";
 // import Rating from "./Rating";
+>>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
 import "../../Components/ServiceItem/service-item.css";
 import ServiceItems from "./ServiceItems";
 
@@ -23,7 +30,7 @@ const Items = () => {
     dispatch(listService());
   }, [dispatch]);
 
-  console.log("Services : ", service);
+  // console.log("Services : ", service);
 
   // const dispatch = useDispatch();
 
@@ -46,6 +53,30 @@ const Items = () => {
               </div>
               {service.map((item) => {
                 return (
+<<<<<<< HEAD
+                  // <ServiceItems
+                  // key={item._id}
+                  // key={index}
+                  // item={item}
+                  // imgpath={imgpath}
+                  // imgpath={item.doc_img}
+                  // s_name={item.s_name}
+                  // price={item.price}
+                  // rating={item.rating}
+                  // likes={item.likes}
+                  // desc={item.desc}
+                  // />
+                  <>
+                    <Col lg="4" md="4" sm="6" className="mb-3">
+                      <div className="car__item">
+                        <div className="car__img">
+                          {/* <img src={i1} alt="" /> */}
+                          <img
+                            src= {`http://localhost:3001/assets/image/${item.doc_img}`}                            alt="img1"
+                            // className="w-100"
+                          />
+                        </div>
+=======
                   <ServiceItems
                     key={item._id}
                     // key={index}
@@ -70,6 +101,7 @@ const Items = () => {
                   //           // className="w-100"
                   //         />
                   //       </div>
+>>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
 
                   //       <div className="car__item-content mt-4">
                   //         <h4 className="section__title text-center">

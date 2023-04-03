@@ -103,7 +103,7 @@ const AddservicePage = () => {
             </Typography.Title>
           </div>
           <div>
-            <form method="post" action="" className="login-form">
+            <form method="post" action="" className="login-form" enctype="multipart/form-data">
               <div
                 style={{
                   backgroundColor: "white",

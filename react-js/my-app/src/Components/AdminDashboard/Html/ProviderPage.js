@@ -33,6 +33,7 @@ const ProviderPage = () => {
         hideProgressBar: "false",
       });
     } else if (res.status === 201) {
+      window.location.reload();
       navigate("/dashmain/providerpage");
       toast.success("Successfully deleted.", {
         position: "top-left",
@@ -123,7 +124,13 @@ const ProviderPage = () => {
                             <td>{item.p_email}</td>
                             <td>{item.p_mno}</td>
                             <td>{item.p_add}</td>
-                            <td>{item.p_file}</td>
+                            <td>
+                              <img
+                                src={`http://localhost:3001/assets/img_pro/${item.p_file}`}
+                                alt=""
+                                style={{ height: "3rem" }}
+                              />
+                            </td>
                             <td>
                               <Link to="/dashmain/providerorder">
                                 <Button

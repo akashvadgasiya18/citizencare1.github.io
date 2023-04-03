@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/servicepage.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+// import img from '../../../../../Backend/assets/image/1680286832811_IMG-20211017-WA0030.jpg'
 import { listService } from "../../../Redux/Actions/ServiceAction";
 
 const Servicepages = () => {
@@ -97,7 +98,7 @@ const Servicepages = () => {
                           <tr item={item}>
                             <td>
                               <img
-                                src={item.doc_img}
+                                src= {`http://localhost:3001/assets/image/${item.doc_img}`}
                                 alt=""
                                 style={{ height: "3rem" }}
                               />
