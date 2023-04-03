@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const OrderSchema = new mongoose.Schema({
-<<<<<<< HEAD
   Ordername: {
     type: String,
     required: true,
@@ -38,10 +37,3 @@ OrderSchema.pre("save", async function (next) {
 
 const Order = mongoose.model("ORDER", OrderSchema);
 module.exports = Order;
-=======
-    u_name: {
-        type: String,
-        required: true,
-    },
-});
->>>>>>> cebe57bee869491319e52f19dc7fb0076c49660c

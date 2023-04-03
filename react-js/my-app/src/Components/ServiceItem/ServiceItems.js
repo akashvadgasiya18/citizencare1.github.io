@@ -3,7 +3,7 @@ import { Col } from "reactstrap";
 import "../../Components/ServiceItem/service-item.css";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
-import i1 from "../../images/doctor1.jpg";
+// import i1 from "../../images/doctor1.jpg";
 
 const ServiceItems = ({ item }) => {
   return (
@@ -12,8 +12,8 @@ const ServiceItems = ({ item }) => {
         <div className="car__img">
           <Link to={`/details/${item._id}`}>
             <img
-              src={i1}
-              // src={`http://localhost:3001/Backend/public/images/${item.doc_img}`}
+              // src={i1}
+              src={`http://localhost:3001/assets/image/${item.doc_img}`}
               alt=""
             />
           </Link>

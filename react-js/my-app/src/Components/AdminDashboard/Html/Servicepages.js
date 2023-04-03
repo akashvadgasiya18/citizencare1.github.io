@@ -98,7 +98,7 @@ const Servicepages = () => {
                           <tr item={item}>
                             <td>
                               <img
-                                src= {`http://localhost:3001/assets/image/${item.doc_img}`}
+                                src={`http://localhost:3001/assets/image/${item.doc_img}`}
                                 alt=""
                                 style={{ height: "3rem" }}
                               />

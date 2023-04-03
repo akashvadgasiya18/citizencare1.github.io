@@ -1,57 +1,48 @@
 import React from "react";
 import "react-bootstrap";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DEL } from "../../Redux/Actions/action";
-import axios from 'axios'
-import { useEffect } from "react";
 import impt from "../../images/empty-cart.gif";
 import Table from "react-bootstrap/Table";
+import axios from "axios";
 import { userSingleDetails } from "../../Redux/Actions/ServiceAction";
 import { Link } from "react-router-dom";
 
 const CartMain = () => {
   const loggedIn = window.localStorage.getItem("isLoggedIn");
-  const getdata = useSelector((state) => state.cartreducer.carts);
-<<<<<<< HEAD
-  const totalPrice = getdata.reduce((price, item) => price + item.price, 0);
-=======
-  console.log("getdata item :", getdata);
 
->>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
+  const getdata = useSelector((state) => state.cartreducer.carts);
+  const totalPrice = getdata.reduce((price, item) => price + item.price, 0);
+  // console.log(getdata);
   const dispatch = useDispatch();
   const singleData = useSelector((state) => state.singleData);
   const { user } = singleData;
-  console.log(user.email);
+  // console.log(user.email);
 
   const dlt = (_id) => {
     dispatch(DEL(_id));
   };
-<<<<<<< HEAD
 
   const handle = () => {
     axios
       .post("/create-checkout-session", {
-        getdata
+        getdata,
+        user
       })
       .then((res) => {
         if (res.data.url) {
-          window.location.href= res.data.url;
+          window.location.href = res.data.url;
         }
       })
-      .catch((err) =>
-      {
+      .catch((err) => {
         console.log(err);
-      })
+      });
   };
 
   useEffect(() => {
     dispatch(userSingleDetails());
   }, [dispatch]);
-
-=======
-  const totalPrice = getdata.reduce((price, item) => price + item.price, 0);
-
->>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
   return (
     <>
       {getdata.length ? (
@@ -128,31 +119,14 @@ const CartMain = () => {
                 <button className="btn btn-success my-3 mr-3">continue</button>
               </Link>
               {loggedIn ? (
-<<<<<<< HEAD
-                  <button onClick={handle} className="btn btn-primary my-3 mr-3" items={getdata}>
-                    Checkout
-                  </button>
-=======
-<<<<<<< HEAD
-                <Link to="/checkoutpage">
-                  <button className="btn btn-primary my-3 mr-3" items={getdata}>
-                    Checkout
-                  </button>
-                </Link>
-=======
-                  <Link to="/checkoutpage">
-                    <button className="btn btn-primary my-3 mr-3">
-                      Checkout
-                    </button>
-                  </Link>
->>>>>>> cebe57bee869491319e52f19dc7fb0076c49660c
->>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
+                <button
+                  className="btn btn-primary my-3 mr-3"
+                  items={getdata}
+                  onClick={handle}
+                >
+                  Checkout
+                </button>
               ) : (
-                // <Link to="/checkoutpage">
-                //   <button className="btn btn-primary my-3 mr-3">
-                //     Checkout
-                //   </button>
-                // </Link>
                 <Link to="/login">
                   <button className="btn btn-primary my-3 mr-3">
                     Checkout

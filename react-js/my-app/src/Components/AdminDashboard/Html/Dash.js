@@ -96,7 +96,7 @@ const Dash = () => {
                       <tr key={index}>
                         <td>
                           <img
-                            src={item.img}
+                            src={`http://localhost:3001/assets/image/${item.doc_img}`}
                             alt=""
                             style={{ height: "3rem" }}
                           />
