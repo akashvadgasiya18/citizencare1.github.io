@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 const CartMain = () => {
   const loggedIn = window.localStorage.getItem("isLoggedIn");
+
   const getdata = useSelector((state) => state.cartreducer.carts);
   console.log("getdata item :", getdata);
 
@@ -95,19 +96,11 @@ const CartMain = () => {
                 <button className="btn btn-success my-3 mr-3">continue</button>
               </Link>
               {loggedIn ? (
-<<<<<<< HEAD
                 <Link to="/checkoutpage">
                   <button className="btn btn-primary my-3 mr-3" items={getdata}>
                     Checkout
                   </button>
                 </Link>
-=======
-                  <Link to="/checkoutpage">
-                    <button className="btn btn-primary my-3 mr-3">
-                      Checkout
-                    </button>
-                  </Link>
->>>>>>> cebe57bee869491319e52f19dc7fb0076c49660c
               ) : (
                 // <Link to="/checkoutpage">
                 //   <button className="btn btn-primary my-3 mr-3">

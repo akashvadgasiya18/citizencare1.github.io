@@ -161,4 +161,46 @@ router.post("/delete_review", async (req, res) => {
   }
 });
 
+// ---------------------------- order post using payment page-----------------
+
+router.post("/checkoutpage", async (req, res) => {
+  const {
+    fname,
+    email,
+    address,
+    city,
+    state,
+    zipcode,
+    country,
+    s_name,
+    price,
+  } = req.body;
+  if (!fname || !email || !address || !city || !state || !zipcode || !country) {
+    return res.status(417).json({});
+  }
+  try {
+    const de_Exist = await User.findOne({ fname: fname });
+    if (!de_Exist) {
+      return res.status(419).json({});
+    } else {
+      const data = new Order({
+        fname,
+        email,
+        address,
+        city,
+        state,
+        zipcode,
+        country,
+        s_name,
+        price,
+      });
+      await data.save();
+      console.log("backend data:", data);
+      res.status(201).json({});
+    }
+  } catch (err) {
+    return res.status(402).json({});
+  }
+});
+
 module.exports = router;

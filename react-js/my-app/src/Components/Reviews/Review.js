@@ -17,7 +17,7 @@ export default function App() {
   });
 
   var name, value;
-  const input_hand = (e) => {
+  const   input_hand = (e) => {
     // console.log(e);
     name = e.target.name;
     value = e.target.value;

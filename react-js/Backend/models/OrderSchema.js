@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 
 const OrderSchema = new mongoose.Schema({
-<<<<<<< HEAD
-  Ordername: {
+  fname: {
     type: String,
     required: true,
   },
@@ -10,7 +9,7 @@ const OrderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  o_address: {
+  address: {
     type: String,
     required: true,
   },
@@ -18,7 +17,7 @@ const OrderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  stat: {
+  state: {
     type: String,
     required: true,
   },
@@ -30,6 +29,14 @@ const OrderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  s_name: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: String,
+    required: true,
+  },
 });
 
 OrderSchema.pre("save", async function (next) {
@@ -38,10 +45,3 @@ OrderSchema.pre("save", async function (next) {
 
 const Order = mongoose.model("ORDER", OrderSchema);
 module.exports = Order;
-=======
-    u_name: {
-        type: String,
-        required: true,
-    },
-});
->>>>>>> cebe57bee869491319e52f19dc7fb0076c49660c

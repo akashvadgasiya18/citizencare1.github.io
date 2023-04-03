@@ -14,7 +14,28 @@ import {
   SINGLE_SERVICE_REQUEST,
   SINGLE_SERVICE_SUCCESS,
   SINGLE_SERVICE_FAIL,
+  BOOKING_REQUEST,
+  BOOKING_SUCCESS,
+  BOOKING_FAIL,
 } from "../Actions/action";
+
+// ------------------- booking --------------------------------------------
+
+export const bookingservicereducer = (state = { booking: [] }, action) => {
+  switch (action.type) {
+    case BOOKING_REQUEST:
+      return { booking: [] };
+
+    case BOOKING_SUCCESS:
+      return { booking: action.payload };
+
+    case BOOKING_FAIL:
+      return { error: action.payload };
+
+    default:
+      return state;
+  }
+};
 
 export const singleservicereducer = (state = { product: [] }, action) => {
   switch (action.type) {
