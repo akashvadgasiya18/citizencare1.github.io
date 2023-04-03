@@ -58,7 +58,7 @@ export default function App() {
         hideProgressBar: "false",
       });
     } else if (res.status === 201) {
-      // navigate("/login");
+      window.location.reload();
       toast.success("Successfully stored.", {
         position: "top-left",
         theme: "colored",

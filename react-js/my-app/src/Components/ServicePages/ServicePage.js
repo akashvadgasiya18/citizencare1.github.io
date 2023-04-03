@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 import { ADD } from "../../Redux/Actions/action";
 // import {listServiceDetails} from "../../Redux/Actions/ServiceAction"
 import Review from "../Reviews/Review";
-import i1 from "../../images/Bathrrom_clean.jpeg";
+// import i1 from "../../images/Bathrrom_clean.jpeg";
 // import FinalRev from "../Reviews/FinalRev";
 import Reviews2 from "../Reviews/Reviews2";
 import Footer from "../Footer/Footer";
@@ -40,7 +40,7 @@ const ServicePage = ({ item }) => {
   const [price, setPrice] = useState("");
   const [rating, setRating] = useState("");
   const [desc, setDesc] = useState("");
-  // const [doc_img, setdoc_img] = useState(" ");
+  const [doc_img, setdoc_img] = useState(" ");
 
   useEffect(() => {
     // dispatch(listServiceDetails(item.params._id))
@@ -52,7 +52,7 @@ const ServicePage = ({ item }) => {
       setPrice(data.price);
       setRating(data.rating);
       setDesc(data.desc);
-      // setdoc_img(data.doc_img);
+      setdoc_img(data.doc_img);
     };
     fetchData();
   }, [id]);
@@ -81,7 +81,11 @@ const ServicePage = ({ item }) => {
                 </p>
               </Link>
             </div>
-            <img src={i1} alt="" style={{ height: "80%", width: "70%" }} />
+            <img
+              src={`http://localhost:3001/assets/image/${doc_img}`}
+              alt=""
+              style={{ height: "80%", width: "70%" }}
+            />
           </div>
           <div className="product-div-right">
             <span className="product-name">{s_name}</span>

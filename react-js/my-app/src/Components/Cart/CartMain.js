@@ -1,41 +1,47 @@
 import React from "react";
-// import { useCart } from "react-use-cart";
 import "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { DEL } from "../../Redux/Actions/action";
+import axios from 'axios'
+import { useEffect } from "react";
 import impt from "../../images/empty-cart.gif";
 import Table from "react-bootstrap/Table";
+import { userSingleDetails } from "../../Redux/Actions/ServiceAction";
 import { Link } from "react-router-dom";
 
 const CartMain = () => {
-  // const [price, setPrice] = useState();
-  // console.log(price);
   const loggedIn = window.localStorage.getItem("isLoggedIn");
 
   const getdata = useSelector((state) => state.cartreducer.carts);
-  console.log(getdata);
-
-  // const { emptyCart } = useCart();
-
+  const totalPrice = getdata.reduce((price, item) => price + item.price, 0);
   const dispatch = useDispatch();
+  const singleData = useSelector((state) => state.singleData);
+  const { user } = singleData;
+  console.log(user.email);
 
   const dlt = (_id) => {
     dispatch(DEL(_id));
   };
 
-  const totalPrice = getdata.reduce((price, item) => price + item.price, 0);
+  const handle = () => {
+    axios
+      .post("/create-checkout-session", {
+        getdata
+      })
+      .then((res) => {
+        if (res.data.url) {
+          window.location.href= res.data.url;
+        }
+      })
+      .catch((err) =>
+      {
+        console.log(err);
+      })
+  };
 
-  // useEffect(() => {
-  //   const total = () => {
-  //     let price1 = 0;
-  //     setPrice(
-  //       getdata.map((ele, k) => {
-  //         price1 = ele.price + price1;
-  //       })
-  //     );
-  //     total(price);
-  //   };
-  // }, []);
+  useEffect(() => {
+    dispatch(userSingleDetails());
+  }, [dispatch]);
 
   return (
     <>
@@ -68,9 +74,9 @@ const CartMain = () => {
                       <tr key={index}>
                         <td>
                           <img
-                            src={item.doc_img}
+                            src={`http://localhost:3001/assets/image/${item.doc_img}`}
                             alt=""
-                            style={{ height: "6rem" }}
+                            style={{ height: "3rem" }}
                           />
                         </td>
                         <td>{item.s_name}</td>
@@ -113,11 +119,9 @@ const CartMain = () => {
                 <button className="btn btn-success my-3 mr-3">continue</button>
               </Link>
               {loggedIn ? (
-                  <Link to="/checkoutpage">
-                    <button className="btn btn-primary my-3 mr-3">
-                      Checkout
-                    </button>
-                  </Link>
+                  <button onClick={handle} className="btn btn-primary my-3 mr-3" items={getdata}>
+                    Checkout
+                  </button>
               ) : (
                 <Link to="/login">
                   <button className="btn btn-primary my-3 mr-3">

@@ -7,6 +7,7 @@ import { Col, Container, Row } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { listService } from "../../Redux/Actions/ServiceAction";
 import { Link } from "react-router-dom";
+// import img from '../../assets/details/'
 import { ADD } from "../../Redux/Actions/action";
 import Rating from "./Rating";
 import "../../Components/ServiceItem/service-item.css";
@@ -28,7 +29,7 @@ const Items = () => {
     // fetchProducts();
   }, [dispatch]);
 
-  console.log("Services : ", service);
+  // console.log("Services : ", service);
 
   // const dispatch = useDispatch();
 
@@ -70,9 +71,7 @@ const Items = () => {
                         <div className="car__img">
                           {/* <img src={i1} alt="" /> */}
                           <img
-                            // src={"http://localhost:3001/images/" + item.doc_img}
-                            src={`../../../../Backend/public/details/${item.doc_img}`}
-                            alt="img1"
+                            src= {`http://localhost:3001/assets/image/${item.doc_img}`}                            alt="img1"
                             // className="w-100"
                           />
                         </div>

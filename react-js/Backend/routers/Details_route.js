@@ -5,17 +5,18 @@ const router = express.Router();
 const asyncHandler = require("express-async-handler");
 const Review = require("../models/ReviewSchema");
 const User = require("../models/UserSchema");
+const path = require('path');
 require("../db");
 
 // -------------------- add service through admin--------------------------
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/details/");
+    cb(null, "assets/image");
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + "_" + file.originalname);
-  },
+    cb(null, Date.now() + "_" + file.originalname );
+  }
 });
 
 const upload = multer({ storage: storage });
@@ -95,7 +96,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const products = await Details.findById(req.params.id);
     if (products) {
-      res.json(products);
+      res.send(products);
     } else {
       res.status(404).json({ message: "Product not founded" });
     }
@@ -107,7 +108,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const products = await Details.find({});
     if (products) {
-      res.json(products);
+      res.send(products);
     } else {
       res.status(404).json({ message: "Product not founded" });
     }
@@ -119,7 +120,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const products = await Details.findById(req.params.id);
     if (products) {
-      res.json(products);
+      res.send(products);
     } else {
       res.status(404).json({ message: "Product not founded" });
     }

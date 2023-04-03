@@ -2,7 +2,6 @@ import { Typography } from "antd";
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { reviewService } from "../../../Redux/Actions/ReviewAction";
 import Rating from "../../ServiceItem/Rating";
 import { toast } from "react-toastify";
@@ -32,6 +31,7 @@ const ReviewsPage = () => {
         hideProgressBar: "false",
       });
     } else if (res.status === 201) {
+      window.location.reload();
       navigate("/dashmain/reviewPage");
       toast.success("Successfully deleted.", {
         position: "top-left",
@@ -94,15 +94,13 @@ const ReviewsPage = () => {
                           </td>
                           <td>❝ {item.description} ❞</td>
                           <td>
-                            <Link to="/dashboards/services/editservicepage">
-                              <Button
-                                variant="danger"
-                                className="ml-3"
-                                onClick={() => handel(item._id)}
-                              >
-                                Delete
-                              </Button>
-                            </Link>
+                            <Button
+                              variant="danger"
+                              className="ml-3"
+                              onClick={() => handel(item._id)}
+                            >
+                              Delete
+                            </Button>
                           </td>
                         </tr>
                       );

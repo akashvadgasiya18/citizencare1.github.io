@@ -58,7 +58,7 @@ router.post("/registration", async (req, res) => {
 // ---------------------------------- for provider ---------------------------------------------
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/images/");
+    cb(null, "assets/img_pro/");
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + "_" + file.originalname);
@@ -192,7 +192,7 @@ router.get(
   "/providersdatas",
   asyncHandler(async (req, res) => {
     const product = await Provider.find({});
-    res.json(product);
+    res.send(product);
   })
 );
 
