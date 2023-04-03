@@ -9,6 +9,7 @@ const router = express.Router();
 const multer = require("multer");
 var nodemailer = require("nodemailer");
 const asyncHandler = require("express-async-handler");
+const Order = require("../models/OrderSchema");
 
 require("../db");
 
@@ -206,6 +207,15 @@ router.get(
   })
 );
 
+// --------------------- booking get data --------------------------------
+router.get(
+  "/bookingdetails",
+  asyncHandler(async (req, res) => {
+    const product = await Order.find({});
+    res.json(product);
+  })
+);
+
 //----------edit user_profile-----------------------
 
 router.post("/edit_detail", async (req, res) => {
@@ -265,14 +275,14 @@ router.post("/edit_provider", async (req, res) => {
         const n_add = await p_add;
         await Provider.updateOne(
           {
-            _id : id,
+            _id: id,
           },
           {
             $set: {
               p_name: n_name,
               p_role: n_role,
               p_mno: n_mno,
-              p_add: n_add
+              p_add: n_add,
             },
           }
         );
@@ -287,24 +297,20 @@ router.post("/edit_provider", async (req, res) => {
 //------------------------------delete-provider-----------------------
 router.post("/delete_provider", async (req, res) => {
   const { id } = req.body;
-  try
-  {
-    await Provider.deleteOne({ _id: id});
+  try {
+    await Provider.deleteOne({ _id: id });
     res.status(201).json({});
-  }
-  catch(err)
-  {
+  } catch (err) {
     res.status(429).json({});
     console.log(err);
   }
 });
 
 //--------------------provider-info-send--------------------------
-router.post("/send_order", async (req,res) => {
+router.post("/send_order", async (req, res) => {
   const { p_email } = req.body;
-  try
-  {
-    const providerExist = await Provider.findOne({p_email: p_email});
+  try {
+    const providerExist = await Provider.findOne({ p_email: p_email });
     if (providerExist) {
       var transporter = nodemailer.createTransport({
         service: "gmail",
@@ -329,12 +335,10 @@ router.post("/send_order", async (req,res) => {
         }
       });
       return res.status(201).json({});
-    } else
-    {
+    } else {
       return res.status(413).json({ message: "Not exists." });
     }
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
   }
 });

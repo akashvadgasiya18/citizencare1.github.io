@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import Button from "react-bootstrap/Button";
-import Data1 from "../../ServiceItem/Data1";
+// import Data1 from "../../ServiceItem/Data1";
 import { Typography } from "antd";
 import "../css/servicepage.css";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { userBooking } from "../../../Redux/Actions/ServiceAction";
 
 const Order = () => {
+  const dispatch = useDispatch();
+  const bookList = useSelector((state) => state.bookList);
+  const { booking } = bookList;
+
+  useEffect(() => {
+    dispatch(userBooking());
+  }, [dispatch]);
+
   return (
     <>
       <div className="home-container">
@@ -15,62 +25,53 @@ const Order = () => {
           >
             Order Page
           </Typography.Title>
-          {/* <div className="addservice-btn">
-            <Link to="/dashboards/services/Addservicepage">
-              <Button variant="primary">Add Service</Button>
-            </Link>
-          </div> */}
 
           {/* --------------------------- tabel ------------------------------------- */}
           <div>
             <div
-              className="card"
-              style={{ display: "flex", width: "95%", marginTop: "5rem" }}
+              style={{
+                display: "flex",
+                width: "95%",
+                justifyContent: "center",
+                justifyItems: "center",
+                alignItems: "center",
+              }}
             >
-              <div class="header_fixed">
+              <div
+                class="header_fixed ml-3"
+                style={{
+                  justifyContent: "center",
+                  justifyItems: "center",
+                  alignItems: "center",
+                }}
+              >
                 <table>
                   <thead className="text-dark">
                     <tr>
-                      <th>Image</th>
-                      <th>Service Name</th>
-                      <th>Price(per)</th>
-                      <th>rating</th>
-                      <th>Action</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Address</th>
+                      <th>City</th>
+                      <th>State</th>
+                      <th>Zipcode</th>
+                      <th>Country</th>
+                      <th>Service</th>
+                      <th>Price</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {Data1.serviceData.map((item, index) => {
+                    {booking.map((item, index) => {
                       return (
                         <tr key={index}>
-                          <td>
-                            <img
-                              src={item.img}
-                              alt=""
-                              style={{ height: "3rem" }}
-                            />
-                          </td>
+                          <td>{item.fname}</td>
+                          <td>{item.email}</td>
+                          <td>{item.address}</td>
+                          <td>{item.city}</td>
+                          <td>{item.state}</td>
+                          <td>{item.zipcode}</td>
+                          <td>{item.country}</td>
                           <td>{item.s_name}</td>
                           <td>₹ {item.price}</td>
-                          <td> {item.rating}</td>
-                          <td>
-                            <Link to="/dashboards/services/editservicepage">
-                              <i
-                                class="fa-solid fa-pen edit-icons icons-1"
-                                style={{
-                                  cursor: "pointer",
-                                  // marginRight: "30px",
-                                  paddingRight: "30px",
-                                }}
-                              ></i>
-                            </Link>
-                            <i
-                              class="fa-solid fa-trash edit-icons icons-2"
-                              style={{
-                                color: "#ce3d3d",
-                                cursor: "pointer",
-                              }}
-                            ></i>
-                          </td>
                         </tr>
                       );
                     })}

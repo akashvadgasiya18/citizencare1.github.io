@@ -12,7 +12,31 @@ import {
   SINGLE_SERVICE_REQUEST,
   SINGLE_SERVICE_SUCCESS,
   SINGLE_SERVICE_FAIL,
+  BOOKING_REQUEST,
+  BOOKING_SUCCESS,
+  BOOKING_FAIL,
 } from "./action";
+
+// ------------------- BOOKING DETAILS GET -----------------------------------------
+
+export const userBooking = () => async (dispatch) => {
+  try {
+    dispatch({ type: BOOKING_REQUEST });
+    const { data } = await axios.get("/bookingdetails");
+    dispatch({
+      type: BOOKING_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: BOOKING_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
 // ------------------------------ single service get -------------------------------
 

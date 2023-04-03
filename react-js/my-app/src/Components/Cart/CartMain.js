@@ -119,13 +119,9 @@ const CartMain = () => {
                 <button className="btn btn-success my-3 mr-3">continue</button>
               </Link>
               {loggedIn ? (
-                <button
-                  className="btn btn-primary my-3 mr-3"
-                  items={getdata}
-                  onClick={handle}
-                >
-                  Checkout
-                </button>
+                  <button onClick={handle} className="btn btn-primary my-3 mr-3" items={getdata}>
+                    Checkout
+                  </button>
               ) : (
                 <Link to="/login">
                   <button className="btn btn-primary my-3 mr-3">

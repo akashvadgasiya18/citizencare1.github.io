@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const OrderSchema = new mongoose.Schema({
-  Ordername: {
+  fname: {
     type: String,
     required: true,
   },
@@ -9,7 +9,7 @@ const OrderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  o_address: {
+  address: {
     type: String,
     required: true,
   },
@@ -17,7 +17,7 @@ const OrderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  stat: {
+  state: {
     type: String,
     required: true,
   },
@@ -26,6 +26,14 @@ const OrderSchema = new mongoose.Schema({
     required: true,
   },
   country: {
+    type: String,
+    required: true,
+  },
+  s_name: {
+    type: String,
+    required: true,
+  },
+  price: {
     type: String,
     required: true,
   },
