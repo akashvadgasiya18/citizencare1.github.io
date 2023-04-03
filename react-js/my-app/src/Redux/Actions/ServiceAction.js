@@ -9,7 +9,31 @@ import {
   PROVIDERS_REQUEST,
   PROVIDERS_SUCCESS,
   PROVIDERS_FAIL,
+  SINGLE_SERVICE_REQUEST,
+  SINGLE_SERVICE_SUCCESS,
+  SINGLE_SERVICE_FAIL,
 } from "./action";
+
+// ------------------------------ single service get -------------------------------
+
+export const SinglelistService = (_id) => async (dispatch) => {
+  try {
+    dispatch({ type: SINGLE_SERVICE_REQUEST });
+    const { data } = await axios.get(`/details/${_id}`);
+    dispatch({
+      type: SINGLE_SERVICE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: SINGLE_SERVICE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
 // ----------------------- all details fetch in cards frontend ------------------
 

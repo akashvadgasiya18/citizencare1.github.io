@@ -23,6 +23,7 @@
   .rev-crd {
     flex: 0 0 calc(50% - 20px);
     max-width: calc(50% - 20px);
+    margin-top: 50px;
   }
 }
 @media screen and (max-width: 40px) {

@@ -11,9 +11,13 @@ import { Link } from "react-router-dom";
 
 const CartMain = () => {
   const loggedIn = window.localStorage.getItem("isLoggedIn");
-
   const getdata = useSelector((state) => state.cartreducer.carts);
+<<<<<<< HEAD
   const totalPrice = getdata.reduce((price, item) => price + item.price, 0);
+=======
+  console.log("getdata item :", getdata);
+
+>>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
   const dispatch = useDispatch();
   const singleData = useSelector((state) => state.singleData);
   const { user } = singleData;
@@ -22,6 +26,7 @@ const CartMain = () => {
   const dlt = (_id) => {
     dispatch(DEL(_id));
   };
+<<<<<<< HEAD
 
   const handle = () => {
     axios
@@ -43,6 +48,10 @@ const CartMain = () => {
     dispatch(userSingleDetails());
   }, [dispatch]);
 
+=======
+  const totalPrice = getdata.reduce((price, item) => price + item.price, 0);
+
+>>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
   return (
     <>
       {getdata.length ? (
@@ -119,10 +128,31 @@ const CartMain = () => {
                 <button className="btn btn-success my-3 mr-3">continue</button>
               </Link>
               {loggedIn ? (
+<<<<<<< HEAD
                   <button onClick={handle} className="btn btn-primary my-3 mr-3" items={getdata}>
                     Checkout
                   </button>
+=======
+<<<<<<< HEAD
+                <Link to="/checkoutpage">
+                  <button className="btn btn-primary my-3 mr-3" items={getdata}>
+                    Checkout
+                  </button>
+                </Link>
+=======
+                  <Link to="/checkoutpage">
+                    <button className="btn btn-primary my-3 mr-3">
+                      Checkout
+                    </button>
+                  </Link>
+>>>>>>> cebe57bee869491319e52f19dc7fb0076c49660c
+>>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
               ) : (
+                // <Link to="/checkoutpage">
+                //   <button className="btn btn-primary my-3 mr-3">
+                //     Checkout
+                //   </button>
+                // </Link>
                 <Link to="/login">
                   <button className="btn btn-primary my-3 mr-3">
                     Checkout

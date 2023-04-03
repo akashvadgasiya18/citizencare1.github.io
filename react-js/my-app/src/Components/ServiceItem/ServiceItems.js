@@ -1,40 +1,28 @@
 import React from "react";
 import { Col } from "reactstrap";
 import "../../Components/ServiceItem/service-item.css";
-// import ServicePage from "../ServicePages/ServicePage";
 import { Link } from "react-router-dom";
-// import { useCart } from "react-use-cart";
 import Rating from "./Rating";
-import { useDispatch } from "react-redux";
-import { ADD } from "../../Redux/Actions/action";
-// import i1 from "../../images/doctor1.jpg";
+import i1 from "../../images/doctor1.jpg";
 
-const ServiceItems = ({ item, imgpath }) => {
-  const dispatch = useDispatch();
-
-  const send = (item) => {
-    console.log(item);
-    dispatch(ADD(item));
-  };
-  console.log("image :", item.doc_img);
-
+const ServiceItems = ({ item }) => {
   return (
     <Col lg="4" md="4" sm="6" className="mb-3">
       <div className="car__item">
         <div className="car__img">
-          {/* <img src={i1} alt="" /> */}
-          <img
-            src={imgpath}
-            // src={`http://localhost:3001/Backend/public/images/${item.doc_img}`}
-            alt=""
-            // className="w-100"
-          />
+          <Link to={`/details/${item._id}`}>
+            <img
+              src={i1}
+              // src={`http://localhost:3001/Backend/public/images/${item.doc_img}`}
+              alt=""
+            />
+          </Link>
         </div>
 
         <div className="car__item-content mt-4">
           <h4 className="section__title text-center">{item.s_name}</h4>
           <h6 className="rent__price text-center">
-            Rs. {item.price}.00{" "}
+            Rs. {item.price}.00
             <span style={{ fontFamily: "Poppins", fontWeight: "500" }}>
               / Day
             </span>
@@ -53,7 +41,7 @@ const ServiceItems = ({ item, imgpath }) => {
             </span>
           </div>
 
-          <button
+          {/* <button
             className=" w-100 car__item-btn car__btn-rent"
             onClick={() => send(item)}
           >
@@ -69,7 +57,7 @@ const ServiceItems = ({ item, imgpath }) => {
               <i className="fa-solid fa-eye" style={{ marginRight: "5px" }}></i>
               Preview
             </button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </Col>

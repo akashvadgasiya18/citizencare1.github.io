@@ -11,7 +11,26 @@ import {
   REVIEW_REQUEST,
   REVIEW_SUCCESS,
   REVIEW_FAIL,
+  SINGLE_SERVICE_REQUEST,
+  SINGLE_SERVICE_SUCCESS,
+  SINGLE_SERVICE_FAIL,
 } from "../Actions/action";
+
+export const singleservicereducer = (state = { product: [] }, action) => {
+  switch (action.type) {
+    case SINGLE_SERVICE_REQUEST:
+      return { ...state };
+
+    case SINGLE_SERVICE_SUCCESS:
+      return { product: action.payload };
+
+    case SINGLE_SERVICE_FAIL:
+      return { error: action.payload };
+
+    default:
+      return state;
+  }
+};
 
 export const servicereducer = (state = { service: [] }, action) => {
   switch (action.type) {
@@ -45,7 +64,6 @@ export const usersreducer = (state = { users: [] }, action) => {
   }
 };
 
-
 export const singleusersreducer = (state = { user: [] }, action) => {
   switch (action.type) {
     case USERS_REQUEST:
@@ -61,9 +79,6 @@ export const singleusersreducer = (state = { user: [] }, action) => {
       return state;
   }
 };
-
-
-
 
 export const providersreducer = (state = { providers: [] }, action) => {
   switch (action.type) {
