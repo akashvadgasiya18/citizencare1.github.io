@@ -31,11 +31,8 @@ const CartMain = () => {
       .post("/create-checkout-session", {
         getdata,
         user,
-<<<<<<< HEAD
         choice,
         userId: user._id,
-=======
->>>>>>> e18237b226db33acd5829e381002c9591eda16ee
       })
       .then((res) => {
         if (res.data.url) {
@@ -137,7 +134,6 @@ const CartMain = () => {
                 ₹ {totalPrice}
               </span>{" "}
             </h3>
-<<<<<<< HEAD
               <select
                 value={choice}
                 onChange={(e) => setChoice(e.target.value)}
@@ -157,19 +153,7 @@ const CartMain = () => {
               {loggedIn ? (
                 <button
                   onClick={handle}
-                  className="btn btn-primary my-3 mr-3"
-=======
-            <div>
-              {loggedIn ? (
-                // <button onClick={handle} className="btn btn-primary my-3 mr-3" items={getdata}>
-                //   Checkout
-                // </button>
-
-                <button
-                  onClick={handle}
                   className="btn btn-outline-dark btn-lg my-3"
-                  style={{ padding: "10px 70px" }}
->>>>>>> e18237b226db33acd5829e381002c9591eda16ee
                   items={getdata}
                 >
                   Checkout
