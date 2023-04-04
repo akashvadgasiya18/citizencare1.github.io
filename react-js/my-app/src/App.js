@@ -19,7 +19,11 @@ import ServiceMains from "./Pages/Service/ServiceMains";
 import AdminLogin from "./Components/AdminDashboard/Html/AdminLogin";
 import Main from "./Components/AdminDashboard/Html/Main";
 import ProviderMain from "./Components/ProviderDashboards/Html/ProviderMain";
+<<<<<<< HEAD
 import CheckoutSuccess from "./Payment/checkoutSuccess";
+=======
+import CheckSuccess from "./Payment/CheckSuccess";
+>>>>>>> 9217b08c62cfab293df4ed5f6c5ad1052863b2b5
 
 const App = () => {
   return (
@@ -43,7 +47,11 @@ const App = () => {
           <Route exact path="/cart" element={<Cart />} />
 
           <Route exact path="/changepassword" element={<ChangePassword />} />
+<<<<<<< HEAD
           <Route exact path="/checkout-success" element={<CheckoutSuccess />} />
+=======
+          <Route exact path="/checkout-success" element={<CheckSuccess/>} />
+>>>>>>> 9217b08c62cfab293df4ed5f6c5ad1052863b2b5
           <Route exact path="/details" element={<Items />} />
           <Route exact path="/details/:id" element={<ServicePage />}></Route>
         </Routes>

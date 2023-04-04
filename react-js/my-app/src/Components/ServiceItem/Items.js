@@ -6,8 +6,15 @@ import { Container, Row } from "reactstrap";
 // import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { listService } from "../../Redux/Actions/ServiceAction";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 // import img from '../../assets/details/'
+=======
+// import { Link } from "react-router-dom";
+// import img from '../../assets/details/'
+// import { ADD } from "../../Redux/Actions/action";
+// import Rating from "./Rating";
+>>>>>>> 9217b08c62cfab293df4ed5f6c5ad1052863b2b5
 import "../../Components/ServiceItem/service-item.css";
 import ServiceItems from "./ServiceItems";
 
@@ -57,6 +64,11 @@ const Items = () => {
                     // likes={item.likes}
                     // desc={item.desc}
                   />
+<<<<<<< HEAD
+=======
+
+                  // </>
+>>>>>>> 9217b08c62cfab293df4ed5f6c5ad1052863b2b5
                 );
               })}
             </Row>
