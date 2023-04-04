@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD } from "../../Redux/Actions/action";
 import Review from "../Reviews/Review";
+// import i1 from "../../images/Bathrrom_clean.jpeg";
+// import FinalRev from "../Reviews/FinalRev";
 import Reviews2 from "../Reviews/Reviews2";
 import Footer from "../Footer/Footer";
 import { SinglelistService } from "../../Redux/Actions/ServiceAction";
@@ -32,23 +34,10 @@ const ServicePage = () => {
       <div className="main-wrapper">
         <div className="product-div" style={{ backgroundColor: "honeydew" }}>
           <div className="product-div-left">
-            <div>
-              <Link to="/service">
-                <p
-                  style={{
-                    color: "black",
-                    textDecoration: "2px solid white underline",
-                  }}
-                >
-                  <i class="fa-solid fa-arrow-left mr-2"></i>
-                  Back
-                </p>
-              </Link>
-            </div>
             <img
               src={`http://localhost:3001/assets/image/${product.doc_img}`}
               alt=""
-              style={{ height: "80%", width: "70%" }}
+              style={{ height: "100%", width: "70%", borderRadius: "50px" }}
             />
           </div>
           <div className="product-div-right">
@@ -68,7 +57,7 @@ const ServicePage = () => {
               <span>Ratings</span>
             </div>
             <p className="product-description">{product.desc}</p>
-            <div className="btn-groups">
+            <div className="btn-groups inline-block">
               <button
                 type="button"
                 className="add-cart-btn"
@@ -79,7 +68,8 @@ const ServicePage = () => {
 
               <Link to="/service">
                 <button type="button" className="buy-now-btn">
-                  <i class="fa-sharp fa-solid fa-arrow-left mr-2"></i> Back
+                  <i class="fa-sharp fa-solid fa-arrow-left mr-2"></i> Back To
+                  Page
                 </button>
               </Link>
             </div>

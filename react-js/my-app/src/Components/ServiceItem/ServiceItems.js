@@ -3,7 +3,6 @@ import { Col } from "reactstrap";
 import "../../Components/ServiceItem/service-item.css";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
-// import i1 from "../../images/doctor1.jpg";
 
 const ServiceItems = ({ item }) => {
   return (
@@ -50,14 +49,14 @@ const ServiceItems = ({ item }) => {
               style={{ marginRight: "10px" }}
             ></i>
             Add to cart
-          </button>
+          </button>*/}
 
           <Link to={`/details/${item._id}`}>
             <button className=" w-100 car__item-btn car__btn-details">
-              <i className="fa-solid fa-eye" style={{ marginRight: "5px" }}></i>
-              Preview
+              {/* <i className="fa-solid fa-eye" style={{ marginRight: "5px" }}></i> */}
+              Book Now
             </button>
-          </Link> */}
+          </Link>
         </div>
       </div>
     </Col>

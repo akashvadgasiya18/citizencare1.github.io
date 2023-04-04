@@ -142,7 +142,7 @@ body {
   justify-items: center;
   color: #fff;
   cursor: pointer;
-  border-radius: 50px;
+  /* border-radius: 50px; */
   transition: all 0.3s ease;
 }
 .btn-groups button .fas {
@@ -161,6 +161,7 @@ body {
   background-color: #000;
   border: 2px solid #000;
   margin-top: 0rem;
+  /* padding-left: 20px; */
 }
 .buy-now-btn:hover {
   background-color: #fff;

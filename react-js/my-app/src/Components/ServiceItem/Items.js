@@ -6,10 +6,8 @@ import { Container, Row } from "reactstrap";
 // import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { listService } from "../../Redux/Actions/ServiceAction";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import img from '../../assets/details/'
-// import { ADD } from "../../Redux/Actions/action";
-// import Rating from "./Rating";
 import "../../Components/ServiceItem/service-item.css";
 import ServiceItems from "./ServiceItems";
 
@@ -59,8 +57,6 @@ const Items = () => {
                     // likes={item.likes}
                     // desc={item.desc}
                   />
-
-                  // </>
                 );
               })}
             </Row>

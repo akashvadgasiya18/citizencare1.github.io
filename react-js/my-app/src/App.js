@@ -1,10 +1,7 @@
 import React from "react";
 import "../src/App.css";
-// import Navbar from "./Components/Navbar/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
-// import Service from "./Pages/Service/Service";
-// import Registration1 from "./Components/Registration/Registration1";
 import Registration1 from "./Components/Registration/Registration1";
 import Login1 from "./Components/Login/Login1";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -48,7 +45,6 @@ const App = () => {
           <Route exact path="/changepassword" element={<ChangePassword />} />
           <Route exact path="/checkout-success" element={<CheckSuccess/>} />
           <Route exact path="/details" element={<Items />} />
-
           <Route exact path="/details/:id" element={<ServicePage />}></Route>
         </Routes>
       </Router>

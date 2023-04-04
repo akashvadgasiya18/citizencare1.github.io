@@ -31,8 +31,11 @@ const CartMain = () => {
       .post("/create-checkout-session", {
         getdata,
         user,
+<<<<<<< HEAD
         choice,
         userId: user._id,
+=======
+>>>>>>> e18237b226db33acd5829e381002c9591eda16ee
       })
       .then((res) => {
         if (res.data.url) {
@@ -54,6 +57,18 @@ const CartMain = () => {
           <div className="container">
             <div className="py-4" style={{ width: "100%" }}>
               <h3 class="mb-3 text-center fw-semibold">
+                <Link to="/service">
+                  <span
+                    style={{
+                      float: "left",
+                      color: "black",
+                      fontSize: "23px",
+                      fontFamily: "arial",
+                    }}
+                  >
+                    <i class="fa-sharp fa-solid fa-arrow-left mr-2"></i>continue
+                  </span>
+                </Link>
                 Total Items : [{getdata.length}]
               </h3>
               {/* <table class="table border shadow"> */}
@@ -102,14 +117,19 @@ const CartMain = () => {
             </div>
           </div>
           <div
-            className="col-auto ms-auto my-5 mr-5"
-            style={{ float: "right" }}
+            className="my-5 container"
+            style={{
+              textAlign: "right",
+              padding: "20px 20px",
+              display: "block",
+              // border: "2px solid black",
+            }}
           >
             <h3 style={{ fontFamily: "Arial", fontWeight: "600" }}>
               Total Price
               <span
                 style={{
-                  marginLeft: "20px",
+                  marginLeft: "30px",
                   fontFamily: "Arial",
                   fontWeight: "600",
                 }}
@@ -117,6 +137,7 @@ const CartMain = () => {
                 ₹ {totalPrice}
               </span>{" "}
             </h3>
+<<<<<<< HEAD
               <select
                 value={choice}
                 onChange={(e) => setChoice(e.target.value)}
@@ -137,13 +158,28 @@ const CartMain = () => {
                 <button
                   onClick={handle}
                   className="btn btn-primary my-3 mr-3"
+=======
+            <div>
+              {loggedIn ? (
+                // <button onClick={handle} className="btn btn-primary my-3 mr-3" items={getdata}>
+                //   Checkout
+                // </button>
+
+                <button
+                  onClick={handle}
+                  className="btn btn-outline-dark btn-lg my-3"
+                  style={{ padding: "10px 70px" }}
+>>>>>>> e18237b226db33acd5829e381002c9591eda16ee
                   items={getdata}
                 >
                   Checkout
                 </button>
               ) : (
                 <Link to="/login">
-                  <button className="btn btn-primary my-3 mr-3">
+                  <button
+                    className="btn btn-outline-dark btn-lg my-3"
+                    style={{ padding: "10px 70px" }}
+                  >
                     Checkout
                   </button>
                 </Link>
