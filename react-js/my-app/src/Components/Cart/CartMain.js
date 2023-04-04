@@ -52,7 +52,10 @@ const CartMain = () => {
       {getdata.length ? (
         <section className="py-5">
           <div className="container">
-            <div className="py-4" style={{ width: "100%" }}>
+            <div
+              className="py-4"
+              style={{ width: "100%", textAlign: "center" }}
+            >
               <h3 class="mb-3 text-center fw-semibold">
                 <Link to="/service">
                   <span
@@ -92,7 +95,7 @@ const CartMain = () => {
                           <img
                             src={`http://localhost:3001/assets/image/${item.doc_img}`}
                             alt=""
-                            style={{ height: "3rem" }}
+                            style={{ height: "7rem", width: "10rem" }}
                           />
                         </td>
                         <td>{item.s_name}</td>
@@ -134,27 +137,47 @@ const CartMain = () => {
                 ₹ {totalPrice}
               </span>{" "}
             </h3>
-              <select
-                value={choice}
-                onChange={(e) => setChoice(e.target.value)}
-                aria-label="select profession"
-              >
-                <option value="8-to-10">8-to-10</option>
-                <option value="10-to-12">10-to-12</option>
-                <option value="12-to-2">12-to-2</option>
-                <option value="2-to-4">2-to-4</option>
-                <option value="4-to-6">4-to-6</option>
-                <option value="6-to-8">6-to-8</option>
-              </select>
+            <lable
+              style={{
+                fontSize: "25px",
+                fontWeight: "600",
+                fontFamily: "poppins",
+              }}
+            >
+              Booking Time
+            </lable>
+            <select
+              value={choice}
+              onChange={(e) => setChoice(e.target.value)}
+              aria-label="select profession"
+              style={{
+                fontSize: "20px",
+                fontFamily: "poppins",
+                width: "160px",
+                backgroundColor: "lavender",
+                border: "none",
+                borderRadius: "0px",
+                height: "45px",
+                marginTop: "12px",
+                marginLeft: "12px",
+                padding: "0px 20px",
+              }}
+            >
+              <option value="">Select</option>
+              <option value="8-to-10">8-to-10</option>
+              <option value="10-to-12">10-to-12</option>
+              <option value="12-to-2">12-to-2</option>
+              <option value="2-to-4">2-to-4</option>
+              <option value="4-to-6">4-to-6</option>
+              <option value="6-to-8">6-to-8</option>
+            </select>
             <div className="col-auto">
-              <Link to="/service">
-                <button className="btn btn-success my-3 mr-3">continue</button>
-              </Link>
               {loggedIn ? (
                 <button
                   onClick={handle}
-                  className="btn btn-outline-dark btn-lg my-3"
+                  className="btn btn-outline-dark btn-lg my-4"
                   items={getdata}
+                  style={{ padding: "10px 100px", marginRight: "-15px" }}
                 >
                   Checkout
                 </button>
@@ -162,7 +185,7 @@ const CartMain = () => {
                 <Link to="/login">
                   <button
                     className="btn btn-outline-dark btn-lg my-3"
-                    style={{ padding: "10px 70px" }}
+                    style={{ padding: "10px 100px" }}
                   >
                     Checkout
                   </button>

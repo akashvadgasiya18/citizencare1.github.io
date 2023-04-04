@@ -1,7 +1,8 @@
 import React from "react";
 import "../../Components/How_Work/Section2.css";
 import imag2 from "../../Feature_icon/sec5.png";
-import imag3 from "../../Feature_icon/sec6.png";
+import imag3 from "../../Feature_icon/sec4.png";
+import imag1 from "../../Feature_icon/sec6.png";
 
 const Section2 = () => {
   return (
@@ -27,11 +28,11 @@ const Section2 = () => {
                       Why Choose us
                     </h2>
                     <p style={{ color: "#555555" }}></p>
-                    <p>
+                    {/* <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua.
-                    </p>
+                    </p> */}
                   </div>
 
                   {/* <!--Title Section Start End--> */}
@@ -39,7 +40,7 @@ const Section2 = () => {
                   <ul class="aon-why-choose-steps list-unstyled">
                     <li class="d-flex">
                       <div class="aon-w-choose-left aon-icon-effect">
-                        <div class="aon-w-choose-icon right">
+                        <div class="aon-w-choose-icon">
                           <i class="aon-icon">
                             <img src={imag3} alt="" />
                           </i>
@@ -48,7 +49,7 @@ const Section2 = () => {
 
                       <div class="aon-w-choose-right">
                         <h4 class="aon-title" style={{ color: "#022279" }}>
-                          Meet new customers
+                          Meet New Customers
                         </h4>
                         <p style={{ color: "#555555" }}>
                           Suspendisse tincidunt rutrum ante. Vestibulum
@@ -84,7 +85,7 @@ const Section2 = () => {
                       <div class="aon-w-choose-left aon-icon-effect">
                         <div class="aon-w-choose-icon">
                           <i class="aon-icon">
-                            <img src={imag3} alt="" />
+                            <img src={imag1} alt="" />
                           </i>
                         </div>
                       </div>
