@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "react-bootstrap";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,9 +15,11 @@ const CartMain = () => {
   const getdata = useSelector((state) => state.cartreducer.carts);
   const totalPrice = getdata.reduce((price, item) => price + item.price, 0);
   // console.log(getdata);
+  const [choice, setChoice] = useState();
   const dispatch = useDispatch();
   const singleData = useSelector((state) => state.singleData);
   const { user } = singleData;
+  // console.log(choice);
   // console.log(user.email);
 
   const dlt = (_id) => {
@@ -28,7 +30,9 @@ const CartMain = () => {
     axios
       .post("/create-checkout-session", {
         getdata,
-        user
+        user,
+        choice,
+        userId: user._id,
       })
       .then((res) => {
         if (res.data.url) {
@@ -113,15 +117,30 @@ const CartMain = () => {
                 ₹ {totalPrice}
               </span>{" "}
             </h3>
-
+              <select
+                value={choice}
+                onChange={(e) => setChoice(e.target.value)}
+                aria-label="select profession"
+              >
+                <option value="8-to-10">8-to-10</option>
+                <option value="10-to-12">10-to-12</option>
+                <option value="12-to-2">12-to-2</option>
+                <option value="2-to-4">2-to-4</option>
+                <option value="4-to-6">4-to-6</option>
+                <option value="6-to-8">6-to-8</option>
+              </select>
             <div className="col-auto">
               <Link to="/service">
                 <button className="btn btn-success my-3 mr-3">continue</button>
               </Link>
               {loggedIn ? (
-                  <button onClick={handle} className="btn btn-primary my-3 mr-3" items={getdata}>
-                    Checkout
-                  </button>
+                <button
+                  onClick={handle}
+                  className="btn btn-primary my-3 mr-3"
+                  items={getdata}
+                >
+                  Checkout
+                </button>
               ) : (
                 <Link to="/login">
                   <button className="btn btn-primary my-3 mr-3">

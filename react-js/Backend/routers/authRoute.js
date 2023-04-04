@@ -212,7 +212,17 @@ router.get(
   "/bookingdetails",
   asyncHandler(async (req, res) => {
     const product = await Order.find({});
-    res.json(product);
+    res.send(product);
+  })
+);
+
+//---------------------------------history-user---------------
+router.get(
+  "/user_history",
+  asyncHandler(async (req, res) => {
+    const email = req.body.userEmail;
+    const product = await Order.find({email: email});
+    res.send(product);
   })
 );
 

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 // import Data1 from "../../ServiceItem/Data1";
 import { Typography } from "antd";
 import "../css/servicepage.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userBooking } from "../../../Redux/Actions/ServiceAction";
 
@@ -54,9 +54,10 @@ const Order = () => {
                       <th>City</th>
                       <th>State</th>
                       <th>Zipcode</th>
-                      <th>Country</th>
+                      <th>Timing</th>
                       <th>Service</th>
-                      <th>Price</th>
+                      <th>Status</th>
+                      <th>Total</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -65,13 +66,14 @@ const Order = () => {
                         <tr key={index}>
                           <td>{item.fname}</td>
                           <td>{item.email}</td>
-                          <td>{item.address}</td>
-                          <td>{item.city}</td>
-                          <td>{item.state}</td>
-                          <td>{item.zipcode}</td>
-                          <td>{item.country}</td>
-                          <td>{item.s_name}</td>
-                          <td>₹ {item.price}</td>
+                          <td>{item.address.line1}</td>
+                          <td>{item.address.city}</td>
+                          <td>{item.address.state}</td>
+                          <td>{item.address.postal_code}</td>
+                          <td>{item.scheduale}</td>
+                          <td>{item.service[0].s_name}</td>
+                          <td>{item.status}</td>
+                          <td>₹ {item.total}</td>
                         </tr>
                       );
                     })}
