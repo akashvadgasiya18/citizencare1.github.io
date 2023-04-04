@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { userSingleDetails } from "../../../Redux/Actions/ServiceAction";
+import "../css/UserInfo.css";
 
 const UserDetailPage = () => {
   const dispatch = useDispatch();
@@ -27,8 +28,64 @@ const UserDetailPage = () => {
         User Details
       </Typography.Title>
 
+      <div className="userdetail-div">
+        <div
+          className="userdetail-div-left"
+          style={{
+            justifyContent: "center",
+            display: "block",
+            alignItems: "center",
+            width: "50%",
+          }}
+        >
+          <i class="fa-solid fa-circle-user"></i>
+        </div>
+        <div className="userdetail-div-right">
+          <label>
+            User Name :
+            <span style={{ fontWeight: "700", marginLeft: "10px" }}>
+              {user.fname}
+            </span>
+          </label>
+          <br />
+          <label>
+            Email ID :
+            <span style={{ fontWeight: "700", marginLeft: "10px" }}>
+              {user.email}
+            </span>
+          </label>
+          <br />
+          <label>
+            AGE :
+            <span style={{ fontWeight: "700", marginLeft: "10px" }}>
+              {user.age}
+            </span>
+          </label>
+          <br />
+          <label>
+            Contact No :{" "}
+            <span style={{ fontWeight: "700", marginLeft: "10px" }}>
+              {user.phone_no}
+            </span>
+          </label>
+          <br />
+          <br />
+          <label>
+            <Link to="/profile/usersdetail/edituserdetail">
+              <Button variant="primary">
+                <i
+                  class="fa-solid fa-pen edit-icons mr-2"
+                  style={{ fontSize: "12px" }}
+                ></i>
+                Edit
+              </Button>
+            </Link>
+          </label>
+        </div>
+      </div>
+
       {/* --------------------------- tabel ------------------------------------- */}
-      <div>
+      {/* <div>
         <div
           style={{
             display: "flex",
@@ -78,7 +135,7 @@ const UserDetailPage = () => {
             </table>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

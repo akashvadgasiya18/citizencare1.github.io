@@ -3,10 +3,6 @@ import { Col } from "reactstrap";
 import "../../Components/ServiceItem/service-item.css";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
-<<<<<<< HEAD
-=======
-// import i1 from "../../images/doctor1.jpg";
->>>>>>> 9217b08c62cfab293df4ed5f6c5ad1052863b2b5
 
 const ServiceItems = ({ item }) => {
   return (

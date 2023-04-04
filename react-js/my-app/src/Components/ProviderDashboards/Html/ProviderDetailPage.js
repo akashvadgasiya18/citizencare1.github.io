@@ -27,8 +27,71 @@ const ProviderDetailPage = () => {
         Provider Details
       </Typography.Title>
 
+      <div className="userdetail-div">
+        <div
+          className="userdetail-div-left"
+          style={{
+            justifyContent: "center",
+            display: "block",
+            alignItems: "center",
+            width: "50%",
+          }}
+        >
+          <i class="fa-solid fa-circle-user"></i>
+        </div>
+        <div className="userdetail-div-right">
+          <label>
+            Provider Name :
+            <span style={{ fontWeight: "700", marginLeft: "10px" }}>
+              {provider.p_name}
+            </span>
+          </label>
+          <br />
+          <label>
+            PRofession :
+            <span style={{ fontWeight: "700", marginLeft: "10px" }}>
+              {provider.p_role}
+            </span>
+          </label>
+          <br />
+          <label>
+            Email ID :
+            <span style={{ fontWeight: "700", marginLeft: "10px" }}>
+              {provider.p_email}
+            </span>
+          </label>
+          <br />
+          <label>
+            Contact No :{" "}
+            <span style={{ fontWeight: "700", marginLeft: "10px" }}>
+              {provider.p_mno}
+            </span>
+          </label>
+          <br />
+          <label>
+            Address :{" "}
+            <span style={{ fontWeight: "700", marginLeft: "10px" }}>
+              {provider.p_add}
+            </span>
+          </label>
+          <br />
+          <br />
+          <label>
+            <Link to="/providerDash/provideDetails/editProviderdetail">
+              <Button variant="primary">
+                <i
+                  class="fa-solid fa-pen edit-icons mr-2"
+                  style={{ fontSize: "12px" }}
+                ></i>
+                Edit
+              </Button>
+            </Link>
+          </label>
+        </div>
+      </div>
+
       {/* --------------------------- tabel ------------------------------------- */}
-      <div>
+      {/* <div>
         <div
           style={{
             display: "flex",
@@ -80,7 +143,7 @@ const ProviderDetailPage = () => {
             </table>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

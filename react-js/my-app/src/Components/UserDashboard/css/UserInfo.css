@@ -1,0 +1,58 @@
+.userdetail-div {
+  margin: 0rem 0;
+  padding: 0rem 0;
+  background-color: white;
+  border-radius: 0px;
+  grid-template-columns: repeat(2, 1fr);
+  border-radius: 3px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  margin: auto;
+  align-items: center;
+}
+.userdetail-div-left {
+  padding: 50px;
+  justify-content: center;
+  text-align: center;
+  justify-items: center;
+  margin-top: 1rem;
+}
+.userdetail-div-left i {
+  font-size: 300px;
+}
+
+.userdetail-div-right label {
+  padding: 5px;
+  float: left;
+  display: block;
+  margin-top: 1rem;
+  font-size: 20px;
+}
+@media screen and (max-width: 1050px) {
+  .userdetail-div {
+    width: 95%;
+    height: 90vh;
+    display: block;
+  }
+  .userdetail-div-left i {
+    font-size: 200px;
+  }
+  .userdetail-div-right label {
+    padding: 5px;
+    margin-top: 1rem;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+  }
+  .userdetail-div-right {
+    display: inline-table;
+    justify-items: center;
+  }
+  .userdetail-div-left {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-left: 120px;
+  }
+}

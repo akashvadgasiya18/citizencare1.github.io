@@ -6,11 +6,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD } from "../../Redux/Actions/action";
 import Review from "../Reviews/Review";
-<<<<<<< HEAD
 // import i1 from "../../images/Bathrrom_clean.jpeg";
 // import FinalRev from "../Reviews/FinalRev";
-=======
->>>>>>> 9217b08c62cfab293df4ed5f6c5ad1052863b2b5
 import Reviews2 from "../Reviews/Reviews2";
 import Footer from "../Footer/Footer";
 import { SinglelistService } from "../../Redux/Actions/ServiceAction";
@@ -37,26 +34,10 @@ const ServicePage = () => {
       <div className="main-wrapper">
         <div className="product-div" style={{ backgroundColor: "honeydew" }}>
           <div className="product-div-left">
-<<<<<<< HEAD
-=======
-            <div>
-              <Link to="/service">
-                <p
-                  style={{
-                    color: "black",
-                    textDecoration: "2px solid white underline",
-                  }}
-                >
-                  <i class="fa-solid fa-arrow-left mr-2"></i>
-                  Back
-                </p>
-              </Link>
-            </div>
->>>>>>> 9217b08c62cfab293df4ed5f6c5ad1052863b2b5
             <img
               src={`http://localhost:3001/assets/image/${product.doc_img}`}
               alt=""
-              style={{ height: "100%", width: "70%",borderRadius:'50px' }}
+              style={{ height: "100%", width: "70%", borderRadius: "50px" }}
             />
           </div>
           <div className="product-div-right">
@@ -87,7 +68,8 @@ const ServicePage = () => {
 
               <Link to="/service">
                 <button type="button" className="buy-now-btn">
-                  <i class="fa-sharp fa-solid fa-arrow-left mr-2"></i> Back To Page
+                  <i class="fa-sharp fa-solid fa-arrow-left mr-2"></i> Back To
+                  Page
                 </button>
               </Link>
             </div>

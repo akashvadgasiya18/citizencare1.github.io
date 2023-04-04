@@ -3,11 +3,6 @@ import "react-bootstrap";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DEL } from "../../Redux/Actions/action";
-<<<<<<< HEAD
-import axios from "axios";
-import { useEffect } from "react";
-=======
->>>>>>> 9217b08c62cfab293df4ed5f6c5ad1052863b2b5
 import impt from "../../images/empty-cart.gif";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
@@ -19,16 +14,10 @@ const CartMain = () => {
 
   const getdata = useSelector((state) => state.cartreducer.carts);
   const totalPrice = getdata.reduce((price, item) => price + item.price, 0);
-<<<<<<< HEAD
-  const dispatch = useDispatch();
-  // const singleData = useSelector((state) => state.singleData);
-  // const { user } = singleData;
-=======
   // console.log(getdata);
   const dispatch = useDispatch();
   const singleData = useSelector((state) => state.singleData);
   const { user } = singleData;
->>>>>>> 9217b08c62cfab293df4ed5f6c5ad1052863b2b5
   // console.log(user.email);
 
   const dlt = (_id) => {
@@ -39,10 +28,7 @@ const CartMain = () => {
     axios
       .post("/create-checkout-session", {
         getdata,
-<<<<<<< HEAD
-=======
-        user
->>>>>>> 9217b08c62cfab293df4ed5f6c5ad1052863b2b5
+        user,
       })
       .then((res) => {
         if (res.data.url) {
@@ -57,10 +43,6 @@ const CartMain = () => {
   useEffect(() => {
     dispatch(userSingleDetails());
   }, [dispatch]);
-<<<<<<< HEAD
-
-=======
->>>>>>> 9217b08c62cfab293df4ed5f6c5ad1052863b2b5
   return (
     <>
       {getdata.length ? (
@@ -150,7 +132,6 @@ const CartMain = () => {
             </h3>
             <div>
               {loggedIn ? (
-<<<<<<< HEAD
                 // <button onClick={handle} className="btn btn-primary my-3 mr-3" items={getdata}>
                 //   Checkout
                 // </button>
@@ -163,11 +144,6 @@ const CartMain = () => {
                 >
                   Checkout
                 </button>
-=======
-                  <button onClick={handle} className="btn btn-primary my-3 mr-3" items={getdata}>
-                    Checkout
-                  </button>
->>>>>>> 9217b08c62cfab293df4ed5f6c5ad1052863b2b5
               ) : (
                 <Link to="/login">
                   <button
