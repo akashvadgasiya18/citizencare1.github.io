@@ -1,10 +1,7 @@
 import React from "react";
 import "../src/App.css";
-// import Navbar from "./Components/Navbar/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
-// import Service from "./Pages/Service/Service";
-// import Registration1 from "./Components/Registration/Registration1";
 import Registration1 from "./Components/Registration/Registration1";
 import Login1 from "./Components/Login/Login1";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -16,21 +13,13 @@ import ServicePage from "./Components/ServicePages/ServicePage";
 import Pagenotfound from "./Pages/Pagenotfound";
 import Logout from "./Components/Logout/Logout";
 import { ToastContainer } from "react-toastify";
-<<<<<<< HEAD
-=======
-// import ChackOut from "./Components/PaymentPage/ChackOut";
->>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
 import Items from "./Components/ServiceItem/Items";
 import AboutMain from "./Pages/About/AboutMain";
 import ServiceMains from "./Pages/Service/ServiceMains";
 import AdminLogin from "./Components/AdminDashboard/Html/AdminLogin";
 import Main from "./Components/AdminDashboard/Html/Main";
 import ProviderMain from "./Components/ProviderDashboards/Html/ProviderMain";
-<<<<<<< HEAD
 import CheckoutSuccess from "./Payment/checkoutSuccess";
-=======
-import PaymentPage from "./Components/PaymentPage/PaymentPage";
->>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
 
 const App = () => {
   return (
@@ -54,14 +43,8 @@ const App = () => {
           <Route exact path="/cart" element={<Cart />} />
 
           <Route exact path="/changepassword" element={<ChangePassword />} />
-<<<<<<< HEAD
-          <Route exact path="/checkout-success" element={<CheckoutSuccess/>}/>
-=======
-          {/* <Route exact path="/checkoutpage" element={<ChackOut />} /> */}
-          <Route exact path="/checkoutpage" element={<PaymentPage />} />
->>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
+          <Route exact path="/checkout-success" element={<CheckoutSuccess />} />
           <Route exact path="/details" element={<Items />} />
-
           <Route exact path="/details/:id" element={<ServicePage />}></Route>
         </Routes>
       </Router>

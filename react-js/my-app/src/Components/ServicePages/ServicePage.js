@@ -6,12 +6,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD } from "../../Redux/Actions/action";
 import Review from "../Reviews/Review";
-<<<<<<< HEAD
 // import i1 from "../../images/Bathrrom_clean.jpeg";
 // import FinalRev from "../Reviews/FinalRev";
-=======
-import i1 from "../../images/Bathrrom_clean.jpeg";
->>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
 import Reviews2 from "../Reviews/Reviews2";
 import Footer from "../Footer/Footer";
 import { SinglelistService } from "../../Redux/Actions/ServiceAction";
@@ -27,33 +23,9 @@ const ServicePage = () => {
   };
 
   const { id } = useParams();
-<<<<<<< HEAD
-  // console.log(_id);
-
-  const [s_name, setS_name] = useState("");
-  const [price, setPrice] = useState("");
-  const [rating, setRating] = useState("");
-  const [desc, setDesc] = useState("");
-  const [doc_img, setdoc_img] = useState(" ");
-
-  useEffect(() => {
-    // dispatch(listServiceDetails(item.params._id))
-    const fetchData = async () => {
-      const { data } = await axios.get(`/details/${id}`);
-      console.log("products...", data);
-
-      setS_name(data.s_name);
-      setPrice(data.price);
-      setRating(data.rating);
-      setDesc(data.desc);
-      setdoc_img(data.doc_img);
-    };
-    fetchData();
-=======
 
   useEffect(() => {
     dispatch(SinglelistService(id));
->>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
   }, [id]);
 
   return (
@@ -62,28 +34,11 @@ const ServicePage = () => {
       <div className="main-wrapper">
         <div className="product-div" style={{ backgroundColor: "honeydew" }}>
           <div className="product-div-left">
-<<<<<<< HEAD
-            <div>
-              <Link to="/service">
-                <p
-                  style={{
-                    color: "black",
-                    textDecoration: "2px solid white underline",
-                  }}
-                >
-                  <i class="fa-solid fa-arrow-left mr-2"></i>
-                  Back
-                </p>
-              </Link>
-            </div>
             <img
-              src={`http://localhost:3001/assets/image/${doc_img}`}
+              src={`http://localhost:3001/assets/image/${product.doc_img}`}
               alt=""
-              style={{ height: "80%", width: "70%" }}
+              style={{ height: "100%", width: "70%",borderRadius:'50px' }}
             />
-=======
-            <img src={i1} alt="" style={{ height: "80%", width: "70%" }} />
->>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
           </div>
           <div className="product-div-right">
             <span className="product-name">{product.s_name}</span>
@@ -102,7 +57,7 @@ const ServicePage = () => {
               <span>Ratings</span>
             </div>
             <p className="product-description">{product.desc}</p>
-            <div className="btn-groups">
+            <div className="btn-groups inline-block">
               <button
                 type="button"
                 className="add-cart-btn"
@@ -113,7 +68,7 @@ const ServicePage = () => {
 
               <Link to="/service">
                 <button type="button" className="buy-now-btn">
-                  <i class="fa-sharp fa-solid fa-arrow-left mr-2"></i> Back
+                  <i class="fa-sharp fa-solid fa-arrow-left mr-2"></i> Back To Page
                 </button>
               </Link>
             </div>

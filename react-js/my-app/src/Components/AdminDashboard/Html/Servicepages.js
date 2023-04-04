@@ -17,30 +17,29 @@ const Servicepages = () => {
   useEffect(() => {
     dispatch(listService());
   }, [dispatch]);
-  const handel  = async (id) => {
+  const handel = async (id) => {
     const res = await fetch("/delete_service", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id
-        }),
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id,
+      }),
     });
     if (res.status === 429) {
-        toast.error("Something went wrong.", {
-          position: "top-center",
-          theme: "colored",
-          hideProgressBar: "false",
-        });
-    }
-    else if (res.status === 201) {
+      toast.error("Something went wrong.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 201) {
       navigate("/dashmain/services");
-      toast.success("Successfully deleted.", {          
+      toast.success("Successfully deleted.", {
         position: "top-left",
         theme: "colored",
         hideProgressBar: "false",
       });
     }
-  }
+  };
   const getdata = useSelector((state) => state.cartreducer.carts);
   console.log(getdata);
 
@@ -55,7 +54,9 @@ const Servicepages = () => {
           </Typography.Title>
           <div className="addservice-btn">
             <Link to="/dashmain/services/Addservicepage">
-              <Button variant="primary">Add Service</Button>
+              <Button variant="primary">
+                <i class="fa-sharp fa-solid fa-plus mr-2"></i>Add Service
+              </Button>
             </Link>
           </div>
 
@@ -98,7 +99,7 @@ const Servicepages = () => {
                           <tr item={item}>
                             <td>
                               <img
-                                src= {`http://localhost:3001/assets/image/${item.doc_img}`}
+                                src={`http://localhost:3001/assets/image/${item.doc_img}`}
                                 alt=""
                                 style={{ height: "3rem" }}
                               />
@@ -119,7 +120,11 @@ const Servicepages = () => {
                                   Edit
                                 </Button>
                               </Link>
-                              <Button variant="danger" className="ml-3" onClick={ () => handel(item._id) }>
+                              <Button
+                                variant="danger"
+                                className="ml-3"
+                                onClick={() => handel(item._id)}
+                              >
                                 Delete
                               </Button>
                             </td>

@@ -63,23 +63,23 @@ const Dash = () => {
           <h2>{error}</h2>
         ) : (
           <div
-                style={{
-                  display: "flex",
-                  width: "95%",
-                  justifyContent: "center",
-                  justifyItems: "center",
-                  alignItems: "center",
-                  marginTop:'6rem',
-                }}
-              >
-                <div
-                  class="header_fixed ml-3"
-                  style={{
-                    justifyContent: "center",
-                    justifyItems: "center",
-                    alignItems: "center",
-                  }}
-                >
+            style={{
+              display: "flex",
+              width: "95%",
+              justifyContent: "center",
+              justifyItems: "center",
+              alignItems: "center",
+              marginTop: "6rem",
+            }}
+          >
+            <div
+              class="header_fixed ml-3"
+              style={{
+                justifyContent: "center",
+                justifyItems: "center",
+                alignItems: "center",
+              }}
+            >
               <table>
                 <thead className="text-dark">
                   <tr>
@@ -96,7 +96,7 @@ const Dash = () => {
                       <tr key={index}>
                         <td>
                           <img
-                            src={item.img}
+                            src={`http://localhost:3001/assets/image/${item.doc_img}`}
                             alt=""
                             style={{ height: "3rem" }}
                           />

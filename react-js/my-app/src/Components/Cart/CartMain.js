@@ -2,7 +2,7 @@ import React from "react";
 import "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { DEL } from "../../Redux/Actions/action";
-import axios from 'axios'
+import axios from "axios";
 import { useEffect } from "react";
 import impt from "../../images/empty-cart.gif";
 import Table from "react-bootstrap/Table";
@@ -13,46 +13,35 @@ const CartMain = () => {
   const loggedIn = window.localStorage.getItem("isLoggedIn");
 
   const getdata = useSelector((state) => state.cartreducer.carts);
-<<<<<<< HEAD
   const totalPrice = getdata.reduce((price, item) => price + item.price, 0);
-=======
-  console.log("getdata item :", getdata);
-
->>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
   const dispatch = useDispatch();
-  const singleData = useSelector((state) => state.singleData);
-  const { user } = singleData;
-  console.log(user.email);
+  // const singleData = useSelector((state) => state.singleData);
+  // const { user } = singleData;
+  // console.log(user.email);
 
   const dlt = (_id) => {
     dispatch(DEL(_id));
   };
-<<<<<<< HEAD
 
   const handle = () => {
     axios
       .post("/create-checkout-session", {
-        getdata
+        getdata,
       })
       .then((res) => {
         if (res.data.url) {
-          window.location.href= res.data.url;
+          window.location.href = res.data.url;
         }
       })
-      .catch((err) =>
-      {
+      .catch((err) => {
         console.log(err);
-      })
+      });
   };
 
   useEffect(() => {
     dispatch(userSingleDetails());
   }, [dispatch]);
 
-=======
-  const totalPrice = getdata.reduce((price, item) => price + item.price, 0);
-
->>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
   return (
     <>
       {getdata.length ? (
@@ -60,6 +49,18 @@ const CartMain = () => {
           <div className="container">
             <div className="py-4" style={{ width: "100%" }}>
               <h3 class="mb-3 text-center fw-semibold">
+                <Link to="/service">
+                  <span
+                    style={{
+                      float: "left",
+                      color: "black",
+                      fontSize: "23px",
+                      fontFamily: "arial",
+                    }}
+                  >
+                    <i class="fa-sharp fa-solid fa-arrow-left mr-2"></i>continue
+                  </span>
+                </Link>
                 Total Items : [{getdata.length}]
               </h3>
               {/* <table class="table border shadow"> */}
@@ -108,14 +109,19 @@ const CartMain = () => {
             </div>
           </div>
           <div
-            className="col-auto ms-auto my-5 mr-5"
-            style={{ float: "right" }}
+            className="my-5 container"
+            style={{
+              textAlign: "right",
+              padding: "20px 20px",
+              display: "block",
+              // border: "2px solid black",
+            }}
           >
             <h3 style={{ fontFamily: "Arial", fontWeight: "600" }}>
               Total Price
               <span
                 style={{
-                  marginLeft: "20px",
+                  marginLeft: "30px",
                   fontFamily: "Arial",
                   fontWeight: "600",
                 }}
@@ -123,45 +129,26 @@ const CartMain = () => {
                 ₹ {totalPrice}
               </span>{" "}
             </h3>
-
-            <div className="col-auto">
-              <Link to="/service">
-                <button className="btn btn-success my-3 mr-3">continue</button>
-              </Link>
+            <div>
               {loggedIn ? (
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-                  <button onClick={handle} className="btn btn-primary my-3 mr-3" items={getdata}>
-                    Checkout
-                  </button>
-=======
-<<<<<<< HEAD
->>>>>>> 2693fce80df341e160dd7b2d1717fd682d478d65
-                <Link to="/checkoutpage">
-                  <button className="btn btn-primary my-3 mr-3" items={getdata}>
-                    Checkout
-                  </button>
-                </Link>
-<<<<<<< HEAD
-=======
-=======
-                  <Link to="/checkoutpage">
-                    <button className="btn btn-primary my-3 mr-3">
-                      Checkout
-                    </button>
-                  </Link>
->>>>>>> cebe57bee869491319e52f19dc7fb0076c49660c
->>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
->>>>>>> 2693fce80df341e160dd7b2d1717fd682d478d65
+                // <button onClick={handle} className="btn btn-primary my-3 mr-3" items={getdata}>
+                //   Checkout
+                // </button>
+
+                <button
+                  onClick={handle}
+                  className="btn btn-outline-dark btn-lg my-3"
+                  style={{ padding: "10px 70px" }}
+                  items={getdata}
+                >
+                  Checkout
+                </button>
               ) : (
-                // <Link to="/checkoutpage">
-                //   <button className="btn btn-primary my-3 mr-3">
-                //     Checkout
-                //   </button>
-                // </Link>
                 <Link to="/login">
-                  <button className="btn btn-primary my-3 mr-3">
+                  <button
+                    className="btn btn-outline-dark btn-lg my-3"
+                    style={{ padding: "10px 70px" }}
+                  >
                     Checkout
                   </button>
                 </Link>

@@ -5,11 +5,7 @@ const router = express.Router();
 const asyncHandler = require("express-async-handler");
 const Review = require("../models/ReviewSchema");
 const User = require("../models/UserSchema");
-<<<<<<< HEAD
 const path = require('path');
-=======
-const Order = require("../models/OrderSchema");
->>>>>>> c4d084e4d8d74467367af8dd6e7f040a390eefde
 require("../db");
 
 // -------------------- add service through admin--------------------------

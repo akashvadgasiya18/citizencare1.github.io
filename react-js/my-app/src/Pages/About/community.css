@@ -18,7 +18,7 @@
 .rows {
   width: 100%;
   margin: auto;
-  /* background-color: rgb(194, 139, 68); */
+  /* background-color:""; */
   margin-bottom: 40px;
   margin-top: 20px;
   display: flex;
@@ -28,7 +28,7 @@
   justify-content: center;
 }
 .profile-card {
-  /* background-color: lavender; */
+  background-color: lavender;
   width: 25%;
   height: auto;
   margin: 30px 30px 10px 10px;
@@ -64,6 +64,47 @@
   padding: 0px 40px;
   /* text-align: justify; */
   color: #000000;
+}
+.community-basic ul a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.community-basic ul a:hover {
+  opacity: 1;
+  color: rgb(68, 238, 16);
+  text-decoration: none;
+}
+
+.community-basic .social {
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  padding-bottom: 40px;
+  margin-top: 0px;
+}
+
+.community-basic .social > a {
+  font-size: 25px;
+  width: 50px;
+  height: 50px;
+  line-height: 48px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid rgb(0, 0, 0);
+  margin: 0 10px;
+  color: inherit;
+  /* opacity:0.75; */
+}
+
+.community-basic .social > a:hover {
+  opacity: 1;
+  color: rgb(255, 255, 255);
+  background: rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
 }
 
 @media (max-width: 800px) {
