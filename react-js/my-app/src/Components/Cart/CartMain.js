@@ -147,9 +147,6 @@ const CartMain = () => {
                 <option value="6-to-8">6-to-8</option>
               </select>
             <div className="col-auto">
-              <Link to="/service">
-                <button className="btn btn-success my-3 mr-3">continue</button>
-              </Link>
               {loggedIn ? (
                 <button
                   onClick={handle}
