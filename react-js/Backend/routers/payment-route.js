@@ -28,7 +28,7 @@ router.post("/create-checkout-session", async (req, res) => {
             id: item._id,
           },
         },
-        unit_amount: item.price * 100 ,
+        unit_amount: item.price * 100,
       },
       quantity: 1,
     };
@@ -38,8 +38,8 @@ router.post("/create-checkout-session", async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     // "customer_email": req.body.user.email,
-    "customer": customer.id, 
-    shipping_address_collection: {allowed_countries: ['IN']},
+    customer: customer.id,
+    shipping_address_collection: { allowed_countries: ["IN"] },
     line_items,
     mode: "payment",
     invoice_creation: { enabled: true },
@@ -50,7 +50,7 @@ router.post("/create-checkout-session", async (req, res) => {
 });
 
 //orderCreation
-const createOrder = async (customer ,data) => {
+const createOrder = async (customer, data) => {
   const items = JSON.parse(customer.metadata.cart);
   const newOrder = new Order({
     userId: customer.metadata.userId,
@@ -61,10 +61,10 @@ const createOrder = async (customer ,data) => {
     email: data.customer_details.email,
     address: data.customer_details.address,
     service: items,
-    total: data.amount_total/100,
+    total: data.amount_total / 100,
     status: data.payment_status,
   });
-  try{
+  try {
     const saved = await newOrder.save();
     var transporter = nodemailer.createTransport({
       service: "gmail",
@@ -78,7 +78,7 @@ const createOrder = async (customer ,data) => {
       from: "shreyabundheliya2109@gmail.com",
       to: data.customer_details.email,
       subject: "Booking successfull.",
-      text: JSON.stringify(saved._id + saved.address)
+      text: JSON.stringify(saved._id + saved.address),
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -89,12 +89,10 @@ const createOrder = async (customer ,data) => {
       }
     });
     // console.log('Order: ',saved);
-  }
-  catch(err)
-  {
+  } catch (err) {
     console.log(err);
   }
-}
+};
 
 //webhook
 // stripe listen --forward-to localhost:3001/webhook
@@ -106,7 +104,7 @@ router.post(
     const sig = request.headers["stripe-signature"];
     let data;
     let eventType;
-    
+
     if (endpointSecret) {
       let event;
       try {

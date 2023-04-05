@@ -32,7 +32,7 @@ const ServicePage = () => {
     <>
       <Navbar5 />
       <div className="main-wrapper">
-        <div className="product-div" style={{ backgroundColor: "honeydew" }}>
+        <div className="product-div" style={{ backgroundColor: "ghostwhite" }}>
           <div className="product-div-left">
             <img
               src={`http://localhost:3001/assets/image/${product.doc_img}`}
