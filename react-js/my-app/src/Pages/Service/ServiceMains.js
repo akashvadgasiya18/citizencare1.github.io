@@ -4,6 +4,7 @@ import ImageBanner from "../../Components/Common/ImageBanner";
 // import Service from "./Service";
 import { CartProvider } from "react-use-cart";
 import Items from "../../Components/ServiceItem/Items";
+// import SearchBar from "./SearchBar";
 
 const ServiceMains = () => {
   return (

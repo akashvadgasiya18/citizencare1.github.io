@@ -28,7 +28,7 @@ function Changepass() {
         hideProgressBar: "false",
       });
     } else if (reset.status === 201) {
-      navigate("/login");
+      navigate("/logout");
       toast.success("Successfully email sent.", {
         position: "top-left",
         theme: "colored",
@@ -62,7 +62,9 @@ function Changepass() {
               >
                 You can change Password through Email ID
               </p>
-              <label style={{ float: "left",display:'flex'}}>Enter Email Id</label>
+              <label style={{ float: "left", display: "flex" }}>
+                Enter Email Id
+              </label>
               <input
                 type="email"
                 id=""

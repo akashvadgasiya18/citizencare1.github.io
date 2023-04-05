@@ -10,8 +10,10 @@ import { FaBars } from "react-icons/fa";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import "../css/sidemenu.css";
 import Slidebar1 from "./Slidebar1";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -19,6 +21,7 @@ const Header = () => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+    navigate("/logout");
   };
   const [show, setShow] = useState(false);
 
@@ -56,7 +59,7 @@ const Header = () => {
                 "aria-labelledby": "basic-button",
               }}
             >
-              <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem>My account</MenuItem>
               <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>
           </Hidden>

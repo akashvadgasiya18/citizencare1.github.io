@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Typography } from "antd";
 import "../css/servicepage.css";
 import { FaArrowLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const AddservicePage = () => {
+  const navigate = useNavigate();
   const [ser, setser] = useState({
     s_name: "",
     price: "",
@@ -46,6 +47,7 @@ const AddservicePage = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
+      navigate("/dashmain/services");
     } catch (err) {
       if (err.response.status === 412) {
         toast.error("All fields are required.", {
@@ -103,7 +105,12 @@ const AddservicePage = () => {
             </Typography.Title>
           </div>
           <div>
-            <form method="post" action="" className="login-form" enctype="multipart/form-data">
+            <form
+              method="post"
+              action=""
+              className="login-form"
+              enctype="multipart/form-data"
+            >
               <div
                 style={{
                   backgroundColor: "white",
@@ -119,7 +126,7 @@ const AddservicePage = () => {
                   type="text"
                   id=""
                   Name="s_name"
-                  value={ser.s_name} 
+                  value={ser.s_name}
                   onChange={input_hand}
                   placeholder="Enter service Name"
                   autoComplete="off"
@@ -137,6 +144,8 @@ const AddservicePage = () => {
                   type="number"
                   id=""
                   Name="rating"
+                  min={1}
+                  max={5}
                   value={ser.rating}
                   onChange={input_hand}
                   placeholder="Enter service Rating"

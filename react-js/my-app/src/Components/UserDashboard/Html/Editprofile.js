@@ -70,7 +70,7 @@ const Editprofile = () => {
         hideProgressBar: "false",
       });
     } else if (res.status === 201) {
-      navigate("/profile");
+      navigate("/profile/usersdetail");
       toast.success("Successfully updated.", {
         position: "top-left",
         theme: "colored",
@@ -122,14 +122,10 @@ const Editprofile = () => {
             <h2 style={{ paddingBottom: "30px", textAlign: "center" }}>
               Edit Profile
             </h2>
-            <input
-              type="text"
-              id=""
-              Name="email"
-              value={ user.email }
-              required
-            />
-            <p style={{textAlign:'left',color:'red'}}><b>[ Email can't be modified..]</b></p>
+            <input type="text" id="" Name="email" value={user.email} required />
+            <p style={{ textAlign: "left", color: "red" }}>
+              <b>[ Email can't be modified..]</b>
+            </p>
             <input
               type="text"
               id=""

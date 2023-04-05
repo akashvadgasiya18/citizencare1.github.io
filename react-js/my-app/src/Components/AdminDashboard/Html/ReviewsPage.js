@@ -38,6 +38,7 @@ const ReviewsPage = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
+      window.location.reload(true);
     }
   };
 

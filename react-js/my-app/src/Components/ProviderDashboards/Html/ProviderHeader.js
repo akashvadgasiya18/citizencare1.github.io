@@ -11,8 +11,10 @@ import { Hidden } from "@mui/material";
 import { FaBars } from "react-icons/fa";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import ProviderSlidbar from "./ProviderSlidbar";
+import { useNavigate } from "react-router-dom";
 
 const ProviderHeader = () => {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -20,6 +22,7 @@ const ProviderHeader = () => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+    navigate("/logout");
   };
   const [show, setShow] = useState(false);
 
@@ -57,7 +60,7 @@ const ProviderHeader = () => {
                 "aria-labelledby": "basic-button",
               }}
             >
-              <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem>My account</MenuItem>
               <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>
           </Hidden>

@@ -25,7 +25,6 @@ const ProviderPasschange = () => {
                 Name="email"
                 placeholder="Enter email "
                 autoComplete="off"
-                // value={email}
                 // onChange={(e) => setEmail(e.target.value)}
               />
               <button

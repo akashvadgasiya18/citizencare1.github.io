@@ -419,6 +419,10 @@ const Registration1 = () => {
                       style={{ height: "50px" }}
                       // className="form-control form-control mb-3"
                     />
+                    <p>
+                      <b>[ Upload any Id-proof ]</b>
+                    </p>
+
                     {/* </div> */}
                     {/* <button
                     className="btn btn-outline-dark btn-lg px-5"
@@ -432,7 +436,7 @@ const Registration1 = () => {
                       <button
                         type="submit"
                         className="btn btn-outline-dark btn-lg px-5"
-                        style={{ marginTop: "3rem" }}
+                        style={{ marginTop: "1rem" }}
                         onClick={send_p_data}
                       >
                         Register

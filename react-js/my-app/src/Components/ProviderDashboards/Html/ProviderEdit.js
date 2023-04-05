@@ -45,7 +45,7 @@ const ProviderEdit = () => {
         p_name,
         p_role: choice,
         p_mno,
-        p_add
+        p_add,
       }),
     });
     const data = await res.json();
@@ -74,7 +74,7 @@ const ProviderEdit = () => {
         hideProgressBar: "false",
       });
     } else if (res.status === 201) {
-      navigate("/providerDash");
+      navigate("/providerDash/provideDetails");
       toast.success("Successfully updated.", {
         position: "top-left",
         theme: "colored",

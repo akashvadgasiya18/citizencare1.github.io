@@ -73,7 +73,7 @@ const EditServices = ({ item }) => {
         hideProgressBar: "false",
       });
     } else if (res.status === 201) {
-      navigate("/dashmain");
+      navigate("/dashmain/services");
       toast.success("Successfully updated.", {
         position: "top-left",
         theme: "colored",

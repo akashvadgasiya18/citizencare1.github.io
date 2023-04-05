@@ -76,9 +76,9 @@ const createOrder = async (customer, data) => {
 
     var mailOptions = {
       from: "shreyabundheliya2109@gmail.com",
-      to: data.customer_details.email,
+      to: "akashvadgasiya1832@gmail.com",
       subject: "Booking successfull.",
-      text: JSON.stringify(saved._id + saved.address),
+      text: JSON.stringify(saved.email, saved.total),
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -94,7 +94,9 @@ const createOrder = async (customer, data) => {
   }
 };
 
-//webhook
+// webhook
+// text: JSON.stringify(saved.total),
+// to: data.customer_details.email,
 // stripe listen --forward-to localhost:3001/webhook
 let endpointSecret;
 router.post(

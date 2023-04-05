@@ -40,6 +40,7 @@ const ProviderPage = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
+      window.location.reload(true);
     }
   };
   const send = async (p_email) => {

@@ -38,6 +38,7 @@ const Servicepages = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
+      window.location.reload(true);
     }
   };
   const getdata = useSelector((state) => state.cartreducer.carts);

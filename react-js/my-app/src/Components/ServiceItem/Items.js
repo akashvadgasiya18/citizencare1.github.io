@@ -6,10 +6,11 @@ import { Container, Row } from "reactstrap";
 // import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { listService } from "../../Redux/Actions/ServiceAction";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import img from '../../assets/details/'
 import "../../Components/ServiceItem/service-item.css";
 import ServiceItems from "./ServiceItems";
+import SearchBar from "./SearchBar";
 
 const Items = () => {
   // const [Products, setProducts] = useState([]);
@@ -43,6 +44,10 @@ const Items = () => {
                 <span>Service Catalog</span>
                 <h2 style={{ fontSize: "30px" }}>DIFFERENT TYPE OF SERVICES</h2>
               </div>
+              <SearchBar />
+              <br />
+              <br />
+              <br></br>
               {service.map((item) => {
                 return (
                   <ServiceItems

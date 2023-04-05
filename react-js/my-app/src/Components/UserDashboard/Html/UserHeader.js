@@ -10,8 +10,10 @@ import { FaBars } from "react-icons/fa";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import "../../AdminDashboard/css/sidemenu.css";
 import Slidebar from "./Slidebar";
+import { useNavigate } from "react-router-dom";
 
 const UserHeader = () => {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -19,6 +21,7 @@ const UserHeader = () => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+    navigate("/logout");
   };
   const [show, setShow] = useState(false);
 
@@ -56,7 +59,7 @@ const UserHeader = () => {
                 "aria-labelledby": "basic-button",
               }}
             >
-              <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem>My account</MenuItem>
               <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>
           </Hidden>

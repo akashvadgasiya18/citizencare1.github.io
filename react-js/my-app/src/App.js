@@ -29,6 +29,7 @@ const App = () => {
           <Route exact path="/" element={<Home></Home>} />
           <Route exact path="/about" element={<AboutMain />} />
           <Route exact path="/service" element={<ServiceMains />} />
+
           <Route exact path="/contact" element={<Contact></Contact>} />
           <Route exact path="/login" element={<Login1></Login1>} />
           <Route path="/logout" element={<Logout />} />
@@ -43,7 +44,7 @@ const App = () => {
           <Route exact path="/cart" element={<Cart />} />
 
           <Route exact path="/changepassword" element={<ChangePassword />} />
-          <Route exact path="/checkout-success" element={<CheckSuccess/>} />
+          <Route exact path="/checkout-success" element={<CheckSuccess />} />
           <Route exact path="/details" element={<Items />} />
           <Route exact path="/details/:id" element={<ServicePage />}></Route>
         </Routes>
