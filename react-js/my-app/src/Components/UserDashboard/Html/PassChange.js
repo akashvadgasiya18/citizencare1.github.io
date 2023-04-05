@@ -28,7 +28,7 @@ function Changepass() {
         hideProgressBar: "false",
       });
     } else if (reset.status === 201) {
-      navigate("/login");
+      navigate("/logout");
       toast.success("Successfully email sent.", {
         position: "top-left",
         theme: "colored",

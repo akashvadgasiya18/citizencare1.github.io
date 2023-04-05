@@ -78,7 +78,12 @@ const createOrder = async (customer, data) => {
       from: "shreyabundheliya2109@gmail.com",
       to: data.customer_details.email,
       subject: "Booking successfull.",
-      text: JSON.stringify(saved._id + saved.address),
+      html: '<p> Your payment id is "' + saved.paymentId 
+          + '".</p> <p> Your payment amount is ' + saved.total 
+          + '.</p>' + '<p> Your Address is '+ saved.address.line1 + ',' + saved.address.line2 + ',' + saved.address.postal_code 
+          + '.</p>' + '<p> Your service schedulae is '+ saved.scheduale 
+          + '.</p>' + '<p> Your Service name is '+ saved.service[0].s_name 
+          + '.</p>' 
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -88,7 +93,6 @@ const createOrder = async (customer, data) => {
         console.log("Email sent: " + info.response);
       }
     });
-    // console.log('Order: ',saved);
   } catch (err) {
     console.log(err);
   }
@@ -129,7 +133,6 @@ router.post(
       stripe.customers
         .retrieve(data.customer)
         .then((customer) => {
-          // console.log(customer);
           createOrder(customer, data);
         })
         .catch((err) => {
