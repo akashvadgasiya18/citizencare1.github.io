@@ -1,11 +1,51 @@
 import React from "react";
 // import Button from "react-bootstrap/Button";
-import Data1 from "../../ServiceItem/Data1";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  // UserhistoryService,
+  userSingleDetails,
+} from "../../../Redux/Actions/ServiceAction";
 import { Typography } from "antd";
 import "../../AdminDashboard/css/servicepage.css";
-import { Link } from "react-router-dom";
+import axios from "axios";
+// import { Link } from "react-router-dom";
 
 const UserOrder = () => {
+  const dispatch = useDispatch();
+  const singleData = useSelector((state) => state.singleData);
+  const { user } = singleData;
+  let [responseData, setResponseData] = React.useState("");
+  // const [ detail, setDetail ] =useState();
+  // const historyList = useSelector((state) => state.historyList);
+  // const { user_history } = historyList;
+  // console.log(user_history);
+  // state = {
+  //   details: [],
+  // };
+
+  const getdetails = () => {
+    const email = user.email;
+    axios
+      .get(`/userorders/${email}`)
+      .then((res) => {
+        console.log(res);
+        setResponseData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    dispatch(userSingleDetails());
+    getdetails();
+  }, [dispatch]);
+
+  // const email = user.email;
+  // useEffect(() => {
+  //   dispatch(UserhistoryService(email));
+  //   // get_print();
+  // },[email]);
   return (
     <>
       <div>
@@ -20,57 +60,28 @@ const UserOrder = () => {
           >
             Booking Details
           </Typography.Title>
-
+          <p>{user.email}</p>
           {/* --------------------------- tabel ------------------------------------- */}
           <div>
             <div className="card" style={{ display: "flex", width: "95%" }}>
               <div class="header_fixed">
+                {/* <h1>{responseData.total}</h1> */}
                 <table>
                   <thead className="text-dark">
                     <tr>
-                      <th>Image</th>
-                      <th>Service Name</th>
-                      <th>Price(per)</th>
-                      <th>rating</th>
-                      <th>Action</th>
+                      <th>Payment_id</th>
+                      {/* <th>Service Name</th>  */}
+                      {/* <th>Price(per)</th> */}
+                      <th>Scheduale</th>
+                      <th>Total</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {Data1.serviceData.map((item, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>
-                            <img
-                              src={item.img}
-                              alt=""
-                              style={{ height: "3rem" }}
-                            />
-                          </td>
-                          <td>{item.s_name}</td>
-                          <td>₹ {item.price}</td>
-                          <td> {item.rating}</td>
-                          <td>
-                            <Link to="/dashboards/services/editservicepage">
-                              <i
-                                class="fa-solid fa-pen edit-icons icons-1"
-                                style={{
-                                  cursor: "pointer",
-                                  // marginRight: "30px",
-                                  paddingRight: "30px",
-                                }}
-                              ></i>
-                            </Link>
-                            <i
-                              class="fa-solid fa-trash edit-icons icons-2"
-                              style={{
-                                color: "#ce3d3d",
-                                cursor: "pointer",
-                              }}
-                            ></i>
-                          </td>
-                        </tr>
-                      );
-                    })}
+                    <tr key={responseData._id}>
+                      <td>{responseData.paymentId}</td>
+                      <td>{responseData.scheduale}</td>
+                      <td>₹ {responseData.total}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>

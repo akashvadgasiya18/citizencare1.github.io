@@ -30,7 +30,6 @@ const Welcomepage = () => {
       if (!res.status === 200) {
         const error = new Error(res.error);
         throw error;
-        // navigate("/login");
       }
     } catch (err) {
       console.log(err);
