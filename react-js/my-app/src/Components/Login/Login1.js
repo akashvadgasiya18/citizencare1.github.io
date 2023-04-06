@@ -93,6 +93,7 @@ const Login1 = () => {
                 padding: "40px 20px",
                 borderRadius: "20px",
                 display: "",
+                marginTop: "90px",
               }}
             >
               <h1

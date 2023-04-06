@@ -5,9 +5,9 @@ const SearchBar = () => {
   return (
     <>
       <form>
-        <div class="search-container">
-          <div class="search_wrap search_wrap_1">
-            <div class="search_box">
+        <div class="search-sre-container">
+          <div class="search_ser_wrap search_ser_wrap_1">
+            <div class="search_ser_box">
               <input type="text" class="input" placeholder="search..." />
               <div class="btn btn_common">
                 <i class="fas fa-search"></i>

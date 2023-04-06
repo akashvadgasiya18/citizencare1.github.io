@@ -61,26 +61,24 @@ export const SinglelistService = (_id) => async (dispatch) => {
 
 // ----------------------- all details fetch in cards frontend ------------------
 
-export const listService =
-  (keyword = "") =>
-  async (dispatch) => {
-    try {
-      dispatch({ type: SERVICE_REQUEST });
-      const { data } = await axios.get(`/details?keyword=${keyword}`);
-      dispatch({
-        type: SERVICE_SUCCESS,
-        payload: data,
-      });
-    } catch (error) {
-      dispatch({
-        type: SERVICE_FAIL,
-        payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
-            : error.message,
-      });
-    }
-  };
+export const listService = () => async (dispatch) => {
+  try {
+    dispatch({ type: SERVICE_REQUEST });
+    const { data } = await axios.get(`/details`);
+    dispatch({
+      type: SERVICE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: SERVICE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
 // --------------- user details fetch in admin dashboards ---------
 

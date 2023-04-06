@@ -1,25 +1,25 @@
-.search-container {
+.search-ser-container {
   margin-top: -60px;
   margin-bottom: 20px;
 }
 
-.search-container .input {
+.search-ser-container .input {
   outline: none;
   color: #8b7d77;
 }
 
-.search_wrap {
+.search_ser_wrap {
   width: 500px;
   margin: 38px auto;
 }
 
-.search_wrap .search_box {
+.search_ser_wrap .search_ser_box {
   position: relative;
   width: 500px;
   height: 60px;
 }
 
-.search_wrap .search_box .input {
+.search_ser_wrap .search_ser_box .input {
   position: absolute;
   top: 0;
   left: 0;
@@ -30,7 +30,7 @@
   font-size: 18px;
 }
 
-.search_wrap .search_box .btn {
+.search_ser_wrap .search_ser_box .btn {
   position: absolute;
   top: 0;
   right: 0;
@@ -41,11 +41,11 @@
   cursor: pointer;
 }
 
-.search_wrap .search_box .btn:hover {
+.search_ser_wrap .search_ser_box .btn:hover {
   background: #708bd2;
 }
 
-.search_wrap .search_box .btn.btn_common .fas {
+.search_ser_wrap .search_ser_box .btn.btn_common .fas {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -54,34 +54,34 @@
   font-size: 20px;
 }
 
-.search_wrap.search_wrap_1 .search_box .btn {
+.search_ser_wrap .search_ser_wrap_1 .search_ser_box .btn {
   right: 0;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-.search_wrap.search_wrap_1 .search_box .input {
+.search_ser_wrap.search_ser_wrap_1 .search_ser_box .input {
   padding-right: 80px;
 }
 
 @media screen and (max-width: 940px) {
-  .search_wrap {
+  .search_ser_wrap {
     width: 450px;
     display: flex;
     justify-content: center;
   }
-  .search_wrap .search_box {
+  .search_ser_wrap .search_ser_box {
     width: 450px;
     height: 50px;
   }
 }
 
 @media screen and (max-width: 668px) {
-  .search_wrap {
+  .search_ser_wrap {
     width: 350px;
     display: flex;
     justify-content: center;
   }
-  .search_wrap .search_box {
+  .search_ser_wrap .search_ser_box {
     width: 350px;
     height: 50px;
   }

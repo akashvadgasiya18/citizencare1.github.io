@@ -53,7 +53,6 @@ const ServiceItems = ({ item }) => {
 
           <Link to={`/details/${item._id}`}>
             <button className=" w-100 car__item-btn car__btn-details">
-              {/* <i className="fa-solid fa-eye" style={{ marginRight: "5px" }}></i> */}
               Book Now
             </button>
           </Link>
