@@ -216,16 +216,6 @@ router.get(
   })
 );
 
-//---------------------------------history-user---------------
-router.get(
-  "/user_history",
-  asyncHandler(async (req, res) => {
-    const email = req.body.userEmail;
-    const product = await Order.find({email: email});
-    res.send(product);
-  })
-);
-
 //----------edit user_profile-----------------------
 
 router.post("/edit_detail", async (req, res) => {
@@ -349,6 +339,28 @@ router.post("/send_order", async (req, res) => {
       return res.status(413).json({ message: "Not exists." });
     }
   } catch (err) {
+    console.log(err);
+  }
+});
+
+//--------------------------------history-User------------------------
+router.get(
+  "/userorders/:email", async (req,res) => {
+  const email = req.params.email;
+  // console.log(email);
+  try
+  {
+    const exist = await Order.findOne({ email: email });
+    if(exist)
+    {
+      console.log(exist);
+      res.send(exist);
+    } else {
+      res.status(404).json({ message: "Product not founded" });
+    }
+  }
+  catch(err)
+  {
     console.log(err);
   }
 });

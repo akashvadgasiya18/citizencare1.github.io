@@ -101,6 +101,22 @@ export const singleusersreducer = (state = { user: [] }, action) => {
   }
 };
 
+export const userhistoryreducer = (state = { user_history: [] }, action) => {
+  switch (action.type) {
+    case SINGLE_SERVICE_REQUEST:
+      return { ...state };
+
+    case SINGLE_SERVICE_SUCCESS:
+      return { user_history : action.payload };
+
+    case SINGLE_SERVICE_FAIL:
+      return { error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
 export const providersreducer = (state = { providers: [] }, action) => {
   switch (action.type) {
     case PROVIDERS_REQUEST:

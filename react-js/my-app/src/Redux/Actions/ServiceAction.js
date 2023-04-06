@@ -62,11 +62,11 @@ export const SinglelistService = (_id) => async (dispatch) => {
 // ----------------------- all details fetch in cards frontend ------------------
 
 export const listService =
-  (keyword = "") =>
+  () =>
   async (dispatch) => {
     try {
       dispatch({ type: SERVICE_REQUEST });
-      const { data } = await axios.get(`/details?keyword=${keyword}`);
+      const { data } = await axios.get(`/details`);
       dispatch({
         type: SERVICE_SUCCESS,
         payload: data,
@@ -124,6 +124,28 @@ export const userSingleDetails = () => async (dispatch) => {
   }
 };
 
+// ------------------------------ User history get -------------------------------
+
+export const UserhistoryService = (email) => async (dispatch) => {
+  try {
+    dispatch({ type: SINGLE_SERVICE_REQUEST });
+    const { data } = await axios.get(`/userorders/${email}`);
+    dispatch({
+      type: SINGLE_SERVICE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: SINGLE_SERVICE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+
 // ---------------------- provider details fetch in admin dashboards ----------------
 
 export const providersDetails = () => async (dispatch) => {
@@ -145,7 +167,7 @@ export const providersDetails = () => async (dispatch) => {
   }
 };
 
-// ------------------------------- user single details -----------------------
+// ------------------------------- provider single details -----------------------
 
 export const providerSingleDetails = () => async (dispatch) => {
   try {
