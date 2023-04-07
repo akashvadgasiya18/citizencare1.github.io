@@ -345,25 +345,38 @@ router.post("/send_order", async (req, res) => {
 
 //--------------------------------history-User------------------------
 router.get(
-  "/userorders/:email", async (req,res) => {
-  const email = req.params.email;
-  // console.log(email);
-  try
-  {
-    const exist = await Order.findOne({ email: email });
-    if(exist)
-    {
-      console.log(exist);
-      res.send(exist);
+  "/userorders/:email",
+  asyncHandler(async (req, res) => {
+    const email = req.params.email;
+    console.log(email);
+    const products = await Order.find({email : email });
+    if (products) {
+      console.log(products);
+      res.send(products);
     } else {
       res.status(404).json({ message: "Product not founded" });
     }
-  }
-  catch(err)
-  {
-    console.log(err);
-  }
-});
+  })
+);
+//   async (req,res) => {
+//   const email = req.params.email;
+//   // console.log(email);
+//   try
+//   {
+//     const exist = await Order.find({ email: email });
+//     if(exist)
+//     {
+//       console.log(exist);
+//       res.send(exist);
+//     } else {
+//       res.status(404).json({ message: "Product not founded" });
+//     }
+//   }
+//   catch(err)
+//   {
+//     console.log(err);
+//   }
+// });
 
 //------------------- logout ------------------------------------
 router.get("/logout", (req, res) => {

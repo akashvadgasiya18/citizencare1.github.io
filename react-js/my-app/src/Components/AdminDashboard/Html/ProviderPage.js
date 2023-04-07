@@ -142,7 +142,7 @@ const ProviderPage = () => {
                           if (search === " ") {
                             return item;
                           } else if (
-                            item.p_roles
+                            item.p_role
                               .toLowerCase()
                               .includes(search.toLocaleLowerCase())
                           ) {
