@@ -75,8 +75,8 @@ const createOrder = async (customer, data) => {
 
     var mailOptions = {
       from: "shreyabundheliya2109@gmail.com",
-      to: data.customer_details.email,
-      // to: "akashvadgasiya1832@gmail.com",
+      // to: data.customer_details.email,
+      to: "akashvadgasiya1832@gmail.com",
       subject: "Booking successfull.",
       html:
         '<p> Your payment id is "' +

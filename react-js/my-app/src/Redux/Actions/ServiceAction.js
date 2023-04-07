@@ -15,6 +15,9 @@ import {
   BOOKING_REQUEST,
   BOOKING_SUCCESS,
   BOOKING_FAIL,
+  ORDER_REQUEST,
+  ORDER_SUCCESS,
+  ORDER_FAIL,
 } from "./action";
 
 // ------------------- BOOKING DETAILS GET -----------------------------------------
@@ -126,15 +129,15 @@ export const userSingleDetails = () => async (dispatch) => {
 
 export const UserhistoryService = (email) => async (dispatch) => {
   try {
-    dispatch({ type: SINGLE_SERVICE_REQUEST });
+    dispatch({ type: ORDER_REQUEST });
     const { data } = await axios.get(`/userorders/${email}`);
     dispatch({
-      type: SINGLE_SERVICE_SUCCESS,
+      type: ORDER_SUCCESS,
       payload: data,
     });
   } catch (error) {
     dispatch({
-      type: SINGLE_SERVICE_FAIL,
+      type: ORDER_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

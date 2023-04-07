@@ -17,6 +17,9 @@ import {
   BOOKING_REQUEST,
   BOOKING_SUCCESS,
   BOOKING_FAIL,
+  ORDER_REQUEST,
+  ORDER_SUCCESS,
+  ORDER_FAIL,
 } from "../Actions/action";
 
 // ------------------- booking --------------------------------------------
@@ -101,15 +104,15 @@ export const singleusersreducer = (state = { user: [] }, action) => {
   }
 };
 
-export const userhistoryreducer = (state = { user_history: [] }, action) => {
+export const userhistoryreducer = (state = { orderList: [] }, action) => {
   switch (action.type) {
-    case SINGLE_SERVICE_REQUEST:
+    case ORDER_REQUEST:
       return { ...state };
 
-    case SINGLE_SERVICE_SUCCESS:
-      return { user_history : action.payload };
+    case ORDER_SUCCESS:
+      return { orderList : action.payload };
 
-    case SINGLE_SERVICE_FAIL:
+    case ORDER_FAIL:
       return { error: action.payload };
 
     default:
