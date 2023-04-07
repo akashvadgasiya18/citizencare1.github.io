@@ -1,5 +1,5 @@
 import { Typography } from "antd";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -13,6 +13,7 @@ const ProviderPage = () => {
   const navigate = useNavigate();
   const providersList = useSelector((state) => state.providersList);
   const { error, providers } = providersList;
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     dispatch(providersDetails());
@@ -75,6 +76,25 @@ const ProviderPage = () => {
           >
             Provider Details
           </Typography.Title>
+          <form>
+            <div class="search-sre-container">
+              <div class="search_ser_wrap search_ser_wrap_1">
+                <div class="search_ser_box">
+                  <input
+                    type="text"
+                    class="input"
+                    placeholder="search..."
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                    }}
+                  />
+                  <div class="btn btn_common">
+                    <i class="fas fa-search"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
           {/* <div className="addservice-btn">
             <Link to="/dashboards/services/Addservicepage">
               <Button variant="primary">Add Service</Button>
@@ -117,41 +137,53 @@ const ProviderPage = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {providers.map((item, index) => {
-                        return (
-                          <tr key={index}>
-                            <td>{item.p_name}</td>
-                            <td>{item.p_role}</td>
-                            <td>{item.p_email}</td>
-                            <td>{item.p_mno}</td>
-                            <td>{item.p_add}</td>
-                            <td>
-                              <img
-                                src={`http://localhost:3001/assets/img_pro/${item.p_file}`}
-                                alt=""
-                                style={{ height: "3rem" }}
-                              />
-                            </td>
-                            <td>
-                              <Link to="/dashmain/providerorder">
+                      {providers
+                        .filter((item) => {
+                          if (search === " ") {
+                            return item;
+                          } else if (
+                            item.p_roles
+                              .toLowerCase()
+                              .includes(search.toLocaleLowerCase())
+                          ) {
+                            return item;
+                          }
+                        })
+                        .map((item, index) => {
+                          return (
+                            <tr key={index}>
+                              <td>{item.p_name}</td>
+                              <td>{item.p_role}</td>
+                              <td>{item.p_email}</td>
+                              <td>{item.p_mno}</td>
+                              <td>{item.p_add}</td>
+                              <td>
+                                <img
+                                  src={`http://localhost:3001/assets/img_pro/${item.p_file}`}
+                                  alt=""
+                                  style={{ height: "3rem" }}
+                                />
+                              </td>
+                              <td>
+                                <Link to="/dashmain/providerorder">
+                                  <Button
+                                    variant="primary"
+                                    className="mr-3"
+                                    onClick={() => send(item.p_email)}
+                                  >
+                                    send
+                                  </Button>
+                                </Link>
                                 <Button
-                                  variant="primary"
-                                  className="mr-3"
-                                  onClick={() => send(item.p_email)}
+                                  variant="danger"
+                                  onClick={() => handel(item._id)}
                                 >
-                                  send
+                                  Delete
                                 </Button>
-                              </Link>
-                              <Button
-                                variant="danger"
-                                onClick={() => handel(item._id)}
-                              >
-                                Delete
-                              </Button>
-                            </td>
-                          </tr>
-                        );
-                      })}
+                              </td>
+                            </tr>
+                          );
+                        })}
                     </tbody>
                   </table>
                 </div>

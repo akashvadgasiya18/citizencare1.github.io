@@ -78,7 +78,6 @@ const createOrder = async (customer, data) => {
       to: data.customer_details.email,
       // to: "akashvadgasiya1832@gmail.com",
       subject: "Booking successfull.",
-<<<<<<< HEAD
       html:
         '<p> Your payment id is "' +
         saved.paymentId +
@@ -98,14 +97,6 @@ const createOrder = async (customer, data) => {
         "<p> Your Service name is " +
         saved.service[0].s_name +
         ".</p>",
-=======
-      html: '<p> Your payment id is "' + saved.paymentId 
-          + '".</p> <p> Your payment amount is ' + saved.total 
-          + '.</p>' + '<p> Your Address is '+ saved.address.line1 + ',' + saved.address.line2 + ',' + saved.address.postal_code 
-          + '.</p>' + '<p> Your service schedulae is '+ saved.scheduale 
-          + '.</p>' + '<p> Your Service name is '+ saved.service[0].s_name 
-          + '.</p>' 
->>>>>>> decc59a332647bf6edd22edac8190adef66759f7
     };
 
     transporter.sendMail(mailOptions, function (error, info) {

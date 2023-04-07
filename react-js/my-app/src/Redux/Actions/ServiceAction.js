@@ -61,7 +61,6 @@ export const SinglelistService = (_id) => async (dispatch) => {
 
 // ----------------------- all details fetch in cards frontend ------------------
 
-<<<<<<< HEAD
 export const listService = () => async (dispatch) => {
   try {
     dispatch({ type: SERVICE_REQUEST });
@@ -80,28 +79,6 @@ export const listService = () => async (dispatch) => {
     });
   }
 };
-=======
-export const listService =
-  () =>
-  async (dispatch) => {
-    try {
-      dispatch({ type: SERVICE_REQUEST });
-      const { data } = await axios.get(`/details`);
-      dispatch({
-        type: SERVICE_SUCCESS,
-        payload: data,
-      });
-    } catch (error) {
-      dispatch({
-        type: SERVICE_FAIL,
-        payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
-            : error.message,
-      });
-    }
-  };
->>>>>>> decc59a332647bf6edd22edac8190adef66759f7
 
 // --------------- user details fetch in admin dashboards ---------
 

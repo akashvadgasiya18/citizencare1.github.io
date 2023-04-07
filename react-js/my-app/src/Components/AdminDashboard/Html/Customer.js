@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Typography } from "antd";
 // import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,9 @@ const Customer = () => {
   useEffect(() => {
     dispatch(userDetails());
   }, [dispatch]);
+
+  const [search, setSearch] = useState("");
+
   return (
     <>
       <div className="home-container">
@@ -21,6 +24,26 @@ const Customer = () => {
           >
             Customer Details
           </Typography.Title>
+          <form>
+            <div class="search-sre-container">
+              <div class="search_ser_wrap search_ser_wrap_1">
+                <div class="search_ser_box">
+                  <input
+                    type="text"
+                    class="input"
+                    placeholder="search..."
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                    }}
+                  />
+                  <div class="btn btn_common">
+                    <i class="fas fa-search"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
           {/* <div className="addservice-btn">
             <Link to="/dashboards/services/Addservicepage">
               <Button variant="primary">Add Service</Button>
@@ -61,14 +84,26 @@ const Customer = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {users.map((item) => {
-                        return (
-                          <tr key={item._id}>
-                            <td>{item.fname}</td>
-                            <td>{item.age}</td>
-                            <td>{item.email}</td>
-                            <td>{item.phone_no}</td>
-                            {/* <td>
+                      {users
+                        .filter((item) => {
+                          if (search === " ") {
+                            return item;
+                          } else if (
+                            item.fname
+                              .toLowerCase()
+                              .includes(search.toLocaleLowerCase())
+                          ) {
+                            return item;
+                          }
+                        })
+                        .map((item) => {
+                          return (
+                            <tr key={item._id}>
+                              <td>{item.fname}</td>
+                              <td>{item.age}</td>
+                              <td>{item.email}</td>
+                              <td>{item.phone_no}</td>
+                              {/* <td>
                               <Link to="/dashboards/services/editservicepage">
                                 <i
                                   class="fa-solid fa-pen edit-icons icons-1"
@@ -87,9 +122,9 @@ const Customer = () => {
                                 }}
                               ></i>
                             </td> */}
-                          </tr>
-                        );
-                      })}
+                            </tr>
+                          );
+                        })}
                     </tbody>
                   </table>
                 </div>

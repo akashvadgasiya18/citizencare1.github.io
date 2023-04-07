@@ -8,6 +8,7 @@ import Table from "react-bootstrap/Table";
 import axios from "axios";
 import { userSingleDetails } from "../../Redux/Actions/ServiceAction";
 import { Link } from "react-router-dom";
+import "../../css/Pagenotfound.css";
 
 const CartMain = () => {
   const loggedIn = window.localStorage.getItem("isLoggedIn");
@@ -225,17 +226,11 @@ const CartMain = () => {
               display: "flex",
             }}
           >
-            <Link
-              to="/service"
-              style={{
-                color: "green",
-                textDecoration: "none",
-                fontSize: "20px",
-              }}
-            >
-              <i class="fa-solid fa-arrow-left mr-2"></i>
-              Go Back
-            </Link>
+            <div className="notfound">
+              <Link to="/service">
+                <i class="fa-solid fa-arrow-left mr-2"></i> Go Back{" "}
+              </Link>
+            </div>
           </div>
         </>
       )}
