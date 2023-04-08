@@ -40,6 +40,22 @@ export const bookingservicereducer = (state = { booking: [] }, action) => {
   }
 };
 
+export const orderPaidreducer = (state = { orders: [] }, action) => {
+  switch (action.type) {
+    case BOOKING_REQUEST:
+      return { orders: [] };
+
+    case BOOKING_SUCCESS:
+      return { orders: action.payload };
+
+    case BOOKING_FAIL:
+      return { error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
 export const singleservicereducer = (state = { product: [] }, action) => {
   switch (action.type) {
     case SINGLE_SERVICE_REQUEST:

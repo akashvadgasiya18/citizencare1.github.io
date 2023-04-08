@@ -38,7 +38,7 @@ const UserOrder = () => {
           >
             Booking Details
           </Typography.Title>
-          <p>{user.email}</p>
+          {/* <p>{user.email}</p> */}
           {/* --------------------------- tabel ------------------------------------- */}
           <div>
             <div className="card" style={{ display: "flex", width: "95%" }}>

@@ -38,6 +38,9 @@ router.post("/create-checkout-session", async (req, res) => {
     payment_method_types: ["card"],
     // "customer_email": req.body.user.email,
     customer: customer.id,
+    phone_number_collection: {
+      enabled: true,
+    },
     shipping_address_collection: { allowed_countries: ["IN"] },
     line_items,
     mode: "payment",
@@ -58,6 +61,7 @@ const createOrder = async (customer, data) => {
     paymentId: data.payment_intent,
     fname: data.customer_details.name,
     email: data.customer_details.email,
+    phone_no: data.customer_details.phone,
     address: data.customer_details.address,
     service: items,
     total: data.amount_total / 100,
@@ -75,8 +79,8 @@ const createOrder = async (customer, data) => {
 
     var mailOptions = {
       from: "shreyabundheliya2109@gmail.com",
-      // to: data.customer_details.email,
-      to: "akashvadgasiya1832@gmail.com",
+      to: data.customer_details.email,
+      // to: "akashvadgasiya1832@gmail.com",
       subject: "Booking successfull.",
       html:
         '<p> Your payment id is "' +
@@ -146,6 +150,7 @@ router.post(
       stripe.customers
         .retrieve(data.customer)
         .then((customer) => {
+          // console.log(data);
           createOrder(customer, data);
         })
         .catch((err) => {

@@ -216,6 +216,15 @@ router.get(
   })
 );
 
+//-------------booking data for provider send email---------------------
+router.get(
+  "/order_paid",
+  asyncHandler(async (req, res) => {
+    const product = await Order.find({status: 'paid'});
+    res.send(product);
+  })
+);
+
 //----------edit user_profile-----------------------
 
 router.post("/edit_detail", async (req, res) => {
@@ -309,9 +318,11 @@ router.post("/delete_provider", async (req, res) => {
 //--------------------provider-info-send--------------------------
 router.post("/send_order", async (req, res) => {
   const { p_email } = req.body;
+  const { detail } = req.body;
   try {
     const providerExist = await Provider.findOne({ p_email: p_email });
     if (providerExist) {
+      // console.log(detail.total);
       var transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -322,19 +333,46 @@ router.post("/send_order", async (req, res) => {
 
       var mailOptions = {
         from: "shreyabundheliya2109@gmail.com",
+        // to: "akashvadgasiya1832@gmail.com",
         to: p_email,
         subject: "Order details",
-        text: "Hello",
+        html:
+          '<p>The customer name is "' +
+          detail.fname +
+          '".</p> <p>The scheduale for service is "' +
+          detail.scheduale +
+          '".</p> <p>The address for service is "' +
+          detail.address.line1 +
+          "," +
+          detail.address.line2 +
+          "," +
+          detail.address.postal_code +
+          ".</p>" +
+          '<p> The email address of customer is "' +
+          detail.email +
+          '".</p> <p>The contact number is "' +
+          detail.phone_no +
+          '".</p>.',
       };
 
-      transporter.sendMail(mailOptions, function (error, info) {
+      transporter.sendMail(mailOptions, async function (error, info) {
         if (error) {
-          console.log(error);
+          return res.status(413).json({});
         } else {
           console.log("Email sent: " + info.response);
+          await Order.updateOne(
+            {
+              userId: detail.userId,
+            },
+            {
+              $set: {
+                status: "done",
+              },
+            }
+          );
+          return res.status(201).json({});
         }
       });
-      return res.status(201).json({});
     } else {
       return res.status(413).json({ message: "Not exists." });
     }
@@ -349,7 +387,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const email = req.params.email;
     console.log(email);
-    const products = await Order.find({email : email });
+    const products = await Order.find({ email: email });
     if (products) {
       console.log(products);
       res.send(products);

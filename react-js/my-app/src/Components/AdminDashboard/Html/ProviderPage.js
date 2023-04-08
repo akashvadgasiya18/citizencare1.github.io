@@ -2,11 +2,14 @@ import { Typography } from "antd";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-// import Data1 from "../../ServiceItem/Data1";
 import { toast } from "react-toastify";
-import { providersDetails } from "../../../Redux/Actions/ServiceAction";
+import {
+  Orderpaid,
+  providersDetails,
+} from "../../../Redux/Actions/ServiceAction";
+import axios from "axios";
 
 const ProviderPage = () => {
   const dispatch = useDispatch();
@@ -14,9 +17,12 @@ const ProviderPage = () => {
   const providersList = useSelector((state) => state.providersList);
   const { error, providers } = providersList;
   const [search, setSearch] = useState("");
-
+  const orderList = useSelector((state) => state.orderList);
+  const { orders } = orderList;
+  let detail = "";
   useEffect(() => {
     dispatch(providersDetails());
+    dispatch(Orderpaid());
   }, [dispatch]);
 
   const handel = async (id) => {
@@ -44,28 +50,37 @@ const ProviderPage = () => {
       window.location.reload(true);
     }
   };
-  const send = async (p_email) => {
-    const res = await fetch("/send_order", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        p_email,
-      }),
-    });
-    if (res.status === 413) {
-      toast.error("Something went wrong.", {
+  const send = async (p_email, detail) => {
+    if (detail === "") {
+      toast.error("Kindly select order.", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",
       });
-    } else if (res.status === 201) {
-      navigate("/dashmain/providerpage");
-      toast.success("Order sent to provider.", {
-        position: "top-left",
-        theme: "colored",
-        hideProgressBar: "false",
-      });
+    } else {
+      try {
+        await axios.post("/send_order", ({p_email, detail}));
+        navigate("/dashmain/providerpage");
+        toast.success("Order sent to provider.", {
+          position: "top-left",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
+        window.location.reload(true);
+      } catch (err) {
+        if (err.response.status === 413) {
+          toast.error("Something went wrong.", {
+            position: "top-center",
+            theme: "colored",
+            hideProgressBar: "false",
+          });
+        }
+      }
     }
+  };
+
+  const selectionList = async (item) => {
+    detail = item;
   };
   return (
     <>
@@ -95,11 +110,6 @@ const ProviderPage = () => {
               </div>
             </div>
           </form>
-          {/* <div className="addservice-btn">
-            <Link to="/dashboards/services/Addservicepage">
-              <Button variant="primary">Add Service</Button>
-            </Link>
-          </div> */}
 
           {/* --------------------------- tabel ------------------------------------- */}
 
@@ -165,15 +175,15 @@ const ProviderPage = () => {
                                 />
                               </td>
                               <td>
-                                <Link to="/dashmain/providerorder">
-                                  <Button
-                                    variant="primary"
-                                    className="mr-3"
-                                    onClick={() => send(item.p_email)}
-                                  >
-                                    send
-                                  </Button>
-                                </Link>
+                                {/* <Link to="/dashmain/providerorder"> */}
+                                <Button
+                                  variant="primary"
+                                  className="mr-3"
+                                  onClick={() => send(item.p_email, detail)}
+                                >
+                                  send
+                                </Button>
+                                {/* </Link> */}
                                 <Button
                                   variant="danger"
                                   onClick={() => handel(item._id)}
@@ -190,6 +200,77 @@ const ProviderPage = () => {
               </div>
             </div>
           )}
+
+          {/* -----------------Order Table------------------------ */}
+          <br></br>
+          <br></br>
+          <h1>Order Table</h1>
+          <div>
+            <div
+              style={{
+                display: "flex",
+                width: "95%",
+                justifyContent: "center",
+                justifyItems: "center",
+                alignItems: "center",
+              }}
+            >
+              <div
+                class="header_fixed ml-3"
+                style={{
+                  justifyContent: "center",
+                  justifyItems: "center",
+                  alignItems: "center",
+                }}
+              >
+                <table>
+                  <thead className="text-dark">
+                    <tr>
+                      <th>Select</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone_no</th>
+                      <th>Address</th>
+                      <th>City</th>
+                      <th>State</th>
+                      <th>Zipcode</th>
+                      <th>Timing</th>
+                      <th>Service</th>
+                      <th>Status</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {orders.map((item, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>
+                            {" "}
+                            <input
+                              type="checkbox"
+                              name="select"
+                              onChange={() => selectionList(item)}
+                            />{" "}
+                          </td>
+                          <td>{item.fname}</td>
+                          <td>{item.email}</td>
+                          <td>{item.phone_no}</td>
+                          <td>{item.address.line1}</td>
+                          <td>{item.address.city}</td>
+                          <td>{item.address.state}</td>
+                          <td>{item.address.postal_code}</td>
+                          <td>{item.scheduale}</td>
+                          <td>{item.service[0].s_name}</td>
+                          <td>{item.status}</td>
+                          <td>₹ {item.total}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
-// import Button from "react-bootstrap/Button";
-// import Data1 from "../../ServiceItem/Data1";
 import { Typography } from "antd";
 import "../css/servicepage.css";
-// import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userBooking } from "../../../Redux/Actions/ServiceAction";
 

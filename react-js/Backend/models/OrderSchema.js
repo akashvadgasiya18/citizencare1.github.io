@@ -19,6 +19,10 @@ const OrderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  phone_no: {
+    type: String,
+    required: true,
+  },
   address: {
     type: Object,
     required: true,

@@ -41,6 +41,26 @@ export const userBooking = () => async (dispatch) => {
   }
 };
 
+//------------------Booking detail paid-----------------------------
+export const Orderpaid = () => async (dispatch) => {
+  try {
+    dispatch({ type: BOOKING_REQUEST });
+    const { data } = await axios.get("/order_paid");
+    dispatch({
+      type: BOOKING_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: BOOKING_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
 // ------------------------------ single service get -------------------------------
 
 export const SinglelistService = (_id) => async (dispatch) => {
