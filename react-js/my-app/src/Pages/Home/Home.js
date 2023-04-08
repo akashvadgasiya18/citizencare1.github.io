@@ -7,16 +7,9 @@ import Heading from "../../Components/Common/Heading";
 import Banner from "../../Components/Banner/Banner";
 import Section1 from "../../Components/How_Work/Section1";
 import Section2 from "../../Components/How_Work/Section2";
-// import { CartProvider } from "react-use-cart";
-// import Review from "../../Components/Reviews/Review"
 import Navbar5 from "../../Components/Navbar/Navbar5";
 import BacktoTop from "../../Components/Common/BacktoTop";
 import Service from "../Service/Service";
-// import CleaningPage from "../../ServicePages/CleaningPage";
-// import ChangePassword from "../ChangePassword";
-// import Services from '../../Components/ServicePages/Services'
-// import Review from "../../Components/Reviews/Review"
-// import ChackOut from "../../Components/PaymentPage/ChackOut"
 
 const Home = () => {
   return (
@@ -42,7 +35,7 @@ const Home = () => {
       <Section1 />
 
       <Service />
-      
+
       <br />
       <br />
       <br />
