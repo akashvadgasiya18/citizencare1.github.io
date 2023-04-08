@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-// import Button from "react-bootstrap/Button";
+import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -23,7 +22,7 @@ const UserOrder = () => {
   const email = user.email;
   useEffect(() => {
     dispatch(UserhistoryService(email));
-  },[email]);
+  }, [email]);
   return (
     <>
       <div>
@@ -41,8 +40,23 @@ const UserOrder = () => {
           {/* <p>{user.email}</p> */}
           {/* --------------------------- tabel ------------------------------------- */}
           <div>
-            <div className="card" style={{ display: "flex", width: "95%" }}>
-              <div class="header_fixed">
+            <div
+              style={{
+                display: "flex",
+                width: "95%",
+                justifyContent: "center",
+                justifyItems: "center",
+                alignItems: "center",
+              }}
+            >
+              <div
+                class="header_fixed ml-3"
+                style={{
+                  justifyContent: "center",
+                  justifyItems: "center",
+                  alignItems: "center",
+                }}
+              >
                 <table>
                   <thead className="text-dark">
                     <tr>
@@ -54,13 +68,16 @@ const UserOrder = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    { orderList.map((item, idx) => {
+                    {orderList.map((item, idx) => {
                       return (
                         <>
                           <tr key={idx}>
                             <td>{item.paymentId}</td>
                             <td>{item.service[0].s_name}</td>
-                            <td>{item.address.line1},{item.address.line2},{item.address.postal_code}</td>
+                            <td>
+                              {item.address.line1} , {item.address.line2} ,
+                              {item.address.postal_code}
+                            </td>
                             <td>{item.scheduale}</td>
                             <td>{item.total}</td>
                           </tr>

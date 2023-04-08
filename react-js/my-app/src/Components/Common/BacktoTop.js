@@ -26,14 +26,13 @@ const BacktoTop = () => {
       {backToTop && (
         <button
           style={{
-            position:'fixed',
+            position: "fixed",
             bottom: "50px",
             right: "50px",
             height: "50px",
-            backgroundColor: "green",
+            backgroundColor: "black",
             color: "white",
             width: "50px",
-            overflow:'hidden',
             fontSize: "25px",
             border: "2px solid ",
             borderRadius: "50%",

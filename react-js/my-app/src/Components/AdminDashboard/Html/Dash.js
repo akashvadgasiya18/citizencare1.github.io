@@ -12,6 +12,18 @@ const Dash = () => {
   const dispatch = useDispatch();
   const serviceList = useSelector((state) => state.serviceList);
   const { error, service } = serviceList;
+  const cnt = service.length;
+  const userList = useSelector((state) => state.userList);
+  const { users } = userList;
+  const cnt2 = users.length;
+
+  const providersList = useSelector((state) => state.providersList);
+  const { providers } = providersList;
+  const cnt3 = providers.length;
+
+  const bookList = useSelector((state) => state.bookList);
+  const { booking } = bookList;
+  const cnt4 = booking.length;
 
   useEffect(() => {
     dispatch(listService());
@@ -27,8 +39,8 @@ const Dash = () => {
             <GiProgression />
           </div>
           <div className="box-data">
-            <span>Sales</span>
-            <h1>+28%</h1>
+            <span>Services</span>
+            <h1>{cnt}</h1>
           </div>
         </div>
 
@@ -38,7 +50,7 @@ const Dash = () => {
           </div>
           <div className="box-data">
             <span>New Customers</span>
-            <h1>+24</h1>
+            <h1>{cnt2}</h1>
           </div>
         </div>
         <div className="box-contain">
@@ -46,8 +58,8 @@ const Dash = () => {
             <GiProfit />
           </div>
           <div className="box-data">
-            <span>Profit</span>
-            <h1>+56%</h1>
+            <span>Providers</span>
+            <h1>{cnt3}</h1>
           </div>
         </div>
         <div className="box-contain">
@@ -56,7 +68,7 @@ const Dash = () => {
           </div>
           <div className="box-data">
             <span>New Orders</span>
-            <h1>+26</h1>
+            <h1>{cnt4}</h1>
           </div>
         </div>
         {error ? (
