@@ -5,7 +5,7 @@ import {
   AppstoreOutlined,
   ShoppingCartOutlined,
   UserOutlined,
-  LogoutOutlined,
+  ArrowLeftOutlined,
 } from "@ant-design/icons";
 import { FaListUl, FaThumbsUp, FaUserTie } from "react-icons/fa";
 
@@ -42,9 +42,13 @@ const Slidebar1 = ({ Children }) => {
       icon: <FaThumbsUp style={{ fontSize: 20 }} />,
     },
     {
-      label: "Logout",
-      path: "/logout",
-      icon: <LogoutOutlined style={{ fontSize: 25 }} />,
+      label: "Back",
+      path: "/",
+      icon: (
+        <ArrowLeftOutlined
+          style={{ fontSize: 20, color: "black", fontWeight: 700 }}
+        />
+      ),
     },
   ];
   return (

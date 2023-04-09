@@ -20,7 +20,7 @@
     "price": 500,
     "rating": 4.0,
     "likes": "10,200",
-    "desc": "The air conditioning technicians install, inspect, maintain, and repair air conditioner. They ventilate equipment and controls making sure they operate efficiently and continuously.",
+    "desc": "we are the best service providers offering top-class professional services at affordable rates. 24×7 support and flexible time slots available. Our house cleaning products enhance the look of your house and its belongings. Our house cleaners are punctual and follow a very customer-friendly approach. Customer comfort and customer preference are our priorities. If you take the house cleaning service for just one time you will experience professional cleaning of the complete house which includes the kitchen, washrooms, living room, bedrooms, sofa, carpet, mattress, etc. Our professionals bring their own cleaning machine and cleaning materials when they visit your house/home for cleaning purposes.",
     "image": "D:/react-js/Backend/assets/img2.jpeg"
   },
   {
@@ -28,7 +28,7 @@
     "price": 350,
     "rating": 3.0,
     "likes": "5,000",
-    "desc": "The air conditioning technicians install, inspect, maintain, and repair air conditioner. They ventilate equipment and controls making sure they operate efficiently and continuously.",
+    "desc": "You can hire elecrician from citizencare website or app for all minor electrical repairs or replacements (fan , lights, fuses) and major elecrical work up in your home or office. Our website helps you in taking away tha pain of finding the trusted elecrician to to your needs, right at the comfort of your home with reasonable pricing. You can Book electrician online anywhere in Ahmedabad, India with just few clicks. we are provide best professional at your home.",
     "image": "D:/react-js/Backend/assets/img5.jpg"
   },
   {
@@ -36,7 +36,7 @@
     "price": 400,
     "rating": 4.0,
     "likes": "8,560",
-    "desc": "The air conditioning technicians install, inspect, maintain, and repair air conditioner. They ventilate equipment and controls making sure they operate efficiently and continuously.",
+    "desc": "We are providing best crpenters for your requirements. If You have any type of requirements likes Drill, Nail & Hang,Bed Support & Legs Repair,Door Stopper or Handle or Chain Installation,Door Lock Installation ,Door Lock Repair / Regular Repair, Bed Frame Assembly,Dining Table Assembly, Utensils Rack Assembly, Furniture Dismantle, Wooden Flooring Repair etc. we provide best professionals with reliable price.All you need to do is let us know your requirement in carpenter services and schedule a convenient time for a carpenter at home.",
     "image": "D:/react-js/Backend/assets/img3.jpg"
   },
   {
@@ -44,7 +44,15 @@
     "price": 300,
     "rating": 4.5,
     "likes": "20,000",
-    "desc": "The air conditioning technicians install, inspect, maintain, and repair air conditioner. They ventilate equipment and controls making sure they operate efficiently and continuously.",
+    "desc": "All Healthspring Doctors come with a wealth of experience in their respective domains. Each of them with years of clinical experience having worked at hospitals, corporates or as entrepreneurs. Our Doctors spend as much time with you, as is necessary to understand all your health related problems, arrive at a proper diagnosis and recommend a line of treatment. You can ask as many questions to our Doctors and they will be happy to answer those.",
     "image": "../assets/img4.jpg"
+  },
+  {
+    "s_name": "saloon_men",
+    "desc": "From grooming to beauty sessions, we offer a wide range of services and treatments that every man wishes to get. Our professionally trained stylists and experts leave no stone unturned to give you the best look that would do all the talking and make your style better than the best!. we Provide Cut and Hair Care, Shampoo & Conditioning, Head Massage, Beard Styling, Hair/Beard Colouring, Straightening, Smoothening, Rebonding, Perming, Beard Trim, Beard Colour, Beard Styling, Shave, Luxury Shave & Beard Spa etc."
+  },
+  {
+    "s_name": "slon-women",
+    "desc": "With a keen eye for detail, Looks Salon offers you varied options to provide proper care to your body, hair and skin. With our excellent range of Hair styling, Make Up, Hair Texture, Hair treatments, Facials, Hand and feet, Nail care services, we assure you the ‘Superfect’ dreamy look. Whether it’s overseeing client satisfaction for everyone who enters the salon or the magnificent interior that catches every onlookers fancy, Looks Salon possesses an infinite enthusiasm for keeping abreast with latest technologies and trends."
   }
 ]

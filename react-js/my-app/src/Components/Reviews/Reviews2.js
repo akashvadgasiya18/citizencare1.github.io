@@ -36,6 +36,7 @@ const Reviews2 = () => {
                     />
                     {item.uname}
                   </h5>
+                  <br></br>
                   <span className=" d-flex gap-1">
                     <Rating value={item.rate} />
                   </span>

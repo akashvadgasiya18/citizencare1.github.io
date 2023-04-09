@@ -3,7 +3,6 @@ import "../../css/Home.css";
 import Footer from "../../Components/Footer/Footer";
 import Featured from "../../Components/Feature/Feature";
 import Heading from "../../Components/Common/Heading";
-// import Items from "../../Components/ServiceItem/Items";
 import Banner from "../../Components/Banner/Banner";
 import Section1 from "../../Components/How_Work/Section1";
 import Section2 from "../../Components/How_Work/Section2";
@@ -15,8 +14,6 @@ const Home = () => {
   return (
     <>
       <Navbar5></Navbar5>
-      {/* <Main /> */}
-      {/* <Review /> */}
       <Banner />
 
       {/*----- icon cards ---------------*/}
@@ -41,9 +38,6 @@ const Home = () => {
       <br />
       <Heading title="Why choose this site ?" subtitle="" />
       <Section2 />
-
-      {/* <Heading title="You want to give suggestions.. ?" subtitle="" />
-      <Review /> */}
 
       {/* ----------------------- service cards ------------------------ */}
 

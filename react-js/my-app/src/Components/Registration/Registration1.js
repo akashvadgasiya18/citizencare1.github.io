@@ -354,7 +354,9 @@ const Registration1 = () => {
                       <option value="care-taker">care-taker</option>
                       <option value="Home-cleaner">Home-cleaner</option>
                       <option value="Massage">Massage</option>
-                      <option value="Salon">Salon</option>
+                      <option value="Tasker">Tasker</option>
+                      <option value="Salon For Men">Salon For Men</option>
+                      <option value="Salon For Women">Salon For Women</option>
                       <option value="Painter">Painter</option>
                       <option value="Doctor">Doctor</option>
                     </select>
