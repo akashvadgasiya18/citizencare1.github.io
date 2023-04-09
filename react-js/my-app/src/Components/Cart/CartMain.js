@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "react-bootstrap";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { DEL } from "../../Redux/Actions/action";
 import impt from "../../images/empty-cart.gif";
@@ -15,34 +16,41 @@ const CartMain = () => {
 
   const getdata = useSelector((state) => state.cartreducer.carts);
   const totalPrice = getdata.reduce((price, item) => price + item.price, 0);
-  // console.log(getdata);
   const [choice, setChoice] = useState();
+  const [date, setDate] = useState();
   const dispatch = useDispatch();
   const singleData = useSelector((state) => state.singleData);
   const { user } = singleData;
-  // console.log(choice);
-  // console.log(user.email);
 
   const dlt = (_id) => {
     dispatch(DEL(_id));
   };
 
   const handle = () => {
-    axios
-      .post("/create-checkout-session", {
-        getdata,
-        user,
-        choice,
-        userId: user._id,
-      })
-      .then((res) => {
-        if (res.data.url) {
-          window.location.href = res.data.url;
-        }
-      })
-      .catch((err) => {
-        console.log(err);
+    if (!choice || !date) {
+      toast.error("All fields are required.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
       });
+    } else {
+      axios
+        .post("/create-checkout-session", {
+          getdata,
+          user,
+          choice,
+          date,
+          userId: user._id,
+        })
+        .then((res) => {
+          if (res.data.url) {
+            window.location.href = res.data.url;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   useEffect(() => {
@@ -72,7 +80,6 @@ const CartMain = () => {
                 </Link>
                 Total Items : [{getdata.length}]
               </h3>
-              {/* <table class="table border shadow"> */}
               <Table
                 style={{ border: "1px solid lightgray", borderRadius: "10px" }}
               >
@@ -123,7 +130,6 @@ const CartMain = () => {
               textAlign: "right",
               padding: "20px 20px",
               display: "block",
-              // border: "2px solid black",
             }}
           >
             <h3 style={{ fontFamily: "Arial", fontWeight: "600" }}>
@@ -138,6 +144,7 @@ const CartMain = () => {
                 ₹ {totalPrice}
               </span>{" "}
             </h3>
+            <br></br>
             <lable
               style={{
                 fontSize: "25px",
@@ -145,7 +152,34 @@ const CartMain = () => {
                 fontFamily: "poppins",
               }}
             >
-              Booking Time
+              Booking Date :
+            </lable>
+            <input
+              type="date"
+              style={{
+                fontSize: "20px",
+                fontFamily: "poppins",
+                width: "160px",
+                backgroundColor: "lavender",
+                border: "none",
+                borderRadius: "0px",
+                height: "45px",
+                marginTop: "12px",
+                marginLeft: "12px",
+                padding: "0px 20px",
+              }}
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+            <br></br>
+            <lable
+              style={{
+                fontSize: "25px",
+                fontWeight: "600",
+                fontFamily: "poppins",
+              }}
+            >
+              Booking Time :
             </lable>
             <select
               value={choice}

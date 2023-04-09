@@ -50,7 +50,7 @@ const ProviderPage = () => {
       window.location.reload(true);
     }
   };
-  const send = async (p_email, detail) => {
+  const send = async (item, detail) => {
     if (detail === "") {
       toast.error("Kindly select order.", {
         position: "top-center",
@@ -59,7 +59,7 @@ const ProviderPage = () => {
       });
     } else {
       try {
-        await axios.post("/send_order", ({p_email, detail}));
+        await axios.post("/send_order", ({item, detail}));
         navigate("/dashmain/providerpage");
         toast.success("Order sent to provider.", {
           position: "top-left",
@@ -179,7 +179,7 @@ const ProviderPage = () => {
                                 <Button
                                   variant="primary"
                                   className="mr-3"
-                                  onClick={() => send(item.p_email, detail)}
+                                  onClick={() => send(item, detail)}
                                 >
                                   send
                                 </Button>

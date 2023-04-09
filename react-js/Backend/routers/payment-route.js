@@ -10,6 +10,7 @@ router.post("/create-checkout-session", async (req, res) => {
   const customer = await stripe.customers.create({
     metadata: {
       userId: req.body.userId,
+      date: req.body.date,
       choice: req.body.choice,
       cart: JSON.stringify(req.body.getdata),
     },
@@ -56,6 +57,7 @@ const createOrder = async (customer, data) => {
   const items = JSON.parse(customer.metadata.cart);
   const newOrder = new Order({
     userId: customer.metadata.userId,
+    date: customer.metadata.date,
     scheduale: customer.metadata.choice,
     cId: data.customer,
     paymentId: data.payment_intent,
@@ -95,6 +97,9 @@ const createOrder = async (customer, data) => {
         "," +
         saved.address.postal_code +
         ".</p>" +
+        "<p> Your service booking date is "+
+        saved.date +
+        ".</p>"+
         "<p> Your service schedulae is " +
         saved.scheduale +
         ".</p>" +
@@ -150,7 +155,7 @@ router.post(
       stripe.customers
         .retrieve(data.customer)
         .then((customer) => {
-          // console.log(data);
+          // console.log(customer);
           createOrder(customer, data);
         })
         .catch((err) => {

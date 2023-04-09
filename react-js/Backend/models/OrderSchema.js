@@ -31,11 +31,23 @@ const OrderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  date: {
+    type: String,
+    required: true,
+  },
   service: [
     {
       id: { type: String },
       s_name: { type: String },
       price: { type: String },
+    },
+  ],
+  provider: [
+    {
+      id: { type: String },
+      p_name: { type: String },
+      p_email: { type: String },
+      p_mno: { type: String },
     },
   ],
   total: {
