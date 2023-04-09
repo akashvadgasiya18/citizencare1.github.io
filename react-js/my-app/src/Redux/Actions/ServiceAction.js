@@ -166,6 +166,26 @@ export const UserhistoryService = (email) => async (dispatch) => {
   }
 };
 
+// ------------------------------ Provider history get -------------------------------
+
+export const ProviderhistoryService = (p_email) => async (dispatch) => {
+  try {
+    dispatch({ type: ORDER_REQUEST });
+    const { data } = await axios.get(`/providerorders/${p_email}`);
+    dispatch({
+      type: ORDER_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: ORDER_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
 // ---------------------- provider details fetch in admin dashboards ----------------
 

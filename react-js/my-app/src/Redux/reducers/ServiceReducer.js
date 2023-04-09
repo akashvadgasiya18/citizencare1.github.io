@@ -136,6 +136,23 @@ export const userhistoryreducer = (state = { orderList: [] }, action) => {
   }
 };
 
+export const providerhistoryreducer = (state = { orderLists: [] }, action) => {
+  switch (action.type) {
+    case ORDER_REQUEST:
+      return { ...state };
+
+    case ORDER_SUCCESS:
+      return { orderLists : action.payload };
+
+    case ORDER_FAIL:
+      return { error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
+
 export const providersreducer = (state = { providers: [] }, action) => {
   switch (action.type) {
     case PROVIDERS_REQUEST:

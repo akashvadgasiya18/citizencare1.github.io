@@ -220,7 +220,7 @@ router.get(
 router.get(
   "/order_paid",
   asyncHandler(async (req, res) => {
-    const product = await Order.find({status: 'paid'});
+    const product = await Order.find({ status: "paid" });
     res.send(product);
   })
 );
@@ -317,10 +317,10 @@ router.post("/delete_provider", async (req, res) => {
 
 //--------------------provider-info-send--------------------------
 router.post("/send_order", async (req, res) => {
-  const { p_email } = req.body;
+  const { item } = req.body;
   const { detail } = req.body;
   try {
-    const providerExist = await Provider.findOne({ p_email: p_email });
+    const providerExist = await Provider.findOne({ p_email: item.p_email });
     if (providerExist) {
       // console.log(detail.total);
       var transporter = nodemailer.createTransport({
@@ -334,7 +334,7 @@ router.post("/send_order", async (req, res) => {
       var mailOptions = {
         from: "shreyabundheliya2109@gmail.com",
         // to: "akashvadgasiya1832@gmail.com",
-        to: p_email,
+        to: item.p_email,
         subject: "Order details",
         html:
           '<p>The customer name is "' +
@@ -366,10 +366,41 @@ router.post("/send_order", async (req, res) => {
             },
             {
               $set: {
-                status: "done",
+                status: "assigned",
+                provider: item,
               },
             }
           );
+          var transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+              user: "shreyabundheliya2109@gmail.com",
+              pass: "fbqrhmvatldjfhxi",
+            },
+          });
+
+          var mailOptions = {
+            from: "shreyabundheliya2109@gmail.com",
+            to: detail.email,
+            subject: "Service-provider details",
+            html:
+              '<h2>Details about your service provider</h2><p>The provider name is "' +
+              item.p_name +
+              '".</p> ' +
+              '<p> The email address of provider is "' +
+              item.p_email +
+              '".</p> <p>The contact number is "' +
+              item.p_mno +
+              '".</p>.',
+          };
+
+          transporter.sendMail(mailOptions, async function (error, info) {
+            if (error) {
+              return res.status(413).json({});
+            } else {
+              console.log("Email sent: " + info.response);
+            }
+          });
           return res.status(201).json({});
         }
       });
@@ -389,32 +420,29 @@ router.get(
     console.log(email);
     const products = await Order.find({ email: email });
     if (products) {
-      console.log(products);
+      // console.log(products);
       res.send(products);
     } else {
       res.status(404).json({ message: "Product not founded" });
     }
   })
 );
-//   async (req,res) => {
-//   const email = req.params.email;
-//   // console.log(email);
-//   try
-//   {
-//     const exist = await Order.find({ email: email });
-//     if(exist)
-//     {
-//       console.log(exist);
-//       res.send(exist);
-//     } else {
-//       res.status(404).json({ message: "Product not founded" });
-//     }
-//   }
-//   catch(err)
-//   {
-//     console.log(err);
-//   }
-// });
+
+//---------------------------history-provider-----------------
+router.get(
+  "/providerorders/:p_email",
+  asyncHandler(async (req, res) => {
+    const p_email = req.params.p_email;
+    console.log(p_email);
+    const products = await Order.find({ provider : p_email });
+    if (products) {
+      console.log(products);
+      // res.send(products);
+    } else {
+      res.status(404).json({ message: "Product not founded" });
+    }
+  })
+);
 
 //------------------- logout ------------------------------------
 router.get("/logout", (req, res) => {

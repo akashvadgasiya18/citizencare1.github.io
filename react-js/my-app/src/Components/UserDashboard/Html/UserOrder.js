@@ -63,6 +63,7 @@ const UserOrder = () => {
                       <th>Payment_id</th>
                       <th>Service name</th>
                       <th>Address</th>
+                      <th>Date</th>
                       <th>Scheduale</th>
                       <th>Total</th>
                     </tr>
@@ -78,6 +79,7 @@ const UserOrder = () => {
                               {item.address.line1} , {item.address.line2} ,
                               {item.address.postal_code}
                             </td>
+                            <td>{item.date}</td>
                             <td>{item.scheduale}</td>
                             <td>{item.total}</td>
                           </tr>
