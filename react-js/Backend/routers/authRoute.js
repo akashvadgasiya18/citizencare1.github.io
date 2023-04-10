@@ -433,10 +433,8 @@ router.get(
   "/providerorders/:p_email",
   asyncHandler(async (req, res) => {
     const p_email = req.params.p_email;
-    // console.log(p_email);
     const products = await Order.find({ "provider.p_email": p_email });
     if (products) {
-      // console.log(products);
       res.send(products);
     } else {
       res.status(404).json({ message: "Product not founded" });
