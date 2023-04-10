@@ -43,6 +43,7 @@ const EditUserOrder = () => {
               Edit Order
             </h2>
             <p>user can only edit Date and scheduale their order</p>
+            <input type="date" />
             <select aria-label="select profession">
               <option value="">Select</option>
               <option value="8-to-10">8-to-10</option>

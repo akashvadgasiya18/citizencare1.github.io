@@ -4,7 +4,7 @@ import "./Toolbar.css";
 import { Menu1 } from "../Navbar/Menu1";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import log1 from "../../images/image.png";
+import log1 from "../../images/Logo1.png";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge from "@mui/material/Badge";
 import { useSelector } from "react-redux";
@@ -230,16 +230,24 @@ const Navbar5 = (props) => {
           <nav className="toolbar_navigation" style={{ position: "sticky" }}>
             <div className="toolbar_logo">
               {" "}
-              <img
-                src={log1}
-                alt="img1"
+              <span
                 style={{
-                  height: "50px",
-                  width: "220px",
-                  marginTop: "-10px",
-                  marginLeft: "-10px",
+                  fontSize: "37px",
+                  fontWeight: "600",
+                  color: " #007C80",
                 }}
-              />
+              >
+                Citizen
+              </span>
+              <span
+                style={{
+                  fontSize: "32px",
+                  fontWeight: "800",
+                  color: "#8A3E8C",
+                }}
+              >
+                care
+              </span>
             </div>
             <div className="toolbar_navigation_items">
               <ul>

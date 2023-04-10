@@ -10,7 +10,7 @@ import { listService } from "../../Redux/Actions/ServiceAction";
 // import img from '../../assets/details/'
 import "../../Components/ServiceItem/service-item.css";
 import ServiceItems from "./ServiceItems";
-import SearchBar from "./SearchBar";
+import "./Search.css";
 
 const Items = () => {
   // const [Products, setProducts] = useState([]);

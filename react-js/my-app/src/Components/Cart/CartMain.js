@@ -159,7 +159,7 @@ const CartMain = () => {
               style={{
                 fontSize: "20px",
                 fontFamily: "poppins",
-                width: "160px",
+                width: "200px",
                 backgroundColor: "lavender",
                 border: "none",
                 borderRadius: "0px",
@@ -188,7 +188,7 @@ const CartMain = () => {
               style={{
                 fontSize: "20px",
                 fontFamily: "poppins",
-                width: "160px",
+                width: "200px",
                 backgroundColor: "lavender",
                 border: "none",
                 borderRadius: "0px",

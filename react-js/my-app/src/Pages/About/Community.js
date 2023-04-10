@@ -11,7 +11,7 @@ const Community = () => {
       {/* <div className="container"> */}
       <div className="service-heading" style={{ marginTop: "2rem" }}>
         <span>Community</span>
-        <h2 style={{ fontSize: "30px" }}>MEET OUR PROFESSIONAL</h2>
+        <h2 style={{ fontSize: "30px" }}>MEET OUR TEAM</h2>
         {/* </div> */}
         <div className="rows">
           <div className="profile-card">

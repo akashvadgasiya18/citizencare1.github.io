@@ -37,7 +37,7 @@ const Reviews2 = () => {
                     {item.uname}
                   </h5>
                   <br></br>
-                  <p>{item.createdAt.format("DD-MM-YYYY")}</p>
+                  <p>{item.createdAt}</p>
                   <span className=" d-flex gap-1">
                     <Rating value={item.rate} />
                   </span>
