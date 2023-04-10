@@ -2,7 +2,10 @@ import React from "react";
 import { Typography } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { ProviderhistoryService ,providerSingleDetails } from "../../../Redux/Actions/ServiceAction";
+import {
+  ProviderhistoryService,
+  providerSingleDetails,
+} from "../../../Redux/Actions/ServiceAction";
 
 const ProviderOrder = () => {
   const dispatch = useDispatch();
@@ -10,7 +13,7 @@ const ProviderOrder = () => {
   const { provider } = singleProvider;
   const providerhistory = useSelector((state) => state.providerhistory);
   const { orderLists } = providerhistory;
-  console.log(orderLists);
+  // console.log(orderLists);
 
   useEffect(() => {
     dispatch(providerSingleDetails());
@@ -22,7 +25,7 @@ const ProviderOrder = () => {
   }, [p_email]);
   return (
     <>
-      <p> {provider.p_email} </p>
+      {/* <p> {provider.p_email} </p> */}
       <div>
         <div>
           <Typography.Title
@@ -58,32 +61,32 @@ const ProviderOrder = () => {
                 <table>
                   <thead className="text-dark">
                     <tr>
-                      <th>Payment_id</th>
-                      <th>Service name</th>
+                      <th>Customer name</th>
+                      <th>Customer phone no</th>
                       <th>Address</th>
                       <th>Date</th>
                       <th>Scheduale</th>
-                      <th>Total</th>
+                      <th>Status of service</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {/* {orderList.map((item, idx) => {
+                    {orderLists.map((item, idx) => {
                       return (
                         <>
                           <tr key={idx}>
-                            <td>{item.paymentId}</td>
-                            <td>{item.service[0].s_name}</td>
+                            <td>{item.fname}</td>
+                            <td>{item.phone_no}</td>
                             <td>
                               {item.address.line1} , {item.address.line2} ,
                               {item.address.postal_code}
                             </td>
                             <td>{item.date}</td>
                             <td>{item.scheduale}</td>
-                            <td>{item.total}</td>
+                            <td>{item.status}</td>
                           </tr>
                         </>
                       );
-                    })} */}
+                    })}
                   </tbody>
                 </table>
               </div>
