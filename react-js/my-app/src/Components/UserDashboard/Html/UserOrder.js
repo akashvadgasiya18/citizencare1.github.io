@@ -86,7 +86,7 @@ const UserOrder = () => {
                             <td>{item.scheduale}</td>
                             <td>{item.total}</td>
                             <td>
-                              <Link to="/profile/userorders/editOrder">
+                              <Link to={`/profile/userorders/editOrder/${item._id}`}>
                                 <Button
                                   variant="primary"
                                   style={{ marginRight: "10px" }}

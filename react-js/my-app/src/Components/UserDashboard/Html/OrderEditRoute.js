@@ -11,7 +11,7 @@ const OrderEditRoute = () => {
         <div className="SideMenuAndPageContent2">
           <Routes>
             <Route exact path="/" element={<UserOrder />} />
-            <Route exact path="/editOrder" element={<EditUserOrder />} />
+            <Route exact path="/editOrder/:id" element={<EditUserOrder />} />
           </Routes>
         </div>
       </div>

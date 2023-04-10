@@ -417,7 +417,7 @@ router.get(
   "/userorders/:email",
   asyncHandler(async (req, res) => {
     const email = req.params.email;
-    console.log(email);
+    // console.log(email);
     const products = await Order.find({ email: email });
     if (products) {
       // console.log(products);
@@ -441,6 +441,38 @@ router.get(
     }
   })
 );
+
+//----------edit user_history-----------------------
+
+router.post("/edit_history", async (req, res) => {
+  // console.log(req.body.choice);
+  // console.log(req.body.date);
+  const { choice, date, id } = req.body;
+  if (!choice || !date) {
+    return res.status(429).json({});
+  }
+  try {
+    const userExist = await Order.findOne({ _id: id });
+    if (!userExist) {
+      return res.status(413).json({});
+    } else {
+      await Order.updateOne(
+        {
+          _id: id,
+        },
+        {
+          $set: {
+            date: date,
+            scheduale: choice,
+          },
+        }
+      );
+      return res.status(201).json({});
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 //------------------- logout ------------------------------------
 router.get("/logout", (req, res) => {
