@@ -7,6 +7,8 @@ import {
 } from "../../../Redux/Actions/ServiceAction";
 import { Typography } from "antd";
 import "../../AdminDashboard/css/servicepage.css";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const UserOrder = () => {
   const dispatch = useDispatch();
@@ -66,6 +68,7 @@ const UserOrder = () => {
                       <th>Date</th>
                       <th>Scheduale</th>
                       <th>Total</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -82,6 +85,21 @@ const UserOrder = () => {
                             <td>{item.date}</td>
                             <td>{item.scheduale}</td>
                             <td>{item.total}</td>
+                            <td>
+                              <Link to="/profile/userorders/editOrder">
+                                <Button
+                                  variant="primary"
+                                  style={{ marginRight: "10px" }}
+                                >
+                                  <i
+                                    class="fa-solid fa-pen edit-icons mr-2"
+                                    style={{ fontSize: "12px" }}
+                                  ></i>
+                                  Edit
+                                </Button>
+                              </Link>
+                              <Button variant="danger">Delete</Button>
+                            </td>
                           </tr>
                         </>
                       );

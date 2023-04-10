@@ -48,19 +48,20 @@ const ProviderDetailPage = () => {
           </label>
           <br />
           <label>
-            PRofession :
-            <span style={{ fontWeight: "700", marginLeft: "10px" }}>
-              {provider.p_role}
-            </span>
-          </label>
-          <br />
-          <label>
             Email ID :
             <span style={{ fontWeight: "700", marginLeft: "10px" }}>
               {provider.p_email}
             </span>
           </label>
           <br />
+          <label>
+            Profession :
+            <span style={{ fontWeight: "700", marginLeft: "0px" }}>
+              {provider.p_role}
+            </span>
+          </label>
+          <br />
+
           <label>
             Contact No :{" "}
             <span style={{ fontWeight: "700", marginLeft: "10px" }}>
@@ -74,7 +75,6 @@ const ProviderDetailPage = () => {
               {provider.p_add}
             </span>
           </label>
-          <br />
           <br />
           <label>
             <Link to="/providerDash/provideDetails/editProviderdetail">
