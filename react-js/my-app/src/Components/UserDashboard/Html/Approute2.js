@@ -5,6 +5,8 @@ import UserMain from "./UserMain";
 // import UserDetailPage from "./UserDetailPage";
 import UserOrder from "./UserOrder";
 import Welcomepage from "../Html/Welcomepage";
+import EditUserOrder from "./EditUserOrder";
+import OrderEditRoute from "./OrderEditRoute";
 // import PasswordMain from "./PasswordMain"
 
 const Approute2 = () => {
@@ -13,7 +15,7 @@ const Approute2 = () => {
       <Routes>
         <Route exact path="/" element={<Welcomepage />}></Route>
         <Route exact path="/usersdetail/*" element={<UserMain />}></Route>
-        <Route exact path="/userorders" element={<UserOrder />}></Route>
+        <Route exact path="/userorders/*" element={<OrderEditRoute />}></Route>
         <Route exact path="/changePassword" element={<PassChange />}></Route>
       </Routes>
     </div>

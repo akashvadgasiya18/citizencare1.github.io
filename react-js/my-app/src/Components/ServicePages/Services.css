@@ -208,10 +208,6 @@ body {
     height: 300px;
     margin: 0 auto;
   }
-  /* .btn-groups button
-  {
-    width:70%;
-  } */
   @media screen and (max-width: 400px) {
     .btn-groups button {
       width: 100%;
