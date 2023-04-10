@@ -3,7 +3,13 @@ import { Route, Routes } from "react-router-dom";
 import PassChange from "../Html/PassChange";
 import UserMain from "./UserMain";
 // import UserDetailPage from "./UserDetailPage";
+<<<<<<< HEAD
 import Welcomepage from "../Html/Welcomepage";
+=======
+// import UserOrder from "./UserOrder";
+import Welcomepage from "../Html/Welcomepage";
+// import EditUserOrder from "./EditUserOrder";
+>>>>>>> b8b28a4eb02f24ddf4a706974e230f0f6f501d80
 import OrderEditRoute from "./OrderEditRoute";
 // import PasswordMain from "./PasswordMain"
 
