@@ -88,11 +88,6 @@ const EditUserOrder = ({ item }) => {
             <h2 style={{ paddingBottom: "30px", textAlign: "center" }}>
               Edit Order
             </h2>
-<<<<<<< HEAD
-            <p>user can only edit Date and scheduale their order</p>
-            <input type="date" />
-            <select aria-label="select profession">
-=======
             <p>You can only edit Date and scheduale of your order</p>
             <lable
               style={{
@@ -125,7 +120,6 @@ const EditUserOrder = ({ item }) => {
               value={choice}
               onChange={(e) => setChoice(e.target.value)}
             >
->>>>>>> b8b28a4eb02f24ddf4a706974e230f0f6f501d80
               <option value="">Select</option>
               <option value="8-to-10">8-to-10</option>
               <option value="10-to-12">10-to-12</option>

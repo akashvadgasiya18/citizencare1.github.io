@@ -82,7 +82,7 @@ const ServicePage = () => {
           }}
         >
           <div className="service-heading">
-            <span style={{ fontSize: "20px" }}>Customer Reviews</span>
+            <span style={{ fontSize: "30px" }}>Customer Reviews</span>
           </div>
         </section>
 
