@@ -77,6 +77,13 @@ const ProviderDetailPage = () => {
           </label>
           <br />
           <label>
+            Time_slot :{" "}
+            <span style={{ fontWeight: "700", marginLeft: "10px" }}>
+              {provider.time_slot}
+            </span>
+          </label>
+          <br />
+          <label>
             <Link to="/providerDash/provideDetails/editProviderdetail">
               <Button variant="primary">
                 <i

@@ -51,6 +51,7 @@ const Order = () => {
                       <th>City</th>
                       <th>State</th>
                       <th>Zipcode</th>
+                      <th>Date</th>
                       <th>Timing</th>
                       <th>Service</th>
                       <th>Status</th>
@@ -67,6 +68,7 @@ const Order = () => {
                           <td>{item.address.city}</td>
                           <td>{item.address.state}</td>
                           <td>{item.address.postal_code}</td>
+                          <td>{item.date}</td>
                           <td>{item.scheduale}</td>
                           <td>{item.service[0].s_name}</td>
                           <td>{item.status}</td>

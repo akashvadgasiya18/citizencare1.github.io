@@ -13,6 +13,7 @@ import { providerSingleDetails } from "../../../Redux/Actions/ServiceAction";
 const ProviderEdit = () => {
   const navigate = useNavigate();
   const [choice, setChoice] = useState(false);
+  const [time, setTime] = useState(false);
 
   const dispatch = useDispatch();
   const singleProvider = useSelector((state) => state.singleProvider);
@@ -24,6 +25,7 @@ const ProviderEdit = () => {
     p_role: "",
     p_mno: "",
     p_add: "",
+    time_slot: "",
   });
 
   var name, value;
@@ -46,6 +48,7 @@ const ProviderEdit = () => {
         p_role: choice,
         p_mno,
         p_add,
+        time_slot: time,
       }),
     });
     const data = await res.json();
@@ -180,6 +183,23 @@ const ProviderEdit = () => {
               onChange={handleChange}
               placeholder={provider.p_add}
             />
+            <select
+              // className="form-select"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+              aria-label="select time-slot"
+            >
+              <option value="full-time">full-time</option>
+              <option value="9-to-1">9-to-1</option>
+              <option value="10-to-2">10-to-2</option>
+              <option value="11-to-3">11-to-3</option>
+              <option value="12-to-4">12-to-4</option>
+              <option value="1-to-5">1-to-5</option>
+              <option value="2-to-6">2-to-6</option>
+              <option value="3-to-7">3-to-7</option>
+              <option value="4-to-8">4-to-8</option>
+              <option value="5-to-9">5-to-9</option>
+            </select>
             <button type="submit" onClick={handleSubmit}>
               Edit
             </button>

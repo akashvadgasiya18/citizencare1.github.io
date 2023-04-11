@@ -14,6 +14,7 @@ const Registration1 = () => {
   const [show, setShow] = useState(false);
   const [hide, setHide] = useState(false);
   const [choice, setChoice] = useState();
+  const [time, setTime] = useState();
 
   // ------------------------------ for provider----------------------------------
   const [provider, setProvider] = useState({
@@ -24,6 +25,7 @@ const Registration1 = () => {
     p_password: "",
     p_cpassword: "",
     p_add: "",
+    time_slot: "",
     p_file: "",
   });
 
@@ -41,60 +43,69 @@ const Registration1 = () => {
 
   const send_p_data = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("p_name", provider.p_name);
-    formData.append("p_role", choice);
-    formData.append("p_email", provider.p_email);
-    formData.append("p_mno", provider.p_mno);
-    formData.append("p_password", provider.p_password);
-    formData.append("p_cpassword", provider.p_cpassword);
-    formData.append("p_add", provider.p_add);
-    formData.append("p_file", provider.p_file);
-    try {
-      await axios.post("/p_registration", formData);
-      navigate("/login");
-      toast.success("Successfully registerd.", {
-        position: "top-left",
+    if (!choice || !time) {
+      toast.error("All fields are required.", {
+        position: "top-center",
         theme: "colored",
         hideProgressBar: "false",
       });
-    } catch (err) {
-      if (err.response.status === 429) {
-        toast.error("All fields are required.", {
-          position: "top-center",
+    } else {
+      const formData = new FormData();
+      formData.append("p_name", provider.p_name);
+      formData.append("p_role", choice);
+      formData.append("p_email", provider.p_email);
+      formData.append("p_mno", provider.p_mno);
+      formData.append("p_password", provider.p_password);
+      formData.append("p_cpassword", provider.p_cpassword);
+      formData.append("p_add", provider.p_add);
+      formData.append("time_slot", time);
+      formData.append("p_file", provider.p_file);
+      try {
+        await axios.post("/p_registration", formData);
+        navigate("/login");
+        toast.success("Successfully registerd.", {
+          position: "top-left",
           theme: "colored",
           hideProgressBar: "false",
         });
-      } else if (err.response.status === 427) {
-        toast.error("Phone number contains only 10 digit.", {
-          position: "top-center",
-          theme: "colored",
-          hideProgressBar: "false",
-        });
-      } else if (err.response.status === 413) {
-        toast.error("Provider Already Exist", {
-          position: "top-center",
-          theme: "colored",
-          hideProgressBar: "false",
-        });
-      } else if (err.response.status === 411) {
-        toast.error("password can't be less than 5.", {
-          position: "top-center",
-          theme: "colored",
-          hideProgressBar: "false",
-        });
-      } else if (err.response.status === 422) {
-        toast.error("Confirm password and password should be same.", {
-          position: "top-center",
-          theme: "colored",
-          hideProgressBar: "false",
-        });
-      } else if (err.response.status === 402) {
-        toast.error("Upload document.", {
-          position: "top-center",
-          theme: "colored",
-          hideProgressBar: "false",
-        });
+      } catch (err) {
+        if (err.response.status === 429) {
+          toast.error("All fields are required.", {
+            position: "top-center",
+            theme: "colored",
+            hideProgressBar: "false",
+          });
+        } else if (err.response.status === 427) {
+          toast.error("Phone number contains only 10 digit.", {
+            position: "top-center",
+            theme: "colored",
+            hideProgressBar: "false",
+          });
+        } else if (err.response.status === 413) {
+          toast.error("Provider Already Exist", {
+            position: "top-center",
+            theme: "colored",
+            hideProgressBar: "false",
+          });
+        } else if (err.response.status === 411) {
+          toast.error("password can't be less than 5.", {
+            position: "top-center",
+            theme: "colored",
+            hideProgressBar: "false",
+          });
+        } else if (err.response.status === 422) {
+          toast.error("Confirm password and password should be same.", {
+            position: "top-center",
+            theme: "colored",
+            hideProgressBar: "false",
+          });
+        } else if (err.response.status === 402) {
+          toast.error("Upload document.", {
+            position: "top-center",
+            theme: "colored",
+            hideProgressBar: "false",
+          });
+        }
       }
     }
   };
@@ -412,6 +423,25 @@ const Registration1 = () => {
                       placeholder="Address"
                       // className="form-control form-control mb-3"
                     />
+
+                    <select
+                      // className="form-select"
+                      value={time}
+                      onChange={(e) => setTime(e.target.value)}
+                      aria-label="select time-slot"
+                    >
+                      <option value="full-time">full-time</option>
+                      <option value="9-to-1">9-to-1</option>
+                      <option value="10-to-2">10-to-2</option>
+                      <option value="11-to-3">11-to-3</option>
+                      <option value="12-to-4">12-to-4</option>
+                      <option value="1-to-5">1-to-5</option>
+                      <option value="2-to-6">2-to-6</option>
+                      <option value="3-to-7">3-to-7</option>
+                      <option value="4-to-8">4-to-8</option>
+                      <option value="5-to-9">5-to-9</option>
+                    </select>
+
                     <input
                       type="file"
                       id=""

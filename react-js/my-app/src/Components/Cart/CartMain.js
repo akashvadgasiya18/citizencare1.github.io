@@ -55,6 +55,7 @@ const CartMain = () => {
 
   useEffect(() => {
     dispatch(userSingleDetails());
+    // window.localStorage.setItem("cart",JSON.stringify(getdata));
   }, [dispatch]);
   return (
     <>

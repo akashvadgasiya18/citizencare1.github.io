@@ -54,7 +54,7 @@ const Login1 = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
-      window.localStorage.setItem("user", JSON.stringify({ email, password }));
+      // window.localStorage.setItem("user", JSON.stringify({ email, password }));
       window.localStorage.setItem("isLoggedIn", true);
       navigate("/");
     } else if (res.status === 202) {
@@ -63,10 +63,10 @@ const Login1 = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
-      window.localStorage.setItem(
-        "provider",
-        JSON.stringify({ email, password })
-      );
+      // window.localStorage.setItem(
+      //   "provider",
+      //   JSON.stringify({ email, password })
+      // );
       window.localStorage.setItem("isProvider", true);
       navigate("/providerDash");
     } else if (res.status === 203) {
@@ -76,7 +76,7 @@ const Login1 = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
-      window.localStorage.setItem("admin", JSON.stringify({ email, password }));
+      // window.localStorage.setItem("admin", JSON.stringify({ email, password }));
       window.localStorage.setItem("isAdmin", true);
       navigate("/dashmain");
     }

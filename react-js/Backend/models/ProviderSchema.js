@@ -31,6 +31,10 @@ const ProviderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  time_slot: {
+    type: String,
+    required: true,
+  },
   p_file: {
     type: String,
     required: true,
