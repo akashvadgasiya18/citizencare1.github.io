@@ -71,7 +71,7 @@ const upload = multer({ storage: storage });
 router.post("/p_registration", upload.single("p_file"), async (req, res) => {
   let p_file = req.file ? req.file.filename : null;
 
-  const { p_name, p_role, p_email, p_mno, p_password, p_cpassword, p_add } =
+  const { p_name, p_role, p_email, p_mno, p_password, p_cpassword, p_add, time_slot } =
     req.body;
   if (
     p_name == "" ||
@@ -80,7 +80,8 @@ router.post("/p_registration", upload.single("p_file"), async (req, res) => {
     p_mno == "" ||
     p_password == "" ||
     p_cpassword == "" ||
-    p_add == ""
+    p_add == "" ||
+    time_slot == ""
   ) {
     return res.status(429).json({});
   }
@@ -103,6 +104,7 @@ router.post("/p_registration", upload.single("p_file"), async (req, res) => {
         p_password,
         p_cpassword,
         p_add,
+        time_slot,
         p_file,
       });
       await provider.save();
@@ -266,8 +268,8 @@ router.post("/edit_detail", async (req, res) => {
 //----------edit provider_profile-----------------------
 
 router.post("/edit_provider", async (req, res) => {
-  const { id, p_name, p_role, p_mno, p_add } = req.body;
-  if (p_name == "" || p_role == "" || p_mno == "" || p_add == "") {
+  const { id, p_name, p_role, p_mno, p_add, time_slot } = req.body;
+  if (p_name == "" || p_role == "" || p_mno == "" || p_add == "" || time_slot == "") {
     return res.status(429).json({});
   }
   try {
@@ -282,6 +284,7 @@ router.post("/edit_provider", async (req, res) => {
         const n_role = await p_role;
         const n_mno = await p_mno;
         const n_add = await p_add;
+        const n_time = await time_slot;
         await Provider.updateOne(
           {
             _id: id,
@@ -292,6 +295,7 @@ router.post("/edit_provider", async (req, res) => {
               p_role: n_role,
               p_mno: n_mno,
               p_add: n_add,
+              time_slot: n_time,
             },
           }
         );
@@ -341,6 +345,8 @@ router.post("/send_order", async (req, res) => {
           detail.fname +
           '".</p> <p>The scheduale for service is "' +
           detail.scheduale +
+          '".</p> <p>The date for service is "' +
+          detail.date +
           '".</p> <p>The address for service is "' +
           detail.address.line1 +
           "," +
@@ -445,8 +451,6 @@ router.get(
 //----------edit user_history-----------------------
 
 router.post("/edit_history", async (req, res) => {
-  // console.log(req.body.choice);
-  // console.log(req.body.date);
   const { choice, date, id } = req.body;
   if (!choice || !date) {
     return res.status(429).json({});
@@ -467,6 +471,47 @@ router.post("/edit_history", async (req, res) => {
           },
         }
       );
+      var transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: "shreyabundheliya2109@gmail.com",
+          pass: "fbqrhmvatldjfhxi",
+        },
+      });
+
+      var mailOptions = {
+        from: "shreyabundheliya2109@gmail.com",
+        // to: "akashvadgasiya1832@gmail.com",
+        to: userExist.provider[0].p_email,
+        subject: "Order details changed",
+        html:
+          '<p>The customer name is "' +
+          userExist.fname +
+          '".</p> <p>The date from service is "' +
+          date +
+          '".</p> <p>The updated scheduale for service is "' +
+          choice +
+          '".</p> <p>The address for service is "' +
+          userExist.address.line1 +
+          "," +
+          userExist.address.line2 +
+          "," +
+          userExist.address.postal_code +
+          ".</p>" +
+          '<p> The email address of customer is "' +
+          userExist.email +
+          '".</p> <p>The contact number is "' +
+          userExist.phone_no +
+          '".</p>.',
+      };
+
+      transporter.sendMail(mailOptions, async function (error, info) {
+        if (error) {
+          return res.status(413).json({});
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      });
       return res.status(201).json({});
     }
   } catch (err) {
