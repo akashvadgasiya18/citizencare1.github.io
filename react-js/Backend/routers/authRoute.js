@@ -71,8 +71,16 @@ const upload = multer({ storage: storage });
 router.post("/p_registration", upload.single("p_file"), async (req, res) => {
   let p_file = req.file ? req.file.filename : null;
 
-  const { p_name, p_role, p_email, p_mno, p_password, p_cpassword, p_add, time_slot } =
-    req.body;
+  const {
+    p_name,
+    p_role,
+    p_email,
+    p_mno,
+    p_password,
+    p_cpassword,
+    p_add,
+    time_slot,
+  } = req.body;
   if (
     p_name == "" ||
     p_role == "" ||
@@ -269,7 +277,13 @@ router.post("/edit_detail", async (req, res) => {
 
 router.post("/edit_provider", async (req, res) => {
   const { id, p_name, p_role, p_mno, p_add, time_slot } = req.body;
-  if (p_name == "" || p_role == "" || p_mno == "" || p_add == "" || time_slot == "") {
+  if (
+    p_name == "" ||
+    p_role == "" ||
+    p_mno == "" ||
+    p_add == "" ||
+    time_slot == ""
+  ) {
     return res.status(429).json({});
   }
   try {
@@ -423,10 +437,8 @@ router.get(
   "/userorders/:email",
   asyncHandler(async (req, res) => {
     const email = req.params.email;
-    // console.log(email);
     const products = await Order.find({ email: email });
     if (products) {
-      // console.log(products);
       res.send(products);
     } else {
       res.status(404).json({ message: "Product not founded" });
@@ -471,50 +483,139 @@ router.post("/edit_history", async (req, res) => {
           },
         }
       );
-      var transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: "shreyabundheliya2109@gmail.com",
-          pass: "fbqrhmvatldjfhxi",
-        },
-      });
+      if (userExist.status == "assigned") {
+        var transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: "shreyabundheliya2109@gmail.com",
+            pass: "fbqrhmvatldjfhxi",
+          },
+        });
 
-      var mailOptions = {
-        from: "shreyabundheliya2109@gmail.com",
-        // to: "akashvadgasiya1832@gmail.com",
-        to: userExist.provider[0].p_email,
-        subject: "Order details changed",
-        html:
-          '<p>The customer name is "' +
-          userExist.fname +
-          '".</p> <p>The date from service is "' +
-          date +
-          '".</p> <p>The updated scheduale for service is "' +
-          choice +
-          '".</p> <p>The address for service is "' +
-          userExist.address.line1 +
-          "," +
-          userExist.address.line2 +
-          "," +
-          userExist.address.postal_code +
-          ".</p>" +
-          '<p> The email address of customer is "' +
-          userExist.email +
-          '".</p> <p>The contact number is "' +
-          userExist.phone_no +
-          '".</p>.',
-      };
+        var mailOptions = {
+          from: "shreyabundheliya2109@gmail.com",
+          // to: "akashvadgasiya1832@gmail.com",
+          to: userExist.provider[0].p_email,
+          subject: "Order details changed",
+          html:
+            '<h2>Updated scheduale of service </h2>'+
+            '<p>The customer name is "' +
+            userExist.fname +
+            '".</p> <p>The date from service is "' +
+            date +
+            '".</p> <p>The updated scheduale for service is "' +
+            choice +
+            '".</p> <p>The address for service is "' +
+            userExist.address.line1 +
+            "," +
+            userExist.address.line2 +
+            "," +
+            userExist.address.postal_code +
+            ".</p>" +
+            '<p> The email address of customer is "' +
+            userExist.email +
+            '".</p> <p>The contact number is "' +
+            userExist.phone_no +
+            '".</p>.',
+        };
 
-      transporter.sendMail(mailOptions, async function (error, info) {
-        if (error) {
-          return res.status(413).json({});
-        } else {
-          console.log("Email sent: " + info.response);
-        }
-      });
-      return res.status(201).json({});
+        transporter.sendMail(mailOptions, async function (error, info) {
+          if (error) {
+            return res.status(413).json({});
+          } else {
+            console.log("Email sent: " + info.response);
+          }
+        });
+        return res.status(201).json({});
+      } else {
+        return res.status(201).json({});
+      }
     }
   } catch (err) {
+    console.log(err);
+  }
+});
+
+//------------------------------delete-history-----------------------
+router.post("/delete_history", async (req, res) => {
+  const { id } = req.body;
+  try {
+    const orderExist = await Order.findOne({ _id: id });
+    if (!orderExist) {
+      return res.status(413).json({});
+    } else {
+      await Order.deleteOne({ _id: id });
+      if ( orderExist.status == "assigned" ) {
+        var transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: "shreyabundheliya2109@gmail.com",
+            pass: "fbqrhmvatldjfhxi",
+          },
+        });
+
+        var mailOptions = {
+          from: "shreyabundheliya2109@gmail.com",
+          // to: "akashvadgasiya1832@gmail.com",
+          to: orderExist.provider[0].p_email,
+          subject: "Order canceled.",
+          html:
+            '<h2>Cancelation of service</h2>'+
+            '<p>The customer name is "' +
+            orderExist.fname +
+            '".</p> <p>The date from service is "' +
+            orderExist.date +
+            '".</p> <p>The scheduale of that service is "' +
+            orderExist.scheduale +
+            '".</p> <p>The address for service is "' +
+            orderExist.address.line1 +
+            "," +
+            orderExist.address.line2 +
+            "," +
+            orderExist.address.postal_code +
+            ".</p>",
+        };
+
+        transporter.sendMail(mailOptions, async function (error, info) {
+          if (error) {
+            return res.status(413).json({});
+          } else {
+            console.log("Email sent: " + info.response);
+          }
+        });
+        res.status(201).json({});
+      } else {
+        res.status(201).json({});
+      }
+    }
+  } catch (err) {
+    res.status(429).json({});
+    console.log(err);
+  }
+});
+
+//------------------------------done-history-----------------------
+router.post("/done_history", async (req, res) => {
+  const { id } = req.body;
+  try {
+    const orderExist = await Order.find({ _id: id });
+    if (!orderExist) {
+      return res.status(413).json({});
+    } else {
+      await Order.updateOne(
+        {
+          _id: id,
+        },
+        {
+          $set: {
+            status: "done",
+          },
+        }
+      );
+      res.status(201).json({});
+    }
+  } catch (err) {
+    res.status(429).json({});
     console.log(err);
   }
 });
