@@ -37,6 +37,16 @@ const CartMain = () => {
     dispatch(DEL(_id));
   };
 
+  // const disable = () =>
+  // {
+  //   let today,dd,mm,yyyy;
+  //   today= new Date();
+  //   dd= today.getDate()+1;
+  //   mm= today.getMonth()+1;
+  //   yyyy= today.getFullYear();
+  //   // console.log("DD: ",dd);
+  // }
+
   const handle = () => {
     if (!choice || !date) {
       toast.error("All fields are required.", {
@@ -188,7 +198,7 @@ const CartMain = () => {
                 padding: "0px 20px",
               }}
               value={date}
-              min={disableDates()}
+              // min={disable}
               onChange={(e) => setDate(e.target.value)}
               disablePast
             />

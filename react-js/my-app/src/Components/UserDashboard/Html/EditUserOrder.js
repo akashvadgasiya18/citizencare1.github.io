@@ -12,7 +12,7 @@ const EditUserOrder = ({ item }) => {
   const [choice, setChoice] = useState("");
 
   const handleSubmit = async (e) => {
-    console.log(date,choice);
+    // console.log(date,choice);
     e.preventDefault();
     const res = await fetch("/edit_history", {
       method: "POST",

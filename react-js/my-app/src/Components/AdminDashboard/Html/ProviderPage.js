@@ -142,6 +142,7 @@ const ProviderPage = () => {
                         <th>Email_Id</th>
                         <th>Phone_no</th>
                         <th>Address</th>
+                        <th>Time_slot</th>
                         <th>Documents</th>
                         <th>Action</th>
                       </tr>
@@ -167,6 +168,7 @@ const ProviderPage = () => {
                               <td>{item.p_email}</td>
                               <td>{item.p_mno}</td>
                               <td>{item.p_add}</td>
+                              <td>{item.time_slot}</td>
                               <td>
                                 <img
                                   src={`http://localhost:3001/assets/img_pro/${item.p_file}`}
