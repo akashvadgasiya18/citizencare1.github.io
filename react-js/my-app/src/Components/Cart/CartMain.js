@@ -10,6 +10,8 @@ import axios from "axios";
 import { userSingleDetails } from "../../Redux/Actions/ServiceAction";
 import { Link } from "react-router-dom";
 import "../../css/Pagenotfound.css";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
 
 const CartMain = () => {
   const loggedIn = window.localStorage.getItem("isLoggedIn");
@@ -21,6 +23,15 @@ const CartMain = () => {
   const dispatch = useDispatch();
   const singleData = useSelector((state) => state.singleData);
   const { user } = singleData;
+
+  const disableDates = () => {
+    var today, dd, mm, yyyy;
+    today = new Date();
+    dd = today.getDate() + 1;
+    mm = today.getMonth() + 1;
+    yyyy = today.getFullYear();
+    return yyyy + "-" + mm + "-" + dd;
+  };
 
   const dlt = (_id) => {
     dispatch(DEL(_id));
@@ -155,6 +166,13 @@ const CartMain = () => {
             >
               Booking Date :
             </lable>
+            {/* <DatePicker
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              minDate={new Date()}
+              dateFormat="MMMM d, yyyy h:mm aa"
+              style={{ display: "none" }}
+            /> */}
             <input
               type="date"
               style={{
@@ -170,7 +188,9 @@ const CartMain = () => {
                 padding: "0px 20px",
               }}
               value={date}
+              min={disableDates()}
               onChange={(e) => setDate(e.target.value)}
+              disablePast
             />
             <br></br>
             <lable
