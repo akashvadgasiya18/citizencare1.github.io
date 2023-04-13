@@ -130,8 +130,8 @@ router.get(
 // ------------------------------ reviews --------------------------
 
 router.post("/add_review", async (req, res) => {
-  const { uname, rate, description } = req.body;
-  if (!uname || !rate || !description) {
+  const { uname, rate, description, n_date } = req.body;
+  if (!uname || !rate || !description || !n_date) {
     return res.status(417).json({});
   }
   try {
@@ -139,7 +139,7 @@ router.post("/add_review", async (req, res) => {
     if (!de_Exist) {
       return res.status(419).json({});
     } else {
-      const data = new Review({ uname, rate, description });
+      const data = new Review({ uname, rate, description, n_date });
       await data.save();
       res.status(201).json({});
     }

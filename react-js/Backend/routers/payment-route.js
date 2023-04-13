@@ -8,6 +8,7 @@ const stripe = Stripe(process.env.STRIPE_KEY);
 router.post("/create-checkout-session", async (req, res) => {
   //customer creation
   const customer = await stripe.customers.create({
+    email: req.body.user.email,
     metadata: {
       userId: req.body.userId,
       date: req.body.date,
@@ -37,7 +38,6 @@ router.post("/create-checkout-session", async (req, res) => {
   //session creation
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
-    // "customer_email": req.body.user.email,
     customer: customer.id,
     phone_number_collection: {
       enabled: true,
@@ -62,7 +62,7 @@ const createOrder = async (customer, data) => {
     cId: data.customer,
     paymentId: data.payment_intent,
     fname: data.customer_details.name,
-    email: data.customer_details.email,
+    email: customer.email,
     phone_no: data.customer_details.phone,
     address: data.customer_details.address,
     service: items,
@@ -155,7 +155,7 @@ router.post(
       stripe.customers
         .retrieve(data.customer)
         .then((customer) => {
-          // console.log(customer);
+          // console.log(data);
           createOrder(customer, data);
         })
         .catch((err) => {

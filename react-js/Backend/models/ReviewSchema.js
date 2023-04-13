@@ -13,8 +13,11 @@ const ReviewSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-},
-{timestamps: true});
+  n_date: {
+    type: String,
+    required: true,
+  }
+});
 
 ReviewSchema.pre("save", async function (next) {
   next();

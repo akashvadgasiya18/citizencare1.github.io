@@ -23,29 +23,12 @@ const CartMain = () => {
   const dispatch = useDispatch();
   const singleData = useSelector((state) => state.singleData);
   const { user } = singleData;
-
-  const disableDates = () => {
-    var today, dd, mm, yyyy;
-    today = new Date();
-    dd = today.getDate() + 1;
-    mm = today.getMonth() + 1;
-    yyyy = today.getFullYear();
-    return yyyy + "-" + mm + "-" + dd;
-  };
+  // let today;
+  // today +=2;
 
   const dlt = (_id) => {
     dispatch(DEL(_id));
   };
-
-  // const disable = () =>
-  // {
-  //   let today,dd,mm,yyyy;
-  //   today= new Date();
-  //   dd= today.getDate()+1;
-  //   mm= today.getMonth()+1;
-  //   yyyy= today.getFullYear();
-  //   // console.log("DD: ",dd);
-  // }
 
   const handle = () => {
     if (!choice || !date) {
@@ -198,9 +181,8 @@ const CartMain = () => {
                 padding: "0px 20px",
               }}
               value={date}
-              // min={disable}
+              min={new Date().toISOString().split("T")[0]}
               onChange={(e) => setDate(e.target.value)}
-              disablePast
             />
             <br></br>
             <lable
@@ -248,14 +230,17 @@ const CartMain = () => {
                   Checkout
                 </button>
               ) : (
-                <Link to="/login">
-                  <button
-                    className="btn btn-outline-dark btn-lg my-3"
-                    style={{ padding: "10px 100px" }}
-                  >
-                    Checkout
-                  </button>
-                </Link>
+                <>
+                  <script>window.alert("Kindly Login")</script>
+                  <Link to="/login">
+                    <button
+                      className="btn btn-outline-dark btn-lg my-3"
+                      style={{ padding: "10px 100px" }}
+                    >
+                      Checkout
+                    </button>
+                  </Link>
+                </>
               )}
             </div>
           </div>

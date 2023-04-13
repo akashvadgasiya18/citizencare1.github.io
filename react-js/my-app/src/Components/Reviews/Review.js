@@ -9,6 +9,22 @@ import i1 from "../../images/Advice.png";
 
 export default function App() {
   // --------------------- post data ------------------------------------
+  let date= new Date();
+  date.setHours(0,0,0,0);
+
+  function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+  }
+  
+  function formatDate(date){
+    return [
+      date.getFullYear(),
+      padTo2Digits(date.getMonth() +1 ),
+      padTo2Digits(date.getDate()),
+    ].join('-');
+  }
+
+  const n_date =formatDate(new Date());
   const [choice, setChoice] = useState();
   const [ser, setser] = useState({
     uname: "",
@@ -26,6 +42,7 @@ export default function App() {
   };
 
   const send_review_data = async (e) => {
+    // console.log(n_date);
     e.preventDefault();
     const { uname, description } = ser;
     const res = await fetch("/add_review", {
@@ -35,6 +52,7 @@ export default function App() {
         uname,
         rate: choice,
         description,
+        n_date,
       }),
     });
     const data = await res.json();
