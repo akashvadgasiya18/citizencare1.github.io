@@ -73,7 +73,7 @@ const EditUserOrder = ({ item }) => {
               }}
             />{" "}
           </Link>
-          EDIT ORDER DETAILS
+          EDIT BOOKINGS DETAILS
         </Typography.Title>
       </div>
       <div>
@@ -87,7 +87,7 @@ const EditUserOrder = ({ item }) => {
             }}
           >
             <h2 style={{ paddingBottom: "30px", textAlign: "center" }}>
-              Edit Order
+              Edit Bookings
             </h2>
             <p>You can only edit Date and scheduale of your order</p>
             <lable

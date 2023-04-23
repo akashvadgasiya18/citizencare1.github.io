@@ -12,16 +12,16 @@ const Footer = () => {
           </div>
 
           <div class="social">
-            <a href="./Footer.js">
+            <a href="https://www.instagram.com">
               <i class="icon ion-social-instagram"></i>
             </a>
-            <a href="./Footer.js">
+            <a href="https://web.whatsapp.com">
               <i class="icon ion-social-whatsapp"></i>
             </a>
-            <a href="./Footer.js">
+            <a href="https://twitter.com">
               <i class="icon ion-social-twitter"></i>
             </a>
-            <a href="./Footer.js">
+            <a href="https://www.facebook.com">
               <i class="icon ion-social-facebook"></i>
             </a>
           </div>

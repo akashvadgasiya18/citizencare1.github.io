@@ -5,7 +5,9 @@
     <!-- <link rel="stylesheet" href="../../my-app/src/Components/UserDashboard/css/ChangePassword.css"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <title>Change password</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
       var status = "<%- JSON.stringify(status)%>";
       if (status == 201) {
@@ -17,8 +19,11 @@
         // });
         window.location.href = "http://localhost:3000/login";
       } else if (status == 402) {
+        
         alert("Kindly fill the data");
-        // $.toast({
+        
+          // toastr.error('fill all data');
+        
         //     text: 'Kindly fill the data.',
         //     icon: 'warning',
         //     position:'top-center',
@@ -61,6 +66,7 @@
         justify-content: center;
         height: 100vh;
         width: 100%;
+        font-family: Poppins;
         /* max-width: 570px; */
        
         margin: 0 auto;
@@ -71,7 +77,7 @@
       h2 {
         padding-bottom: 30px;
         text-align: center;
-        font-family: poppins;
+        font-family:'Poppins';
       }
       
       input:disabled {
@@ -155,7 +161,7 @@
               autocomplete="off"
               name="cpassword"
             />
-              <input type="submit" value="submit" id="submitButton1" />
+              <input type="submit" value="submit" id="submitButton1" onclick="fun1()"/>
             </div>
         </form>
     </div>

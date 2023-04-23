@@ -61,12 +61,11 @@
   float: right;
   margin-right: 1rem;
 }
-.cart-icns
-{
+.cart-icns {
   display: inline-flex;
 }
 
-@media (max-width: 808px) {
+@media (max-width: 860px) {
   .toolbar_navigation_items {
     display: none;
   }
@@ -75,7 +74,7 @@
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 860px) {
   .burger_menu {
     display: none;
   }

@@ -19,7 +19,9 @@ const ServiceItems = ({ item }) => {
         </div>
 
         <div className="car__item-content mt-4">
-          <h4 className="section__title text-center">{item.s_name}</h4>
+          <Link to={`/details/${item._id}`}>
+            <h4 className="section__title text-center">{item.s_name}</h4>
+          </Link>
           <h6 className="rent__price text-center">
             Rs. {item.price}.00
             <span style={{ fontFamily: "Poppins", fontWeight: "500" }}>

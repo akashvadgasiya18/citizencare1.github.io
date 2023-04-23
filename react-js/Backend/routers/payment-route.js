@@ -97,9 +97,9 @@ const createOrder = async (customer, data) => {
         "," +
         saved.address.postal_code +
         ".</p>" +
-        "<p> Your service booking date is "+
+        "<p> Your service booking date is " +
         saved.date +
-        ".</p>"+
+        ".</p>" +
         "<p> Your service schedulae is " +
         saved.scheduale +
         ".</p>" +
