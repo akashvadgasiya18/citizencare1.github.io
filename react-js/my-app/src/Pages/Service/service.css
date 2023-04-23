@@ -11,7 +11,7 @@
 .services {
   padding: 2rem 1rem 4rem 1rem;
   display: grid;
-  background-color:rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   place-items: center;
 }
 
@@ -77,7 +77,7 @@
   transition: 0.3s;
 }
 
-.service-column:hover .service-thumb img {
+.service-column .service-thumb:hover img {
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -93,6 +93,7 @@
   font-family: Poppins;
   color: #000;
   margin-bottom: 0;
+  text-decoration: 3px solid white underline;
 }
 
 .service-info p {

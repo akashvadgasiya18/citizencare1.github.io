@@ -51,23 +51,14 @@
 
 .car__item-content h4 {
   font-size: 1.8rem;
+  text-decoration: 4px solid white underline;
+  color: #000000;
 }
 
 .car__item-content h6 {
   font-size: 1.2rem;
   font-weight: 600;
 }
-/* .car__img img
-{
-    cursor: pointer;
-    transform: scale(1);
-    transition: 0.6s ease-in-out;
-    border-radius: 10px;
-}
-.car__img img:hover
-{
-    transform: scale(1.05);
-} */
 
 @media only screen and (max-width: 992px) {
   .car__item h4 {

@@ -6,11 +6,10 @@ import { Container, Row } from "reactstrap";
 // import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { listService } from "../../Redux/Actions/ServiceAction";
-// import { Link } from "react-router-dom";
-// import img from '../../assets/details/'
 import "../../Components/ServiceItem/service-item.css";
 import ServiceItems from "./ServiceItems";
 import "./Search.css";
+
 
 const Items = () => {
   // const [Products, setProducts] = useState([]);
@@ -85,13 +84,6 @@ const Items = () => {
                       key={item._id}
                       // key={index}
                       item={item}
-                      // imgpath={imgpath}
-                      // imgpath={item.doc_img}
-                      // s_name={item.s_name}
-                      // price={item.price}
-                      // rating={item.rating}
-                      // likes={item.likes}
-                      // desc={item.desc}
                     />
                   );
                 })}

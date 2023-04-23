@@ -42,7 +42,7 @@ footer {
 
 .footer-basic ul a:hover {
   opacity: 1;
-  color: rgb(68, 238, 16);
+  color: rgb(82, 56, 230);
   text-decoration: none;
 }
 
@@ -70,9 +70,8 @@ footer {
 
 .footer-basic .social > a:hover {
   opacity: 1;
-  color: rgb(7, 7, 7);
-  background: rgb(255, 255, 255);
-  border: 2px solid rgb(16, 167, 36);
+  color: rgb(255, 255, 255);
+  background: rgb(0, 0, 0);
 }
 
 .footer-basic .copyright {

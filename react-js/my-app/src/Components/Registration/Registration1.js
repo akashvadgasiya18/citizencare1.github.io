@@ -295,7 +295,7 @@ const Registration1 = () => {
                   Please select your type for registration
                 </p>
 
-                <div style={{ height: "45px", marginBottom: "2rem" }}>
+                <div style={{ height: "45px", marginBottom: "3rem" }}>
                   <RadioGroup
                     row
                     aria-labelledby="demo-row-radio-buttons-group-label"

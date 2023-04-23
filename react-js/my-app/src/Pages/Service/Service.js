@@ -37,7 +37,9 @@ const Service = () => {
                     </Link>
                   </div>
                   <div className="service-info">
-                    <h3>{detail4.name}</h3>
+                    <Link to="/service">
+                      <h3>{detail4.name}</h3>
+                    </Link>
                     <p>{detail4.info}</p>
                   </div>
                 </div>
@@ -66,7 +68,9 @@ const Service = () => {
                   </div>
 
                   <div className="service-info">
-                    <h3>{detail.name}</h3>
+                    <Link to="/service">
+                      <h3>{detail.name}</h3>
+                    </Link>
                     <p>{detail.info}</p>
                   </div>
                 </div>
@@ -96,7 +100,9 @@ const Service = () => {
                     </Link>
                   </div>
                   <div className="service-info">
-                    <h3>{detail2.name}</h3>
+                    <Link to="/service">
+                      <h3>{detail2.name}</h3>
+                    </Link>
                     <p>{detail2.info}</p>
                   </div>
                 </div>
@@ -126,7 +132,9 @@ const Service = () => {
                     </Link>
                   </div>
                   <div className="service-info">
-                    <h3>{detail3.name}</h3>
+                    <Link to="/service">
+                      <h3>{detail3.name}</h3>
+                    </Link>
                     <p>{detail3.info}</p>
                   </div>
                 </div>
