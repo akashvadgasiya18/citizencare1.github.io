@@ -69,8 +69,44 @@ const Registration1 = () => {
           hideProgressBar: "false",
         });
       } catch (err) {
-        if (err.response.status === 429) {
-          toast.error("All fields are required.", {
+        if (err.response.status === 401) {
+          toast.error("Kindly enter name.", {
+            position: "top-center",
+            theme: "colored",
+            hideProgressBar: "false",
+          });
+        } else if (err.response.status === 402) {
+          toast.error("Kindly select profession.", {
+            position: "top-center",
+            theme: "colored",
+            hideProgressBar: "false",
+          });
+        } else if (err.response.status === 403) {
+          toast.error("Kindly enter email.", {
+            position: "top-center",
+            theme: "colored",
+            hideProgressBar: "false",
+          });
+        } else if (err.response.status === 404) {
+          toast.error("Kindly enter phone-no.", {
+            position: "top-center",
+            theme: "colored",
+            hideProgressBar: "false",
+          });
+        } else if (err.response.status === 405) {
+          toast.error("Kindly enter password.", {
+            position: "top-center",
+            theme: "colored",
+            hideProgressBar: "false",
+          });
+        } else if (err.response.status === 406) {
+          toast.error("Kindly enter confirm-password.", {
+            position: "top-center",
+            theme: "colored",
+            hideProgressBar: "false",
+          });
+        } else if (err.response.status === 407) {
+          toast.error("Kindly select time-slot.", {
             position: "top-center",
             theme: "colored",
             hideProgressBar: "false",
@@ -82,7 +118,7 @@ const Registration1 = () => {
             hideProgressBar: "false",
           });
         } else if (err.response.status === 413) {
-          toast.error("Provider Already Exist", {
+          toast.error("Already Exist", {
             position: "top-center",
             theme: "colored",
             hideProgressBar: "false",
@@ -99,7 +135,7 @@ const Registration1 = () => {
             theme: "colored",
             hideProgressBar: "false",
           });
-        } else if (err.response.status === 402) {
+        } else if (err.response.status === 429) {
           toast.error("Upload document.", {
             position: "top-center",
             theme: "colored",
@@ -150,8 +186,38 @@ const Registration1 = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
-    } else if (res.status === 429) {
-      toast.error("All fields are required.", {
+    } else if (res.status === 401) {
+      toast.error("Kindly enter name.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 402) {
+      toast.error("Kindly select age.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 403) {
+      toast.error("Kindly enter email.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 404) {
+      toast.error("Kindly enter phone-no.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 405) {
+      toast.error("Kindly enter password.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 406) {
+      toast.error("Kindly enter confirm-password.", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",
@@ -162,14 +228,14 @@ const Registration1 = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
-    } else if (res.status === 402) {
+    } else if (res.status === 429) {
       toast.error("Age can't be less than 40 and greater than 100.", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",
       });
     } else if (res.status === 413) {
-      toast.error("User Already Exist", {
+      toast.error("Already Exist", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",
@@ -226,7 +292,7 @@ const Registration1 = () => {
                   className="text-black-50 mb-5"
                   style={{ textAlign: "center", marginTop: "-20px" }}
                 >
-                  Please enter your essential details for registration
+                  Please select your type for registration
                 </p>
 
                 <div style={{ height: "45px", marginBottom: "2rem" }}>
@@ -432,15 +498,15 @@ const Registration1 = () => {
                       aria-label="select time-slot"
                     >
                       <option value="full-time">full-time</option>
-                      <option value="9-to-1">9-to-1</option>
-                      <option value="10-to-2">10-to-2</option>
-                      <option value="11-to-3">11-to-3</option>
-                      <option value="12-to-4">12-to-4</option>
-                      <option value="1-to-5">1-to-5</option>
-                      <option value="2-to-6">2-to-6</option>
-                      <option value="3-to-7">3-to-7</option>
-                      <option value="4-to-8">4-to-8</option>
-                      <option value="5-to-9">5-to-9</option>
+                      <option value="9:00-1:00">9:00-1:00</option>
+                      <option value="10:00-2:00">10:00-2:00</option>
+                      <option value="11:00-3:00">11:00-3:00</option>
+                      <option value="12:00-4:00">12:00-4:00</option>
+                      <option value="1:00-5:00">1:00-5:00</option>
+                      <option value="2:00-6:00">2:00-6:00</option>
+                      <option value="3:00-7:00">3:00-7:00</option>
+                      <option value="4:00-8:00">4:00-8:00</option>
+                      <option value="5:00-9:00">5:00-9:00</option>
                     </select>
 
                     <input

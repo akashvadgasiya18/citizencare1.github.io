@@ -63,8 +63,20 @@ export default function App() {
         theme: "colored",
         hideProgressBar: "false",
       });
-    } else if (res.status === 417) {
-      toast.error("All fields are required.", {
+    } else if (res.status === 401) {
+      toast.error("Kindly enter name.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 402) {
+      toast.error("Kindly select rate.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 403) {
+      toast.error("Kindly enter description.", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",

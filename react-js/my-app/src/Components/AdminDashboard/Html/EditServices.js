@@ -54,8 +54,26 @@ const EditServices = ({ item }) => {
         theme: "colored",
         hideProgressBar: "false",
       });
-    } else if (res.status === 429) {
-      toast.error("All fields are required.", {
+    } else if (res.status === 401) {
+      toast.error("Kindly enter price.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 402) {
+      toast.error("Kindly select rating.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 403) {
+      toast.error("Kindly enter likes.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 404) {
+      toast.error("Kindly enter description.", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",

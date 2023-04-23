@@ -10,8 +10,6 @@ import axios from "axios";
 import { userSingleDetails } from "../../Redux/Actions/ServiceAction";
 import { Link } from "react-router-dom";
 import "../../css/Pagenotfound.css";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
 
 const CartMain = () => {
   const loggedIn = window.localStorage.getItem("isLoggedIn");
@@ -23,16 +21,26 @@ const CartMain = () => {
   const dispatch = useDispatch();
   const singleData = useSelector((state) => state.singleData);
   const { user } = singleData;
-  // let today;
-  // today +=2;
 
   const dlt = (_id) => {
     dispatch(DEL(_id));
   };
 
   const handle = () => {
-    if (!choice || !date) {
-      toast.error("All fields are required.", {
+    if (getdata.length >= 2) {
+      toast.error("Only one service can be booked.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (!date) {
+      toast.error("Kindly select date.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (!choice) {
+      toast.error("Kindly select time-slot.", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",
@@ -59,8 +67,8 @@ const CartMain = () => {
 
   useEffect(() => {
     dispatch(userSingleDetails());
-    // window.localStorage.setItem("cart",JSON.stringify(getdata));
   }, [dispatch]);
+
   return (
     <>
       {getdata.length ? (
@@ -159,13 +167,6 @@ const CartMain = () => {
             >
               Booking Date :
             </lable>
-            {/* <DatePicker
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              minDate={new Date()}
-              dateFormat="MMMM d, yyyy h:mm aa"
-              style={{ display: "none" }}
-            /> */}
             <input
               type="date"
               style={{
@@ -212,12 +213,12 @@ const CartMain = () => {
               }}
             >
               <option value="">Select</option>
-              <option value="8-to-10">8-to-10</option>
-              <option value="10-to-12">10-to-12</option>
-              <option value="12-to-2">12-to-2</option>
-              <option value="2-to-4">2-to-4</option>
-              <option value="4-to-6">4-to-6</option>
-              <option value="6-to-8">6-to-8</option>
+              <option value="8:00-10:00">8:00-10:00</option>
+              <option value="10:00-12:00">10:00-12:00</option>
+              <option value="12:00-2:00">12:00-2:00</option>
+              <option value="2:00-4:00">2:00-4:00</option>
+              <option value="4:00-6:00">4:00-6:00</option>
+              <option value="6:00-8:00">6:00-8:00</option>
             </select>
             <div className="col-auto">
               {loggedIn ? (

@@ -1,11 +1,18 @@
 import "../css/ChangePassword.css";
-import React, { useState } from "react";
+import React from "react";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { userSingleDetails } from "../../../Redux/Actions/ServiceAction";
 
 function Changepass() {
-  const [email, setEmail] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const singleData = useSelector((state) => state.singleData);
+  const { user } = singleData;
+  const email = user.email;
+
   const handel_login = async (e) => {
     e.preventDefault();
     const reset = await fetch("/forgotpassword", {
@@ -19,7 +26,7 @@ function Changepass() {
       toast.error("All fields are required.", {
         position: "top-center",
         theme: "colored",
-        hideProgressBar: "false",
+        hideProgressBar: "false", 
       });
     } else if (reset.status === 413) {
       toast.error("User not exists.", {
@@ -36,6 +43,10 @@ function Changepass() {
       });
     }
   };
+
+  useEffect(() => {
+    dispatch(userSingleDetails());
+  }, [dispatch]);
   return (
     <>
       <div className="home-container">
@@ -62,17 +73,12 @@ function Changepass() {
               >
                 You can change Password through Email ID
               </p>
-              <label style={{ float: "left", display: "flex" }}>
-                Enter Email Id
-              </label>
               <input
                 type="email"
                 id=""
                 Name="email"
-                // placeholder="Enter email "
                 autoComplete="off"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={user.email}
               />
               <button
                 type="submit"
@@ -89,4 +95,5 @@ function Changepass() {
     </>
   );
 }
+
 export default Changepass;

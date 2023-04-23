@@ -12,7 +12,6 @@ const EditUserOrder = ({ item }) => {
   const [choice, setChoice] = useState("");
 
   const handleSubmit = async (e) => {
-    // console.log(date,choice);
     e.preventDefault();
     const res = await fetch("/edit_history", {
       method: "POST",
@@ -30,8 +29,14 @@ const EditUserOrder = ({ item }) => {
         theme: "colored",
         hideProgressBar: "false",
       });
-    } else if (res.status === 429) {
-      toast.error("All fields are required.", {
+    } else if (res.status === 401) {
+      toast.error("Kindly select time-slot.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 402) {
+      toast.error("Kindly select date.", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",
@@ -123,12 +128,12 @@ const EditUserOrder = ({ item }) => {
               onChange={(e) => setChoice(e.target.value)}
             >
               <option value="">Select</option>
-              <option value="8-to-10">8-to-10</option>
-              <option value="10-to-12">10-to-12</option>
-              <option value="12-to-2">12-to-2</option>
-              <option value="2-to-4">2-to-4</option>
-              <option value="4-to-6">4-to-6</option>
-              <option value="6-to-8">6-to-8</option>
+              <option value="8:00-10:00">8:00-10:00</option>
+              <option value="10:00-12:00">10:00-12:00</option>
+              <option value="12:00-2:00">12:00-2:00</option>
+              <option value="2:00-4:00">2:00-4:00</option>
+              <option value="4:00-6:00">4:00-6:00</option>
+              <option value="6:00-8:00">6:00-8:00</option>
             </select>
             <button type="submit" onClick={handleSubmit}>
               Edit

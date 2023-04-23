@@ -51,8 +51,20 @@ const Editprofile = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
-    } else if (res.status === 429) {
-      toast.error("All fields are required.", {
+    } else if (res.status === 401) {
+      toast.error("Kindly enter name.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 402) {
+      toast.error("Kindly select age.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 403) {
+      toast.error("Kindly enter phone-no.", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",

@@ -17,26 +17,30 @@ require("../db");
 
 router.post("/registration", async (req, res) => {
   const { fname, age, email, phone_no, password, cpassword } = req.body;
-  if (
-    fname == "" ||
-    age == "" ||
-    email == "" ||
-    phone_no == "" ||
-    password == "" ||
-    cpassword == ""
-  ) {
-    return res.status(429).json({});
+  if (fname == "") {
+    return res.status(401).json({});
+  } else if (age == "") {
+    return res.status(402).json({});
+  } else if (email == "") {
+    return res.status(403).json({});
+  } else if (phone_no == "") {
+    return res.status(404).json({});
+  } else if (password == "") {
+    return res.status(405).json({});
+  } else if (cpassword == "") {
+    return res.status(406).json({});
   }
   try {
     const userExist = await User.findOne({ email: email });
-    if (userExist) {
+    const providerExist = await Provider.findOne({ p_email: email });
+    if (userExist || providerExist) {
       return res.status(413).json({});
     } else if (phone_no.length != 10) {
       return res.status(427).json({});
     } else if (password.length <= 5) {
       return res.status(411).json({});
     } else if (age < "40" && age > "100") {
-      return res.status(402).json({});
+      return res.status(429).json({});
     } else if (password != cpassword) {
       return res.status(422).json({});
     } else {
@@ -81,21 +85,25 @@ router.post("/p_registration", upload.single("p_file"), async (req, res) => {
     p_add,
     time_slot,
   } = req.body;
-  if (
-    p_name == "" ||
-    p_role == "" ||
-    p_email == "" ||
-    p_mno == "" ||
-    p_password == "" ||
-    p_cpassword == "" ||
-    p_add == "" ||
-    time_slot == ""
-  ) {
-    return res.status(429).json({});
+  if (p_name == "") {
+    return res.status(401).json({});
+  } else if (p_role == "") {
+    return res.status(402).json({});
+  } else if (p_email == "") {
+    return res.status(403).json({});
+  } else if (p_mno == "") {
+    return res.status(404).json({});
+  } else if (p_password == "") {
+    return res.status(405).json({});
+  } else if (p_cpassword == "") {
+    return res.status(406).json({});
+  } else if (time_slot == "") {
+    return res.status(407).json({});
   }
   try {
+    const userExist = await User.findOne({ email: p_email });
     const proExist = await Provider.findOne({ p_email: p_email });
-    if (proExist) {
+    if (proExist || userExist) {
       return res.status(413).json({});
     } else if (p_mno.length != 10) {
       return res.status(427).json({});
@@ -119,7 +127,7 @@ router.post("/p_registration", upload.single("p_file"), async (req, res) => {
       res.status(201).json({});
     }
   } catch (err) {
-    return res.status(402).json({});
+    return res.status(429).json({});
   }
 });
 
@@ -129,10 +137,11 @@ router.post("/login", async (req, res) => {
   try {
     let token;
     const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(429).json({ error: "not empty" });
+    if (!email) {
+      return res.status(401).json({});
+    } else if (!password) {
+      return res.status(402).json({});
     }
-
     const detail = await User.findOne({ email: email });
     const p_detail = await Provider.findOne({ p_email: email });
     const a_detail = await Admin.findOne({ email: email });
@@ -140,7 +149,7 @@ router.post("/login", async (req, res) => {
     if (detail) {
       const match = await bcrypt.compare(password, detail.password);
       if (!match) {
-        res.status(400).json({ error: "Invalid credentional" });
+        res.status(413).json({});
       } else {
         token = await detail.generateAuthToken();
         res.cookie("jwtoken", token, {
@@ -151,7 +160,7 @@ router.post("/login", async (req, res) => {
     } else if (p_detail) {
       const match = await bcrypt.compare(password, p_detail.p_password);
       if (!match) {
-        res.status(400).json({ error: "Invalid credentional" });
+        res.status(413).json({});
       } else {
         token = await p_detail.generateAuthToken();
         res.cookie("jwtoken", token, {
@@ -162,7 +171,7 @@ router.post("/login", async (req, res) => {
     } else if (a_detail) {
       const match = await bcrypt.compare(password, a_detail.password);
       if (!match) {
-        res.status(400).json({ error: "Invalid credentional" });
+        res.status(413).json({});
       } else {
         token = await a_detail.generateAuthToken();
         res.cookie("jwtoken", token, {
@@ -171,7 +180,7 @@ router.post("/login", async (req, res) => {
         res.status(203).json(token);
       }
     } else {
-      res.status(413).json({ error: "Invalid credentional" });
+      res.status(413).json({});
     }
   } catch (err) {
     console.log(err);
@@ -239,8 +248,12 @@ router.get(
 
 router.post("/edit_detail", async (req, res) => {
   const { fname, age, id, phone_no } = req.body;
-  if (fname == "" || age == "" || phone_no == "") {
-    return res.status(429).json({});
+  if (fname == "") {
+    return res.status(401).json({});
+  } else if (age == "") {
+    return res.status(402).json({});
+  } else if (phone_no == "") {
+    return res.status(403).json({});
   }
   try {
     const userExist = await User.findOne({ _id: id });
@@ -277,14 +290,25 @@ router.post("/edit_detail", async (req, res) => {
 
 router.post("/edit_provider", async (req, res) => {
   const { id, p_name, p_role, p_mno, p_add, time_slot } = req.body;
-  if (
-    p_name == "" ||
-    p_role == "" ||
-    p_mno == "" ||
-    p_add == "" ||
-    time_slot == ""
-  ) {
-    return res.status(429).json({});
+  if (p_name == "") 
+  {
+    return res.status(401).json({});
+  }
+  else if( p_role == "" )
+  {
+    return res.status(402).json({});
+  }
+  else if( p_mno == "" )
+  {
+    return res.status(403).json({});
+  }
+  else if( p_add == "" )
+  {
+    return res.status(404).json({});
+  }
+  else if( time_slot == "" )
+  {
+    return res.status(405).json({});
   }
   try {
     const providerExist = await Provider.findOne({ _id: id });
@@ -329,7 +353,6 @@ router.post("/delete_provider", async (req, res) => {
     res.status(201).json({});
   } catch (err) {
     res.status(429).json({});
-    console.log(err);
   }
 });
 
@@ -340,7 +363,6 @@ router.post("/send_order", async (req, res) => {
   try {
     const providerExist = await Provider.findOne({ p_email: item.p_email });
     if (providerExist) {
-      // console.log(detail.total);
       var transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -351,7 +373,6 @@ router.post("/send_order", async (req, res) => {
 
       var mailOptions = {
         from: "shreyabundheliya2109@gmail.com",
-        // to: "akashvadgasiya1832@gmail.com",
         to: item.p_email,
         subject: "Order details",
         html:
@@ -425,7 +446,7 @@ router.post("/send_order", async (req, res) => {
         }
       });
     } else {
-      return res.status(413).json({ message: "Not exists." });
+      return res.status(413).json({});
     }
   } catch (err) {
     console.log(err);
@@ -464,8 +485,12 @@ router.get(
 
 router.post("/edit_history", async (req, res) => {
   const { choice, date, id } = req.body;
-  if (!choice || !date) {
-    return res.status(429).json({});
+  if (!choice) {
+    return res.status(401).json({});
+  }
+  else if(!date)
+  {
+    return res.status(402).json({});
   }
   try {
     const userExist = await Order.findOne({ _id: id });
@@ -494,11 +519,10 @@ router.post("/edit_history", async (req, res) => {
 
         var mailOptions = {
           from: "shreyabundheliya2109@gmail.com",
-          // to: "akashvadgasiya1832@gmail.com",
           to: userExist.provider[0].p_email,
           subject: "Order details changed",
           html:
-            '<h2>Updated scheduale of service </h2>'+
+            "<h2>Updated scheduale of service </h2>" +
             '<p>The customer name is "' +
             userExist.fname +
             '".</p> <p>The date from service is "' +
@@ -545,7 +569,7 @@ router.post("/delete_history", async (req, res) => {
       return res.status(413).json({});
     } else {
       await Order.deleteOne({ _id: id });
-      if ( orderExist.status == "assigned" ) {
+      if (orderExist.status == "assigned") {
         var transporter = nodemailer.createTransport({
           service: "gmail",
           auth: {
@@ -556,11 +580,10 @@ router.post("/delete_history", async (req, res) => {
 
         var mailOptions = {
           from: "shreyabundheliya2109@gmail.com",
-          // to: "akashvadgasiya1832@gmail.com",
           to: orderExist.provider[0].p_email,
           subject: "Order canceled.",
           html:
-            '<h2>Cancelation of service</h2>'+
+            "<h2>Cancelation of service</h2>" +
             '<p>The customer name is "' +
             orderExist.fname +
             '".</p> <p>The date from service is "' +

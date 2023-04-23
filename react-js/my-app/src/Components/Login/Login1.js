@@ -5,13 +5,11 @@ import "../Registration/Reg2.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import Navbar5 from "../Navbar/Navbar5";
 
 const Login1 = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [state, setState] = useState(false);
 
   const handel_login = async (e) => {
     e.preventDefault();
@@ -30,20 +28,20 @@ const Login1 = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
-    } else if (res.status === 429) {
-      toast.error("All fields are required.", {
+    } else if (res.status === 401) {
+      toast.error("Kindly enter email.", {
+        position: "top-center",
+        theme: "colored",
+        hideProgressBar: "false",
+      });
+    } else if (res.status === 402) {
+      toast.error("Kindly enter password.", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",
       });
     } else if (res.status === 413) {
-      toast.error("email not matched...", {
-        position: "top-center",
-        theme: "colored",
-        hideProgressBar: "false",
-      });
-    } else if (res.status === 400) {
-      toast.error("Password not matched...", {
+      toast.error("Invalid credentional", {
         position: "top-center",
         theme: "colored",
         hideProgressBar: "false",
@@ -54,7 +52,6 @@ const Login1 = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
-      // window.localStorage.setItem("user", JSON.stringify({ email, password }));
       window.localStorage.setItem("isLoggedIn", true);
       navigate("/");
     } else if (res.status === 202) {
@@ -63,20 +60,14 @@ const Login1 = () => {
         theme: "colored",
         hideProgressBar: "false",
       });
-      // window.localStorage.setItem(
-      //   "provider",
-      //   JSON.stringify({ email, password })
-      // );
       window.localStorage.setItem("isProvider", true);
       navigate("/providerDash");
     } else if (res.status === 203) {
-      // dispatch({ type: "ADMIN", payload: true });
       toast.success("Successfully login Admin.", {
         position: "top-left",
         theme: "colored",
         hideProgressBar: "false",
       });
-      // window.localStorage.setItem("admin", JSON.stringify({ email, password }));
       window.localStorage.setItem("isAdmin", true);
       navigate("/dashmain");
     }

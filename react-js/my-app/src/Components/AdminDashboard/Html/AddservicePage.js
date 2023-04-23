@@ -49,8 +49,32 @@ const AddservicePage = () => {
       });
       navigate("/dashmain/services");
     } catch (err) {
-      if (err.response.status === 412) {
-        toast.error("All fields are required.", {
+      if (err.response.status === 401) {
+        toast.error("Kindly enter service-name.", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
+      } else if (err.response.status === 402) {
+        toast.error("Kindly enter price.", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
+      } else if (err.response.status === 403) {
+        toast.error("Kindly select rating.", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
+      } else if (err.response.status === 404) {
+        toast.error("Kindly enter likes.", {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: "false",
+        });
+      } else if (err.response.status === 405) {
+        toast.error("Kindly enter description.", {
           position: "top-center",
           theme: "colored",
           hideProgressBar: "false",
@@ -67,7 +91,7 @@ const AddservicePage = () => {
           theme: "colored",
           hideProgressBar: "false",
         });
-      } else if (err.response.status === 402) {
+      } else if (err.response.status === 412) {
         toast.error("upload document.", {
           position: "top-center",
           theme: "colored",

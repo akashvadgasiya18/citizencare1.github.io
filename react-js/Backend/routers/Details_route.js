@@ -5,7 +5,7 @@ const router = express.Router();
 const asyncHandler = require("express-async-handler");
 const Review = require("../models/ReviewSchema");
 const User = require("../models/UserSchema");
-const path = require('path');
+const path = require("path");
 require("../db");
 
 // -------------------- add service through admin--------------------------
@@ -15,8 +15,8 @@ const storage = multer.diskStorage({
     cb(null, "assets/image");
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + "_" + file.originalname );
-  }
+    cb(null, Date.now() + "_" + file.originalname);
+  },
 });
 
 const upload = multer({ storage: storage });
@@ -25,7 +25,15 @@ router.post("/add_services", upload.single("doc_img"), async (req, res) => {
   let doc_img = req.file ? req.file.filename : null;
   const { s_name, price, rating, likes, desc } = req.body;
   if (!s_name || !price || !rating || !likes || !desc || !doc_img) {
-    return res.status(412).json({});
+    return res.status(401).json({});
+  } else if (!price) {
+    return res.status(402).json({});
+  } else if (!rating) {
+    return res.status(403).json({});
+  } else if (!likes) {
+    return res.status(404).json({});
+  } else if (!desc) {
+    return res.status(405).json({});
   }
   try {
     const de_Exist = await Details.findOne({ s_name });
@@ -39,7 +47,7 @@ router.post("/add_services", upload.single("doc_img"), async (req, res) => {
       res.status(201).json({});
     }
   } catch (err) {
-    return res.status(402).json({});
+    return res.status(412).json({});
   }
 });
 
@@ -48,7 +56,13 @@ router.post("/add_services", upload.single("doc_img"), async (req, res) => {
 router.post("/edit_service", async (req, res) => {
   const { id, price, rating, likes, desc } = req.body;
   if (!id || !price || !rating || !likes || !desc) {
-    return res.status(429).json({});
+    return res.status(401).json({});
+  } else if (!rating) {
+    return res.status(402).json({});
+  } else if (!likes) {
+    return res.status(403).json({});
+  } else if (!desc) {
+    return res.status(404).json({});
   }
   const de_exist = await Details.findOne({ _id: id });
   if (!de_exist) {
@@ -78,6 +92,7 @@ router.post("/edit_service", async (req, res) => {
 });
 
 //-------------------------------delete-service---------------------------------
+
 router.post("/delete_service", async (req, res) => {
   const { id } = req.body;
   try {
@@ -131,8 +146,12 @@ router.get(
 
 router.post("/add_review", async (req, res) => {
   const { uname, rate, description, n_date } = req.body;
-  if (!uname || !rate || !description || !n_date) {
-    return res.status(417).json({});
+  if (!uname) {
+    return res.status(401).json({});
+  } else if (!rate) {
+    return res.status(402).json({});
+  } else if (!description) {
+    return res.status(403).json({});
   }
   try {
     const de_Exist = await User.findOne({ fname: uname });
@@ -144,7 +163,7 @@ router.post("/add_review", async (req, res) => {
       res.status(201).json({});
     }
   } catch (err) {
-    return res.status(402).json({});
+    return res.status().json({});
   }
 });
 
@@ -158,48 +177,6 @@ router.post("/delete_review", async (req, res) => {
   } catch (err) {
     res.status(429).json({});
     console.log(err);
-  }
-});
-
-// ---------------------------- order post using payment page-----------------
-
-router.post("/checkoutpage", async (req, res) => {
-  const {
-    fname,
-    email,
-    address,
-    city,
-    state,
-    zipcode,
-    country,
-    s_name,
-    price,
-  } = req.body;
-  if (!fname || !email || !address || !city || !state || !zipcode || !country) {
-    return res.status(417).json({});
-  }
-  try {
-    const de_Exist = await User.findOne({ fname: fname });
-    if (!de_Exist) {
-      return res.status(419).json({});
-    } else {
-      const data = new Order({
-        fname,
-        email,
-        address,
-        city,
-        state,
-        zipcode,
-        country,
-        s_name,
-        price,
-      });
-      await data.save();
-      console.log("backend data:", data);
-      res.status(201).json({});
-    }
-  } catch (err) {
-    return res.status(402).json({});
   }
 });
 
