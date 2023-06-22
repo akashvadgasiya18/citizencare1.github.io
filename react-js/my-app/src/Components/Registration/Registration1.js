@@ -292,7 +292,7 @@ const Registration1 = () => {
                   className="text-black-50 mb-5"
                   style={{ textAlign: "center", marginTop: "-20px" }}
                 >
-                  Please select your type for registration
+                  Please select your type for registration and Fill details
                 </p>
 
                 <div style={{ height: "45px", marginBottom: "3rem" }}>
